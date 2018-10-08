@@ -26,7 +26,7 @@ if (!isset($_SESSION)) {
     for ($j = 1; $j <= $OptionsNumber; $j++) {
       $str2 = "option_" . $i . "_" . $j;
       if($j==$OptionsNumber){
-        $options .= $_POST[$str2] ;
+        $options .= $_POST[$str2];
       }else{
         $options .= $_POST[$str2] . ";";
       }
