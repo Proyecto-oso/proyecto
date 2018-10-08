@@ -1,5 +1,6 @@
 <?php
 include_once("header.php");
+include_once("functions.php");
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -22,10 +23,13 @@ function test_input($data)
  </head>
     <div>
     <?php
-    $_SESSION['nombre_test']='test';
-    if (isset($_SESSION['nombre_test'])) {
-        $nombre_test = $_SESSION['nombre_test'];
-        $nombre_test = 'test';
+    if (isset($_GET['nombre_test']) || isset($_SESSION['nombre_test'])) {
+        if(isset($_GET['nombre_test'])){
+            $nombre_test = $_GET['nombre_test'];
+            $_SESSION['nombre_test'] = $nombre_test;
+            $_SESSION['id_estudiante'] = $_GET['id_estudiante'];
+        }
+        $nombre_test=$_SESSION['nombre_test'];
         $query = 'SELECT * FROM test WHERE nombre=?';
         $stmt = $dbh->prepare($query);
         $stmt->execute([$nombre_test]);
@@ -39,14 +43,22 @@ function test_input($data)
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $score = 0;
             foreach ($preguntas as $pregunta) {
-                if(isset($_POST['pregunta_' . $i]) && $_POST['pregunta_' . $i]==$pregunta['respuesta']){
+                if (isset($_POST['pregunta_' . $i]) && $_POST['pregunta_' . $i] == $pregunta['respuesta']) {
                     $score++;
                 }
                 $i++;
-            }
-            echo 'Puntuacion: '.$score;
+            }            
+            $query = 'INSERT INTO `presentacion_test`(`id_estudiante`, `id_test`, `score`) VALUES (?,?,?)';
+            
+            $stmt = $dbh->prepare($query);
+            $stmt->execute([$_SESSION['id_estudiante'], $row['id'], $score]);
+            //echo $_SESSION['id_estudiante'].' '. $row['id'].' '. $score;
+            echo '<script language="javascript">';
+            echo 'alert("Puntuacion guardada correctamente")';
+            echo '</script>';
+            echo '<script language="javascript">window.location="index.php"</script>';
         }
-        $i=0;
+        $i = 0;
         ?>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
     <?php
@@ -66,10 +78,12 @@ function test_input($data)
         }
         $i++;
     }
-}
-?>
+
+    ?>
         <input type="submit" name="submit" value="Enviar">
     </form>
 <?php
+
+}
 include_once("footer.php");
 ?>

@@ -1,5 +1,8 @@
 <?php
 include_once("header.php");
+if (!isset($_SESSION)) {
+    session_start();
+  }
 ?>
 </head>
 <section class="parent">

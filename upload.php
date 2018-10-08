@@ -2,17 +2,21 @@
 
   // Check if image file is a actual image or fake image
 if (isset($_POST["submit"])) {
-
     $target_dir = "uploads/";
-    $uploadOk = 1;
-    $file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-    $imageFileType = strtolower(pathinfo($file, PATHINFO_EXTENSION));
-    #echo ($imageFileType . "<br/>");
-
-    $newName = $_POST["image_id"]."." . $imageFileType;
+    $newName = $_POST["image_id"] . ".png";
+    echo ("faofnasnfdskndsajnfaj<br/>");
+    echo ($newName . "<br/>");
     $target_file = $target_dir . $newName;
-
-
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    if ($check !== false) {
+        echo "File is an image - " . $check["mime"] . ".";
+        $uploadOk = 1;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+    }
      // Check if file already exists
     if (file_exists($target_file)) {
         echo "Sorry, file already exists.";
@@ -27,8 +31,8 @@ if (isset($_POST["submit"])) {
 
   // Allow certain file formats
     if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-        && $imageFileType != "gif" && $imageFileType != "pdf") {
-        echo "Sorry, only JPG, JPEG, PNG, GIF and PDF files are allowed.";
+        && $imageFileType != "gif") {
+        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
         $uploadOk = 0;
     }
 
