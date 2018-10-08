@@ -1,0 +1,70 @@
+body{
+    font-family: 'Kanit', sans-serif;
+}
+.log-text{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.body-login {
+    background-image: url(http://www.carmeloportal.com/wp-content/uploads/sociedadcconocimiento28.png);
+    width: 100%;
+    min-height: 70vh;    
+    padding: 15px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: 50px;
+    justify-self: center;
+    align-items: center;
+}
+
+.container-login{
+    background-color:rgba(255, 255, 255, 0.8);
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: black;
+    padding: 5px;
+}
+.myform-cont{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.form-control{
+    font-size: 16px;
+    border-style: solid;
+    border-color: #4d636f;
+    border-width: 2px;
+    border-radius: 20px;
+
+}
+.mybtn{
+    width: 100%;
+    background-color: #4d636f;
+    border-style: none;
+    color: white;
+    height: 35px;
+    margin-top: 10px;
+}
+.mybtn-social{
+    margin-left: 50px;
+    margin-right: 50px;
+    font-size: 30px;
+}
+
+hr {
+    display: block;
+    height: 2px;
+    border: 0;
+    border-top: 1px solid black;
+    margin: 1em 0;
+    padding: 0;
+    margin: 0 10px 0 10px;
+}
+
+.error{
+    text-align: center;
+    color: red;
+}

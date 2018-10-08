@@ -1,0 +1,24 @@
+
+.estudiante{
+    border-style: outset;
+    margin-top:30px;
+    margin-bottom: 5px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 15px;
+    width: 500px;
+    border-radius:  10px;
+    color:black;
+    background-color: white;
+    
+  }
+
+  .estudiantes-container{
+      display: inline-block;
+  }
+
+  h1{
+      text-align: center;
+      margin: 50px;
+  }
+
