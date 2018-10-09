@@ -38,37 +38,87 @@
   {
     ?>
     <h1>Crear estudiante</h1>
-    <form class="" action="index.html" method="post">
-      Nombre: <input type="text" name="" value="">
-      Documento: <input type="text" name="" value="">
+    <form class="" action="report.php" method="post">
+      <input type="hidden" name="newStudent" value="1">
+      Nombre: <input type="text" name="nombre" value="">
+      Documento: <input type="text" name="documento" value="">
+      Edad: <input type="number" name="edad" value="">
+      Grado: <input type="text" name="grado" value="">
+      Colegio: <input type="text" name="colegio" value="">
+      <input type="submit" name="" value="crear estudiante">
     </form>
 
     <?php
+  }
+  elseif (isset($_POST['newStudent'])) {
+
+    $nombre = $_POST['nombre'];
+    $documento = $_POST['grado'];
+    $edad = $_POST['edad'];
+    $grado = $_POST['documento'];
+    $colegio =  $_POST['colegio'];
+    echo "<h1>CREANDO ESTUDIANTE $nombre </h1>";
+
+    $sql = "INSERT INTO estudiantes(nombre, grado, edad, documento, colegio) VALUES ($nombre, $grado,$edad,$documento,$colegio)";
+    $return = $dbh->exec($sql);
+
+    echo date_get_last_errors();
+
   }
 
   elseif( isset($_POST['create_psicologo']) )
   {
     ?>
     <h1>Crear Psicologo</h1>
-    <form class="" action="index.html" method="post">
-      Nombre: <input type="text" name="" value="">
-      Correo: <input type="text" name="" value="">
+    <form class="" action="report.php" method="post">
+      <input type="hidden" name="newPsicologo" value="">
+      Nombre: <input type="nombre" name="" value="">
+      Correo: <input type="correo" name="" value="">
+      <input type="submit" name="" value="crear psicologo">
     </form>
 
     <?php
+  }
+
+  elseif (isset($_POST['newPsicologo'])) {
+
+    $nombre = $_POST['nombre'];
+    $correo = $_POST['correo'];
+    echo "<h1>CREANDO PSICOLOGO $nombre </h1>";
+
+    $sql = "INSERT INTO `psicologos`(`nombre`, `correo`) VALUES ($nombre,$correo)";
+    $return = $dbh->exec($sql);
+
   }
 
   elseif( isset($_POST['create_co-tallerista']) )
   {
     ?>
     <h1>Crear Co-tallerista</h1>
-    <form class="" action="index.html" method="post">
-      Nombre: <input type="text" name="" value="">
-      Correo: <input type="text" name="" value="">
+    <form class="" action="report.php" method="post">
+      <input type="hidden" name="newCoTallerista" value="">
+      Nombre: <input type="nombre" name="" value="">
+      Correo: <input type="correo" name="" value="">
+      <input type="submits" name="" value="Crear co-tallerista">
     </form>
 
     <?php
   }
+
+  elseif (isset($_POST['newCoTallerista'])) {
+
+    $nombre = $_POST['nombre'];
+    $correo = $_POST['correo'];
+    echo "<h1>CREANDO CO-TALLERISTA $nombre </h1>";
+
+    $sql = "INSERT INTO `co-talleristas` (`nombre`, `correo`) VALUES ($nombre, $correo)";
+    $return = $dbh->exec($sql);
+
+  }
+
+
+
+
   /*
   $sql = 'SELECT * FROM estudiantes JOIN  grupos';
   foreach ($dbh->query($sql) as $row) {
