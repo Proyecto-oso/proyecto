@@ -1,6 +1,8 @@
 </footer>
 
+
 <?php
+include_once("functions.php");
 print_r(error_get_last());
 echo '
     <a href ="index.php">Inicio</a> |';
@@ -9,7 +11,7 @@ echo '
     }else{
         echo '<a href="login.php">Login</a>';
     }
-    
+
 
 ?>
 
