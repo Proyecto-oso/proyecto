@@ -10,6 +10,8 @@ if (!isset($_SESSION)) {
 
   <?php
   $QuestionNumber = $_POST["Questions"];
+  $stmt = $dbh->prepare('INSERT INTO `test` (`nombre`) VALUES (?);');
+  $stmt->execute([$_POST['nombre_prueba']]);
 
   //read de number of questions an read all
   for ($i = 1; $i <= $QuestionNumber; $i++) {
@@ -25,12 +27,12 @@ if (!isset($_SESSION)) {
     //print current Options and save de actual answer position
     for ($j = 1; $j <= $OptionsNumber; $j++) {
       $str2 = "option_" . $i . "_" . $j;
-      if($j==$OptionsNumber){
+      if ($j == $OptionsNumber) {
         $options .= $_POST[$str2];
-      }else{
+      } else {
         $options .= $_POST[$str2] . ";";
       }
-      
+
       if ($answer_pos == $j) {
         $answer = $_POST[$str2];
       }
@@ -39,13 +41,18 @@ if (!isset($_SESSION)) {
     echo 'opciones :' . $options . "<br/>";
     echo "Answer is " . $answer . "<br/>";
 
-    $stmt = $dbh->prepare('INSERT INTO `test` (`nombre`) VALUES (?);');
-    $stmt->execute([$_POST['nombre_prueba']]);
     $stmt1 = $dbh->prepare('SELECT * FROM `test` WHERE `nombre`=?;');
     $stmt1->execute([$_POST['nombre_prueba']]);
     $test = $stmt1->fetch();
-    $stmt = $dbh->prepare('INSERT INTO `preguntas`(`enunciado`, `opciones`, `respuesta`, `id_test`) VALUES (?,?,?,?);')->execute([$enunciado,$options,$answer,$test['id']]);
+    $stmt = $dbh->prepare('INSERT INTO `preguntas`(`enunciado`, `opciones`, `respuesta`, `id_test`) VALUES (?,?,?,?);')->execute([$enunciado, $options, $answer, $test['id']]);
   }
+
+  echo '<script language="javascript">';
+  echo 'alert("Prueba generada correctamente")';
+  echo '</script>';
+  echo '<script language="javascript">window.location="index.php"</script>';
+
+
 
   ?>
 

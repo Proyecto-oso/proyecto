@@ -47,7 +47,7 @@ if (isset($_POST['token'])) {
 
 function enviarCorreo($correo)
 {
-    $token = func::createToken(30);
+    $token = func::createToken(6);
     // El mensaje
     $mensaje = "El token de ingreso es el siguiente: \r\n$token";
 
