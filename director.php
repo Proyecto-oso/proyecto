@@ -29,6 +29,10 @@ input{
   float: left;
 }
 
+.new_element{
+  display: none;
+}
+
 </style>
 
 
@@ -62,6 +66,9 @@ $arrayName = array();
   <tr>
     <th>Nombre</th>
     <th>Identificacion</th>
+    <th>grado</th>
+    <th>edad</th>
+    <th>colegio</th>
   </tr>
 
 
@@ -75,7 +82,10 @@ $arrayName = array();
               <form class="" action="report.php" method="post">
                 <input type="hidden" name="student" value="'.$row['id'].'">
                 <th>'.$row['nombre'].'</th>
-                <th>'.$row['documento'].'
+                <th>'.$row['documento'].'</th>
+                <th>'.$row['grado'].'</th>
+                <th>'.$row['edad'].'</th>
+                <th>'.$row['colegio'].'
                 <input type="submit" name="ver estduiante" value="Ver Estudiante"></th>
               </form>
             </tr>
@@ -156,8 +166,6 @@ $arrayName = array();
 
 ?>
 </table>
-
-
 
 <?php
 

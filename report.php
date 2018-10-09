@@ -53,16 +53,18 @@
   elseif (isset($_POST['newStudent'])) {
 
     $nombre = $_POST['nombre'];
-    $documento = $_POST['grado'];
+    $documento = $_POST['documento'];
     $edad = $_POST['edad'];
-    $grado = $_POST['documento'];
+    $grado = $_POST['grado'];
     $colegio =  $_POST['colegio'];
     echo "<h1>CREANDO ESTUDIANTE $nombre </h1>";
 
-    $sql = "INSERT INTO estudiantes(nombre, grado, edad, documento, colegio) VALUES ($nombre, $grado,$edad,$documento,$colegio)";
+    $sql = "INSERT INTO estudiantes(nombre, grado, edad, documento, colegio) VALUES (\"$nombre\", \"$grado\",$edad,\"$documento\",\"$colegio\")";
     $return = $dbh->exec($sql);
 
-    echo date_get_last_errors();
+    ?>
+    <a href="director.php" class="w3-btn w3-black">Regresar al menu</a>
+    <?php
 
   }
 
@@ -72,8 +74,8 @@
     <h1>Crear Psicologo</h1>
     <form class="" action="report.php" method="post">
       <input type="hidden" name="newPsicologo" value="">
-      Nombre: <input type="nombre" name="" value="">
-      Correo: <input type="correo" name="" value="">
+      Nombre: <input type="text" name="nombre" value="">
+      Correo: <input type="text" name="correo" value="">
       <input type="submit" name="" value="crear psicologo">
     </form>
 
@@ -86,8 +88,12 @@
     $correo = $_POST['correo'];
     echo "<h1>CREANDO PSICOLOGO $nombre </h1>";
 
-    $sql = "INSERT INTO `psicologos`(`nombre`, `correo`) VALUES ($nombre,$correo)";
+    $sql = "INSERT INTO `psicologos`(`nombre`, `correo`) VALUES ( \" $nombre\",\"$correo\")";
     $return = $dbh->exec($sql);
+
+    ?>
+    <a href="director.php" class="w3-btn w3-black">Regresar al menu</a>
+    <?php
 
   }
 
@@ -97,8 +103,8 @@
     <h1>Crear Co-tallerista</h1>
     <form class="" action="report.php" method="post">
       <input type="hidden" name="newCoTallerista" value="">
-      Nombre: <input type="nombre" name="" value="">
-      Correo: <input type="correo" name="" value="">
+      Nombre: <input type="text" name="nombre" value="">
+      Correo: <input type="text" name="correo" value="">
       <input type="submits" name="" value="Crear co-tallerista">
     </form>
 
@@ -111,8 +117,11 @@
     $correo = $_POST['correo'];
     echo "<h1>CREANDO CO-TALLERISTA $nombre </h1>";
 
-    $sql = "INSERT INTO `co-talleristas` (`nombre`, `correo`) VALUES ($nombre, $correo)";
+    $sql = "INSERT INTO `co-talleristas` (`nombre`, `correo`) VALUES (\"$nombre\", \"$correo\")";
     $return = $dbh->exec($sql);
+    ?>
+    <a href="director.php" class="w3-btn w3-black">Regresar al menu</a>
+    <?php
 
   }
 
