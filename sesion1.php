@@ -34,11 +34,11 @@ if (!func::checkLoginState($dbh)) {
                 $query .= '`aptitud_verbal_' . $i . '`="' . $_POST["aptitud_verbal_$i"] . '",';
 
             }
-            $query .= '`total_aptitud_verbal`=' . $_POST["total_aptitud_verbal"] . ',';
+            $query .= '`total_aptitud_verbal`="' . $_POST["total_aptitud_verbal"] . '",';
             for ($i = 1; $i <= 15; $i++) {
                 $query .= '`aptitud_matematica_' . $i . '`="' . $_POST["aptitud_matematica_$i"] . '",';
             }
-            $query .= '`total_aptitud_matematica`=' . $_POST["total_aptitud_matematica"] . ',';
+            $query .= '`total_aptitud_matematica`="' . $_POST["total_aptitud_matematica"] . '",';
             $query .= '`informe_via` = "' . $_POST["informe_via"] . '" WHERE id_estudiante=' . $_POST['id_ses'] . ' ';
             //We start our transaction.
             $dbh->beginTransaction();
@@ -47,49 +47,45 @@ if (!func::checkLoginState($dbh)) {
                 $stmt = $dbh->prepare($query);
                 $stmt->execute();
                 $dbh->commit();
-                if (intval($_POST["total_aptitud_matematica"]) == 0 && $_POST["total_aptitud_matematica"] != '0') {
-                    echo intval($_POST["total_aptitud_matematica"]);
-                    $error = 'el total debe ser un número, intente de nuevo';
-                    throw new Exception($error);
-                }
                 echo '<script language="javascript">';
                 echo 'alert("Guardado correctamente")';
                 echo '</script>';
                 echo '<script language="javascript">window.location="sesion1.php"</script>';
 
             } catch (Exception $e) {
-                echo $e->getMessage();
                 $dbh->rollBack();
-            }
-            /*if ($dbh->beginTransaction()) {
-                echo $query;
-                try {
-                    $stmt = $dbh->prepare($query);
-                    $stmt->execute();
-                    $dbh->commit();
-                } catch (Exception $ex) {
-                    echo "Failed: " . $ex->getMessage();
-                    if ($dbh->inTransaction()) {
-                        echo "Failed: " . $ex->getMessage();
-                        $dbh->rollBack();
-
-                    }
+                if (strpos($e->getMessage(), 'Incorrect integer value')) {
+                    echo '<script language="javascript">';
+                    echo 'alert("ERROR: el total debe ser un número")';
+                    echo '</script>';
+                    echo '<script language="javascript">window.location="sesion1.php"</script>';
+                }/*else{
+                    echo '<script language="javascript">';
+                    echo 'alert("'.$e->getMessage().'")';
+                    echo '</script>';
+                    echo '<script language="javascript">window.location="sesion1.php"</script>';
+                }*/
+                if (strpos($e->getMessage(), ' Data too long for column')) {
+                    echo '<script language="javascript">';
+                    echo 'alert("ERROR: debe ser unicamente un caracter")';
+                    echo '</script>';
+                    echo '<script language="javascript">window.location="sesion1.php"</script>';
                 }
-            }*/
+            }
         } else {
-            
+
             $query = 'INSERT INTO `sesion_1`(`id_estudiante`,`aptitud_verbal_1`, `aptitud_verbal_2`, `aptitud_verbal_3`, `aptitud_verbal_4`, `aptitud_verbal_5`, `aptitud_verbal_6`, `aptitud_verbal_7`, `aptitud_verbal_8`, `aptitud_verbal_9`, `aptitud_verbal_10`, `aptitud_verbal_11`, `aptitud_verbal_12`, `aptitud_verbal_13`, `aptitud_verbal_14`, `aptitud_verbal_15`, `aptitud_matematica_1`, `aptitud_matematica_2`, `aptitud_matematica_3`, `aptitud_matematica_4`, `aptitud_matematica_5`, `aptitud_matematica_6`, `aptitud_matematica_7`, `aptitud_matematica_8`, `aptitud_matematica_9`, `aptitud_matematica_10`, `aptitud_matematica_11`, `aptitud_matematica_12`, `aptitud_matematica_13`, `aptitud_matematica_14`, `aptitud_matematica_15`, `total_aptitud_matematica`, `total_aptitud_verbal`, `informe_via`) VALUES (';
             $query .= $_POST["id"] . ',';
             for ($i = 1; $i <= 15; $i++) {
-                $query .= '"'.$_POST["aptitud_verbal_$i"] . '",';
+                $query .= '"' . $_POST["aptitud_verbal_$i"] . '",';
 
-            }            
-            for ($i = 1; $i <= 15; $i++) {
-                $query .='"'.$_POST["aptitud_matematica_$i"] . '",';
             }
-            $query .=   $_POST["total_aptitud_matematica"] . ',';
-            $query .=   $_POST["total_aptitud_verbal"] . ',';
-            $query .=  '"'.$_POST["informe_via"] . '") ';
+            for ($i = 1; $i <= 15; $i++) {
+                $query .= '"' . $_POST["aptitud_matematica_$i"] . '",';
+            }
+            $query .= '"' . $_POST["total_aptitud_matematica"] . '",';
+            $query .= '"' . $_POST["total_aptitud_verbal"] . '",';
+            $query .= '"' . $_POST["informe_via"] . '") ';
             //We start our transaction.
             $dbh->beginTransaction();
 
@@ -97,45 +93,32 @@ if (!func::checkLoginState($dbh)) {
                 $stmt = $dbh->prepare($query);
                 $stmt->execute();
                 $dbh->commit();
-                if (intval($_POST["total_aptitud_matematica"]) == 0 && $_POST["total_aptitud_matematica"] != '0') {
-                    echo intval($_POST["total_aptitud_matematica"]);
-                    $error = 'el total debe ser un número, intente de nuevo';
-                    throw new Exception($error);
-                }
-                //echo $query;
                 echo '<script language="javascript">';
                 echo 'alert("Guardado correctamente")';
                 echo '</script>';
                 echo '<script language="javascript">window.location="sesion1.php"</script>';
 
             } catch (Exception $e) {
-                echo $e->getMessage();
                 $dbh->rollBack();
-            }
-            /*if ($dbh->beginTransaction()) {
-                echo $query;
-                try {
-                    $stmt = $dbh->prepare($query);
-                    $stmt->execute();
-                    $dbh->commit();
-                } catch (Exception $ex) {
-                    echo "Failed: " . $ex->getMessage();
-                    if ($dbh->inTransaction()) {
-                        echo "Failed: " . $ex->getMessage();
-                        $dbh->rollBack();
-
-                    }
+                if (strpos($e->getMessage(), 'Incorrect integer value')) {
+                    echo '<script language="javascript">';
+                    echo 'alert("ERROR: el total debe ser un número")';
+                    echo '</script>';
+                    echo '<script language="javascript">window.location="sesion1.php"</script>';
+                }/*else{
+                    echo '<script language="javascript">';
+                    echo 'alert("'.$e->getMessage().'")';
+                    echo '</script>';
+                    echo '<script language="javascript">window.location="sesion1.php"</script>';
+                }*/
+                if (strpos($e->getMessage(), ' Data too long for column')) {
+                    echo '<script language="javascript">';
+                    echo 'alert("ERROR: debe ser unicamente un caracter")';
+                    echo '</script>';
+                    echo '<script language="javascript">window.location="sesion1.php"</script>';
                 }
-            }*/
+            }
         }
-        /*$id = $_POST[' id '];
-        $query = ' SELECT * FROM sesion_1 WHERE id_estudiante = ? ';
-        $stmt = $dbh->prepare($query);
-        $stmt->execute([$id]);
-        $s = $stmt->fetch(PDO::FETCH_ASSOC);
-        echo ' < tr >
-                < th > ' . $row[' nombre '] . ' < / th > ';
-        if (!isset($s[' id_estudiante '])) {*/
 
     } else { ?>
     <div class="flow-container">
