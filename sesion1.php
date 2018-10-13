@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once("config.php");
 if (!isset($_SESSION)) {
     session_start();
@@ -122,40 +122,40 @@ if (!func::checkLoginState($dbh)) {
 
     } else { ?>
     <div class="flow-container">
-    
+
     <table class="tb">
     <tr>
     <th>Nombre</th>
     <th>AV 1</th>
-    <th>AV 2</th> 
-    <th>AV 3</th> 
-    <th>AV 4</th> 
-    <th>AV 5</th> 
-    <th>AV 6</th> 
-    <th>AV 7</th> 
-    <th>AV 8</th> 
-    <th>AV 9</th> 
-    <th>AV 10</th> 
-    <th>AV 11</th> 
-    <th>AV 12</th> 
-    <th>AV 13</th> 
-    <th>AV 14</th> 
+    <th>AV 2</th>
+    <th>AV 3</th>
+    <th>AV 4</th>
+    <th>AV 5</th>
+    <th>AV 6</th>
+    <th>AV 7</th>
+    <th>AV 8</th>
+    <th>AV 9</th>
+    <th>AV 10</th>
+    <th>AV 11</th>
+    <th>AV 12</th>
+    <th>AV 13</th>
+    <th>AV 14</th>
     <th>AV 15</th>
     <th>TOTAL AV</th>
     <th>AM 1</th>
-    <th>AM 2</th> 
-    <th>AM 3</th> 
-    <th>AM 4</th> 
-    <th>AM 5</th> 
-    <th>AM 6</th> 
-    <th>AM 7</th> 
-    <th>AM 8</th> 
-    <th>AM 9</th> 
-    <th>AM 10</th> 
-    <th>AM 11</th> 
-    <th>AM 12</th> 
-    <th>AM 13</th> 
-    <th>AM 14</th> 
+    <th>AM 2</th>
+    <th>AM 3</th>
+    <th>AM 4</th>
+    <th>AM 5</th>
+    <th>AM 6</th>
+    <th>AM 7</th>
+    <th>AM 8</th>
+    <th>AM 9</th>
+    <th>AM 10</th>
+    <th>AM 11</th>
+    <th>AM 12</th>
+    <th>AM 13</th>
+    <th>AM 14</th>
     <th>AM 15</th>
     <th>TOTAL AM</th>
     <th>INFORME VIA</th>
@@ -207,35 +207,35 @@ if (!func::checkLoginState($dbh)) {
             echo '</form>';
             /*?>
             <td><input type="text" name="aptitud_verbal_1" value="<?php $s['aptitud_verbal_1']?>" /></td>
-            <td><input type="text" name="aptitud_verbal_2" value="<?php $s['aptitud_verbal_2']?>" /></td> 
-            <td><input type="text" name="aptitud_verbal_3" value="<?php $s['aptitud_verbal_3']?>" /></td> 
-            <td><input type="text" name="aptitud_verbal_4" value="<?php $s['aptitud_verbal_4']?>" /></td> 
-            <td><input type="text" name="aptitud_verbal_5" value="<?php $s['aptitud_verbal_5']?>" /></td> 
-            <td><input type="text" name="aptitud_verbal_6" value="<?php $s['aptitud_verbal_6']?>" /></td> 
-            <td><input type="text" name="aptitud_verbal_7" value="<?php $s['aptitud_verbal_7']?>" /></td> 
-            <td><input type="text" name="aptitud_verbal_8" value="<?php $s['aptitud_verbal_8']?>" /></td> 
-            <td><input type="text" name="aptitud_verbal_9" value="<?php $s['aptitud_verbal_9']?>" /></td> 
-            <td><input type="text" name="aptitud_verbal_10" value="<?php $s['aptitud_verbal_10']?>" /></td> 
-            <td><input type="text" name="aptitud_verbal_11" value="<?php $s['aptitud_verbal_11']?>" /></td> 
-            <td><input type="text" name="aptitud_verbal_12" value="<?php $s['aptitud_verbal_12']?>" /></td> 
-            <td><input type="text" name="aptitud_verbal_13" value="<?php $s['aptitud_verbal_13']?>" /></td> 
-            <td><input type="text" name="aptitud_verbal_14" value="<?php $s['aptitud_verbal_14']?>" /></td> 
+            <td><input type="text" name="aptitud_verbal_2" value="<?php $s['aptitud_verbal_2']?>" /></td>
+            <td><input type="text" name="aptitud_verbal_3" value="<?php $s['aptitud_verbal_3']?>" /></td>
+            <td><input type="text" name="aptitud_verbal_4" value="<?php $s['aptitud_verbal_4']?>" /></td>
+            <td><input type="text" name="aptitud_verbal_5" value="<?php $s['aptitud_verbal_5']?>" /></td>
+            <td><input type="text" name="aptitud_verbal_6" value="<?php $s['aptitud_verbal_6']?>" /></td>
+            <td><input type="text" name="aptitud_verbal_7" value="<?php $s['aptitud_verbal_7']?>" /></td>
+            <td><input type="text" name="aptitud_verbal_8" value="<?php $s['aptitud_verbal_8']?>" /></td>
+            <td><input type="text" name="aptitud_verbal_9" value="<?php $s['aptitud_verbal_9']?>" /></td>
+            <td><input type="text" name="aptitud_verbal_10" value="<?php $s['aptitud_verbal_10']?>" /></td>
+            <td><input type="text" name="aptitud_verbal_11" value="<?php $s['aptitud_verbal_11']?>" /></td>
+            <td><input type="text" name="aptitud_verbal_12" value="<?php $s['aptitud_verbal_12']?>" /></td>
+            <td><input type="text" name="aptitud_verbal_13" value="<?php $s['aptitud_verbal_13']?>" /></td>
+            <td><input type="text" name="aptitud_verbal_14" value="<?php $s['aptitud_verbal_14']?>" /></td>
             <td><input type="text" name="aptitud_verbal_15" value="<?php $s['aptitud_verbal_15']?>" /></td>
             <td><input type="text" name="total_aptitud_verbal" value="<?php $s['total_aptitud_verbal']?>" /></td>
             <td><input type="text" name="aptitud_matematica_1" value="<?php $s['aptitud_matematica_1']?>" /></td>
-            <td><input type="text" name="aptitud_matematica_2" value="<?php $s['aptitud_matematica_2']?>" /></td> 
-            <td><input type="text" name="aptitud_matematica_3" value="<?php $s['aptitud_matematica_3']?>" /></td> 
-            <td><input type="text" name="aptitud_matematica_4" value="<?php $s['aptitud_matematica_4']?>" /></td> 
-            <td><input type="text" name="aptitud_matematica_5" value="<?php $s['aptitud_matematica_5']?>" /></td> 
-            <td><input type="text" name="aptitud_matematica_6" value="<?php $s['aptitud_matematica_6']?>" /></td> 
-            <td><input type="text" name="aptitud_matematica_7" value="<?php $s['aptitud_matematica_7']?>" /></td> 
-            <td><input type="text" name="aptitud_matematica_8" value="<?php $s['aptitud_matematica_8']?>" /></td> 
-            <td><input type="text" name="aptitud_matematica_9" value="<?php $s['aptitud_matematica_9']?>" /></td> 
-            <td><input type="text" name="aptitud_matematica_10" value="<?php $s['aptitud_matematica_10']?>" /></td> 
-            <td><input type="text" name="aptitud_matematica_11" value="<?php $s['aptitud_matematica_11']?>" /></td> 
-            <td><input type="text" name="aptitud_matematica_12" value="<?php $s['aptitud_matematica_12']?>" /></td> 
-            <td><input type="text" name="aptitud_matematica_13" value="<?php $s['aptitud_matematica_13']?>" /></td> 
-            <td><input type="text" name="aptitud_matematica_14" value="<?php $s['aptitud_matematica_14']?>" /></td> 
+            <td><input type="text" name="aptitud_matematica_2" value="<?php $s['aptitud_matematica_2']?>" /></td>
+            <td><input type="text" name="aptitud_matematica_3" value="<?php $s['aptitud_matematica_3']?>" /></td>
+            <td><input type="text" name="aptitud_matematica_4" value="<?php $s['aptitud_matematica_4']?>" /></td>
+            <td><input type="text" name="aptitud_matematica_5" value="<?php $s['aptitud_matematica_5']?>" /></td>
+            <td><input type="text" name="aptitud_matematica_6" value="<?php $s['aptitud_matematica_6']?>" /></td>
+            <td><input type="text" name="aptitud_matematica_7" value="<?php $s['aptitud_matematica_7']?>" /></td>
+            <td><input type="text" name="aptitud_matematica_8" value="<?php $s['aptitud_matematica_8']?>" /></td>
+            <td><input type="text" name="aptitud_matematica_9" value="<?php $s['aptitud_matematica_9']?>" /></td>
+            <td><input type="text" name="aptitud_matematica_10" value="<?php $s['aptitud_matematica_10']?>" /></td>
+            <td><input type="text" name="aptitud_matematica_11" value="<?php $s['aptitud_matematica_11']?>" /></td>
+            <td><input type="text" name="aptitud_matematica_12" value="<?php $s['aptitud_matematica_12']?>" /></td>
+            <td><input type="text" name="aptitud_matematica_13" value="<?php $s['aptitud_matematica_13']?>" /></td>
+            <td><input type="text" name="aptitud_matematica_14" value="<?php $s['aptitud_matematica_14']?>" /></td>
             <td><input type="text" name="aptitud_matematica_15" value="<?php $s['aptitud_matematica_15']?>" /></td>
             <td><input type="text" name="total_aptitud_matematica" value="<?php $s['total_aptitud_matematica']?>" /></td>
             <td><input type="text" name="informe_via" value="<?php $s['informe_via']?>" /></td>
