@@ -30,7 +30,7 @@ if (!func::checkLoginState($dbh)) {
     <div class="child">
         <?php
         echo "<h1>Bienvenido " . $_SESSION['usuario_nombre'] . " !!!!</h1></br>";
-        include("estudiantes.php");
+        include("grupos.php");
         ?>
     </div>
 </section>
