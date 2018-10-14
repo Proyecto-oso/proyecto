@@ -1,9 +1,10 @@
 <?php
 
-/*$host_name = 'db746299236.db.1and1.com';
-$database = 'db746299236';
-$user_name = 'dbo746299236';
-$password = 'Gameshow*38';
+/*
+$host_name = 'db757505496.db.1and1.com';
+$database = 'db757505496';
+$user_name = 'dbo757505496';
+$password = 'OsoUnal2018#';
 
 $dbh = null;
 try {
@@ -11,11 +12,14 @@ try {
 } catch (PDOException $e) {
   echo "Error!: " . $e->getMessage() . "<br/>";
   die();
-
-}*/
-
+}
 
 
+*/
+
+
+/*
+*/
 
 ini_set('display_errors',1);
 ini_set('display_stratup_errors',1);

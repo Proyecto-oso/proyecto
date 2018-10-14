@@ -316,7 +316,7 @@ if (!func::checkLoginState($dbh)) {
                   ?>
 
                   <td>
-                    <?php echo '<input type="radio" name= "'."factor_tncf_" . ($i + 1) . '"' ;  ?>  <?php if (isset($factor_tncf[$i]) && $factor_tncf[$i]=="0") echo "checked";?> value="0">Si
+                    <?php echo '<input type="radio" name= "'."factor_tncf_" . ($i + 1) . '"' ;  ?>  <?php if (isset($factor_tncf[$i]) && $factor_tncf[$i]=="0") echo "checked";?> value="0">Si</br>
                     <?php echo '<input type="radio" name= "'."factor_tncf_" . ($i + 1) . '"' ;  ?>  <?php if (isset($factor_tncf[$i]) && $factor_tncf[$i]=="1") echo "checked";?> value="1">No
                   </td>
                   <?php
@@ -328,7 +328,7 @@ if (!func::checkLoginState($dbh)) {
                   //echo '<td><input class="in" type="text" name="factor_paf_' . ($i + 1) . '" value="" /></td>';
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."factor_paf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_paf[$i]) && $factor_paf[$i] == "1") echo "checked";?> value="1">Si
+                    <?php echo '<input type="radio" name= "'."factor_paf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_paf[$i]) && $factor_paf[$i] == "1") echo "checked";?> value="1">Si</br>
                     <?php echo '<input type="radio" name= "'."factor_paf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_paf[$i]) && $factor_paf[$i] == "0") echo "checked";?> value="0">No
                   </td>
                   <?php
@@ -342,7 +342,7 @@ if (!func::checkLoginState($dbh)) {
 
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."factor_icppf_" . ($i + 1) . '"';  ?>  <?php if ( isset($factor_icppf[$i]) && $factor_icppf[$i] =="1") echo "checked";?> value="1">Si
+                    <?php echo '<input type="radio" name= "'."factor_icppf_" . ($i + 1) . '"';  ?>  <?php if ( isset($factor_icppf[$i]) && $factor_icppf[$i] =="1") echo "checked";?> value="1">Si</br>
                     <?php echo '<input type="radio" name= "'."factor_icppf_" . ($i + 1) . '"';  ?>  <?php if ( isset($factor_icppf[$i]) && $factor_icppf[$i] =="0") echo "checked";?> value="0">No
                   </td>
                   <?php
@@ -353,7 +353,7 @@ if (!func::checkLoginState($dbh)) {
                   //echo '<td><input class="in" type="text" name="factor_tivf_' . ($i + 1) . '" value="" /></td>';
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."factor_tivf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_tivf[$i]) && $factor_tivf[$i] =="1") echo "checked";?> value="1">Si
+                    <?php echo '<input type="radio" name= "'."factor_tivf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_tivf[$i]) && $factor_tivf[$i] =="1") echo "checked";?> value="1">Si</br>
                     <?php echo '<input type="radio" name= "'."factor_tivf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_tivf[$i]) && $factor_tivf[$i] =="0") echo "checked";?> value="0">No
                   </td>
                   <?php
@@ -371,7 +371,7 @@ if (!func::checkLoginState($dbh)) {
 
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."eet_economico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_economico[$i]) && $eet_econnomico[$i] =="1") echo "checked";?> value="1">Si
+                    <?php echo '<input type="radio" name= "'."eet_economico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_economico[$i]) && $eet_econnomico[$i] =="1") echo "checked";?> value="1">Si</br>
                     <?php echo '<input type="radio" name= "'."eet_economico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_economico[$i]) && $eet_econnomico[$i] =="0") echo "checked";?> value="0">No
                   </td>
                   <?php
@@ -382,7 +382,7 @@ if (!func::checkLoginState($dbh)) {
                   //echo '<td><input class="in" type="text" name="eet_laboral_' . ($i + 1) . '" value="" /></td>';
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."eet_laboral_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_laboral[$i]) && $eet_laboral[$i] =="1") echo "checked";?> value="1">Si
+                    <?php echo '<input type="radio" name= "'."eet_laboral_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_laboral[$i]) && $eet_laboral[$i] =="1") echo "checked";?> value="1">Si</br>
                     <?php echo '<input type="radio" name= "'."eet_laboral_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_laboral[$i]) && $eet_laboral[$i] =="0") echo "checked";?> value="0">No
                   </td>
                   <?php
@@ -393,7 +393,7 @@ if (!func::checkLoginState($dbh)) {
                   //echo '<td><input class="in" type="text" name="eet_familiar_' . ($i + 1) . '" value="" /></td>';
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."eet_familiar_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_familiar[$i]) && $eet_familiar[$i] =="1") echo "checked";?> value="1">Si
+                    <?php echo '<input type="radio" name= "'."eet_familiar_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_familiar[$i]) && $eet_familiar[$i] =="1") echo "checked";?> value="1">Si</br>
                     <?php echo '<input type="radio" name= "'."eet_familiar_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_familiar[$i]) && $eet_familiar[$i] =="0") echo "checked";?> value="0">No
                   </td>
                   <?php
@@ -414,7 +414,7 @@ if (!func::checkLoginState($dbh)) {
                   //echo '<td><input class="in" type="text" name="eet_academico_' . ($i + 1) . '" value="" /></td>';
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'. "eet_academico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_academico[$i]) && $eet_academico[$i] =="1") echo "checked";?> value="1">Si
+                    <?php echo '<input type="radio" name= "'. "eet_academico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_academico[$i]) && $eet_academico[$i] =="1") echo "checked";?> value="1">Si</br>
                     <?php echo '<input type="radio" name= "'."eet_academico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_academico[$i]) && $eet_academico[$i] =="0") echo "checked";?> value="0">No
                   </td>
                   <?php
@@ -455,7 +455,7 @@ if (!func::checkLoginState($dbh)) {
                   ?>
                   <td>
 
-                    <?php echo '<input type="radio" name= "'."factor_tncf_".$I. '"' ;  ?>  <?php if (isset($factor_tncf[$i]) && $factor_tncf[$i]=="0") echo "checked";?> value="0">Si
+                    <?php echo '<input type="radio" name= "'."factor_tncf_".$I. '"' ;  ?>  <?php if (isset($factor_tncf[$i]) && $factor_tncf[$i]=="0") echo "checked";?> value="0">Si</br>
                     <?php echo '<input type="radio" name= "'."factor_tncf_".$I. '"' ;  ?>  <?php if (isset($factor_tncf[$i]) && $factor_tncf[$i]=="1") echo "checked";?> value="1">No
                   </td>
                   <?php
@@ -471,7 +471,7 @@ if (!func::checkLoginState($dbh)) {
 
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."factor_paf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_paf[$i]) && $factor_paf[$i] == "1") echo "checked";?> value="1">Si
+                    <?php echo '<input type="radio" name= "'."factor_paf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_paf[$i]) && $factor_paf[$i] == "1") echo "checked";?> value="1">Si</br>
                     <?php echo '<input type="radio" name= "'."factor_paf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_paf[$i]) && $factor_paf[$i] == "0") echo "checked";?> value="0">No
                   </td>
                   <?php
@@ -484,7 +484,7 @@ if (!func::checkLoginState($dbh)) {
                   $factor_icppf[$i]= $s["factor_icppf_$I"];
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."factor_icppf_" . ($i + 1) . '"';  ?>  <?php if ( isset($factor_icppf[$i]) && $factor_icppf[$i] =="1") echo "checked";?> value="1">Si
+                    <?php echo '<input type="radio" name= "'."factor_icppf_" . ($i + 1) . '"';  ?>  <?php if ( isset($factor_icppf[$i]) && $factor_icppf[$i] =="1") echo "checked";?> value="1">Si</br>
                     <?php echo '<input type="radio" name= "'."factor_icppf_" . ($i + 1) . '"';  ?>  <?php if ( isset($factor_icppf[$i]) && $factor_icppf[$i] =="0") echo "checked";?> value="0">No
                   </td>
                   <?php
@@ -498,7 +498,7 @@ if (!func::checkLoginState($dbh)) {
 
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."factor_tivf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_tivf[$i]) && $factor_tivf[$i] =="1") echo "checked";?> value="1">Si
+                    <?php echo '<input type="radio" name= "'."factor_tivf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_tivf[$i]) && $factor_tivf[$i] =="1") echo "checked";?> value="1">Si</br>
                     <?php echo '<input type="radio" name= "'."factor_tivf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_tivf[$i]) && $factor_tivf[$i] =="0") echo "checked";?> value="0">No
                   </td>
                   <?php
@@ -517,7 +517,7 @@ if (!func::checkLoginState($dbh)) {
                   $eet_economico[$i]= $s["eet_economico_$I"];
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."eet_economico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_economico[$i]) && $eet_economico[$i] =="1") echo "checked";?> value="1">Si
+                    <?php echo '<input type="radio" name= "'."eet_economico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_economico[$i]) && $eet_economico[$i] =="1") echo "checked";?> value="1">Si</br>
                     <?php echo '<input type="radio" name= "'."eet_economico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_economico[$i]) && $eet_economico[$i] =="0") echo "checked";?> value="0">No
                   </td>
                   <?php
@@ -530,7 +530,7 @@ if (!func::checkLoginState($dbh)) {
                   $eet_laboral[$i]= $s["eet_laboral_$I"];
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."eet_laboral_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_laboral[$i]) && $eet_laboral[$i] =="1") echo "checked";?> value="1">Si
+                    <?php echo '<input type="radio" name= "'."eet_laboral_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_laboral[$i]) && $eet_laboral[$i] =="1") echo "checked";?> value="1">Si</br>
                     <?php echo '<input type="radio" name= "'."eet_laboral_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_laboral[$i]) && $eet_laboral[$i] =="0") echo "checked";?> value="0">No
                   </td>
                   <?php
@@ -543,7 +543,7 @@ if (!func::checkLoginState($dbh)) {
                   $eet_familiar[$i]= $s["eet_familiar_$I"];
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."eet_familiar_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_familiar[$i]) && $eet_familiar[$i] =="1") echo "checked";?> value="1">Si
+                    <?php echo '<input type="radio" name= "'."eet_familiar_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_familiar[$i]) && $eet_familiar[$i] =="1") echo "checked";?> value="1">Si</br>
                     <?php echo '<input type="radio" name= "'."eet_familiar_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_familiar[$i]) && $eet_familiar[$i] =="0") echo "checked";?> value="0">No
                   </td>
                   <?php
@@ -568,7 +568,7 @@ if (!func::checkLoginState($dbh)) {
                   $eet_academico[$i]= $s["eet_academico_$I"];
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."eet_academico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_academico[$i]) && $eet_academico[$i] =="1") echo "checked";?> value="1">Si
+                    <?php echo '<input type="radio" name= "'."eet_academico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_academico[$i]) && $eet_academico[$i] =="1") echo "checked";?> value="1">Si</br>
                     <?php echo '<input type="radio" name= "'."eet_academico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_academico[$i]) && $eet_academico[$i] =="0") echo "checked";?> value="0">No
                   </td>
                   <?php
