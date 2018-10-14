@@ -20,9 +20,10 @@ if (!func::checkLoginState($dbh)) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="styles/sesion2.css">
     <title>Proyecto Psicologia</title>
 <style>
-<?php include('styles/Index.css'); ?>
+
 </style>
 </head>
 
@@ -231,7 +232,7 @@ if (!func::checkLoginState($dbh)) {
 
     <div class="flow-container">
     <table class="tb">
-    <tr>
+    <tr class="titles">
     <th>Nombre</th>
     <th>INFORME PN</th>
     <th>INFORME MRB</th>
@@ -403,8 +404,7 @@ if (!func::checkLoginState($dbh)) {
                   //echo '<td><input class="in" type="text" name="eet_vida_' . ($i + 1) . '" value="" /></td>';
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."eet_vida_" . ($i + 1) . '"';?><?php if (isset($eet_vida[$i]) && $eet_vida[$i] =="1") echo "checked";?> value="1">Si
-                    <?php echo '<input type="radio" name= "'."eet_vida_" . ($i + 1) . '"';?><?php if (isset($eet_vida[$i]) && $eet_vida[$i] =="0") echo "checked";?> value="0">No
+                    <?php echo '<input type="text" name= "'."eet_vida_" . ($i + 1) . '"'. 'value="">' ?>
                   </td>
                   <?php
               }
@@ -429,7 +429,7 @@ if (!func::checkLoginState($dbh)) {
 
               echo '<input type="hidden" name="name" value="' . $row['nombre'] . '" />';
               echo '<input type="hidden" name="id" value="' . $row['id'] . '" />';
-              echo '<td><input type="submit" value="Enviar"/></td>';
+              echo '<td><input  class="button" type="submit" value="Enviar"/></td>';
 
             echo '</form>';
 
@@ -549,15 +549,14 @@ if (!func::checkLoginState($dbh)) {
                   <?php
               }
 
-              $eet_vida = [NULL,NULL];
+
               for ($i = 0; $i < 2; $i++) {
                   //echo '<td><input class="in" type="text" name="eet_vida_' . ($i + 1) . '" value="" /></td>';
                   $I = $i+1;
-                  $eet_vida[$i]= $s["eet_vida_$I"];
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."eet_vida_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_vida[$i]) && $eet_vida[$i] =="1") echo "checked";?> value="1">Si
-                    <?php echo '<input type="radio" name= "'."eet_vida_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_vida[$i]) && $eet_vida[$i] =="0") echo "checked";?> value="0">No
+                    <?php echo '<input type="text" name= "'."eet_vida_" . ($i + 1) . '"'. 'value="'.$s["eet_vida_$I"].'">' ?>
+
                   </td>
                   <?php
               }
@@ -585,7 +584,7 @@ if (!func::checkLoginState($dbh)) {
               echo '<input type="hidden" name="name" value="' . $row['nombre'] . '" />';
               echo '<input type="hidden" name="id" value="' . $row['id'] . '" />';
               echo '<input type="hidden" name="id_ses" value="' . $s['id_estudiante'] . '" />';
-              echo '<td><input type="submit" value="Enviar"/></td>';
+              echo '<td><input class="button" type="submit" value="Enviar"/></td>';
 
             echo '</form>';
         }
