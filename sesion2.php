@@ -189,7 +189,7 @@ if (!func::checkLoginState($dbh)) {
           $query .=  $_POST["total_eet_academico"] . ')';
 
 
-          echo $query;
+          //echo $query;
           //We start our transaction.
           $dbh->beginTransaction();
 
@@ -366,8 +366,8 @@ if (!func::checkLoginState($dbh)) {
 
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."eet_economico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_econnomico[$i]) && $eet_econnomico[$i] =="1") echo "checked";?> value="1">Si
-                    <?php echo '<input type="radio" name= "'."eet_economico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_econnomico[$i]) && $eet_econnomico[$i] =="0") echo "checked";?> value="0">No
+                    <?php echo '<input type="radio" name= "'."eet_economico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_economico[$i]) && $eet_econnomico[$i] =="1") echo "checked";?> value="1">Si
+                    <?php echo '<input type="radio" name= "'."eet_economico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_economico[$i]) && $eet_econnomico[$i] =="0") echo "checked";?> value="0">No
                   </td>
                   <?php
               }
@@ -399,8 +399,8 @@ if (!func::checkLoginState($dbh)) {
                   //echo '<td><input class="in" type="text" name="eet_vida_' . ($i + 1) . '" value="" /></td>';
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."eet_vida_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_vida[$i]) && $eet_vida[$i] =="1") echo "checked";?> value="1">Si
-                    <?php echo '<input type="radio" name= "'."eet_vida_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_vida[$i]) && $eet_vida[$i] =="0") echo "checked";?> value="0">No
+                    <?php echo '<input type="radio" name= "'."eet_vida_" . ($i + 1) . '"';?><?php if (isset($eet_vida[$i]) && $eet_vida[$i] =="1") echo "checked";?> value="1">Si
+                    <?php echo '<input type="radio" name= "'."eet_vida_" . ($i + 1) . '"';?><?php if (isset($eet_vida[$i]) && $eet_vida[$i] =="0") echo "checked";?> value="0">No
                   </td>
                   <?php
               }
