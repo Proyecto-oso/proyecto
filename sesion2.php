@@ -298,11 +298,15 @@ if (!func::checkLoginState($dbh)) {
 
         //si no esta creado se crean los espacios
         if (!isset($s['id_estudiante'])) {
-            echo ' <form method = "post" action = "' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
 
-              echo '<td><input class="inf" type="text" name="informe_pn" value="" /></td>';
-              echo '<td><input class="inf" type="text" name="informe_mrb" value="" /></td>';
+            //echo '<td><input class="inf" type="text" name="informe_pn" value="" /></td>';
+            //echo '<td><input class="inf" type="text" name="informe_mrb" value="" /></td>';
 
+            echo '<td><textarea rows="4" cols="40" name="informe_pn" form="form_'.$s['id_estudiante'].'"></textarea></td>';
+            echo '<td><textarea rows="4" cols="40" name="informe_mrb" form="form_'.$s['id_estudiante'].'"></textarea></td>';
+
+
+            echo ' <form method = "post" action = "' . htmlspecialchars($_SERVER["PHP_SELF"]) . '" id="form_'.$s['id_estudiante'].'" >';
 
               $factor_tncf = [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL];
 
@@ -432,10 +436,14 @@ if (!func::checkLoginState($dbh)) {
         } else { //si esta creado los espacios se llenan con los correspondientes elementos que ya estan en la base de datos
           /*
           */
-            echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
 
-              echo '<td><input class="inf" type="text" name="informe_pn" value="'.$s["informe_pn"].'" /></td>';
-              echo '<td><input class="inf" type="text" name="informe_mrb" value="'.$s["informe_mrb"].'" /></td>';
+          echo '<td><textarea rows="4" cols="40" name="informe_pn"  form="form_'.$s['id_estudiante'].'"  >'.$s["informe_pn"].' </textarea></td>';
+          echo '<td><textarea rows="4" cols="40" name="informe_mrb" form="form_'.$s['id_estudiante'].'"  >'.$s["informe_pn"].'</textarea></td>';
+
+            echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '"  id="form_'.$s['id_estudiante'].'" >';
+
+              //echo '<td><input class="inf" type="text" name="informe_pn" value="'.$s["informe_pn"].'" /></td>';
+              //echo '<td><input class="inf" type="text" name="informe_mrb" value="'.$s["informe_mrb"].'" /></td>';
 
 
               $factor_tncf = [NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL];
