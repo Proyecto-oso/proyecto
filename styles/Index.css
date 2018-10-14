@@ -1,15 +1,12 @@
 
 .estudiante{
-    border-style: outset;
-    margin-top:30px;
-    margin-bottom: 5px;
-    margin-left: 20px;
-    margin-right: 20px;
-    padding: 15px;
-    width: 500px;
+    border-style: none;
+    width: 100%;
     border-radius:  10px;
     color:black;
     background-color: white;
+    text-align: left;
+    font-size: 15px;
     
   }
 
