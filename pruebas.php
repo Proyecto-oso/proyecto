@@ -116,6 +116,7 @@ if (!isset($_SESSION)) {
 
   </script>
   </div>
+  
 <?php
 include_once("footer.php");
 ?>

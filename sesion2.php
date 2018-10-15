@@ -572,8 +572,16 @@
               echo '<input type="hidden" name="name" value="' . $row['nombre'] . '" />';
               echo '<input type="hidden" name="id" value="' . $row['id'] . '" />';
               echo '<td><input  class="button" type="submit" value="Enviar"/></td>';
-
             echo '</form>';
+
+            echo '<td>
+                    <form action="upload.php" method="post" enctype="multipart/form-data">
+                        Select image to upload:
+                        <input type="hidden" name="image_id" value="' . $row['id'] . '" />
+                        <input type="file" name="fileToUpload" id="fileToUpload">
+                        <input type="submit" value="Upload Image" name="submit">
+                    </form>
+                  </td>';
 
         } else { //si esta creado los espacios se llenan con los correspondientes elementos que ya estan en la base de datos
           /*
@@ -729,6 +737,16 @@
               echo '<td><input class="button" type="submit" value="Enviar"/></td>';
 
             echo '</form>';
+
+            echo '<td>
+                    <form action="upload.php" method="post" enctype="multipart/form-data">
+                        Select image to upload:
+                        <input type="hidden" name="image_id" value="' . $row['id'] . '" />
+                        <input type="file" name="fileToUpload" id="fileToUpload">
+                        <input type="submit" value="Upload Image" name="submit">
+                    </form>
+                  </td>';
+
         }
         echo '</tr>';
     }

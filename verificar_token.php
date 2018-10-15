@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once("config.php");
 include_once("functions.php");
 if (!isset($_SESSION)) {
@@ -42,7 +42,7 @@ if (isset($_POST['token'])) {
 </style>
 </head>
 <section class="parent">
-    <div class="child"> 
+    <div class="child">
 <?php
 
 function enviarCorreo($correo)
@@ -53,15 +53,29 @@ function enviarCorreo($correo)
 
     // Si cualquier línea es más larga de 70 caracteres, se debería usar wordwrap()
     $mensaje = wordwrap($mensaje, 70, "\r\n");
+    $headers = array("From from@example.com", // missing colon
+        "Reply To: replyto@example.com"      // missing hyphen
+    );
     // Enviarlo
-    mail($correo, 'TOKEN DE INGRESO', $mensaje);
+    $return =  mail( $correo, 'TOKEN DE INGRESO', $mensaje,$headers);
+    if(!$return)
+    {
+      $message = "el mensaje no fue enviado exitosamente";
+    }
+    //el mensaje fue enviado
+    else
+    {
+      $message = "El mensaje fue enviado exitosamente<br  /> nos comunicaremos contigo lo antes posible para aclarar dudas y acordar entragas ";
+    }
+
+    echo $message;
+
     return $token;
 }
  if (isset($_POST['correo'])) {
     $query1 = "SELECT * FROM psicologos WHERE correo= :correo";
     $query2 = 'SELECT * FROM `co-talleristas` WHERE correo= :correo';
     $query3 = 'SELECT * FROM `directores` WHERE correo= :correo';
-
     $correo = $_POST['correo'];
 
     $stmt1 = $dbh->prepare($query1);
@@ -134,10 +148,10 @@ function enviarCorreo($correo)
         //header("location:login.php");
     }
 } else {
-        echo'<script language="javascript">window.location="index.php"</script>';   
+        echo'<script language="javascript">window.location="index.php"</script>';
 }
 
-?> 
+?>
 </div>
 </section>
 <?php

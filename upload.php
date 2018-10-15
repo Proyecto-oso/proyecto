@@ -1,27 +1,30 @@
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <?php
 
   // Check if image file is a actual image or fake image
 if (isset($_POST["submit"])) {
     $target_dir = "uploads/";
-    $newName = $_POST["image_id"] . ".png";
-    echo ("faofnasnfdskndsajnfaj<br/>");
-    echo ($newName . "<br/>");
+    $newName = $_FILES["fileToUpload"]["name"];
+
     $target_file = $target_dir . $newName;
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-    if ($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
-        $uploadOk = 1;
-    } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
-    }
+    $newName = $_POST["image_id"] . ".".$imageFileType;
+    $target_file = $target_dir . $newName;
+    #if ($check !== false) {
+    #    echo "File is an image - " . $check["mime"] . ".";
+    #    $uploadOk = 1;
+    #} else {
+    #    echo "File is not an image.";
+    #    $uploadOk = 0;
+    #}
      // Check if file already exists
-    if (file_exists($target_file)) {
-        echo "Sorry, file already exists.";
-        $uploadOk = 0;
-    }
+    #if (file_exists($target_file)) {
+    #    echo "Sorry, file already exists.";
+    #    $uploadOk = 0;
+    #}
 
     // Check file size se revisa si es mayor a 500KB
     if ($_FILES["fileToUpload"]["size"] > 500000) {
@@ -31,20 +34,23 @@ if (isset($_POST["submit"])) {
 
   // Allow certain file formats
     if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-        && $imageFileType != "gif") {
-        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        && $imageFileType != "gif" && $imageFileType != "pdf") {
+        echo "Solo se permiten archivos de formato JPG, JPEG, PNG & PDF .</br>";
         $uploadOk = 0;
     }
 
   // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
+        echo "El archivo no se ha podido subir, verifique que ha sido seleccionado o que esta en el formato correcto.</br>";
+        echo '<a href="sesion2.php" class="w3-btn w3-black">Regresar a la sesion 2</a>';
   // if everything is ok, try to upload file
     } else {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
+            echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.</br>";
+            echo '<a href="sesion2.php" class="w3-btn w3-black">Regresar a la sesion 2</a>';
         } else {
             echo "Sorry, there was an error uploading your file.";
+            echo '<a href="sesion2.php" class="w3-btn w3-black">Regresar a la sesion 2</a>';
         }
     }
 } else {
