@@ -421,9 +421,9 @@
     <th>total eet familiar </th>
     <th>total eet vida </th>
     <th>total eet academico </th>
-
-
     <th>GUARDAR</th>
+    <th>Subir linea de vida</th>
+    
     </tr>
     <?php
     $query = ' SELECT * FROM estudiantes WHERE grupo_id = ? ';
@@ -578,8 +578,8 @@
                     <form action="upload.php" method="post" enctype="multipart/form-data">
                         Select image to upload:
                         <input type="hidden" name="image_id" value="' . $row['id'] . '" />
-                        <input type="file" name="fileToUpload" id="fileToUpload">
-                        <input type="submit" value="Upload Image" name="submit">
+                        <input type="file" class="fileToUpload" name="fileToUpload" id="fileToUpload">
+                        <input type="submit" class="Upload" value="Upload Image" name="submit">
                     </form>
                   </td>';
 
@@ -742,8 +742,8 @@
                     <form action="upload.php" method="post" enctype="multipart/form-data">
                         Select image to upload:
                         <input type="hidden" name="image_id" value="' . $row['id'] . '" />
-                        <input type="file" name="fileToUpload" id="fileToUpload">
-                        <input type="submit" value="Upload Image" name="submit">
+                        <input class="fileToUpload" type="file" name="fileToUpload" id="fileToUpload">
+                        <input class="upload" type="submit" value="Upload Image" name="submit">
                     </form>
                   </td>';
 
