@@ -1,4 +1,5 @@
 <div>
+  <link rel="stylesheet"  href="styles/grupos.css">
     <?php
     function getGrupos($dbh)
     {
@@ -20,16 +21,19 @@
     {
         $stmt->execute(array(':usuario_id' => $_SESSION['usuario_id']));
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo '<div class="container">';
         foreach ($rows as $r) {
             echo '
             <form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">
             <input type="hidden" name="name" value="' . $r['nombre'] . '" />
             <input type="hidden" name="id" value="' . $r['id'] . '" />
                 <button type="submit" name="nombre" class="estudiante">
-                    <p><b>Institucion:</b> ' . $r['nombre'] . '</br>
+                    <p style="padding-top: 10px" ><b>Institucion:</b> ' . $r['nombre'] . '</br>
                 </button>
             </form>';
         }
+        echo '</div>';
+
     }
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['grupo_id'] = $_POST['id'];
@@ -41,4 +45,6 @@
         getGrupos($dbh);
     }
     ?>
+
+  </br></br>
 </div>

@@ -20,9 +20,9 @@ if (!func::checkLoginState($dbh)) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="styles/sesion1.css">
     <title>Proyecto Psicologia</title>
 <style>
-<?php include('styles/Index.css'); ?>
 </style>
 </head>
 <body>
@@ -124,7 +124,7 @@ if (!func::checkLoginState($dbh)) {
     <div class="flow-container">
 
     <table class="tb">
-    <tr>
+    <tr class="titles">
     <th>Nombre</th>
     <th>AV 1</th>
     <th>AV 2</th>
@@ -175,7 +175,7 @@ if (!func::checkLoginState($dbh)) {
         echo ' <tr>
                 <th> ' . $row['nombre'] . ' </th> ';
         if (!isset($s['id_estudiante'])) {
-            echo ' <form method = "post" action = "' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
+            echo ' <form method = "post" action = "' . htmlspecialchars($_SERVER["PHP_SELF"]) . '" id="form_'.$s['id_estudiante'].'" >';
             for ($i = 0; $i < 15; $i++) {
                 echo '<td><input class="in" type="text" name="aptitud_verbal_' . ($i + 1) . '" value="" /></td>';
             }
@@ -184,13 +184,14 @@ if (!func::checkLoginState($dbh)) {
                 echo '<td><input class="in" type="text" name="aptitud_matematica_' . ($i + 1) . '" value="" /></td>';
             }
             echo '<td><input class="in" type="text" name="total_aptitud_matematica" value="0" /></td>';
-            echo '<td><input class="inf" type="text" name="informe_via" value="" /></td>';
+            //echo '<td><input class="inf" type="text" name="informe_via" value="" /></td>';
+            echo '<td><textarea rows="4" cols="40" name="informe_via" form="form_'.$s['id_estudiante'].'"> </textarea></td>';
             echo '<input type="hidden" name="name" value="' . $row['nombre'] . '" />';
             echo '<input type="hidden" name="id" value="' . $row['id'] . '" />';
-            echo '<td><input type="submit" value="Enviar"/></td>';
+            echo '<td><input class="button" type="submit" value="Enviar"/></td>';
             echo '</form>';
         } else {
-            echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
+            echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]). '" id="form_'.$s['id_estudiante'].'" >';
             for ($i = 1; $i <= 15; $i++) {
                 echo '<td><input class="in" type="text" name="aptitud_verbal_' . $i . '" value="' . $s["aptitud_verbal_$i"] . '" /></td>';
             }
@@ -202,8 +203,9 @@ if (!func::checkLoginState($dbh)) {
             echo '<input type="hidden" name="id" value="' . $row['id'] . '" />';
             echo '<input type="hidden" name="id_ses" value="' . $s['id_estudiante'] . '" />';
             echo '<td><input class="in" type="text" name="total_aptitud_matematica" value="' . $s["total_aptitud_matematica"] . '" /></td>';
-            echo '<td><input class="inf" type="text" name="informe_via" value="' . $s["informe_via"] . '" /></td>';
-            echo '<td><input type="submit" value="Enviar"/></td>';
+            echo '<td><textarea rows="4" cols="40" name="informe_via" form="form_'.$s['id_estudiante'].'">' . $s["informe_via"] . ' </textarea></td>';
+            //echo '<td><input class="inf" type="text" name="informe_via" value="' . $s["informe_via"] . '" /></td>';
+            echo '<td><input class="button" type="submit" value="Enviar"/></td>';
             echo '</form>';
             /*?>
             <td><input type="text" name="aptitud_verbal_1" value="<?php $s['aptitud_verbal_1']?>" /></td>
