@@ -376,46 +376,46 @@
     <table class="tb">
     <tr class="titles">
     <th>Nombre</th>
-    <th>INFORME PN</th>
-    <th>INFORME MRB</th>
-    <th>factor tncf 1 </th>
-    <th>factor tncf 2 </th>
-    <th>factor tncf 3 </th>
-    <th>factor tncf 4 </th>
-    <th>factor tncf 5 </th>
-    <th>factor tncf 6 </th>
-    <th>factor tncf 7 </th>
-    <th>factor tncf 8 </th>
-    <th>factor paf 1 </th>
-    <th>factor paf 2 </th>
-    <th>factor paf 3 </th>
-    <th>factor paf 4 </th>
-    <th>factor icppf 1 </th>
-    <th>factor icppf 2 </th>
-    <th>factor icppf 3 </th>
-    <th>factor icppf 4 </th>
-    <th>factor icppf 5 </th>
-    <th>factor tivf 1 </th>
-    <th>factor tivf 2 </th>
-    <th>factor tivf 3 </th>
-    <th>factor tivf 4 </th>
+    <th>INFORME EVENTOS POSITIVOS Y NEGATIVOS</th>
+    <th>INFORME METAS, RECURSOS Y BARRERAS</th>
+    <th>factor tendencia a no sentrarse en el futuro 1 </th>
+    <th>factor tendencia a no sentrarse en el futuro 2 </th>
+    <th>factor tendencia a no sentrarse en el futuro 3 </th>
+    <th>factor tendencia a no sentrarse en el futuro 4 </th>
+    <th>factor tendencia a no sentrarse en el futuro 5 </th>
+    <th>factor tendencia a no sentrarse en el futuro 6 </th>
+    <th>factor tendencia a no sentrarse en el futuro 7 </th>
+    <th>factor tendencia a no sentrarse en el futuro 8 </th>
+    <th>factor planeacion activa del futuro 1 </th>
+    <th>factor planeacion activa del futuro 2 </th>
+    <th>factor planeacion activa del futuro 3 </th>
+    <th>factor planeacion activa del futuro 4 </th>
+    <th>factor influencia de la conducta pasada y presente en el futuro 1 </th>
+    <th>factor influencia de la conducta pasada y presente en el futuro 2 </th>
+    <th>factor influencia de la conducta pasada y presente en el futuro 3 </th>
+    <th>factor influencia de la conducta pasada y presente en el futuro 4 </th>
+    <th>factor influencia de la conducta pasada y presente en el futuro 5 </th>
+    <th>factor tendencia a imaginarse la vida en el futuro 1 </th>
+    <th>factor tendencia a imaginarse la vida en el futuro 2 </th>
+    <th>factor tendencia a imaginarse la vida en el futuro 3 </th>
+    <th>factor tendencia a imaginarse la vida en el futuro 4 </th>
     <th>total factor tncf </th>
     <th>total factor paf </th>
     <th> total factor icppf</th>
     <th> total factor tivf</th>
-    <th>eet economico 1 </th>
-    <th>eet economico 2 </th>
-    <th>eet laboral 1 </th>
-    <th>eet laboral 2 </th>
-    <th>eet laboral 3 </th>
-    <th>eet familiar 1 </th>
-    <th>eet familiar 2 </th>
-    <th>eet familiar 3 </th>
-    <th>eet vida 1 </th>
-    <th>eet vida 2 </th>
-    <th>eet academico 1 </th>
-    <th>eet academico 2 </th>
-    <th>eet academico 3 </th>
+    <th>escala extension temporal economico 1 </th>
+    <th>escala extension temporal economico 2 </th>
+    <th>escala extension temporal laboral 1 </th>
+    <th>escala extension temporal laboral 2 </th>
+    <th>escala extension temporal laboral 3 </th>
+    <th>escala extension temporal familiar 1 </th>
+    <th>escala extension temporal familiar 2 </th>
+    <th>escala extension temporal familiar 3 </th>
+    <th>escala extension temporal vida 1 </th>
+    <th>escala extension temporal vida 2 </th>
+    <th>escala extension temporal academico 1 </th>
+    <th>escala extension temporal academico 2 </th>
+    <th>escala extension temporal academico 3 </th>
     <th>total eet economico </th>
     <th>total eet laboral </th>
     <th>total eet familiar </th>
@@ -458,8 +458,8 @@
                   ?>
 
                   <td>
-                    <?php echo '<input type="radio" name= "'."factor_tncf_" . ($i + 1) . '"' ;  ?>  <?php if (isset($factor_tncf[$i]) && $factor_tncf[$i]=="0") echo "checked";?> value="0">Si</br>
-                    <?php echo '<input type="radio" name= "'."factor_tncf_" . ($i + 1) . '"' ;  ?>  <?php if (isset($factor_tncf[$i]) && $factor_tncf[$i]=="1") echo "checked";?> value="1">No
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."factor_tncf_" . ($i + 1) . '"' ;  ?>  <?php if (isset($factor_tncf[$i]) && $factor_tncf[$i]=="0") echo "checked";?> value="0">Si</br>
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."factor_tncf_" . ($i + 1) . '"' ;  ?>  <?php if (isset($factor_tncf[$i]) && $factor_tncf[$i]=="1") echo "checked";?> value="1">No
                   </td>
                   <?php
 
@@ -470,8 +470,8 @@
                   //echo '<td><input class="in" type="text" name="factor_paf_' . ($i + 1) . '" value="" /></td>';
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."factor_paf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_paf[$i]) && $factor_paf[$i] == "1") echo "checked";?> value="1">Si</br>
-                    <?php echo '<input type="radio" name= "'."factor_paf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_paf[$i]) && $factor_paf[$i] == "0") echo "checked";?> value="0">No
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."factor_paf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_paf[$i]) && $factor_paf[$i] == "1") echo "checked";?> value="1">Si</br>
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."factor_paf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_paf[$i]) && $factor_paf[$i] == "0") echo "checked";?> value="0">No
                   </td>
                   <?php
 
@@ -484,8 +484,8 @@
 
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."factor_icppf_" . ($i + 1) . '"';  ?>  <?php if ( isset($factor_icppf[$i]) && $factor_icppf[$i] =="1") echo "checked";?> value="1">Si</br>
-                    <?php echo '<input type="radio" name= "'."factor_icppf_" . ($i + 1) . '"';  ?>  <?php if ( isset($factor_icppf[$i]) && $factor_icppf[$i] =="0") echo "checked";?> value="0">No
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."factor_icppf_" . ($i + 1) . '"';  ?>  <?php if ( isset($factor_icppf[$i]) && $factor_icppf[$i] =="1") echo "checked";?> value="1">Si</br>
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."factor_icppf_" . ($i + 1) . '"';  ?>  <?php if ( isset($factor_icppf[$i]) && $factor_icppf[$i] =="0") echo "checked";?> value="0">No
                   </td>
                   <?php
 
@@ -495,8 +495,8 @@
                   //echo '<td><input class="in" type="text" name="factor_tivf_' . ($i + 1) . '" value="" /></td>';
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."factor_tivf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_tivf[$i]) && $factor_tivf[$i] =="1") echo "checked";?> value="1">Si</br>
-                    <?php echo '<input type="radio" name= "'."factor_tivf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_tivf[$i]) && $factor_tivf[$i] =="0") echo "checked";?> value="0">No
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."factor_tivf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_tivf[$i]) && $factor_tivf[$i] =="1") echo "checked";?> value="1">Si</br>
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."factor_tivf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_tivf[$i]) && $factor_tivf[$i] =="0") echo "checked";?> value="0">No
                   </td>
                   <?php
 
@@ -513,8 +513,8 @@
 
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."eet_economico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_economico[$i]) && $eet_economico[$i] =="1") echo "checked";?> value="1">Si</br>
-                    <?php echo '<input type="radio" name= "'."eet_economico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_economico[$i]) && $eet_economico[$i] =="0") echo "checked";?> value="0">No
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."eet_economico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_economico[$i]) && $eet_economico[$i] =="1") echo "checked";?> value="1">Si</br>
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."eet_economico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_economico[$i]) && $eet_economico[$i] =="0") echo "checked";?> value="0">No
                   </td>
                   <?php
               }
@@ -524,8 +524,8 @@
                   //echo '<td><input class="in" type="text" name="eet_laboral_' . ($i + 1) . '" value="" /></td>';
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."eet_laboral_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_laboral[$i]) && $eet_laboral[$i] =="1") echo "checked";?> value="1">Si</br>
-                    <?php echo '<input type="radio" name= "'."eet_laboral_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_laboral[$i]) && $eet_laboral[$i] =="0") echo "checked";?> value="0">No
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."eet_laboral_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_laboral[$i]) && $eet_laboral[$i] =="1") echo "checked";?> value="1">Si</br>
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."eet_laboral_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_laboral[$i]) && $eet_laboral[$i] =="0") echo "checked";?> value="0">No
                   </td>
                   <?php
               }
@@ -535,8 +535,8 @@
                   //echo '<td><input class="in" type="text" name="eet_familiar_' . ($i + 1) . '" value="" /></td>';
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."eet_familiar_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_familiar[$i]) && $eet_familiar[$i] =="1") echo "checked";?> value="1">Si</br>
-                    <?php echo '<input type="radio" name= "'."eet_familiar_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_familiar[$i]) && $eet_familiar[$i] =="0") echo "checked";?> value="0">No
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."eet_familiar_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_familiar[$i]) && $eet_familiar[$i] =="1") echo "checked";?> value="1">Si</br>
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."eet_familiar_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_familiar[$i]) && $eet_familiar[$i] =="0") echo "checked";?> value="0">No
                   </td>
                   <?php
               }
@@ -556,8 +556,8 @@
                   //echo '<td><input class="in" type="text" name="eet_academico_' . ($i + 1) . '" value="" /></td>';
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'. "eet_academico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_academico[$i]) && $eet_academico[$i] =="1") echo "checked";?> value="1">Si</br>
-                    <?php echo '<input type="radio" name= "'."eet_academico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_academico[$i]) && $eet_academico[$i] =="0") echo "checked";?> value="0">No
+                    <?php echo '<input type="radio" class="radioBttn" name= "'. "eet_academico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_academico[$i]) && $eet_academico[$i] =="1") echo "checked";?> value="1">Si</br>
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."eet_academico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_academico[$i]) && $eet_academico[$i] =="0") echo "checked";?> value="0">No
                   </td>
                   <?php
               }
@@ -597,8 +597,8 @@
                   ?>
                   <td>
 
-                    <?php echo '<input type="radio" name= "'."factor_tncf_".$I. '"' ;  ?>  <?php if (isset($factor_tncf[$i]) && $factor_tncf[$i]=="0") echo "checked";?> value="0">Si</br>
-                    <?php echo '<input type="radio" name= "'."factor_tncf_".$I. '"' ;  ?>  <?php if (isset($factor_tncf[$i]) && $factor_tncf[$i]=="1") echo "checked";?> value="1">No
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."factor_tncf_".$I. '"' ;  ?>  <?php if (isset($factor_tncf[$i]) && $factor_tncf[$i]=="0") echo "checked";?> value="0">Si</br>
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."factor_tncf_".$I. '"' ;  ?>  <?php if (isset($factor_tncf[$i]) && $factor_tncf[$i]=="1") echo "checked";?> value="1">No
                   </td>
                   <?php
 
@@ -613,8 +613,8 @@
 
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."factor_paf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_paf[$i]) && $factor_paf[$i] == "1") echo "checked";?> value="1">Si</br>
-                    <?php echo '<input type="radio" name= "'."factor_paf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_paf[$i]) && $factor_paf[$i] == "0") echo "checked";?> value="0">No
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."factor_paf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_paf[$i]) && $factor_paf[$i] == "1") echo "checked";?> value="1">Si</br>
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."factor_paf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_paf[$i]) && $factor_paf[$i] == "0") echo "checked";?> value="0">No
                   </td>
                   <?php
 
@@ -626,8 +626,8 @@
                   $factor_icppf[$i]= $s["factor_icppf_$I"];
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."factor_icppf_" . ($i + 1) . '"';  ?>  <?php if ( isset($factor_icppf[$i]) && $factor_icppf[$i] =="1") echo "checked";?> value="1">Si</br>
-                    <?php echo '<input type="radio" name= "'."factor_icppf_" . ($i + 1) . '"';  ?>  <?php if ( isset($factor_icppf[$i]) && $factor_icppf[$i] =="0") echo "checked";?> value="0">No
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."factor_icppf_" . ($i + 1) . '"';  ?>  <?php if ( isset($factor_icppf[$i]) && $factor_icppf[$i] =="1") echo "checked";?> value="1">Si</br>
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."factor_icppf_" . ($i + 1) . '"';  ?>  <?php if ( isset($factor_icppf[$i]) && $factor_icppf[$i] =="0") echo "checked";?> value="0">No
                   </td>
                   <?php
 
@@ -640,8 +640,8 @@
 
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."factor_tivf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_tivf[$i]) && $factor_tivf[$i] =="1") echo "checked";?> value="1">Si</br>
-                    <?php echo '<input type="radio" name= "'."factor_tivf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_tivf[$i]) && $factor_tivf[$i] =="0") echo "checked";?> value="0">No
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."factor_tivf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_tivf[$i]) && $factor_tivf[$i] =="1") echo "checked";?> value="1">Si</br>
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."factor_tivf_" . ($i + 1) . '"';  ?>  <?php if (isset($factor_tivf[$i]) && $factor_tivf[$i] =="0") echo "checked";?> value="0">No
                   </td>
                   <?php
 
@@ -659,8 +659,8 @@
                   $eet_economico[$i]= $s["eet_economico_$I"];
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."eet_economico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_economico[$i]) && $eet_economico[$i] =="1") echo "checked";?> value="1">Si</br>
-                    <?php echo '<input type="radio" name= "'."eet_economico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_economico[$i]) && $eet_economico[$i] =="0") echo "checked";?> value="0">No
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."eet_economico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_economico[$i]) && $eet_economico[$i] =="1") echo "checked";?> value="1">Si</br>
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."eet_economico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_economico[$i]) && $eet_economico[$i] =="0") echo "checked";?> value="0">No
                   </td>
                   <?php
               }
@@ -672,8 +672,8 @@
                   $eet_laboral[$i]= $s["eet_laboral_$I"];
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."eet_laboral_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_laboral[$i]) && $eet_laboral[$i] =="1") echo "checked";?> value="1">Si</br>
-                    <?php echo '<input type="radio" name= "'."eet_laboral_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_laboral[$i]) && $eet_laboral[$i] =="0") echo "checked";?> value="0">No
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."eet_laboral_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_laboral[$i]) && $eet_laboral[$i] =="1") echo "checked";?> value="1">Si</br>
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."eet_laboral_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_laboral[$i]) && $eet_laboral[$i] =="0") echo "checked";?> value="0">No
                   </td>
                   <?php
               }
@@ -685,8 +685,8 @@
                   $eet_familiar[$i]= $s["eet_familiar_$I"];
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."eet_familiar_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_familiar[$i]) && $eet_familiar[$i] =="1") echo "checked";?> value="1">Si</br>
-                    <?php echo '<input type="radio" name= "'."eet_familiar_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_familiar[$i]) && $eet_familiar[$i] =="0") echo "checked";?> value="0">No
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."eet_familiar_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_familiar[$i]) && $eet_familiar[$i] =="1") echo "checked";?> value="1">Si</br>
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."eet_familiar_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_familiar[$i]) && $eet_familiar[$i] =="0") echo "checked";?> value="0">No
                   </td>
                   <?php
               }
@@ -710,8 +710,8 @@
                   $eet_academico[$i]= $s["eet_academico_$I"];
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."eet_academico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_academico[$i]) && $eet_academico[$i] =="1") echo "checked";?> value="1">Si</br>
-                    <?php echo '<input type="radio" name= "'."eet_academico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_academico[$i]) && $eet_academico[$i] =="0") echo "checked";?> value="0">No
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."eet_academico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_academico[$i]) && $eet_academico[$i] =="1") echo "checked";?> value="1">Si</br>
+                    <?php echo '<input type="radio" class="radioBttn" name= "'."eet_academico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_academico[$i]) && $eet_academico[$i] =="0") echo "checked";?> value="0">No
                   </td>
                   <?php
               }
