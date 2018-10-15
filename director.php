@@ -64,8 +64,8 @@ input{
 </head>
 <section class="parent">
     <div class="child">
-    <h1>Director</h1>
-    <a href="pruebas.php">Crear prueba</a>
+    <h2>Director</h2>
+    <!--<a href="pruebas.php">Crear prueba</a>-->
     </div>
 </section>
 
@@ -117,14 +117,15 @@ foreach ($dbh->query($sql) as $row) {
 //<th><input type="submit" name="ver estduiante" value="Ver Estudiante"></th>
         }*/
 
-?>
-</table>
+        /*</table>
 <form class="" action="report.php" method="post">
   <input type="submit" class="creation" name="create_student" value="Crear estudiante">
 </form>
 
 
-<hr>
+<hr>*/
+?>
+
 <h3 class="titles">Psicologos</h3>
 
 <table>
@@ -152,9 +153,9 @@ foreach ($dbh->query($sql) as $row) {
 
 ?>
 </table>
-<form class="" action="report.php" method="post">
+<!--<form class="" action="report.php" method="post">
   <input type="submit" class="creation" name="create_psicologo" value="Crear psicologo">
-</form>
+</form>-->
 
 <hr>
 <h3 class="titles">co-talleristas</h3>
@@ -189,9 +190,9 @@ foreach ($dbh->query($sql) as $row) {
 
 ?>
 </table>
-<form class="" action="report.php" method="post">
+<!--<form class="" action="report.php" method="post">
   <input type="submit" class="creation" name="create_co-tallerista" value="Crear co-tallerista">
-</form>
+</form>-->
 
 <hr>
 <h3 class="titles">Grupos</h3>

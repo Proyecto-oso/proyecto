@@ -71,13 +71,13 @@ function test_input($data) {
   Name: <input type="text" name="name" value="<?php echo $name;  ?>">
   <span class="error">* <?php echo $nameErr;?></span>
   <br><br>
-  E-mail: <input type="text" name="email">
+  E-mail: <input type="text" name="email" value="<?php echo $email;  ?>">
   <span class="error">* <?php echo $emailErr;?></span>
   <br><br>
   Website: <input type="text" name="website">
   <span class="error"><?php echo $websiteErr;?></span>
   <br><br>
-  Comment: <textarea name="comment" rows="5" cols="40"></textarea>
+  Comment: <textarea name="comment" rows="5" cols="40" value=""></textarea>
   <br><br>
   Gender:
   <input type="radio" name="gender" <?php if (isset($gender) && $gender=="female") echo "checked";?> value="female">Female
