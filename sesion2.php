@@ -1,12 +1,12 @@
 <?php
-include_once("config.php");
-if (!isset($_SESSION)) {
-    session_start();
-}
-include_once("functions.php");
-if (!func::checkLoginState($dbh)) {
-    echo '<script language="javascript">window.location="login.php"</script>';
-}
+  include_once("config.php");
+  if (!isset($_SESSION)) {
+      session_start();
+    }
+    include_once("functions.php");
+    if (!func::checkLoginState($dbh)) {
+      echo '<script language="javascript">window.location="login.php"</script>';
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,50 +39,109 @@ if (!func::checkLoginState($dbh)) {
 
           for ($i = 0; $i < 8; $i++) {
             $I = $i+1;
-            $query .= '`factor_tncf_' . $I . '`= ' . $_POST["factor_tncf_$I"] . ',';
+            if (isset($_POST["factor_tncf_$I"])) {
+              $query .= '`factor_tncf_' . $I . '`= ' . $_POST["factor_tncf_$I"] . ',';
+            }else {
+              $query .= '`factor_tncf_' . $I . '`= ' . '-1' . ',';
+            }
           }
 
           for ($i = 0; $i < 4; $i++) {
             $I = $i+1;
-            $query .= '`factor_paf_' . $I . '`=' . $_POST["factor_paf_$I"] . ',';
+            if (isset($_POST["factor_paf_$I"])) {
+              $query .= '`factor_paf_' . $I . '`=' . $_POST["factor_paf_$I"] . ',';
+            }else {
+              $query .= '`factor_paf_' . $I . '`= ' . '-1' . ',';
+            }
           }
 
           for ($i = 0; $i < 5; $i++) {
             $I = $i+1;
-            $query .= '`factor_icppf_' . $I . '`=' . $_POST["factor_icppf_$I"] . ',';
+            if (isset($_POST["factor_icppf_$I"])) {
+              $query .= '`factor_icppf_' . $I . '`=' . $_POST["factor_icppf_$I"] . ',';
+            }else {
+              $query .= '`factor_icppf_' . $I . '`= ' . '-1' . ',';
+            }
           }
 
           for ($i = 0; $i < 4; $i++) {
             $I = $i+1;
-            $query .= '`factor_tivf_' . $I . '`=' . $_POST["factor_tivf_$I"] . ',';
+            if (isset($_POST["factor_tivf_$I"])) {
+              $query .= '`factor_tivf_' . $I . '`=' . $_POST["factor_tivf_$I"] . ',';
+            }else {
+              // code...
+              $query .= '`factor_tivf_' . $I . '`= ' . '-1' . ',';
+            }
           }
 
-          $query .= '`total_factor_tncf' . '`=' . $_POST["factor_tivf_$I"] . ',';
-          $query .= '`total_factor_paf' . '`=' . $_POST["factor_tivf_$I"] . ',';
-          $query .= '`total_factor_icppf'  . '`=' . $_POST["factor_tivf_$I"] . ',';
-          $query .= '`total_factor_tivf' . '`=' . $_POST["factor_tivf_$I"] . ',';
+//***********************************************************
+          if (isset($_POST["factor_tivf_$I"])) {
+            $query .= '`total_factor_tncf' . '`=' . $_POST["total_factor_tncf"] . ',';
+          }else {
+            $query .= '`total_factor_tncf' . '`=' . '0' . ',';
+          }
+          if (isset($_POST["total_factor_paf"])) {
+            $query .= '`total_factor_paf' . '`=' . $_POST["total_factor_paf"] . ',';
+          }else {
+            $query .= '`total_factor_paf' . '`=' . '0' . ',';
+          }
+          if (isset($_POST["total_factor_icppf"])) {
+            $query .= '`total_factor_icppf'  . '`=' . $_POST["total_factor_icppf"] . ',';
+          }else {
+            $query .= '`total_factor_icppf' . '`=' . '0' . ',';
+          }
+          if (isset($_POST["total_factor_tivf"])) {
+            $query .= '`total_factor_tivf' . '`=' . $_POST["total_factor_tivf"] . ',';
+          }else {
+            $query .= '`total_factor_tivf' . '`=' . '0' . ',';
+          }
 
+//********************************************************
           for ($i = 0; $i < 2; $i++) {
             $I = $i+1;
-            $query .= '`eet_economico_' . $I . '`=' . $_POST["eet_economico_$I"] . ',';
+            if (isset($_POST["eet_economico_$I"])) {
+              $query .= '`eet_economico_' . $I . '`=' . $_POST["eet_economico_$I"] . ',';
+
+            }else {
+              $query .= '`eet_economico_' . $I . '`= ' . '-1' . ',';
+            }
           }
 
           for ($i = 0; $i < 3; $i++) {
             $I = $i+1;
-            $query .= '`eet_laboral_' . $I . '`=' . $_POST["eet_laboral_$I"] . ',';
+            if (isset($_POST["eet_laboral_$I"])) {
+              $query .= '`eet_laboral_' . $I . '`=' . $_POST["eet_laboral_$I"] . ',';
+
+            }else {
+              $query .= '`eet_laboral_' . $I . '`= ' . '-1' . ',';
+            }
           }
 
           for ($i = 0; $i < 3; $i++) {
             $I = $i+1;
-            $query .= '`eet_familiar_' . $I . '`=' . $_POST["eet_familiar_$I"] . ',';
+            if (isset($_POST["eet_familiar_$I"])) {
+
+              $query .= '`eet_familiar_' . $I . '`=' . $_POST["eet_familiar_$I"] . ',';
+            }else {
+              $query .= '`eet_familiar_' . $I . '`= ' . '-1' . ',';
+            }
           }
           for ($i = 0; $i < 2; $i++) {
             $I = $i+1;
-            $query .= '`eet_vida_' . $I . '`=' . $_POST["eet_vida_$I"] . ',';
+            if (isset($_POST["eet_vida_$I"])) {
+              $query .= '`eet_vida_' . $I . '`=' . $_POST["eet_vida_$I"] . ',';
+
+            }else {
+              $query .= '`eet_vida_' . $I . '`= ' . '-1' . ',';
+            }
           }
           for ($i = 0; $i < 3; $i++) {
             $I = $i+1;
-            $query .= '`eet_academico_' . $I . '`=' . $_POST["eet_academico_$I"] . ',';
+            if (isset($_POST["eet_academico_$I"])) {
+              $query .= '`eet_academico_' . $I . '`=' . $_POST["eet_academico_$I"] . ',';
+            }else {
+              $query .= '`eet_academico_' . $I . '`= ' . '-1' . ',';
+            }
           }
 
           $query .= '`total_eet_economico' . '`=' . $_POST["total_eet_economico"] . ',';
@@ -108,6 +167,10 @@ if (!func::checkLoginState($dbh)) {
 
           } catch (Exception $e) {
               $dbh->rollBack();
+              echo '<script language="javascript">';
+              echo 'alert("Erro al guardar intenete nuevamente")';
+              echo '</script>';
+              echo '<script language="javascript">window.location="sesion2.php"</script>';
               if (strpos($e->getMessage(), 'Incorrect integer value')) {
                   echo '<script language="javascript">';
                   echo 'alert("ERROR: el total debe ser un número")';
@@ -136,58 +199,133 @@ if (!func::checkLoginState($dbh)) {
 
           for ($i = 0; $i < 8; $i++) {
             $I = $i+1;
-            $query .=  $_POST["factor_tncf_$I"] . ',';
+            if (isset($_POST["factor_tncf_$I"])) {
+              $query .=  $_POST["factor_tncf_$I"] . ',';
+            }else {
+              $query .=  '-1' . ',';
+            }
           }
 
           for ($i = 0; $i < 4; $i++) {
             $I = $i+1;
-            $query .=  $_POST["factor_paf_$I"] . ',';
+            if (isset($_POST["factor_paf_$I"])) {
+              $query .=  $_POST["factor_paf_$I"] . ',';
+            }else {
+              $query .=  '-1' . ',';
+            }
           }
 
           for ($i = 0; $i < 5; $i++) {
             $I = $i+1;
-            $query .=  $_POST["factor_icppf_$I"] . ',';
+            if (isset($_POST["factor_icppf_$I"])) {
+
+              $query .=  $_POST["factor_icppf_$I"] . ',';
+            }else {
+              $query .=  '-1' . ',';
+            }
           }
 
           for ($i = 0; $i < 4; $i++) {
             $I = $i+1;
-            $query .=  $_POST["factor_tivf_$I"] . ',';
+            if (isset($_POST["factor_tivf_$I"])) {
+              $query .=  $_POST["factor_tivf_$I"] . ',';
+            }else {
+              $query .=  '-1' . ',';
+            }
+          }
+//*****************************************************************
+          if (isset($_POST["total_factor_tncf"])) {
+            $query .=  $_POST["total_factor_tncf"] . ',';
+          }else {
+            $query .=  '0' . ',';
           }
 
-          $query .=  $_POST["factor_tivf_$I"] . ',';
-          $query .=  $_POST["factor_tivf_$I"] . ',';
-          $query .=  $_POST["factor_tivf_$I"] . ',';
-          $query .=  $_POST["factor_tivf_$I"] . ',';
+          if (isset($_POST["total_factor_paf"])) {
+            $query .=  $_POST["total_factor_paf"] . ',';
+          }else {
+            $query .=  '0' . ',';
+          }
 
+          if (isset($_POST["total_factor_icppf"])) {
+            $query .=  $_POST["total_factor_icppf"] . ',';
+          }else {
+            $query .=  '0' . ',';
+          }
+          if (isset($_POST["total_factor_tivf"])) {
+            $query .=  $_POST["total_factor_tivf"] . ',';
+          }else {
+            $query .=  '0' . ',';
+          }
+
+//******************************************************************
           for ($i = 0; $i < 2; $i++) {
             $I = $i+1;
-            $query .= $_POST["eet_economico_$I"] . ',';
+            if (isset($_POST["eet_economico_$I"])) {
+              $query .= $_POST["eet_economico_$I"] . ',';
+            }else {
+              $query .=  '-1' . ',';
+            }
           }
 
           for ($i = 0; $i < 3; $i++) {
             $I = $i+1;
-            $query .=  $_POST["eet_laboral_$I"] . ',';
+            if (isset($_POST["eet_laboral_$I"])) {
+              $query .=  $_POST["eet_laboral_$I"] . ',';
+            }else {
+              $query .=  '-1' . ',';
+            }
           }
 
           for ($i = 0; $i < 3; $i++) {
             $I = $i+1;
-            $query .= $_POST["eet_familiar_$I"] . ',';
+            if (isset($_POST["eet_familiar_$I"])) {
+              $query .= $_POST["eet_familiar_$I"] . ',';
+            }else {
+              $query .=  '-1' . ',';
+            }
           }
           for ($i = 0; $i < 2; $i++) {
             $I = $i+1;
-            $query .= $_POST["eet_vida_$I"] . ',';
+            if (isset($_POST["eet_vida_$I"])) {
+              $query .= $_POST["eet_vida_$I"] . ',';
+            }else {
+              $query .=  '-1' . ',';
+            }
           }
 
           for ($i = 0; $i < 3; $i++) {
             $I = $i+1;
-            $query .= $_POST["eet_academico_$I"] . ',';
+            if (isset($_POST["eet_academico_$I"])) {
+              $query .= $_POST["eet_academico_$I"] . ',';
+            }else {
+              $query .=  '-1' . ',';
+            }
           }
-
-          $query .=  $_POST["total_eet_economico"] . ',';
-          $query .=  $_POST["total_eet_laboral"] . ',';
-          $query .=  $_POST["total_eet_familiar"] . ',';
-          $query .=  $_POST["total_eet_vida"] . ',';
-          $query .=  $_POST["total_eet_academico"] . ')';
+          if (isset($_POST["total_eet_economico"])) {
+            $query .=  $_POST["total_eet_economico"] . ',';
+          }else {
+            $query .=  '0' . ',';
+          }
+          if (isset($_POST["total_eet_laboral"])) {
+            $query .=  $_POST["total_eet_laboral"] . ',';
+          }else {
+            $query .=  '0' . ',';
+          }
+          if (isset($_POST["total_eet_familiar"])) {
+            $query .=  $_POST["total_eet_familiar"] . ',';
+          }else {
+            $query .=  '0' . ',';
+          }
+          if (isset($_POST["total_eet_vida"])) {
+            $query .=  $_POST["total_eet_vida"] . ',';
+          }else {
+            $query .=  '0' . ',';
+          }
+          if (isset($_POST["total_eet_academico"])) {
+            $query .=  $_POST["total_eet_academico"] . ')';
+          }else {
+            $query .=  '0' . ',';
+          }
 
 
           //echo $query;
@@ -205,6 +343,10 @@ if (!func::checkLoginState($dbh)) {
 
           } catch (Exception $e) {
               $dbh->rollBack();
+              echo '<script language="javascript">';
+              echo 'alert("Erro al guardar intenete nuevamente")';
+              echo '</script>';
+              echo '<script language="javascript">window.location="sesion2.php"</script>';
               if (strpos($e->getMessage(), 'Incorrect integer value')) {
                   echo '<script language="javascript">';
                   echo 'alert("ERROR: el total debe ser un número")';
@@ -371,8 +513,8 @@ if (!func::checkLoginState($dbh)) {
 
                   ?>
                   <td>
-                    <?php echo '<input type="radio" name= "'."eet_economico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_economico[$i]) && $eet_econnomico[$i] =="1") echo "checked";?> value="1">Si</br>
-                    <?php echo '<input type="radio" name= "'."eet_economico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_economico[$i]) && $eet_econnomico[$i] =="0") echo "checked";?> value="0">No
+                    <?php echo '<input type="radio" name= "'."eet_economico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_economico[$i]) && $eet_economico[$i] =="1") echo "checked";?> value="1">Si</br>
+                    <?php echo '<input type="radio" name= "'."eet_economico_" . ($i + 1) . '"';  ?>  <?php if (isset($eet_economico[$i]) && $eet_economico[$i] =="0") echo "checked";?> value="0">No
                   </td>
                   <?php
               }
@@ -404,7 +546,7 @@ if (!func::checkLoginState($dbh)) {
                   //echo '<td><input class="in" type="text" name="eet_vida_' . ($i + 1) . '" value="" /></td>';
                   ?>
                   <td>
-                    <?php echo '<input type="text" name= "'."eet_vida_" . ($i + 1) . '"'. 'value="">' ?>
+                    <?php echo '<input type="text" name= "'."eet_vida_" . ($i + 1) . '"'. 'value="0">' ?>
                   </td>
                   <?php
               }
@@ -438,7 +580,7 @@ if (!func::checkLoginState($dbh)) {
           */
 
           echo '<td><textarea rows="4" cols="40" name="informe_pn"  form="form_'.$s['id_estudiante'].'"  >'.$s["informe_pn"].' </textarea></td>';
-          echo '<td><textarea rows="4" cols="40" name="informe_mrb" form="form_'.$s['id_estudiante'].'"  >'.$s["informe_pn"].'</textarea></td>';
+          echo '<td><textarea rows="4" cols="40" name="informe_mrb" form="form_'.$s['id_estudiante'].'"  >'.$s["informe_mrb"].'</textarea></td>';
 
             echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '"  id="form_'.$s['id_estudiante'].'" >';
 
