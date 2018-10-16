@@ -13,7 +13,8 @@ if (isset($_POST['token'])) {
     $nombre = $_POST['nombre'];
     $id = $_POST['id'];
     $usuario_tipo = $_POST['usuario_tipo'];
-    if ($token == $token_recibido) {
+    $password = $_POST['password'];
+    if ($token_recibido == $password) {
         func::createRecord($dbh, $nombre, $id, $token, $usuario_tipo);
             echo'<script language="javascript">window.location="index.php"</script>';
     } else {
@@ -57,7 +58,7 @@ function enviarCorreo($correo)
         "Reply To: replyto@example.com"      // missing hyphen
     );
     // Enviarlo
-    $return =  mail( $correo, 'TOKEN DE INGRESO', $mensaje,$headers);
+    $return =  mail( $correo, 'TOKEN DE INGRESO', $mensaje);
     if(!$return)
     {
       $message = "el mensaje no fue enviado exitosamente";
@@ -68,7 +69,7 @@ function enviarCorreo($correo)
       $message = "El mensaje fue enviado exitosamente<br  /> nos comunicaremos contigo lo antes posible para aclarar dudas y acordar entragas ";
     }
 
-    echo $message;
+    //echo $message;
 
     return $token;
 }
@@ -90,12 +91,13 @@ function enviarCorreo($correo)
     $row1 = $stmt1->fetch(PDO::FETCH_ASSOC);
     if ($row1['id'] > 0) {
         $token = enviarCorreo($correo);
-        echo $token . '<div class="row">
+        echo  '<div class="row">
         <div class="col-sm-8 offset-sm-2 myform-cont">
             <form method="post" class="">
                 <div class="form-group">
                     <input type="hidden" name="nombre" value="' . $row1['nombre'] . '" />
                     <input type="hidden" name="id" value="' . $row1['id'] . '" />
+                    <input type="hidden" name="password" value="' . $row1['password'] . '" />
                     <input type="hidden" name="token" value="' . $token . '" />
                     <input type="hidden" name="usuario_tipo" value="psicologo" />
                     <input type="text" name="token_recibido" placeholder="Token" class="form-control" id="correo"/>
@@ -108,12 +110,13 @@ function enviarCorreo($correo)
     $row2 = $stmt2->fetch(PDO::FETCH_ASSOC);
     if ($row2['id'] > 0) {
         $token = enviarCorreo($correo);
-        echo $token . '<div class="row">
+        echo  '<div class="row">
         <div class="col-sm-8 offset-sm-2 myform-cont">
         <form method="post" class="">
         <div class="form-group">
             <input type="hidden" name="nombre" value="' . $row2['nombre'] . '" />
             <input type="hidden" name="id" value="' . $row2['id'] . '" />
+            <input type="hidden" name="password" value="' . $row2['password'] . '" />
             <input type="hidden" name="token" value="' . $token . '" />
             <input type="hidden" name="usuario_tipo" value="co-tallerista" />
             <input type="text" name="token_recibido" placeholder="Token" class="form-control" id="correo"/>
@@ -126,12 +129,13 @@ function enviarCorreo($correo)
     $row3 = $stmt3->fetch(PDO::FETCH_ASSOC);
     if ($row3['id'] > 0) {
         $token = enviarCorreo($correo);
-        echo $token . '<div class="row">
+        echo '<div class="row">
         <div class="col-sm-8 offset-sm-2 myform-cont">
         <form method="post" class="">
         <div class="form-group">
             <input type="hidden" name="nombre" value="' . $row3['nombre'] . '" />
             <input type="hidden" name="id" value="' . $row3['id'] . '" />
+            <input type="hidden" name="password" value="' . $row3['password'] . '" />
             <input type="hidden" name="token" value="' . $token . '" />
             <input type="hidden" name="usuario_tipo" value="director" />
             <input type="text" name="token_recibido" placeholder="Token" class="form-control" id="correo"/>

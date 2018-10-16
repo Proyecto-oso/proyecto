@@ -41,7 +41,19 @@
         echo 'alert("Guardado correctamente")';
         echo '</script>';
         echo '<script language="javascript">window.location="sesion2.php"</script>';
+      }elseif (isset($_POST['informe_grupo2'])) {
+        $query = 'UPDATE `grupo` SET `informe_pn` = "' . $_POST['informe_pn'].'" WHERE `grupo`.`id` = '.$_SESSION['grupo_id'].'; ';
+        $dbh->beginTransaction();
+        $stmt = $dbh->prepare($query);
+        $stmt->execute();
+        $dbh->commit();
+        echo '<script language="javascript">';
+        echo 'alert("Guardado correctamente")';
+        echo '</script>';
+        echo '<script language="javascript">window.location="sesion2.php"</script>';
       }
+
+
       elseif(isset($_POST['id_ses'])) {
           $query = 'UPDATE `sesion_2` SET';
 
@@ -765,6 +777,25 @@
     </table>
     </form>
     <?php
+
+    
+      $query = ' SELECT * FROM `grupo` WHERE id = '.$_SESSION['grupo_id'].' ';
+      $stmt = $dbh->prepare($query);
+      $stmt->execute([$_SESSION['grupo_id']]);
+      $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      foreach ($rows as $row) {
+        echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '"  id="form_pn" >';
+        echo '<div class="group_container">';
+        echo '<input type="hidden" name="informe_grupo2" value="" />';
+        echo '<p class="titulo_informe"> INFORME SOBRE EVENTOS POSITIVOS Y NEGATIVOS DEL GRUPO</p>';
+        echo '<td><textarea rows="6" cols="150" name="informe_pn"  form="form_pn" class="informe_grupo"  >'.$row["informe_pn"].' </textarea></td></br>';
+        echo '<td><input class="button" type="submit" value="Enviar informe del grupo"/></td>';
+        echo '</div>';
+        echo '</form>';
+      }
+
+
+
       $query = ' SELECT * FROM `grupo` WHERE id = '.$_SESSION['grupo_id'].' ';
       $stmt = $dbh->prepare($query);
       $stmt->execute([$_SESSION['grupo_id']]);
@@ -780,6 +811,7 @@
         echo '</form>';
 
       }
+
 
      ?>
     </div>
