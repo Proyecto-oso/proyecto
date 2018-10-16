@@ -18,7 +18,20 @@ th, td {
   color: white;
 }
 .radioBttn{
-  
+
+}
+
+.group_container{
+  text-align: center;
+}
+
+.titulo_informe{
+  margin: 20px;
+
+}
+
+.informe_grupo{
+  margin:20px
 }
 
 .button {

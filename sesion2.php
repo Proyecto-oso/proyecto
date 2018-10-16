@@ -31,11 +31,22 @@
   <?php
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-      if (isset($_POST['id_ses'])) {
+      if (isset($_POST['informe_grupo'])) {
+        $query = 'UPDATE `grupo` SET `informe_mrb` = "' . $_POST['informe_mrb'].'" WHERE `grupo`.`id` = '.$_SESSION['grupo_id'].'; ';
+        $dbh->beginTransaction();
+        $stmt = $dbh->prepare($query);
+        $stmt->execute();
+        $dbh->commit();
+        echo '<script language="javascript">';
+        echo 'alert("Guardado correctamente")';
+        echo '</script>';
+        echo '<script language="javascript">window.location="sesion2.php"</script>';
+      }
+      elseif(isset($_POST['id_ses'])) {
           $query = 'UPDATE `sesion_2` SET';
 
           $query .= '`informe_pn' . '`="' . $_POST["informe_pn"] . '",';
-          $query .= '`informe_mrb' . '`="' . $_POST["informe_mrb"] . '",';
+          //$query .= '`informe_mrb' . '`="' . $_POST["informe_mrb"] . '",';
 
           for ($i = 0; $i < 8; $i++) {
             $I = $i+1;
@@ -191,11 +202,11 @@
           }
       } else {
 
-          $query = 'INSERT INTO `sesion_2`(`id_estudiante`, `informe_pn`, `informe_mrb`, `factor_tncf_1`, `factor_tncf_2`, `factor_tncf_3`, `factor_tncf_4`, `factor_tncf_5`, `factor_tncf_6`, `factor_tncf_7`, `factor_tncf_8`, `factor_paf_1`, `factor_paf_2`, `factor_paf_3`, `factor_paf_4`, `factor_icppf_1`, `factor_icppf_2`, `factor_icppf_3`, `factor_icppf_4`, `factor_icppf_5`, `factor_tivf_1`, `factor_tivf_2`, `factor_tivf_3`, `factor_tivf_4`, `total_factor_tncf`, `total_factor_paf`, `total_factor_icppf`, `total_factor_tivf`, `eet_economico_1`, `eet_economico_2`, `eet_laboral_1`, `eet_laboral_2`, `eet_laboral_3`, `eet_familiar_1`, `eet_familiar_2`, `eet_familiar_3`, `eet_vida_1`, `eet_vida_2`, `eet_academico_1`, `eet_academico_2`, `eet_academico_3`, `total_eet_economico`, `total_eet_laboral`, `total_eet_familiar`, `total_eet_vida`, `total_eet_academico`) VALUES (';
+          $query = 'INSERT INTO `sesion_2`(`id_estudiante`, `informe_pn`, `factor_tncf_1`, `factor_tncf_2`, `factor_tncf_3`, `factor_tncf_4`, `factor_tncf_5`, `factor_tncf_6`, `factor_tncf_7`, `factor_tncf_8`, `factor_paf_1`, `factor_paf_2`, `factor_paf_3`, `factor_paf_4`, `factor_icppf_1`, `factor_icppf_2`, `factor_icppf_3`, `factor_icppf_4`, `factor_icppf_5`, `factor_tivf_1`, `factor_tivf_2`, `factor_tivf_3`, `factor_tivf_4`, `total_factor_tncf`, `total_factor_paf`, `total_factor_icppf`, `total_factor_tivf`, `eet_economico_1`, `eet_economico_2`, `eet_laboral_1`, `eet_laboral_2`, `eet_laboral_3`, `eet_familiar_1`, `eet_familiar_2`, `eet_familiar_3`, `eet_vida_1`, `eet_vida_2`, `eet_academico_1`, `eet_academico_2`, `eet_academico_3`, `total_eet_economico`, `total_eet_laboral`, `total_eet_familiar`, `total_eet_vida`, `total_eet_academico`) VALUES (';
           $query .= $_POST["id"] . ',';
 
           $query .= '"' . $_POST["informe_pn"] . '",';
-          $query .= '"' . $_POST["informe_mrb"] . '",';
+          //$query .= '"' . $_POST["informe_mrb"] . '",';
 
           for ($i = 0; $i < 8; $i++) {
             $I = $i+1;
@@ -377,7 +388,6 @@
     <tr class="titles">
     <th>Nombre</th>
     <th>INFORME EVENTOS POSITIVOS Y NEGATIVOS</th>
-    <th>INFORME METAS, RECURSOS Y BARRERAS</th>
     <th>factor tendencia a no sentrarse en el futuro 1 </th>
     <th>factor tendencia a no sentrarse en el futuro 2 </th>
     <th>factor tendencia a no sentrarse en el futuro 3 </th>
@@ -423,7 +433,7 @@
     <th>total eet academico </th>
     <th>GUARDAR</th>
     <th>Subir linea de vida</th>
-    
+
     </tr>
     <?php
     $query = ' SELECT * FROM estudiantes WHERE grupo_id = ? ';
@@ -446,7 +456,7 @@
             //echo '<td><input class="inf" type="text" name="informe_mrb" value="" /></td>';
 
             echo '<td><textarea rows="4" cols="40" name="informe_pn" form="form_'.$s['id_estudiante'].'"></textarea></td>';
-            echo '<td><textarea rows="4" cols="40" name="informe_mrb" form="form_'.$s['id_estudiante'].'"></textarea></td>';
+            //echo '<td><textarea rows="4" cols="40" name="informe_mrb" form="form_'.$s['id_estudiante'].'"></textarea></td>';
 
 
             echo ' <form method = "post" action = "' . htmlspecialchars($_SERVER["PHP_SELF"]) . '" id="form_'.$s['id_estudiante'].'" >';
@@ -588,7 +598,7 @@
           */
 
           echo '<td><textarea rows="4" cols="40" name="informe_pn"  form="form_'.$s['id_estudiante'].'"  >'.$s["informe_pn"].' </textarea></td>';
-          echo '<td><textarea rows="4" cols="40" name="informe_mrb" form="form_'.$s['id_estudiante'].'"  >'.$s["informe_mrb"].'</textarea></td>';
+          //echo '<td><textarea rows="4" cols="40" name="informe_mrb" form="form_'.$s['id_estudiante'].'"  >'.$s["informe_mrb"].'</textarea></td>';
 
             echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '"  id="form_'.$s['id_estudiante'].'" >';
 
@@ -754,6 +764,24 @@
     ?>
     </table>
     </form>
+    <?php
+      $query = ' SELECT * FROM `grupo` WHERE id = '.$_SESSION['grupo_id'].' ';
+      $stmt = $dbh->prepare($query);
+      $stmt->execute([$_SESSION['grupo_id']]);
+      $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      foreach ($rows as $row) {
+        echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '"  id="form_mrb" >';
+        echo '<div class="group_container">';
+        echo '<input type="hidden" name="informe_grupo" value="" />';
+        echo '<p class="titulo_informe" >INFORME METAS, RECURSOS Y BARRERAS DEL GRUPO</p>';
+        echo '<td><textarea rows="6" cols="150" name="informe_mrb"  form="form_mrb" class="informe_grupo"  >'.$row["informe_mrb"].' </textarea></td></br>';
+        echo '<td><input class="button" type="submit" value="Enviar informe del grupo"/></td>';
+        echo '</div>';
+        echo '</form>';
+
+      }
+
+     ?>
     </div>
 </body>
 <?php
