@@ -166,7 +166,7 @@ if (!func::checkLoginState($dbh)) {
     <th>TOTAL AM</th>
     <?php
     if ($_SESSION['usuario_tipo'] != 'co-tallerista') { ?>
-    <th>INFORME VIA</th>
+    <th>Informe Valores, Intereses y Aptitudes</th>
     <?php
 
 }
