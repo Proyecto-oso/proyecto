@@ -127,7 +127,7 @@ if (!func::checkLoginState($dbh)) {
     } ?>
     <div class="flow-container">
 
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    <form id="form1" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"></form>
 
 
     <table class="tb" style="float: left;" >
@@ -166,6 +166,7 @@ if (!func::checkLoginState($dbh)) {
     <th>AM 15</th>
     <th>TOTAL AM</th>
     <th>Informe Valores, Intereses y Aptitudes</th>
+    <th>Imagen</th>
     <!--<th>GUARDAR</th>-->
     </tr>
     <?php
@@ -177,57 +178,47 @@ if (!func::checkLoginState($dbh)) {
         if (!isset($s['id_estudiante'])) {
             //echo ' <form method = "post" action = "' . htmlspecialchars($_SERVER["PHP_SELF"]) . '" id="form_' . $s['id_estudiante'] . '" >';
             for ($i = 0; $i < 15; $i++) {
-                echo '<td><input class="in" type="text" name="' . $id . '_aptitud_verbal_' . ($i + 1) . '" value="" /></td>';
+                echo '<td><input class="in" type="text" name="' . $id . '_aptitud_verbal_' . ($i + 1) . '" value="" form="form1"/></td>';
             }
-            echo '<td><input class="in" type="text" name="' . $id . '_total_aptitud_verbal" value="0" /></td>';
+            echo '<td><input class="in" type="text" name="' . $id . '_total_aptitud_verbal" value="0" form="form1"/></td>';
             for ($i = 0; $i < 15; $i++) {
-                echo '<td><input class="in" type="text" name="' . $id . '_aptitud_matematica_' . ($i + 1) . '" value="" /></td>';
+                echo '<td><input class="in" type="text" name="' . $id . '_aptitud_matematica_' . ($i + 1) . '" value="" form="form1"/></td>';
             }
-            echo '<td><input class="in" type="text" name="' . $id . '_total_aptitud_matematica" value="0" /></td>';
+            echo '<td><input class="in" type="text" name="' . $id . '_total_aptitud_matematica" value="0" form="form1"/></td>';
             //echo '<td><input class="inf" type="text" name="informe_via" value="" /></td>';
             //if ($_SESSION['usuario_tipo'] != 'co-tallerista') {
-                echo '<td><textarea rows="4" cols="40" name="' . $id . '_informe_via"> </textarea></td>';
+            echo '<td><textarea rows="4" cols="40" name="' . $id . '_informe_via" form="form1"> </textarea></td>';
             //} else {
               //  echo '<input type="hidden" name="' . $id . '_informe_via" value="" />';
             //}
-            echo '<input type="hidden" name="name" value="' . $row['nombre'] . '" />';
-            echo '<input type="hidden" name="id" value="' . $row['id'] . '" />';
+            echo '<input type="hidden" name="name" value="' . $row['nombre'] . '" form="form1"/>';
+            echo '<input type="hidden" name="id" value="' . $row['id'] . '" form="form1"/>';
            // echo '<td><input class="button" type="submit" value="Enviar"/></td>';
            // echo '</form>';
         } else {
             //echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '" id="form_' . $s['id_estudiante'] . '" >';
             for ($i = 1; $i <= 15; $i++) {
-                echo '<td><input class="in" type="text" name="' . $id . '_aptitud_verbal_' . $i . '" value="' . $s["aptitud_verbal_$i"] . '" /></td>';
+                echo '<td><input class="in" type="text" name="' . $id . '_aptitud_verbal_' . $i . '" value="' . $s["aptitud_verbal_$i"] . '" form="form1"/></td>';
             }
-            echo '<td><input class="in" type="text" name="' . $id . '_total_aptitud_verbal" value="' . $s["total_aptitud_verbal"] . '" /></td>';
+            echo '<td><input class="in" type="text" name="' . $id . '_total_aptitud_verbal" value="' . $s["total_aptitud_verbal"] . '"form="form1" /></td>';
             for ($i = 1; $i <= 15; $i++) {
-                echo '<td><input class="in" type="text" name="' . $id . '_aptitud_matematica_' . $i . '" value="' . $s["aptitud_matematica_$i"] . '" /></td>';
+                echo '<td><input class="in" type="text" name="' . $id . '_aptitud_matematica_' . $i . '" value="' . $s["aptitud_matematica_$i"] . '" form="form1"/></td>';
             }
-            echo '<input type="hidden" name="name" value="' . $row['nombre'] . '" />';
-            echo '<input type="hidden" name="id" value="' . $row['id'] . '" />';
-            echo '<input type="hidden" name="id_ses' . $s['id_estudiante'] . '" value="' . $s['id_estudiante'] . '" />';
-            echo '<td><input class="in" type="text" name="' . $id . '_total_aptitud_matematica" value="' . $s["total_aptitud_matematica"] . '" /></td>';
+            echo '<input type="hidden" name="name" value="' . $row['nombre'] . '" form="form1"/>';
+            echo '<input type="hidden" name="id" value="' . $row['id'] . '" form="form1"/>';
+            echo '<input type="hidden" name="id_ses' . $s['id_estudiante'] . '" value="' . $s['id_estudiante'] . '" form="form1"/>';
+            echo '<td><input class="in" type="text" name="' . $id . '_total_aptitud_matematica" value="' . $s["total_aptitud_matematica"] . '" form="form1"/></td>';
             //if ($_SESSION['usuario_tipo'] != 'co-tallerista') {
-                echo '<td><textarea rows="4" cols="40" name="' . $id . '_informe_via" >' . $s["informe_via"] . ' </textarea></td>';
+            echo '<td><textarea rows="4" cols="40" name="' . $id . '_informe_via" form="form1">' . $s["informe_via"] . ' </textarea></td>';
             /*} else {
                 echo '<input type="hidden" name="' . $id . '_informe_via" value="' . $s["informe_via"] . '" />';
             }*/
             //echo '<td><input class="inf" type="text" name="informe_via" value="' . $s["informe_via"] . '" /></td>';
             //echo '<td><input class="button" type="submit" value="Enviar"/></td>';
             //echo '</form>';
+
         }
-        echo '</tr>';
-    }
-    ?>
-    </table>
-    <input class="button" type="submit" value="Enviar"/>
-    </form>
-    
-    <table style="float: left;">
-        <?php
-          foreach ($rows as $row) {
-            echo '<tr>
-                    <td>
+        echo '<td>
                       <form action="upload.php" method="post" enctype="multipart/form-data">
                           Select image to upload:
                           <input type="hidden" name="Sesion1" value="Sesion1" />
@@ -235,11 +226,13 @@ if (!func::checkLoginState($dbh)) {
                           <input class="fileToUpload" type="file" name="fileToUpload" id="fileToUpload">
                           <input class="upload" type="submit" value="Upload Image" name="submit">
                       </form>
-                    </td>
-                  </tr>';
-          }
-         ?>
+                    </td>';
+        echo '</tr>';
+    }
+    ?>
     </table>
+    <input class="button" type="submit" value="Enviar" form ="form1"/>
+    </form>
 
     </div>
 </body>
