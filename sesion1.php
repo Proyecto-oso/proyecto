@@ -166,7 +166,7 @@ if (!func::checkLoginState($dbh)) {
     <th>AM 15</th>
     <th>TOTAL AM</th>
     <th>Informe Valores, Intereses y Aptitudes</th>
-    <th>Imagen</th>
+    <th>Archivo</th>
     <!--<th>GUARDAR</th>-->
     </tr>
     <?php
@@ -218,10 +218,16 @@ if (!func::checkLoginState($dbh)) {
             //echo '</form>';
 
         }
-        echo '<td>
+        echo '<td>';
+        $path='uploads/sesion1/'.$row['id'];
+        if(glob($path.'*')){
+            echo '<a href="'.$path.'">Ver archivo</a>';
+        }
+        echo '
                       <form action="upload.php" method="post" enctype="multipart/form-data">
                           Select image to upload:
                           <input type="hidden" name="Sesion1" value="Sesion1" />
+                          <input type="hidden" name="redirect" value="sesion1" />
                           <input type="hidden" name="image_id" value="' . $row['id'] . '" />
                           <input class="fileToUpload" type="file" name="fileToUpload" id="fileToUpload">
                           <input class="upload" type="submit" value="Upload Image" name="submit">

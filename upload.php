@@ -14,6 +14,7 @@ if (isset($_POST["submit"])) {
       $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
       $newName = $_POST["image_id"] . ".".$imageFileType;
       $target_file = $target_dir . $newName;
+      $redirect = $_POST['redirect'];
     }
 
     if (isset($_POST["Sesion1"])) {
@@ -25,6 +26,7 @@ if (isset($_POST["submit"])) {
       $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
       $newName = $_POST["image_id"] . ".".$imageFileType;
       $target_file = $target_dir . $newName;
+      $redirect = $_POST['redirect'];
     }
 
 
@@ -58,15 +60,15 @@ if (isset($_POST["submit"])) {
   // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
         echo "El archivo no se ha podido subir, verifique que ha sido seleccionado o que esta en el formato correcto.</br>";
-        echo '<a href="sesion2.php" class="w3-btn w3-black">Regresar a la sesion 2</a>';
+        echo '<a href="'.$redirect.'" class="w3-btn w3-black">Regresar a la sesion</a>';
   // if everything is ok, try to upload file
     } else {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
             echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.</br>";
-            echo '<a href="sesion2.php" class="w3-btn w3-black">Regresar a la sesion 2</a>';
+            echo '<a href="'.$redirect.'" class="w3-btn w3-black">Regresar a la sesion</a>';
         } else {
             echo "Sorry, there was an error uploading your file.";
-            echo '<a href="sesion2.php" class="w3-btn w3-black">Regresar a la sesion 2</a>';
+            echo '<a href="'.$redirect.'" class="w3-btn w3-black">Regresar a la sesion</a>';
         }
     }
 } else {
