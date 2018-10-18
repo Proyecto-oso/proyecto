@@ -129,7 +129,8 @@ if (!func::checkLoginState($dbh)) {
 
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
 
-    <table class="tb">
+
+    <table class="tb" style="float: left;" >
     <tr class="titles">
     <th>Nombre</th>
     <th>AV 1</th>
@@ -217,12 +218,29 @@ if (!func::checkLoginState($dbh)) {
         }
         echo '</tr>';
     }
-
-
     ?>
     </table>
     <input class="button" type="submit" value="Enviar"/>
-    </form>    
+    </form>
+    
+    <table style="float: left;">
+        <?php
+          foreach ($rows as $row) {
+            echo '<tr>
+                    <td>
+                      <form action="upload.php" method="post" enctype="multipart/form-data">
+                          Select image to upload:
+                          <input type="hidden" name="Sesion1" value="Sesion1" />
+                          <input type="hidden" name="image_id" value="' . $row['id'] . '" />
+                          <input class="fileToUpload" type="file" name="fileToUpload" id="fileToUpload">
+                          <input class="upload" type="submit" value="Upload Image" name="submit">
+                      </form>
+                    </td>
+                  </tr>';
+          }
+         ?>
+    </table>
+
     </div>
 </body>
 <?php

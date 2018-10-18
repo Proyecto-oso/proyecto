@@ -4,15 +4,31 @@
 
   // Check if image file is a actual image or fake image
 if (isset($_POST["submit"])) {
-    $target_dir = "uploads/";
-    $newName = $_FILES["fileToUpload"]["name"];
 
-    $target_file = $target_dir . $newName;
-    $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-    $newName = $_POST["image_id"] . ".".$imageFileType;
-    $target_file = $target_dir . $newName;
+    if (isset($_POST["Sesion2"])) {
+      $target_dir = "uploads/sesion2/";
+      $newName = $_FILES["fileToUpload"]["name"];
+      $target_file = $target_dir . $newName;
+      $uploadOk = 1;
+      $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+      $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+      $newName = $_POST["image_id"] . ".".$imageFileType;
+      $target_file = $target_dir . $newName;
+    }
+
+    if (isset($_POST["Sesion1"])) {
+      $target_dir = "uploads/sesion1/";
+      $newName = $_FILES["fileToUpload"]["name"];
+      $target_file = $target_dir . $newName;
+      $uploadOk = 1;
+      $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+      $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+      $newName = $_POST["image_id"] . ".".$imageFileType;
+      $target_file = $target_dir . $newName;
+    }
+
+
+
     #if ($check !== false) {
     #    echo "File is an image - " . $check["mime"] . ".";
     #    $uploadOk = 1;
@@ -27,7 +43,7 @@ if (isset($_POST["submit"])) {
     #}
 
     // Check file size se revisa si es mayor a 500KB
-    if ($_FILES["fileToUpload"]["size"] > 500000) {
+    if ($_FILES["fileToUpload"]["size"] > 5000000) {
         echo "Sorry, your file is too large.";
         $uploadOk = 0;
     }
