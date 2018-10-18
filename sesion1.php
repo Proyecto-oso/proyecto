@@ -164,13 +164,7 @@ if (!func::checkLoginState($dbh)) {
     <th>AM 14</th>
     <th>AM 15</th>
     <th>TOTAL AM</th>
-    <?php
-    if ($_SESSION['usuario_tipo'] != 'co-tallerista') { ?>
     <th>Informe Valores, Intereses y Aptitudes</th>
-    <?php
-
-}
-?>
     <!--<th>GUARDAR</th>-->
     </tr>
     <?php
@@ -190,11 +184,11 @@ if (!func::checkLoginState($dbh)) {
             }
             echo '<td><input class="in" type="text" name="' . $id . '_total_aptitud_matematica" value="0" /></td>';
             //echo '<td><input class="inf" type="text" name="informe_via" value="" /></td>';
-            if ($_SESSION['usuario_tipo'] != 'co-tallerista') {
+            //if ($_SESSION['usuario_tipo'] != 'co-tallerista') {
                 echo '<td><textarea rows="4" cols="40" name="' . $id . '_informe_via"> </textarea></td>';
-            } else {
-                echo '<input type="hidden" name="' . $id . '_informe_via" value="" />';
-            }
+            //} else {
+              //  echo '<input type="hidden" name="' . $id . '_informe_via" value="" />';
+            //}
             echo '<input type="hidden" name="name" value="' . $row['nombre'] . '" />';
             echo '<input type="hidden" name="id" value="' . $row['id'] . '" />';
            // echo '<td><input class="button" type="submit" value="Enviar"/></td>';
@@ -212,11 +206,11 @@ if (!func::checkLoginState($dbh)) {
             echo '<input type="hidden" name="id" value="' . $row['id'] . '" />';
             echo '<input type="hidden" name="id_ses' . $s['id_estudiante'] . '" value="' . $s['id_estudiante'] . '" />';
             echo '<td><input class="in" type="text" name="' . $id . '_total_aptitud_matematica" value="' . $s["total_aptitud_matematica"] . '" /></td>';
-            if ($_SESSION['usuario_tipo'] != 'co-tallerista') {
+            //if ($_SESSION['usuario_tipo'] != 'co-tallerista') {
                 echo '<td><textarea rows="4" cols="40" name="' . $id . '_informe_via" >' . $s["informe_via"] . ' </textarea></td>';
-            } else {
+            /*} else {
                 echo '<input type="hidden" name="' . $id . '_informe_via" value="' . $s["informe_via"] . '" />';
-            }
+            }*/
             //echo '<td><input class="inf" type="text" name="informe_via" value="' . $s["informe_via"] . '" /></td>';
             //echo '<td><input class="button" type="submit" value="Enviar"/></td>';
             //echo '</form>';
