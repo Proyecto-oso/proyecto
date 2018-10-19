@@ -5,29 +5,24 @@
   // Check if image file is a actual image or fake image
 if (isset($_POST["submit"])) {
 
-    if (isset($_POST["Sesion2"])) {
-      $target_dir = "uploads/sesion2/";
-      $newName = $_FILES["fileToUpload"]["name"];
-      $target_file = $target_dir . $newName;
-      $uploadOk = 1;
-      $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-      $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-      $newName = $_POST["image_id"] . ".".$imageFileType;
-      $target_file = $target_dir . $newName;
-      $redirect = $_POST['redirect'];
+    if (isset($_POST["Sesion3"])) {
+      $target_dir = "uploads/sesion3/";
     }
 
+    if (isset($_POST["Sesion2"])) {
+      $target_dir = "uploads/sesion2/";
+    }
     if (isset($_POST["Sesion1"])) {
       $target_dir = "uploads/sesion1/";
-      $newName = $_FILES["fileToUpload"]["name"];
-      $target_file = $target_dir . $newName;
-      $uploadOk = 1;
-      $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-      $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-      $newName = $_POST["image_id"] . ".".$imageFileType;
-      $target_file = $target_dir . $newName;
-      $redirect = $_POST['redirect'];
     }
+    $newName = $_FILES["fileToUpload"]["name"];
+    $target_file = $target_dir . $newName;
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    $newName = $_POST["image_id"] . ".".$imageFileType;
+    $target_file = $target_dir . $newName;
+    $redirect = $_POST['redirect'];
 
 
 

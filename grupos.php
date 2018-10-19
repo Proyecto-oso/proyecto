@@ -40,6 +40,7 @@
         echo '<h3>Institucion: ' . $_POST['name'] . '</h3>';
         echo '<a href="sesion1.php"><h5>SESIÓN 1</h5></a>';
         echo '<a href="sesion2.php"><h5>SESIÓN 2</h5></a>';
+        echo '<a href="sesion3.php"><h5>SESIÓN 3</h5></a>';
     } else {
         echo '<h3>Instituciones:</h3>';
         getGrupos($dbh);

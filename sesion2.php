@@ -475,326 +475,326 @@ if (!func::checkLoginState($dbh)) {
                   //echo '<td><input class="in" type="text" name="factor_tncf_' . ($i + 1) . '" value="" /></td>';
           ?>
 
-                  <td>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_tncf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_tncf[$i]) && $factor_tncf[$i] == "0") echo "checked"; ?> value="0">Si</br>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_tncf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_tncf[$i]) && $factor_tncf[$i] == "1") echo "checked"; ?> value="1">No
-                  </td>
-                  <?php
+            <td>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_tncf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_tncf[$i]) && $factor_tncf[$i] == "0") echo "checked"; ?> value="0">Si</br>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_tncf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_tncf[$i]) && $factor_tncf[$i] == "1") echo "checked"; ?> value="1">No
+            </td>
+            <?php
 
-                }
+          }
 
-                $factor_paf = [null, null, null, null];
-                for ($i = 0; $i < 4; $i++) {
-                  //echo '<td><input class="in" type="text" name="factor_paf_' . ($i + 1) . '" value="" /></td>';
-                  ?>
-                  <td>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_paf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_paf[$i]) && $factor_paf[$i] == "1") echo "checked"; ?> value="1">Si</br>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_paf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_paf[$i]) && $factor_paf[$i] == "0") echo "checked"; ?> value="0">No
-                  </td>
-                  <?php
-
-
-                }
-
-                $factor_icppf = [null, null, null, null, null];
-                for ($i = 0; $i < 5; $i++) {
-                  //echo '<td><input class="in" type="text" name="factor_icppf_' . ($i + 1) . '" value="" /></td>';
-
-                  ?>
-                  <td>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_icppf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_icppf[$i]) && $factor_icppf[$i] == "1") echo "checked"; ?> value="1">Si</br>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_icppf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_icppf[$i]) && $factor_icppf[$i] == "0") echo "checked"; ?> value="0">No
-                  </td>
-                  <?php
-
-                }
-                $factor_tivf = [null, null, null, null];
-                for ($i = 0; $i < 4; $i++) {
-                  //echo '<td><input class="in" type="text" name="factor_tivf_' . ($i + 1) . '" value="" /></td>';
-                  ?>
-                  <td>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_tivf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_tivf[$i]) && $factor_tivf[$i] == "1") echo "checked"; ?> value="1">Si</br>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_tivf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_tivf[$i]) && $factor_tivf[$i] == "0") echo "checked"; ?> value="0">No
-                  </td>
-                  <?php
-
-                }
-
-                echo '<td><input class="in" type="text" name="total_factor_tncf " value="0" /></td>';
-                echo '<td><input class="in" type="text" name="total_factor_paf" value="0" /></td>';
-                echo '<td><input class="in" type="text" name="total_factor_icppf" value="0" /></td>';
-                echo '<td><input class="in" type="text" name="total_factor_tivf" value="0" /></td>';
-
-                $eet_economico = [null, null];
-                for ($i = 0; $i < 2; $i++) {
-                  //echo '<td><input class="in" type="text" name="eet_econnomico_' . ($i + 1) . '" value="" /></td>';
-
-                  ?>
-                  <td>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_economico_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_economico[$i]) && $eet_economico[$i] == "1") echo "checked"; ?> value="1">Si</br>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_economico_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_economico[$i]) && $eet_economico[$i] == "0") echo "checked"; ?> value="0">No
-                  </td>
-                  <?php
-
-                }
-
-                $eet_laboral = [null, null, null];
-                for ($i = 0; $i < 3; $i++) {
-                  //echo '<td><input class="in" type="text" name="eet_laboral_' . ($i + 1) . '" value="" /></td>';
-                  ?>
-                  <td>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_laboral_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_laboral[$i]) && $eet_laboral[$i] == "1") echo "checked"; ?> value="1">Si</br>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_laboral_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_laboral[$i]) && $eet_laboral[$i] == "0") echo "checked"; ?> value="0">No
-                  </td>
-                  <?php
-
-                }
-
-                $eet_familiar = [null, null, null];
-                for ($i = 0; $i < 3; $i++) {
-                  //echo '<td><input class="in" type="text" name="eet_familiar_' . ($i + 1) . '" value="" /></td>';
-                  ?>
-                  <td>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_familiar_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_familiar[$i]) && $eet_familiar[$i] == "1") echo "checked"; ?> value="1">Si</br>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_familiar_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_familiar[$i]) && $eet_familiar[$i] == "0") echo "checked"; ?> value="0">No
-                  </td>
-                  <?php
-
-                }
-
-                $eet_vida = [null, null];
-                for ($i = 0; $i < 2; $i++) {
-                  //echo '<td><input class="in" type="text" name="eet_vida_' . ($i + 1) . '" value="" /></td>';
-                  ?>
-                  <td>
-                    <?php echo '<input type="text" name= "' . "eet_vida_" . ($i + 1) . '"' . 'value="0">' ?>
-                  </td>
-                  <?php
-
-                }
-
-                $eet_academico = [null, null, null];
-                for ($i = 0; $i < 3; $i++) {
-                  //echo '<td><input class="in" type="text" name="eet_academico_' . ($i + 1) . '" value="" /></td>';
-                  ?>
-                  <td>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_academico_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_academico[$i]) && $eet_academico[$i] == "1") echo "checked"; ?> value="1">Si</br>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_academico_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_academico[$i]) && $eet_academico[$i] == "0") echo "checked"; ?> value="0">No
-                  </td>
-                  <?php
-
-                }
-
-                echo '<td><input class="in" type="text" name="total_eet_economico" value="0" /></td>';
-                echo '<td><input class="in" type="text" name="total_eet_laboral" value="0" /></td>';
-                echo '<td><input class="in" type="text" name="total_eet_familiar" value="0" /></td>';
-                echo '<td><input class="in" type="text" name="total_eet_vida" value="0" /></td>';
-                echo '<td><input class="in" type="text" name="total_eet_academico" value="0" /></td>';
+          $factor_paf = [null, null, null, null];
+          for ($i = 0; $i < 4; $i++) {
+            //echo '<td><input class="in" type="text" name="factor_paf_' . ($i + 1) . '" value="" /></td>';
+            ?>
+            <td>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_paf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_paf[$i]) && $factor_paf[$i] == "1") echo "checked"; ?> value="1">Si</br>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_paf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_paf[$i]) && $factor_paf[$i] == "0") echo "checked"; ?> value="0">No
+            </td>
+            <?php
 
 
-                echo '<input type="hidden" name="name" value="' . $row['nombre'] . '" />';
-                echo '<input type="hidden" name="id" value="' . $row['id'] . '" />';
-                echo '<td><input  class="button" type="submit" value="Enviar"/></td>';
-                echo '</form>';
-                echo '<td>';
-                $path = 'uploads/sesion2/' . $row['id'];
-                if (glob($path . '*')) {
-                  echo '<a href="' . $path . '">Ver archivo</a>';
-                }
+          }
 
-                echo '
-                    <form action="upload.php" method="post" enctype="multipart/form-data">
-                        Select image to upload:
-                        <input type="hidden" name="Sesion2" value="Sesion2" />
-                        <input type="hidden" name="image_id" value="' . $row['id'] . '" />
-                        <input type="hidden" name="redirect" value="sesion2" />
-                        <input type="file" class="fileToUpload" name="fileToUpload" id="fileToUpload">
-                        <input type="submit" class="Upload" value="Upload Image" name="submit">
-                    </form>
-                  </td>';
-
-              } else { //si esta creado los espacios se llenan con los correspondientes elementos que ya estan en la base de datos
-          /*
-                 */
-
-          //echo '<td><textarea rows="4" cols="40" name="informe_pn"  form="form_'.$s['id_estudiante'].'"  >'.$s["informe_pn"].' </textarea></td>';
-          //echo '<td><textarea rows="4" cols="40" name="informe_mrb" form="form_'.$s['id_estudiante'].'"  >'.$s["informe_mrb"].'</textarea></td>';
-
-                echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '"  id="form_' . $s['id_estudiante'] . '" >';
-
-              //echo '<td><input class="inf" type="text" name="informe_pn" value="'.$s["informe_pn"].'" /></td>';
-              //echo '<td><input class="inf" type="text" name="informe_mrb" value="'.$s["informe_mrb"].'" /></td>';
-
-
-                $factor_tncf = [null, null, null, null, null, null, null, null];
-
-                for ($i = 0; $i < 8; $i++) {
-                  //echo '<td><input class="in" type="text" name="factor_tncf_' . ($i + 1) . '" value="" /></td>';
-                  $I = $i + 1;
-                  $factor_tncf[$i] = $s["factor_tncf_$I"];
-                  ?>
-                  <td>
-
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_tncf_" . $I . '"'; ?>  <?php if (isset($factor_tncf[$i]) && $factor_tncf[$i] == "0") echo "checked"; ?> value="0">Si</br>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_tncf_" . $I . '"'; ?>  <?php if (isset($factor_tncf[$i]) && $factor_tncf[$i] == "1") echo "checked"; ?> value="1">No
-                  </td>
-                  <?php
-
-                }
-
-                $factor_paf = [null, null, null, null];
-                for ($i = 0; $i < 4; $i++) {
-                  //echo '<td><input class="in" type="text" name="factor_paf_' . ($i + 1) . '" value="" /></td>';
-                  $I = $i + 1;
-                  $factor_paf[$i] = $s["factor_paf_$I"];
-
-
-                  ?>
-                  <td>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_paf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_paf[$i]) && $factor_paf[$i] == "1") echo "checked"; ?> value="1">Si</br>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_paf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_paf[$i]) && $factor_paf[$i] == "0") echo "checked"; ?> value="0">No
-                  </td>
-                  <?php
-
-                }
-                $factor_icppf = [null, null, null, null, null];
-                for ($i = 0; $i < 5; $i++) {
-                  //echo '<td><input class="in" type="text" name="factor_icppf_' . ($i + 1) . '" value="" /></td>';
-                  $I = $i + 1;
-                  $factor_icppf[$i] = $s["factor_icppf_$I"];
-                  ?>
-                  <td>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_icppf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_icppf[$i]) && $factor_icppf[$i] == "1") echo "checked"; ?> value="1">Si</br>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_icppf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_icppf[$i]) && $factor_icppf[$i] == "0") echo "checked"; ?> value="0">No
-                  </td>
-                  <?php
-
-                }
-                $factor_tivf = [null, null, null, null];
-                for ($i = 0; $i < 4; $i++) {
-                  //echo '<td><input class="in" type="text" name="factor_tivf_' . ($i + 1) . '" value="" /></td>';
-                  $I = $i + 1;
-                  $factor_tivf[$i] = $s["factor_tivf_$I"];
-
-                  ?>
-                  <td>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_tivf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_tivf[$i]) && $factor_tivf[$i] == "1") echo "checked"; ?> value="1">Si</br>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_tivf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_tivf[$i]) && $factor_tivf[$i] == "0") echo "checked"; ?> value="0">No
-                  </td>
-                  <?php
-
-                }
-
-                echo '<td><input class="in" type="text" name="total_factor_tncf " value="' . $s["total_factor_tncf"] . '" /></td>';
-                echo '<td><input class="in" type="text" name="total_factor_paf"   value="' . $s["total_factor_paf"] . '" /></td>';
-                echo '<td><input class="in" type="text" name="total_factor_icppf" value="' . $s["total_factor_icppf"] . '" /></td>';
-                echo '<td><input class="in" type="text" name="total_factor_tivf"  value="' . $s["total_factor_tivf"] . '" /></td>';
-
-                $eet_economico = [null, null];
-                for ($i = 0; $i < 2; $i++) {
-                  //echo '<td><input class="in" type="text" name="eet_econnomico_' . ($i + 1) . '" value="" /></td>';
-                  $I = $i + 1;
-                  $eet_economico[$i] = $s["eet_economico_$I"];
-                  ?>
-                  <td>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_economico_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_economico[$i]) && $eet_economico[$i] == "1") echo "checked"; ?> value="1">Si</br>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_economico_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_economico[$i]) && $eet_economico[$i] == "0") echo "checked"; ?> value="0">No
-                  </td>
-                  <?php
-
-                }
-
-                $eet_laboral = [null, null, null];
-                for ($i = 0; $i < 3; $i++) {
-                  //echo '<td><input class="in" type="text" name="eet_laboral_' . ($i + 1) . '" value="" /></td>';
-                  $I = $i + 1;
-                  $eet_laboral[$i] = $s["eet_laboral_$I"];
-                  ?>
-                  <td>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_laboral_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_laboral[$i]) && $eet_laboral[$i] == "1") echo "checked"; ?> value="1">Si</br>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_laboral_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_laboral[$i]) && $eet_laboral[$i] == "0") echo "checked"; ?> value="0">No
-                  </td>
-                  <?php
-
-                }
-
-                $eet_familiar = [null, null, null];
-                for ($i = 0; $i < 3; $i++) {
-                  //echo '<td><input class="in" type="text" name="eet_familiar_' . ($i + 1) . '" value="" /></td>';
-                  $I = $i + 1;
-                  $eet_familiar[$i] = $s["eet_familiar_$I"];
-                  ?>
-                  <td>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_familiar_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_familiar[$i]) && $eet_familiar[$i] == "1") echo "checked"; ?> value="1">Si</br>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_familiar_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_familiar[$i]) && $eet_familiar[$i] == "0") echo "checked"; ?> value="0">No
-                  </td>
-                  <?php
-
-                }
-
-
-                for ($i = 0; $i < 2; $i++) {
-                  //echo '<td><input class="in" type="text" name="eet_vida_' . ($i + 1) . '" value="" /></td>';
-                  $I = $i + 1;
-                  ?>
-                  <td>
-                    <?php echo '<input type="text" name= "' . "eet_vida_" . ($i + 1) . '"' . 'value="' . $s["eet_vida_$I"] . '">' ?>
-
-                  </td>
-                  <?php
-
-                }
-
-                $eet_academico = [null, null, null];
-                for ($i = 0; $i < 3; $i++) {
-                  //echo '<td><input class="in" type="text" name="eet_academico_' . ($i + 1) . '" value="" /></td>';
-                  $I = $i + 1;
-                  $eet_academico[$i] = $s["eet_academico_$I"];
-                  ?>
-                  <td>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_academico_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_academico[$i]) && $eet_academico[$i] == "1") echo "checked"; ?> value="1">Si</br>
-                    <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_academico_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_academico[$i]) && $eet_academico[$i] == "0") echo "checked"; ?> value="0">No
-                  </td>
-                  <?php
-
-                }
-
-                echo '<td><input class="in" type="text" name="total_eet_economico" value="' . $s["total_eet_economico"] . '" /></td>';
-                echo '<td><input class="in" type="text" name="total_eet_laboral"   value="' . $s["total_eet_laboral"] . '" /></td>';
-                echo '<td><input class="in" type="text" name="total_eet_familiar"  value="' . $s["total_eet_familiar"] . '" /></td>';
-                echo '<td><input class="in" type="text" name="total_eet_vida"      value="' . $s["total_eet_vida"] . '" /></td>';
-                echo '<td><input class="in" type="text" name="total_eet_academico" value="' . $s["total_eet_academico"] . '" /></td>';
-
-
-                echo '<input type="hidden" name="name" value="' . $row['nombre'] . '" />';
-                echo '<input type="hidden" name="id" value="' . $row['id'] . '" />';
-                echo '<input type="hidden" name="id_ses" value="' . $s['id_estudiante'] . '" />';
-                echo '<td><input class="button" type="submit" value="Enviar"/></td>';
-
-                echo '</form>';
-                echo '<td>';
-                $path = 'uploads/sesion2/' . $row['id'];
-                if (glob($path . '*')) {
-                  echo '<a href="' . $path . '">Ver archivo</a>';
-                }
-
-                echo '
-                
-                    <form action="upload.php" method="post" enctype="multipart/form-data">
-                        Select image to upload:
-                        <input type="hidden" name="Sesion2" value="Sesion2" />
-                        <input type="hidden" name="image_id" value="' . $row['id'] . '" />
-                        <input type="hidden" name="redirect" value="sesion2" />
-                        <input class="fileToUpload" type="file" name="fileToUpload" id="fileToUpload">
-                        <input class="upload" type="submit" value="Upload Image" name="submit">
-                    </form>
-                  </td>';
-
-              }
-              echo '</tr>';
-            }
+          $factor_icppf = [null, null, null, null, null];
+          for ($i = 0; $i < 5; $i++) {
+            //echo '<td><input class="in" type="text" name="factor_icppf_' . ($i + 1) . '" value="" /></td>';
 
             ?>
+            <td>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_icppf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_icppf[$i]) && $factor_icppf[$i] == "1") echo "checked"; ?> value="1">Si</br>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_icppf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_icppf[$i]) && $factor_icppf[$i] == "0") echo "checked"; ?> value="0">No
+            </td>
+            <?php
+
+          }
+          $factor_tivf = [null, null, null, null];
+          for ($i = 0; $i < 4; $i++) {
+            //echo '<td><input class="in" type="text" name="factor_tivf_' . ($i + 1) . '" value="" /></td>';
+            ?>
+            <td>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_tivf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_tivf[$i]) && $factor_tivf[$i] == "1") echo "checked"; ?> value="1">Si</br>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_tivf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_tivf[$i]) && $factor_tivf[$i] == "0") echo "checked"; ?> value="0">No
+            </td>
+            <?php
+
+          }
+
+          echo '<td><input class="in" type="text" name="total_factor_tncf " value="0" /></td>';
+          echo '<td><input class="in" type="text" name="total_factor_paf" value="0" /></td>';
+          echo '<td><input class="in" type="text" name="total_factor_icppf" value="0" /></td>';
+          echo '<td><input class="in" type="text" name="total_factor_tivf" value="0" /></td>';
+
+          $eet_economico = [null, null];
+          for ($i = 0; $i < 2; $i++) {
+            //echo '<td><input class="in" type="text" name="eet_econnomico_' . ($i + 1) . '" value="" /></td>';
+
+            ?>
+            <td>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_economico_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_economico[$i]) && $eet_economico[$i] == "1") echo "checked"; ?> value="1">Si</br>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_economico_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_economico[$i]) && $eet_economico[$i] == "0") echo "checked"; ?> value="0">No
+            </td>
+            <?php
+
+          }
+
+          $eet_laboral = [null, null, null];
+          for ($i = 0; $i < 3; $i++) {
+            //echo '<td><input class="in" type="text" name="eet_laboral_' . ($i + 1) . '" value="" /></td>';
+            ?>
+            <td>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_laboral_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_laboral[$i]) && $eet_laboral[$i] == "1") echo "checked"; ?> value="1">Si</br>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_laboral_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_laboral[$i]) && $eet_laboral[$i] == "0") echo "checked"; ?> value="0">No
+            </td>
+            <?php
+
+          }
+
+          $eet_familiar = [null, null, null];
+          for ($i = 0; $i < 3; $i++) {
+            //echo '<td><input class="in" type="text" name="eet_familiar_' . ($i + 1) . '" value="" /></td>';
+            ?>
+            <td>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_familiar_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_familiar[$i]) && $eet_familiar[$i] == "1") echo "checked"; ?> value="1">Si</br>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_familiar_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_familiar[$i]) && $eet_familiar[$i] == "0") echo "checked"; ?> value="0">No
+            </td>
+            <?php
+
+          }
+
+          $eet_vida = [null, null];
+          for ($i = 0; $i < 2; $i++) {
+            //echo '<td><input class="in" type="text" name="eet_vida_' . ($i + 1) . '" value="" /></td>';
+            ?>
+            <td>
+              <?php echo '<input type="text" name= "' . "eet_vida_" . ($i + 1) . '"' . 'value="0">' ?>
+            </td>
+            <?php
+
+          }
+
+          $eet_academico = [null, null, null];
+          for ($i = 0; $i < 3; $i++) {
+            //echo '<td><input class="in" type="text" name="eet_academico_' . ($i + 1) . '" value="" /></td>';
+            ?>
+            <td>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_academico_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_academico[$i]) && $eet_academico[$i] == "1") echo "checked"; ?> value="1">Si</br>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_academico_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_academico[$i]) && $eet_academico[$i] == "0") echo "checked"; ?> value="0">No
+            </td>
+            <?php
+
+          }
+
+          echo '<td><input class="in" type="text" name="total_eet_economico" value="0" /></td>';
+          echo '<td><input class="in" type="text" name="total_eet_laboral" value="0" /></td>';
+          echo '<td><input class="in" type="text" name="total_eet_familiar" value="0" /></td>';
+          echo '<td><input class="in" type="text" name="total_eet_vida" value="0" /></td>';
+          echo '<td><input class="in" type="text" name="total_eet_academico" value="0" /></td>';
+
+
+          echo '<input type="hidden" name="name" value="' . $row['nombre'] . '" />';
+          echo '<input type="hidden" name="id" value="' . $row['id'] . '" />';
+          echo '<td><input  class="button" type="submit" value="Enviar"/></td>';
+          echo '</form>';
+          echo '<td>';
+          $path = 'uploads/sesion2/' . $row['id'];
+          if (glob($path . '*')) {
+            echo '<a href="' . $path . '">Ver archivo</a>';
+          }
+
+          echo '
+              <form action="upload.php" method="post" enctype="multipart/form-data">
+                  Select image to upload:
+                  <input type="hidden" name="Sesion2" value="Sesion2" />
+                  <input type="hidden" name="image_id" value="' . $row['id'] . '" />
+                  <input type="hidden" name="redirect" value="sesion2" />
+                  <input type="file" class="fileToUpload" name="fileToUpload" id="fileToUpload">
+                  <input type="submit" class="Upload" value="Upload Image" name="submit">
+              </form>
+            </td>';
+
+        } else { //si esta creado los espacios se llenan con los correspondientes elementos que ya estan en la base de datos
+    /*
+           */
+
+    //echo '<td><textarea rows="4" cols="40" name="informe_pn"  form="form_'.$s['id_estudiante'].'"  >'.$s["informe_pn"].' </textarea></td>';
+    //echo '<td><textarea rows="4" cols="40" name="informe_mrb" form="form_'.$s['id_estudiante'].'"  >'.$s["informe_mrb"].'</textarea></td>';
+
+          echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '"  id="form_' . $s['id_estudiante'] . '" >';
+
+        //echo '<td><input class="inf" type="text" name="informe_pn" value="'.$s["informe_pn"].'" /></td>';
+        //echo '<td><input class="inf" type="text" name="informe_mrb" value="'.$s["informe_mrb"].'" /></td>';
+
+
+          $factor_tncf = [null, null, null, null, null, null, null, null];
+
+          for ($i = 0; $i < 8; $i++) {
+            //echo '<td><input class="in" type="text" name="factor_tncf_' . ($i + 1) . '" value="" /></td>';
+            $I = $i + 1;
+            $factor_tncf[$i] = $s["factor_tncf_$I"];
+            ?>
+            <td>
+
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_tncf_" . $I . '"'; ?>  <?php if (isset($factor_tncf[$i]) && $factor_tncf[$i] == "0") echo "checked"; ?> value="0">Si</br>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_tncf_" . $I . '"'; ?>  <?php if (isset($factor_tncf[$i]) && $factor_tncf[$i] == "1") echo "checked"; ?> value="1">No
+            </td>
+            <?php
+
+          }
+
+          $factor_paf = [null, null, null, null];
+          for ($i = 0; $i < 4; $i++) {
+            //echo '<td><input class="in" type="text" name="factor_paf_' . ($i + 1) . '" value="" /></td>';
+            $I = $i + 1;
+            $factor_paf[$i] = $s["factor_paf_$I"];
+
+
+            ?>
+            <td>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_paf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_paf[$i]) && $factor_paf[$i] == "1") echo "checked"; ?> value="1">Si</br>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_paf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_paf[$i]) && $factor_paf[$i] == "0") echo "checked"; ?> value="0">No
+            </td>
+            <?php
+
+          }
+          $factor_icppf = [null, null, null, null, null];
+          for ($i = 0; $i < 5; $i++) {
+            //echo '<td><input class="in" type="text" name="factor_icppf_' . ($i + 1) . '" value="" /></td>';
+            $I = $i + 1;
+            $factor_icppf[$i] = $s["factor_icppf_$I"];
+            ?>
+            <td>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_icppf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_icppf[$i]) && $factor_icppf[$i] == "1") echo "checked"; ?> value="1">Si</br>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_icppf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_icppf[$i]) && $factor_icppf[$i] == "0") echo "checked"; ?> value="0">No
+            </td>
+            <?php
+
+          }
+          $factor_tivf = [null, null, null, null];
+          for ($i = 0; $i < 4; $i++) {
+            //echo '<td><input class="in" type="text" name="factor_tivf_' . ($i + 1) . '" value="" /></td>';
+            $I = $i + 1;
+            $factor_tivf[$i] = $s["factor_tivf_$I"];
+
+            ?>
+            <td>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_tivf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_tivf[$i]) && $factor_tivf[$i] == "1") echo "checked"; ?> value="1">Si</br>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "factor_tivf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_tivf[$i]) && $factor_tivf[$i] == "0") echo "checked"; ?> value="0">No
+            </td>
+            <?php
+
+          }
+
+          echo '<td><input class="in" type="text" name="total_factor_tncf " value="' . $s["total_factor_tncf"] . '" /></td>';
+          echo '<td><input class="in" type="text" name="total_factor_paf"   value="' . $s["total_factor_paf"] . '" /></td>';
+          echo '<td><input class="in" type="text" name="total_factor_icppf" value="' . $s["total_factor_icppf"] . '" /></td>';
+          echo '<td><input class="in" type="text" name="total_factor_tivf"  value="' . $s["total_factor_tivf"] . '" /></td>';
+
+          $eet_economico = [null, null];
+          for ($i = 0; $i < 2; $i++) {
+            //echo '<td><input class="in" type="text" name="eet_econnomico_' . ($i + 1) . '" value="" /></td>';
+            $I = $i + 1;
+            $eet_economico[$i] = $s["eet_economico_$I"];
+            ?>
+            <td>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_economico_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_economico[$i]) && $eet_economico[$i] == "1") echo "checked"; ?> value="1">Si</br>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_economico_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_economico[$i]) && $eet_economico[$i] == "0") echo "checked"; ?> value="0">No
+            </td>
+            <?php
+
+          }
+
+          $eet_laboral = [null, null, null];
+          for ($i = 0; $i < 3; $i++) {
+            //echo '<td><input class="in" type="text" name="eet_laboral_' . ($i + 1) . '" value="" /></td>';
+            $I = $i + 1;
+            $eet_laboral[$i] = $s["eet_laboral_$I"];
+            ?>
+            <td>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_laboral_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_laboral[$i]) && $eet_laboral[$i] == "1") echo "checked"; ?> value="1">Si</br>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_laboral_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_laboral[$i]) && $eet_laboral[$i] == "0") echo "checked"; ?> value="0">No
+            </td>
+            <?php
+
+          }
+
+          $eet_familiar = [null, null, null];
+          for ($i = 0; $i < 3; $i++) {
+            //echo '<td><input class="in" type="text" name="eet_familiar_' . ($i + 1) . '" value="" /></td>';
+            $I = $i + 1;
+            $eet_familiar[$i] = $s["eet_familiar_$I"];
+            ?>
+            <td>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_familiar_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_familiar[$i]) && $eet_familiar[$i] == "1") echo "checked"; ?> value="1">Si</br>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_familiar_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_familiar[$i]) && $eet_familiar[$i] == "0") echo "checked"; ?> value="0">No
+            </td>
+            <?php
+
+          }
+
+
+          for ($i = 0; $i < 2; $i++) {
+            //echo '<td><input class="in" type="text" name="eet_vida_' . ($i + 1) . '" value="" /></td>';
+            $I = $i + 1;
+            ?>
+            <td>
+              <?php echo '<input type="text" name= "' . "eet_vida_" . ($i + 1) . '"' . 'value="' . $s["eet_vida_$I"] . '">' ?>
+
+            </td>
+            <?php
+
+          }
+
+          $eet_academico = [null, null, null];
+          for ($i = 0; $i < 3; $i++) {
+            //echo '<td><input class="in" type="text" name="eet_academico_' . ($i + 1) . '" value="" /></td>';
+            $I = $i + 1;
+            $eet_academico[$i] = $s["eet_academico_$I"];
+            ?>
+            <td>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_academico_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_academico[$i]) && $eet_academico[$i] == "1") echo "checked"; ?> value="1">Si</br>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . "eet_academico_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_academico[$i]) && $eet_academico[$i] == "0") echo "checked"; ?> value="0">No
+            </td>
+            <?php
+
+          }
+
+          echo '<td><input class="in" type="text" name="total_eet_economico" value="' . $s["total_eet_economico"] . '" /></td>';
+          echo '<td><input class="in" type="text" name="total_eet_laboral"   value="' . $s["total_eet_laboral"] . '" /></td>';
+          echo '<td><input class="in" type="text" name="total_eet_familiar"  value="' . $s["total_eet_familiar"] . '" /></td>';
+          echo '<td><input class="in" type="text" name="total_eet_vida"      value="' . $s["total_eet_vida"] . '" /></td>';
+          echo '<td><input class="in" type="text" name="total_eet_academico" value="' . $s["total_eet_academico"] . '" /></td>';
+
+
+          echo '<input type="hidden" name="name" value="' . $row['nombre'] . '" />';
+          echo '<input type="hidden" name="id" value="' . $row['id'] . '" />';
+          echo '<input type="hidden" name="id_ses" value="' . $s['id_estudiante'] . '" />';
+          echo '<td><input class="button" type="submit" value="Enviar"/></td>';
+
+          echo '</form>';
+          echo '<td>';
+          $path = 'uploads/sesion2/' . $row['id'];
+          if (glob($path . '*')) {
+            echo '<a href="' . $path . '">Ver archivo</a>';
+          }
+
+          echo '
+
+              <form action="upload.php" method="post" enctype="multipart/form-data">
+                  Select image to upload:
+                  <input type="hidden" name="Sesion2" value="Sesion2" />
+                  <input type="hidden" name="image_id" value="' . $row['id'] . '" />
+                  <input type="hidden" name="redirect" value="sesion2" />
+                  <input class="fileToUpload" type="file" name="fileToUpload" id="fileToUpload">
+                  <input class="upload" type="submit" value="Upload Image" name="submit">
+              </form>
+            </td>';
+
+        }
+        echo '</tr>';
+      }
+
+      ?>
     </table>
     </form>
     <?php
