@@ -1,5 +1,13 @@
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style media="screen">
+  .container{
+    text-align: center;
+  }
+  .btn{
+    margin: 10px;
+  }
+</style>
 <?php
 
   // Check if image file is a actual image or fake image
@@ -55,15 +63,18 @@ if (isset($_POST["submit"])) {
   // Check if $uploadOk is set to 0 by an error
     if ($uploadOk == 0) {
         echo "El archivo no se ha podido subir, verifique que ha sido seleccionado o que esta en el formato correcto.</br>";
-        echo '<a href="'.$redirect.'" class="w3-btn w3-black">Regresar a la sesion</a>';
+        echo '<a href="'.$redirect.'.php" class="w3-btn w3-black">Regresar a la sesion</a>';
   // if everything is ok, try to upload file
     } else {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.</br>";
-            echo '<a href="'.$redirect.'" class="w3-btn w3-black">Regresar a la sesion</a>';
+          echo '<div class="container">';
+            echo "<h1>The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.</h1></br>";
+            echo '<img src="'.$target_file.'" alt="imagen " style="width:500px;height:600px;" ></br>';
+            echo '<a href="'.$redirect.'.php" class="w3-btn w3-black btn" >Regresar a la sesion</a>';
+          echo '</div>';
         } else {
             echo "Sorry, there was an error uploading your file.";
-            echo '<a href="'.$redirect.'" class="w3-btn w3-black">Regresar a la sesion</a>';
+            echo '<a href="'.$redirect.'.php" class="w3-btn w3-black">Regresar a la sesion</a>';
         }
     }
 } else {
