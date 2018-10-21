@@ -12,7 +12,9 @@
 
   // Check if image file is a actual image or fake image
 if (isset($_POST["submit"])) {
-
+    if (isset($_POST["Sesion4"])) {
+      $target_dir = "uploads/sesion4/";
+    }
     if (isset($_POST["Sesion3"])) {
       $target_dir = "uploads/sesion3/";
     }
