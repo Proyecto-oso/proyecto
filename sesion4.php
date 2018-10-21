@@ -127,7 +127,6 @@ if (!func::checkLoginState($dbh)) {
     <th>Familia </th>
     <th>Otro significativo </th>
     <th>Puntaje total </th>
-
     <th>Zonas de riesgo </th>
     <th>Zonas seguras  </th>
     <th>Zonas de ayuda </th>
@@ -152,12 +151,8 @@ if (!func::checkLoginState($dbh)) {
     <th>Presencia de relaciones forzadas y número </th>
     <th>Diagnóstico de enfermedad de transmisión sexual </th>
     <th>Si ha vivido en la calle </th>
-
-
-
-
     <th>GUARDAR</th>
-    <th>Actividad del estudiante </th>
+    <th>Mapas hablantes </th>
 
 
 

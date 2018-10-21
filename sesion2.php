@@ -397,44 +397,44 @@ if (!func::checkLoginState($dbh)) {
     <table class="tb">
     <tr class="titles">
     <th>Nombre</th>
-    <th>factor tendencia a no sentrarse en el futuro 1 </th>
-    <th>factor tendencia a no sentrarse en el futuro 2 </th>
-    <th>factor tendencia a no sentrarse en el futuro 3 </th>
-    <th>factor tendencia a no sentrarse en el futuro 4 </th>
-    <th>factor tendencia a no sentrarse en el futuro 5 </th>
-    <th>factor tendencia a no sentrarse en el futuro 6 </th>
-    <th>factor tendencia a no sentrarse en el futuro 7 </th>
-    <th>factor tendencia a no sentrarse en el futuro 8 </th>
-    <th>factor planeacion activa del futuro 1 </th>
-    <th>factor planeacion activa del futuro 2 </th>
-    <th>factor planeacion activa del futuro 3 </th>
-    <th>factor planeacion activa del futuro 4 </th>
-    <th>factor influencia de la conducta pasada y presente en el futuro 1 </th>
-    <th>factor influencia de la conducta pasada y presente en el futuro 2 </th>
-    <th>factor influencia de la conducta pasada y presente en el futuro 3 </th>
-    <th>factor influencia de la conducta pasada y presente en el futuro 4 </th>
-    <th>factor influencia de la conducta pasada y presente en el futuro 5 </th>
-    <th>factor tendencia a imaginarse la vida en el futuro 1 </th>
-    <th>factor tendencia a imaginarse la vida en el futuro 2 </th>
-    <th>factor tendencia a imaginarse la vida en el futuro 3 </th>
-    <th>factor tendencia a imaginarse la vida en el futuro 4 </th>
+    <th> <div class ="container2"> factor tendencia a no centrarse en el futuro 1 </div> </th>
+    <th> <div class ="container2"> factor tendencia a no centrarse en el futuro 2 </div> </th>
+    <th> <div class ="container2"> factor tendencia a no centrarse en el futuro 3 </div> </th>
+    <th> <div class ="container2"> factor tendencia a no centrarse en el futuro 4 </div> </th>
+    <th> <div class ="container2"> factor tendencia a no centrarse en el futuro 5 </div> </th>
+    <th> <div class ="container2"> factor tendencia a no centrarse en el futuro 6 </div> </th>
+    <th> <div class ="container2"> factor tendencia a no centrarse en el futuro 7 </div> </th>
+    <th> <div class ="container2"> factor tendencia a no centrarse en el futuro 8 </div> </th>
+    <th> <div class ="container2"> factor planeacion activa del futuro 1 </div> </th>
+    <th> <div class ="container2"> factor planeacion activa del futuro 2 </div> </th>
+    <th> <div class ="container2"> factor planeacion activa del futuro 3 </div> </th>
+    <th> <div class ="container2"> factor planeacion activa del futuro 4 </div> </th>
+    <th> <div class ="container2"> factor influencia de la conducta pasada y presente en el futuro 1 </div> </th>
+    <th> <div class ="container2"> factor influencia de la conducta pasada y presente en el futuro 2 </div> </th>
+    <th> <div class ="container2"> factor influencia de la conducta pasada y presente en el futuro 3 </div> </th>
+    <th> <div class ="container2"> factor influencia de la conducta pasada y presente en el futuro 4 </div> </th>
+    <th> <div class ="container2"> factor influencia de la conducta pasada y presente en el futuro 5 </div> </th>
+    <th> <div class ="container2"> factor tendencia a imaginarse la vida en el futuro 1 </div> </th>
+    <th> <div class ="container2"> factor tendencia a imaginarse la vida en el futuro 2 </div> </th>
+    <th> <div class ="container2"> factor tendencia a imaginarse la vida en el futuro 3 </div> </th>
+    <th> <div class ="container2"> factor tendencia a imaginarse la vida en el futuro 4 </div> </th>
     <th>total factor tncf </th>
     <th>total factor paf </th>
-    <th> total factor icppf</th>
-    <th> total factor tivf</th>
-    <th>escala extension temporal economico 1 </th>
-    <th>escala extension temporal economico 2 </th>
-    <th>escala extension temporal laboral 1 </th>
-    <th>escala extension temporal laboral 2 </th>
-    <th>escala extension temporal laboral 3 </th>
-    <th>escala extension temporal familiar 1 </th>
-    <th>escala extension temporal familiar 2 </th>
-    <th>escala extension temporal familiar 3 </th>
-    <th>escala extension temporal vida 1 </th>
-    <th>escala extension temporal vida 2 </th>
-    <th>escala extension temporal academico 1 </th>
-    <th>escala extension temporal academico 2 </th>
-    <th>escala extension temporal academico 3 </th>
+    <th>total factor icppf</th>
+    <th>total factor tivf</th>
+    <th> <div class ="container2"> escala extension temporal economico 1 </div> </th>
+    <th> <div class ="container2"> escala extension temporal economico 2 </div> </th>
+    <th> <div class ="container2"> escala extension temporal laboral 1 </div> </th>
+    <th> <div class ="container2"> escala extension temporal laboral 2 </div> </th>
+    <th> <div class ="container2"> escala extension temporal laboral 3 </div> </th>
+    <th> <div class ="container2"> escala extension temporal familiar 1 </div> </th>
+    <th> <div class ="container2"> escala extension temporal familiar 2 </div> </th>
+    <th> <div class ="container2"> escala extension temporal familiar 3 </div> </th>
+    <th> <div class ="container2"> escala extension temporal vida 1 </div> </th>
+    <th> <div class ="container2"> escala extension temporal vida 2 </div> </th>
+    <th> <div class ="container2"> escala extension temporal academico 1 </div> </th>
+    <th> <div class ="container2"> escala extension temporal academico 2 </div> </th>
+    <th> <div class ="container2"> escala extension temporal academico 3 </div> </th>
     <th>total eet economico </th>
     <th>total eet laboral </th>
     <th>total eet familiar </th>
