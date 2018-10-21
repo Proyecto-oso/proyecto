@@ -52,7 +52,8 @@ if (!func::checkLoginState($dbh)) {
         $query.=  '`temas_trabajados` ='.$_POST["temas_trabajados"].',';
         $query.=  '`ejercicios` ='.$_POST["ejercicios"].',';
         $query.=  '`tallerista` ='.$_POST["tallerista"].',';
-        $query.=  '`utilidad` ='.$_POST["utilidad"];
+        $query.=  '`utilidad` ='.$_POST["utilidad"].',';
+        $query.=  '`observaciones` ="'.$_POST["observaciones"].'"';
 
         $query .= ' WHERE id_estudiante=' . $_POST['id_ses'] . ' ';
 
@@ -71,13 +72,13 @@ if (!func::checkLoginState($dbh)) {
           $dbh->rollBack();
           echo $query;
           echo '<script language="javascript">';
-          echo 'alert("Erro al guardar intenete nuevamente")';
+          echo 'alert("Erro al guardar intente nuevamente")';
           echo '</script>';
           echo '<script language="javascript">window.location="sesion3.php"</script>';
         }
 
       }else {
-        $query = 'INSERT INTO `sesion_3`(`id_estudiante`, `e_proceso`,`pregunta_1` ,`pregunta_2`, `pregunta_3`, `pregunta_4`, `pregunta_5`, `pregunta_6`, `pregunta_7`, `pregunta_8`, `pregunta_9`, `pregunta_10`, `pregunta_11`, `pregunta_12`, `pregunta_13`, `pregunta_14`, `pregunta_15`, `pregunta_16`, `pregunta_17`, `pregunta_18`, `pregunta_19`, `pregunta_20`, `pregunta_21`, `pregunta_22`, `pregunta_23`, `pregunta_24`, `pregunta_25`, `pregunta_26`, `pregunta_27`, `pregunta_28`, `pregunta_29`, `pregunta_30`, `pregunta_31`, `pregunta_32`, `pregunta_33`, `pregunta_34`, `pregunta_35`, `pregunta_36`, `pregunta_37`, `pregunta_38`, `pregunta_39`, `pregunta_40`, `pregunta_41`, `pregunta_42`, `pregunta_43`, `pregunta_44`,`mas_predominante`,`menos_predominante`, `temas_trabajados`, `ejercicios`, `tallerista`, `utilidad`) VALUES (';
+        $query = 'INSERT INTO `sesion_3`(`id_estudiante`, `e_proceso`,`pregunta_1` ,`pregunta_2`, `pregunta_3`, `pregunta_4`, `pregunta_5`, `pregunta_6`, `pregunta_7`, `pregunta_8`, `pregunta_9`, `pregunta_10`, `pregunta_11`, `pregunta_12`, `pregunta_13`, `pregunta_14`, `pregunta_15`, `pregunta_16`, `pregunta_17`, `pregunta_18`, `pregunta_19`, `pregunta_20`, `pregunta_21`, `pregunta_22`, `pregunta_23`, `pregunta_24`, `pregunta_25`, `pregunta_26`, `pregunta_27`, `pregunta_28`, `pregunta_29`, `pregunta_30`, `pregunta_31`, `pregunta_32`, `pregunta_33`, `pregunta_34`, `pregunta_35`, `pregunta_36`, `pregunta_37`, `pregunta_38`, `pregunta_39`, `pregunta_40`, `pregunta_41`, `pregunta_42`, `pregunta_43`, `pregunta_44`,`mas_predominante`,`menos_predominante`, `temas_trabajados`, `ejercicios`, `tallerista`, `utilidad`, `observaciones`) VALUES (';
 
         $query .= $_POST["id_estudiante"] . ',';
         $query .= '"'. $_POST["e_proceso"].'"' . ',';
@@ -98,7 +99,8 @@ if (!func::checkLoginState($dbh)) {
         $query.= $_POST["temas_trabajados"].',';
         $query.= $_POST["ejercicios"].',';
         $query.= $_POST["tallerista"].',';
-        $query.= $_POST["utilidad"].')';
+        $query.= $_POST["utilidad"].',';
+        $query.='"'. $_POST["observaciones"].'")';
 
         $dbh->beginTransaction();
 
@@ -115,7 +117,7 @@ if (!func::checkLoginState($dbh)) {
           $dbh->rollBack();
           #echo $query;
           echo '<script language="javascript">';
-          echo 'alert("Erro al guardar intenete nuevamente")';
+          echo 'alert("Erro al guardar intente nuevamente")';
           echo '</script>';
           echo '<script language="javascript">window.location="sesion3.php"</script>';
         }
@@ -194,6 +196,7 @@ if (!func::checkLoginState($dbh)) {
     <th>Aspecto de los ejercicios  </th>
     <th>Aspecto de la dirección del tallerista </th>
     <th>Aspecto de la utilidad para tu diario vivir </th>
+    <th>Observaciones </th>
     <th>GUARDAR</th>
     <th>Actividad del estudiante </th>
 
@@ -274,6 +277,7 @@ if (!func::checkLoginState($dbh)) {
           echo '<td><input type="number" name="ejercicios" value="0" /></td>';
           echo '<td><input type="number" name="tallerista" value="0" /></td>';
           echo '<td><input type="number" name="utilidad" value="0" /></td>';
+          echo '<td><textarea rows="4" cols="40" name="observaciones" form="form_'.$id.'"></textarea></td>';
 
           echo '<input type="hidden" name="id_estudiante" value="' . $id . '" />';
           echo '<td><input  class="button" type="submit" value="Guardar"/></td>';
@@ -384,7 +388,7 @@ if (!func::checkLoginState($dbh)) {
           echo '<td><input type="number" name="ejercicios"       value="'.$s["ejercicios"].'" /></td>';
           echo '<td><input type="number" name="tallerista"       value="'.$s["tallerista"].'" /></td>';
           echo '<td><input type="number" name="utilidad"         value="'.$s["utilidad"].'" /></td>';
-
+          echo '<td><textarea rows="4" cols="40" name="observaciones" form="form_'.$id.'">'.$s["observaciones"].'</textarea></td>';
 
           echo '<input type="hidden" name="id_ses" value="' . $s['id_estudiante'] . '" />';
           echo '<td><input  class="button" type="submit" value="Guardar"/></td>';

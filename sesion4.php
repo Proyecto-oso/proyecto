@@ -32,7 +32,7 @@ if (!func::checkLoginState($dbh)) {
 <body>
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      $arr = ["id_estudiante", "item_1", "item_2", "item_3", "item_4", "item_5", "item_6", "item_7", "item_8", "item_9", "item_10", "item_11", "item_12", "zona_riesgo", "zona_segura", "zona_ayuda", "per_ayudan", "mec_violencia", "per_violencia", "vio_vividas", "zon_violencia", "cantidad_cigarrillos", "frecuencia_cigarrillos", "lugar_cigarrillos", "cantidad_alcohol", "frecuencia_alcohol", "lugar_alcohol", "cantidad_psicoactivas", "frecuencia_psicoactivas", "lugar_psicoactivas", "n_parejas", "met_embarazo", "n_embarazo", "n_abortos", "pre_relacion_f", "ets", "calle"];
+      $arr = ["id_estudiante", "item_1", "item_2", "item_3", "item_4", "item_5", "item_6", "item_7", "item_8", "item_9", "item_10", "item_11", "item_12", "zona_riesgo", "zona_segura", "zona_ayuda", "per_ayudan", "mec_violencia", "per_violencia", "vio_vividas", "zon_violencia", "cantidad_cigarrillos", "frecuencia_cigarrillos", "lugar_cigarrillos", "cantidad_alcohol", "frecuencia_alcohol", "lugar_alcohol", "cantidad_psicoactivas", "frecuencia_psicoactivas", "lugar_psicoactivas", "n_parejas", "met_embarazo", "n_embarazo", "n_abortos", "pre_relacion_f", "ets", "calle", "observaciones"];
 
 
       if (isset($_POST['informe_grupo'])) {
@@ -54,11 +54,11 @@ if (!func::checkLoginState($dbh)) {
         for ($i=1; $i < 13; $i++) {
             $query .= '`'.$arr[$i].'` = '.$_POST[$arr[$i]].',';
         }
-        for ($i=13; $i < 36; $i++) {
+        for ($i=13; $i < 37; $i++) {
             $query .= '`'.$arr[$i].'` = "'.$_POST[$arr[$i]].'",';
         }
 
-        $query .= '`'.$arr[36].'` = "'.$_POST[$arr[36]].'"';
+        $query .= '`'.$arr[37].'` = "'.$_POST[$arr[37]].'"';
 
         $query .= ' WHERE id_estudiante=' . $_POST['id_ses'] . ' ';
 
@@ -76,25 +76,25 @@ if (!func::checkLoginState($dbh)) {
           $dbh->rollBack();
           echo $query;
           echo '<script language="javascript">';
-          echo 'alert("Erro al guardar intenete nuevamente")';
+          echo 'alert("Erro al guardar intente nuevamente")';
           echo '</script>';
           echo '<script language="javascript">window.location="sesion4.php"</script>';
         }
 
 
       }else {
-        $query = 'INSERT INTO `sesion_4`(`id_estudiante`, `item_1`, `item_2`, `item_3`, `item_4`, `item_5`, `item_6`, `item_7`, `item_8`, `item_9`, `item_10`, `item_11`, `item_12`, `zona_riesgo`, `zona_segura`, `zona_ayuda`, `per_ayudan`, `mec_violencia`, `per_violencia`, `vio_vividas`, `zon_violencia`, `cantidad_cigarrillos`, `frecuencia_cigarrillos`, `lugar_cigarrillos`, `cantidad_alcohol`, `frecuencia_alcohol`, `lugar_alcohol`, `cantidad_psicoactivas`, `frecuencia_psicoactivas`, `lugar_psicoactivas`, `n_parejas`, `met_embarazo`, `n_embarazo`, `n_abortos`, `pre_relacion_f`, `ets`, `calle`) VALUES(';
+        $query = 'INSERT INTO `sesion_4`(`id_estudiante`, `item_1`, `item_2`, `item_3`, `item_4`, `item_5`, `item_6`, `item_7`, `item_8`, `item_9`, `item_10`, `item_11`, `item_12`, `zona_riesgo`, `zona_segura`, `zona_ayuda`, `per_ayudan`, `mec_violencia`, `per_violencia`, `vio_vividas`, `zon_violencia`, `cantidad_cigarrillos`, `frecuencia_cigarrillos`, `lugar_cigarrillos`, `cantidad_alcohol`, `frecuencia_alcohol`, `lugar_alcohol`, `cantidad_psicoactivas`, `frecuencia_psicoactivas`, `lugar_psicoactivas`, `n_parejas`, `met_embarazo`, `n_embarazo`, `n_abortos`, `pre_relacion_f`, `ets`, `calle`, `observaciones`) VALUES(';
 
 
         for ($i=0; $i < 13; $i++) {
             $query .= $_POST[$arr[$i]] . ',';
         }
 
-        for ($i=13; $i < 36; $i++) {
+        for ($i=13; $i < 37; $i++) {
             $query .= '"'.$_POST[$arr[$i]] .'",';
         }
 
-        $query .= '"'.$_POST[$arr[36]] .'")';
+        $query .= '"'.$_POST[$arr[37]] .'")';
 
         $dbh->beginTransaction();
         try {
@@ -110,7 +110,7 @@ if (!func::checkLoginState($dbh)) {
           $dbh->rollBack();
           #echo $query;
           echo '<script language="javascript">';
-          echo 'alert("Erro al guardar intenete nuevamente")';
+          echo 'alert("Erro al guardar intente nuevamente")';
           echo '</script>';
           echo '<script language="javascript">window.location="sesion4.php"</script>';
         }
@@ -165,6 +165,7 @@ if (!func::checkLoginState($dbh)) {
     <th>Presencia de relaciones forzadas y número </th>
     <th>Diagnóstico de enfermedad de transmisión sexual </th>
     <th>Si ha vivido en la calle </th>
+    <th>Observaciones </th>
     <th>GUARDAR</th>
     <th>Mapas hablantes </th>
 
@@ -225,6 +226,7 @@ if (!func::checkLoginState($dbh)) {
           echo '<td><textarea rows="4" cols="40" name="pre_relacion_f" form="form_'.$id.'"></textarea></td>';
           echo '<td><textarea rows="4" cols="40" name="ets" form="form_'.$id.'"></textarea></td>';
           echo '<td><textarea rows="4" cols="40" name="calle" form="form_'.$id.'"></textarea></td>';
+          echo '<td><textarea rows="4" cols="40" name="observaciones" form="form_'.$id.'"></textarea></td>';
 
 
 
@@ -284,6 +286,7 @@ if (!func::checkLoginState($dbh)) {
           echo '<td><textarea rows="4" cols="40" name="pre_relacion_f"           form="form_'.$id.'">'.$s["pre_relacion_f"].'</textarea></td>';
           echo '<td><textarea rows="4" cols="40" name="ets"                      form="form_'.$id.'">'.$s["ets"].'</textarea></td>';
           echo '<td><textarea rows="4" cols="40" name="calle"                    form="form_'.$id.'">'.$s["calle"].'</textarea></td>';
+          echo '<td><textarea rows="4" cols="40" name="observaciones"                    form="form_'.$id.'">'.$s["observaciones"].'</textarea></td>';
 
 
 

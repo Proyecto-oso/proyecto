@@ -58,7 +58,9 @@ if (!func::checkLoginState($dbh)) {
                 $query .= '`total_aptitud_matematica`="' . $_POST[$id . '_total_aptitud_matematica'] . '",';
                 $est["est$id"]["total_aptitud_matematica"] = $_POST[$id . '_total_aptitud_matematica'];
                 $est["est$id"]["informe_via"] = $_POST[$id . '_informe_via'];
-                $query .= '`informe_via` = "' . $_POST[$id . '_informe_via'] . '" WHERE id_estudiante=' . $id . ' ';
+                $est["est$id"]["observaciones"] = $_POST[$id . '_observaciones'];
+                $query .= '`informe_via` = "' . $_POST[$id . '_informe_via']. '",';
+                $query .= '`observaciones` = "' . $_POST[$id . '_observaciones'] . '" WHERE id_estudiante=' . $id . ' ';
             //We start our transaction.
                 $dbh->beginTransaction();
 
@@ -80,7 +82,7 @@ if (!func::checkLoginState($dbh)) {
                     }
                 }
             } else {
-                $query = 'INSERT INTO `sesion_1`(`id_estudiante`,`aptitud_verbal_1`, `aptitud_verbal_2`, `aptitud_verbal_3`, `aptitud_verbal_4`, `aptitud_verbal_5`, `aptitud_verbal_6`, `aptitud_verbal_7`, `aptitud_verbal_8`, `aptitud_verbal_9`, `aptitud_verbal_10`, `aptitud_verbal_11`, `aptitud_verbal_12`, `aptitud_verbal_13`, `aptitud_verbal_14`, `aptitud_verbal_15`, `aptitud_matematica_1`, `aptitud_matematica_2`, `aptitud_matematica_3`, `aptitud_matematica_4`, `aptitud_matematica_5`, `aptitud_matematica_6`, `aptitud_matematica_7`, `aptitud_matematica_8`, `aptitud_matematica_9`, `aptitud_matematica_10`, `aptitud_matematica_11`, `aptitud_matematica_12`, `aptitud_matematica_13`, `aptitud_matematica_14`, `aptitud_matematica_15`, `total_aptitud_matematica`, `total_aptitud_verbal`, `informe_via`) VALUES (';
+                $query = 'INSERT INTO `sesion_1`(`id_estudiante`,`aptitud_verbal_1`, `aptitud_verbal_2`, `aptitud_verbal_3`, `aptitud_verbal_4`, `aptitud_verbal_5`, `aptitud_verbal_6`, `aptitud_verbal_7`, `aptitud_verbal_8`, `aptitud_verbal_9`, `aptitud_verbal_10`, `aptitud_verbal_11`, `aptitud_verbal_12`, `aptitud_verbal_13`, `aptitud_verbal_14`, `aptitud_verbal_15`, `aptitud_matematica_1`, `aptitud_matematica_2`, `aptitud_matematica_3`, `aptitud_matematica_4`, `aptitud_matematica_5`, `aptitud_matematica_6`, `aptitud_matematica_7`, `aptitud_matematica_8`, `aptitud_matematica_9`, `aptitud_matematica_10`, `aptitud_matematica_11`, `aptitud_matematica_12`, `aptitud_matematica_13`, `aptitud_matematica_14`, `aptitud_matematica_15`, `total_aptitud_matematica`, `total_aptitud_verbal`, `informe_via`, `observaciones`) VALUES (';
                 $query .= $row["id"] . ',';
                 for ($i = 1; $i <= 15; $i++) {
                     $query .= '"' . $_POST[$id . '_aptitud_verbal_' . $i] . '",';
@@ -94,8 +96,10 @@ if (!func::checkLoginState($dbh)) {
                 $est["est$id"]["total_aptitud_matematica"] = $_POST[$id . '_total_aptitud_matematica'];
                 $query .= '"' . $_POST[$id . '_total_aptitud_verbal'] . '",';
                 $est["est$id"]["total_aptitud_verbal"] = $_POST[$id . '_total_aptitud_verbal'];
-                $query .= '"' . $_POST[$id . '_informe_via'] . '") ';
+                $query .= '"' . $_POST[$id . '_informe_via'] . '",';
                 $est["est$id"]["informe_via"] = $_POST[$id . '_informe_via'];
+                $query .= '"' . $_POST[$id . '_observaciones'] . '") ';
+                $est["est$id"]["observaciones"] = $_POST[$id . '_observaciones'];
                 $est["est$id"]['id_estudiante'] = $id;
             //We start our transaction.
                 $dbh->beginTransaction();
@@ -166,6 +170,7 @@ if (!func::checkLoginState($dbh)) {
     <th>AM 15</th>
     <th>TOTAL AM</th>
     <th>Informe Valores, Intereses y Aptitudes</th>
+    <th>Observaciones</th>
     <th>Archivo</th>
     <!--<th>GUARDAR</th>-->
     </tr>
@@ -188,6 +193,7 @@ if (!func::checkLoginState($dbh)) {
             //echo '<td><input class="inf" type="text" name="informe_via" value="" /></td>';
             //if ($_SESSION['usuario_tipo'] != 'co-tallerista') {
             echo '<td><textarea rows="4" cols="40" name="' . $id . '_informe_via" form="form1"> </textarea></td>';
+            echo '<td><textarea rows="4" cols="40" name="' . $id . '_observaciones" form="form1"> </textarea></td>';
             //} else {
               //  echo '<input type="hidden" name="' . $id . '_informe_via" value="" />';
             //}
@@ -210,6 +216,7 @@ if (!func::checkLoginState($dbh)) {
             echo '<td><input class="in" type="text" name="' . $id . '_total_aptitud_matematica" value="' . $s["total_aptitud_matematica"] . '" form="form1"/></td>';
             //if ($_SESSION['usuario_tipo'] != 'co-tallerista') {
             echo '<td><textarea rows="4" cols="40" name="' . $id . '_informe_via" form="form1">' . $s["informe_via"] . ' </textarea></td>';
+            echo '<td><textarea rows="4" cols="40" name="' . $id . '_observaciones" form="form1">' . $s["observaciones"] . ' </textarea></td>';
             /*} else {
                 echo '<input type="hidden" name="' . $id . '_informe_via" value="' . $s["informe_via"] . '" />';
             }*/

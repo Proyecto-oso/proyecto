@@ -168,7 +168,8 @@ if (!func::checkLoginState($dbh)) {
       $query .= '`total_eet_laboral' . '`=' . $_POST["total_eet_laboral"] . ',';
       $query .= '`total_eet_familiar' . '`=' . $_POST["total_eet_familiar"] . ',';
       $query .= '`total_eet_vida' . '`=' . $_POST["total_eet_vida"] . ',';
-      $query .= '`total_eet_academico' . '`=' . $_POST["total_eet_academico"] . '';
+      $query .= '`total_eet_academico' . '`=' . $_POST["total_eet_academico"] . ',';
+      $query .= '`observaciones' . '`="' . $_POST["observaciones"] . '"';
       $query .= ' WHERE id_estudiante=' . $_POST['id_ses'] . ' ';
 
 
@@ -189,30 +190,31 @@ if (!func::checkLoginState($dbh)) {
       } catch (Exception $e) {
         $dbh->rollBack();
         echo '<script language="javascript">';
-        echo 'alert("Erro al guardar intenete nuevamente")';
+        echo 'alert("'.$e.'")';
+        echo 'console.log("'.$e.'")';
         echo '</script>';
-        echo '<script language="javascript">window.location="sesion2.php"</script>';
+        //echo '<script language="javascript">window.location="sesion2.php"</script>';
         if (strpos($e->getMessage(), 'Incorrect integer value')) {
           echo '<script language="javascript">';
           echo 'alert("ERROR: el total debe ser un número")';
           echo '</script>';
-          echo '<script language="javascript">window.location="sesion1.php"</script>';
+          echo '<script language="javascript">window.location="sesion2.php"</script>';
         }/*else{
                   echo '<script language="javascript">';
                   echo 'alert("'.$e->getMessage().'")';
                   echo '</script>';
-                  echo '<script language="javascript">window.location="sesion1.php"</script>';
+                  echo '<script language="javascript">window.location="sesion2.php"</script>';
               }*/
         if (strpos($e->getMessage(), ' Data too long for column')) {
           echo '<script language="javascript">';
           echo 'alert("ERROR: debe ser unicamente un caracter")';
           echo '</script>';
-          echo '<script language="javascript">window.location="sesion1.php"</script>';
+          echo '<script language="javascript">window.location="sesion2.php"</script>';
         }
       }
     } else {
 
-      $query = 'INSERT INTO `sesion_2`(`id_estudiante`, `factor_tncf_1`, `factor_tncf_2`, `factor_tncf_3`, `factor_tncf_4`, `factor_tncf_5`, `factor_tncf_6`, `factor_tncf_7`, `factor_tncf_8`, `factor_paf_1`, `factor_paf_2`, `factor_paf_3`, `factor_paf_4`, `factor_icppf_1`, `factor_icppf_2`, `factor_icppf_3`, `factor_icppf_4`, `factor_icppf_5`, `factor_tivf_1`, `factor_tivf_2`, `factor_tivf_3`, `factor_tivf_4`, `total_factor_tncf`, `total_factor_paf`, `total_factor_icppf`, `total_factor_tivf`, `eet_economico_1`, `eet_economico_2`, `eet_laboral_1`, `eet_laboral_2`, `eet_laboral_3`, `eet_familiar_1`, `eet_familiar_2`, `eet_familiar_3`, `eet_vida_1`, `eet_vida_2`, `eet_academico_1`, `eet_academico_2`, `eet_academico_3`, `total_eet_economico`, `total_eet_laboral`, `total_eet_familiar`, `total_eet_vida`, `total_eet_academico`) VALUES (';
+      $query = 'INSERT INTO `sesion_2`(`id_estudiante`, `factor_tncf_1`, `factor_tncf_2`, `factor_tncf_3`, `factor_tncf_4`, `factor_tncf_5`, `factor_tncf_6`, `factor_tncf_7`, `factor_tncf_8`, `factor_paf_1`, `factor_paf_2`, `factor_paf_3`, `factor_paf_4`, `factor_icppf_1`, `factor_icppf_2`, `factor_icppf_3`, `factor_icppf_4`, `factor_icppf_5`, `factor_tivf_1`, `factor_tivf_2`, `factor_tivf_3`, `factor_tivf_4`, `total_factor_tncf`, `total_factor_paf`, `total_factor_icppf`, `total_factor_tivf`, `eet_economico_1`, `eet_economico_2`, `eet_laboral_1`, `eet_laboral_2`, `eet_laboral_3`, `eet_familiar_1`, `eet_familiar_2`, `eet_familiar_3`, `eet_vida_1`, `eet_vida_2`, `eet_academico_1`, `eet_academico_2`, `eet_academico_3`, `total_eet_economico`, `total_eet_laboral`, `total_eet_familiar`, `total_eet_vida`, `total_eet_academico`, `observaciones`) VALUES (';
       $query .= $_POST["id"] . ',';
 
           //$query .= '"' . $_POST["informe_pn"] . '",';
@@ -343,10 +345,17 @@ if (!func::checkLoginState($dbh)) {
         $query .= '0' . ',';
       }
       if (isset($_POST["total_eet_academico"])) {
-        $query .= $_POST["total_eet_academico"] . ')';
+        $query .= $_POST["total_eet_academico"] . ',';
       } else {
         $query .= '0' . ',';
       }
+
+      if (isset($_POST["observaciones"])) {
+        $query .= '"'.$_POST["observaciones"] . '")';
+      } else {
+        $query .= '""' . ',';
+      }
+      echo $query;
 
 
           //echo $query;
@@ -365,25 +374,25 @@ if (!func::checkLoginState($dbh)) {
       } catch (Exception $e) {
         $dbh->rollBack();
         echo '<script language="javascript">';
-        echo 'alert("Erro al guardar intenete nuevamente")';
+        echo 'alert("Erro al guardar intente nuevamente")';
         echo '</script>';
-        echo '<script language="javascript">window.location="sesion2.php"</script>';
+        //echo '<script language="javascript">window.location="sesion2.php"</script>';
         if (strpos($e->getMessage(), 'Incorrect integer value')) {
           echo '<script language="javascript">';
           echo 'alert("ERROR: el total debe ser un número")';
           echo '</script>';
-          echo '<script language="javascript">window.location="sesion1.php"</script>';
+          echo '<script language="javascript">window.location="sesion2.php"</script>';
         }/*else{
                   echo '<script language="javascript">';
                   echo 'alert("'.$e->getMessage().'")';
                   echo '</script>';
-                  echo '<script language="javascript">window.location="sesion1.php"</script>';
+                  echo '<script language="javascript">window.location="sesion2.php"</script>';
               }*/
         if (strpos($e->getMessage(), ' Data too long for column')) {
           echo '<script language="javascript">';
           echo 'alert("ERROR: debe ser unicamente un caracter")';
           echo '</script>';
-          echo '<script language="javascript">window.location="sesion1.php"</script>';
+          echo '<script language="javascript">window.location="sesion2.php"</script>';
         }
       }
     }
@@ -440,6 +449,7 @@ if (!func::checkLoginState($dbh)) {
     <th>total eet familiar </th>
     <th>total eet vida </th>
     <th>total eet academico </th>
+    <th>Observaciones </th>
     <th>GUARDAR</th>
     <th>Subir linea de vida</th>
 
@@ -591,6 +601,7 @@ if (!func::checkLoginState($dbh)) {
           echo '<td><input class="in" type="text" name="total_eet_familiar" value="0" /></td>';
           echo '<td><input class="in" type="text" name="total_eet_vida" value="0" /></td>';
           echo '<td><input class="in" type="text" name="total_eet_academico" value="0" /></td>';
+          echo '<td><textarea rows="4" cols="40" name="observaciones" > </textarea></td>';
 
 
           echo '<input type="hidden" name="name" value="' . $row['nombre'] . '" />';
@@ -750,6 +761,7 @@ if (!func::checkLoginState($dbh)) {
           echo '<td><input class="in" type="text" name="total_eet_familiar"  value="' . $s["total_eet_familiar"] . '" /></td>';
           echo '<td><input class="in" type="text" name="total_eet_vida"      value="' . $s["total_eet_vida"] . '" /></td>';
           echo '<td><input class="in" type="text" name="total_eet_academico" value="' . $s["total_eet_academico"] . '" /></td>';
+          echo '<td><textarea rows="4" cols="40" name="observaciones" >' . $s["observaciones"] . ' </textarea></td>';
 
 
           echo '<input type="hidden" name="name" value="' . $row['nombre'] . '" />';
@@ -763,8 +775,8 @@ if (!func::checkLoginState($dbh)) {
 
         }
 
-        $path='uploads/sesion2/'.$row['id'];
-        if(glob($path.'*')){
+        $path = 'uploads/sesion2/' . $row['id'];
+        if (glob($path . '*')) {
           $arr = glob($path . '*');
           echo '<a href="' . $arr[0] . '">Ver archivo</a>';
         }
@@ -793,12 +805,12 @@ if (!func::checkLoginState($dbh)) {
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
       echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '"  id="form_pn" >';
-        echo '<div class="group_container">';
-          echo '<input type="hidden" name="informe_grupo2" value="" />';
-          echo '<p class="titulo_informe"> INFORME SOBRE EVENTOS POSITIVOS Y NEGATIVOS DEL GRUPO</p>';
-          echo '<td><textarea rows="6" cols="150" name="informe_pn"  form="form_pn" class="informe_grupo"  >' . $row["informe_pn"] . ' </textarea></td></br>';
-          echo '<td><input class="button" type="submit" value="Enviar informe del grupo"/></td>';
-        echo '</div>';
+      echo '<div class="group_container">';
+      echo '<input type="hidden" name="informe_grupo2" value="" />';
+      echo '<p class="titulo_informe"> INFORME SOBRE EVENTOS POSITIVOS Y NEGATIVOS DEL GRUPO</p>';
+      echo '<td><textarea rows="6" cols="150" name="informe_pn"  form="form_pn" class="informe_grupo"  >' . $row["informe_pn"] . ' </textarea></td></br>';
+      echo '<td><input class="button" type="submit" value="Enviar informe del grupo"/></td>';
+      echo '</div>';
       echo '</form>';
     }
 
