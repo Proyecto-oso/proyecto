@@ -793,12 +793,12 @@ if (!func::checkLoginState($dbh)) {
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     foreach ($rows as $row) {
       echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '"  id="form_pn" >';
-      echo '<div class="group_container">';
-      echo '<input type="hidden" name="informe_grupo2" value="" />';
-      echo '<p class="titulo_informe"> INFORME SOBRE EVENTOS POSITIVOS Y NEGATIVOS DEL GRUPO</p>';
-      echo '<td><textarea rows="6" cols="150" name="informe_pn"  form="form_pn" class="informe_grupo"  >' . $row["informe_pn"] . ' </textarea></td></br>';
-      echo '<td><input class="button" type="submit" value="Enviar informe del grupo"/></td>';
-      echo '</div>';
+        echo '<div class="group_container">';
+          echo '<input type="hidden" name="informe_grupo2" value="" />';
+          echo '<p class="titulo_informe"> INFORME SOBRE EVENTOS POSITIVOS Y NEGATIVOS DEL GRUPO</p>';
+          echo '<td><textarea rows="6" cols="150" name="informe_pn"  form="form_pn" class="informe_grupo"  >' . $row["informe_pn"] . ' </textarea></td></br>';
+          echo '<td><input class="button" type="submit" value="Enviar informe del grupo"/></td>';
+        echo '</div>';
       echo '</form>';
     }
 

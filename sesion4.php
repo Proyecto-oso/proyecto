@@ -21,7 +21,7 @@ if (!func::checkLoginState($dbh)) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="styles/sesion1.css">
+    <link rel="stylesheet" type="text/css" href="styles/sesion2.css">
     <title>Proyecto Psicologia</title>
 <style>
   th{
@@ -33,6 +33,20 @@ if (!func::checkLoginState($dbh)) {
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $arr = ["id_estudiante", "item_1", "item_2", "item_3", "item_4", "item_5", "item_6", "item_7", "item_8", "item_9", "item_10", "item_11", "item_12", "zona_riesgo", "zona_segura", "zona_ayuda", "per_ayudan", "mec_violencia", "per_violencia", "vio_vividas", "zon_violencia", "cantidad_cigarrillos", "frecuencia_cigarrillos", "lugar_cigarrillos", "cantidad_alcohol", "frecuencia_alcohol", "lugar_alcohol", "cantidad_psicoactivas", "frecuencia_psicoactivas", "lugar_psicoactivas", "n_parejas", "met_embarazo", "n_embarazo", "n_abortos", "pre_relacion_f", "ets", "calle"];
+
+
+      if (isset($_POST['informe_grupo'])) {
+        $query = 'UPDATE `grupo` SET `inf_s3` = "' . $_POST['inf_s3'] . '" WHERE `grupo`.`id` = ' . $_SESSION['grupo_id'] . '; ';
+        $dbh->beginTransaction();
+        $stmt = $dbh->prepare($query);
+        $stmt->execute();
+        $dbh->commit();
+        echo '<script language="javascript">';
+        echo 'alert("Guardado correctamente")';
+        echo '</script>';
+        echo '<script language="javascript">window.location="sesion4.php"</script>';
+      }
+
 
       if (isset($_POST['id_ses'])){
         $query = 'UPDATE `sesion_4` SET';
@@ -304,6 +318,24 @@ if (!func::checkLoginState($dbh)) {
     ?>
     </table>
 
+    <?php
+
+        $query = ' SELECT * FROM `grupo` WHERE id = ' . $_SESSION['grupo_id'] . ' ';
+        $stmt = $dbh->prepare($query);
+        $stmt->execute([$_SESSION['grupo_id']]);
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($rows as $row) {
+          echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '"  id="form_pn" >';
+            echo '<div class="group_container">';
+              echo '<input type="hidden" name="informe_grupo" value="" />';
+              echo '<p class="titulo_informe">INFORME SOBRE LOS RECURSOS IDENTIFICADOS POR TODOS LOS PARTICIPANTES</p>';
+              echo '<td><textarea rows="6" cols="150" name="inf_s3"  form="form_pn" class="informe_grupo"  >' . $row["inf_s3"] . ' </textarea></td></br>';
+              echo '<td><input class="button" type="submit" value="Enviar informe del grupo"/></td>';
+            echo '</div>';
+          echo '</form>';
+        }
+
+    ?>
 
 
 </body>
