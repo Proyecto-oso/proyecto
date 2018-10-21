@@ -95,7 +95,7 @@ if (!func::checkLoginState($dbh)) {
       }
 
 //***********************************************************
-      if (isset($_POST["factor_tivf_$I"])) {
+      if (isset($_POST["total_factor_tncf"])) {
         $query .= '`total_factor_tncf' . '`=' . $_POST["total_factor_tncf"] . ',';
       } else {
         $query .= '`total_factor_tncf' . '`=' . '0' . ',';
@@ -180,6 +180,7 @@ if (!func::checkLoginState($dbh)) {
         $stmt = $dbh->prepare($query);
         $stmt->execute();
         $dbh->commit();
+        #echo $query;
         echo '<script language="javascript">';
         echo 'alert("Guardado correctamente")';
         echo '</script>';
@@ -520,10 +521,10 @@ if (!func::checkLoginState($dbh)) {
 
           }
 
-          echo '<td><input class="in" type="text" name="total_factor_tncf " value="0" /></td>';
-          echo '<td><input class="in" type="text" name="total_factor_paf" value="0" /></td>';
-          echo '<td><input class="in" type="text" name="total_factor_icppf" value="0" /></td>';
-          echo '<td><input class="in" type="text" name="total_factor_tivf" value="0" /></td>';
+          echo '<td><input class="in" type="number" name="total_factor_tncf" value="0" /> </td>';
+          echo '<td><input class="in" type="number" name="total_factor_paf" value="0" />   </td>';
+          echo '<td><input class="in" type="number" name="total_factor_icppf" value="0" /> </td>';
+          echo '<td><input class="in" type="number" name="total_factor_tivf" value="0" />  </td>';
 
           $eet_economico = [null, null];
           for ($i = 0; $i < 2; $i++) {
@@ -597,21 +598,6 @@ if (!func::checkLoginState($dbh)) {
           echo '<td><input  class="button" type="submit" value="Enviar"/></td>';
           echo '</form>';
           echo '<td>';
-          $path = 'uploads/sesion2/' . $row['id'];
-          if (glob($path . '*')) {
-            echo '<a href="' . $path . '">Ver archivo</a>';
-          }
-
-          echo '
-              <form action="upload.php" method="post" enctype="multipart/form-data">
-                  Select image to upload:
-                  <input type="hidden" name="Sesion2" value="Sesion2" />
-                  <input type="hidden" name="image_id" value="' . $row['id'] . '" />
-                  <input type="hidden" name="redirect" value="sesion2" />
-                  <input type="file" class="fileToUpload" name="fileToUpload" id="fileToUpload">
-                  <input type="submit" class="Upload" value="Upload Image" name="submit">
-              </form>
-            </td>';
 
         } else { //si esta creado los espacios se llenan con los correspondientes elementos que ya estan en la base de datos
     /*
@@ -685,10 +671,10 @@ if (!func::checkLoginState($dbh)) {
 
           }
 
-          echo '<td><input class="in" type="text" name="total_factor_tncf " value="' . $s["total_factor_tncf"] . '" /></td>';
-          echo '<td><input class="in" type="text" name="total_factor_paf"   value="' . $s["total_factor_paf"] . '" /></td>';
-          echo '<td><input class="in" type="text" name="total_factor_icppf" value="' . $s["total_factor_icppf"] . '" /></td>';
-          echo '<td><input class="in" type="text" name="total_factor_tivf"  value="' . $s["total_factor_tivf"] . '" /></td>';
+          echo '<td><input class="in" type="number" name="total factor tncf" value="' . $s["total_factor_tncf"] . '" /></td>';
+          echo '<td><input class="in" type="number" name="total_factor_paf"   value="' . $s["total_factor_paf"] . '" /></td>';
+          echo '<td><input class="in" type="number" name="total_factor_icppf" value="' . $s["total_factor_icppf"] . '" /></td>';
+          echo '<td><input class="in" type="number" name="total_factor_tivf"  value="' . $s["total_factor_tivf"] . '" /></td>';
 
           $eet_economico = [null, null];
           for ($i = 0; $i < 2; $i++) {
@@ -773,24 +759,25 @@ if (!func::checkLoginState($dbh)) {
 
           echo '</form>';
           echo '<td>';
-          $path = 'uploads/sesion2/' . $row['id'];
-          if (glob($path . '*')) {
-            echo '<a href="' . $path . '">Ver archivo</a>';
-          }
 
-          echo '
-
-              <form action="upload.php" method="post" enctype="multipart/form-data">
-                  Select image to upload:
-                  <input type="hidden" name="Sesion2" value="Sesion2" />
-                  <input type="hidden" name="image_id" value="' . $row['id'] . '" />
-                  <input type="hidden" name="redirect" value="sesion2" />
-                  <input class="fileToUpload" type="file" name="fileToUpload" id="fileToUpload">
-                  <input class="upload" type="submit" value="Upload Image" name="submit">
-              </form>
-            </td>';
 
         }
+
+        $path='uploads/sesion2/'.$row['id'];
+        if(glob($path.'*')){
+          $arr = glob($path . '*');
+          echo '<a href="' . $arr[0] . '">Ver archivo</a>';
+        }
+        echo '
+                      <form action="upload.php" method="post" enctype="multipart/form-data">
+                          Select image to upload:
+                          <input type="hidden" name="Sesion2" value="Sesion2" />
+                          <input type="hidden" name="redirect" value="sesion2" />
+                          <input type="hidden" name="image_id" value="' . $row['id'] . '" />
+                          <input class="fileToUpload" type="file" name="fileToUpload" id="fileToUpload">
+                          <input class="upload" type="submit" value="Upload Image" name="submit">
+                      </form>
+                    </td>';
         echo '</tr>';
       }
 

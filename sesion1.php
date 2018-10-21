@@ -221,7 +221,9 @@ if (!func::checkLoginState($dbh)) {
         echo '<td>';
         $path='uploads/sesion1/'.$row['id'];
         if(glob($path.'*')){
-            echo '<a href="'.$path.'">Ver archivo</a>';
+          $arr = glob($path . '*');
+          echo '<a href="' . $arr[0] . '">Ver archivo</a>';
+          
         }
         echo '
                       <form action="upload.php" method="post" enctype="multipart/form-data">

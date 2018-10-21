@@ -69,7 +69,13 @@ if (isset($_POST["submit"])) {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
           echo '<div class="container">';
             echo "<h1>The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.</h1></br>";
-            echo '<img src="'.$target_file.'" alt="imagen " style="width:500px;height:600px;" ></br>';
+            if ($imageFileType =="pdf") {
+              // code...
+              echo "<h1>Puedes revisar el pdf en la opcion ver archivo de cada estudiante.</h1></br>";
+            }else {
+              // code...
+              echo '<img src="'.$target_file.'" alt="imagen " style="width:500px;height:600px;"></br>';
+            }
             echo '<a href="'.$redirect.'.php" class="w3-btn w3-black btn" >Regresar a la sesion</a>';
           echo '</div>';
         } else {
