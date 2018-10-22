@@ -12,19 +12,70 @@ if (!func::checkLoginState($dbh)) {
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#000000">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="styles/sesion1.css">
     <title>Proyecto Psicologia</title>
-<style>
-</style>
 </head>
+<style>
+/* Use overflow:scroll on your container to enable scrolling: */
+
+.tb-container {
+  max-width: 100%;
+  max-height: 700px;
+  overflow: scroll;
+}
+
+
+/* Use position: sticky to have it stick to the edge
+ * and top, right, or left to choose which edge to stick to: */
+
+thead th {
+  position: sticky;
+  top: 0;
+}
+
+tbody th {
+  position: sticky;
+  left: 0;
+}
+
+
+/* To have the header in the first column stick to the left: */
+
+thead th:first-child {
+  left: 0;
+  z-index: 1;
+}
+
+
+/* Just to display it nicely: */
+
+thead th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tbody th {
+  background: #FFF;
+  border-right: 1px solid #CCC;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td,
+th {
+  padding: 0.5em;
+}
+</style>
+<body>
+<div class="tb-container">
 <body>
     <?php
     $query = ' SELECT * FROM estudiantes WHERE grupo_id = ? ';
@@ -59,7 +110,7 @@ if (!func::checkLoginState($dbh)) {
                 $est["est$id"]["total_aptitud_matematica"] = $_POST[$id . '_total_aptitud_matematica'];
                 $est["est$id"]["informe_via"] = $_POST[$id . '_informe_via'];
                 $est["est$id"]["observaciones"] = $_POST[$id . '_observaciones'];
-                $query .= '`informe_via` = "' . $_POST[$id . '_informe_via']. '",';
+                $query .= '`informe_via` = "' . $_POST[$id . '_informe_via'] . '",';
                 $query .= '`observaciones` = "' . $_POST[$id . '_observaciones'] . '" WHERE id_estudiante=' . $id . ' ';
             //We start our transaction.
                 $dbh->beginTransaction();
@@ -129,15 +180,12 @@ if (!func::checkLoginState($dbh)) {
         echo '</script>';
 
     } ?>
-    <div class="flow-container">
-
-    <form id="form1" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"></form>
-
-
-    <table class="tb" style="float: left;" >
+     <form id="form1" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"></form>
+<table class="table" >
+<thead >
     <tr class="titles">
-    <th>Nombre</th>
-    <th>AV 1</th>
+    <th >Nombre</th>
+    <th >AV 1</th>
     <th>AV 2</th>
     <th>AV 3</th>
     <th>AV 4</th>
@@ -174,15 +222,19 @@ if (!func::checkLoginState($dbh)) {
     <th>Archivo</th>
     <!--<th>GUARDAR</th>-->
     </tr>
+    </thead>
+    <tbody>
     <?php
     foreach ($rows as $row) {
         $id = $row['id'];
         $s = $est["est$id"];
         echo ' <tr>
-                <th> ' . $row['nombre'] . ' </th> ';
+        <th>' . $row['nombre'] . '</th>';
+
         if (!isset($s['id_estudiante'])) {
             //echo ' <form method = "post" action = "' . htmlspecialchars($_SERVER["PHP_SELF"]) . '" id="form_' . $s['id_estudiante'] . '" >';
-            for ($i = 0; $i < 15; $i++) {
+            echo '<td><input class="in" type="text" name="' . $id . '_aptitud_verbal_' . (1) . '" value="" form="form1"/></td>';
+            for ($i = 1; $i < 15; $i++) {
                 echo '<td><input class="in" type="text" name="' . $id . '_aptitud_verbal_' . ($i + 1) . '" value="" form="form1"/></td>';
             }
             echo '<td><input class="in" type="text" name="' . $id . '_total_aptitud_verbal" value="0" form="form1"/></td>';
@@ -203,7 +255,8 @@ if (!func::checkLoginState($dbh)) {
            // echo '</form>';
         } else {
             //echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '" id="form_' . $s['id_estudiante'] . '" >';
-            for ($i = 1; $i <= 15; $i++) {
+            echo '<td><input class="in" type="text" name="' . $id . '_aptitud_verbal_' . 1 . '" value="' . $s["aptitud_verbal_1"] . '" form="form1"/></td>';
+            for ($i = 2; $i <= 15; $i++) {
                 echo '<td><input class="in" type="text" name="' . $id . '_aptitud_verbal_' . $i . '" value="' . $s["aptitud_verbal_$i"] . '" form="form1"/></td>';
             }
             echo '<td><input class="in" type="text" name="' . $id . '_total_aptitud_verbal" value="' . $s["total_aptitud_verbal"] . '"form="form1" /></td>';
@@ -226,11 +279,11 @@ if (!func::checkLoginState($dbh)) {
 
         }
         echo '<td>';
-        $path='uploads/sesion1/'.$row['id'];
-        if(glob($path.'*')){
-          $arr = glob($path . '*');
-          echo '<a href="' . $arr[0] . '">Ver archivo</a>';
-          
+        $path = 'uploads/sesion1/' . $row['id'];
+        if (glob($path . '*')) {
+            $arr = glob($path . '*');
+            echo '<a href="' . $arr[0] . '">Ver archivo</a>';
+
         }
         echo '
                       <form action="upload.php" method="post" enctype="multipart/form-data">
@@ -245,13 +298,14 @@ if (!func::checkLoginState($dbh)) {
         echo '</tr>';
     }
     ?>
+    </tbody>
     </table>
-    <input class="button" type="submit" value="Enviar" form ="form1"/>
-    </form>
-
-    </div>
-</body>
-<?php
+    
+    
+</div>
+<input class="button" type="submit" value="Enviar" form ="form1"/>
+<br>
+    <?php
 
 include_once("footer.php");
 ?>

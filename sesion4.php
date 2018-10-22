@@ -23,10 +23,58 @@ if (!func::checkLoginState($dbh)) {
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="styles/sesion2.css">
     <title>Proyecto Psicologia</title>
-<style>
-  th{
-    text-align: center;
-  }
+    <style>
+/* Use overflow:scroll on your container to enable scrolling: */
+
+.tb-container {
+  max-width: 100%;
+  max-height: 700px;
+  overflow: scroll;
+}
+
+
+/* Use position: sticky to have it stick to the edge
+ * and top, right, or left to choose which edge to stick to: */
+
+thead th {
+  position: sticky;
+  top: 0;
+}
+
+tbody th {
+  position: sticky;
+  left: 0;
+}
+
+
+/* To have the header in the first column stick to the left: */
+
+thead th:first-child {
+  left: 0;
+  z-index: 1;
+}
+
+
+/* Just to display it nicely: */
+
+thead th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tbody th {
+  background: #FFF;
+  border-right: 1px solid #CCC;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td,
+th {
+  padding: 0.5em;
+}
 </style>
 </head>
 <body>
@@ -118,10 +166,11 @@ if (!func::checkLoginState($dbh)) {
 
 
     }else{ ?>
-    <div class="flow-container">
+    <div class="tb-container">
 
 
-    <table class="tb" style="float: left;" >
+    <table class="table" style="float: left;" >
+    <thead>
     <tr class="titles">
     <th>Nombre</th>
     <th>item 1 </th>
@@ -173,6 +222,8 @@ if (!func::checkLoginState($dbh)) {
 
     <!--<th>GUARDAR</th>-->
     </tr>
+    </thead>
+    <tbody>
     <?php
     $query = ' SELECT * FROM estudiantes WHERE grupo_id = ? ';
     $stmt = $dbh->prepare($query);
@@ -319,7 +370,10 @@ if (!func::checkLoginState($dbh)) {
         echo '</tr>';
     }
     ?>
+    </tbody>
     </table>
+  </div>
+    
 
     <?php
 
