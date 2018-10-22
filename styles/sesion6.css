@@ -1,0 +1,52 @@
+table, td, th {
+    border: 1px solid black;
+    text-align: left;
+}
+
+table {
+    width: 100%;
+}
+
+th, td {
+    width: 30px;
+    padding: 15px;
+}
+
+.titles{
+  background-color: #4CAF50;
+  color: white;
+}
+.container2{
+  width: 150px;
+}
+
+.group_container{
+  text-align: center;
+}
+
+.titulo_informe{
+  margin: 20px;
+
+}
+
+.informe_grupo{
+  margin:20px
+}
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.radio-cont{
+    width: 200px;
+}
+tr:nth-child(even){background-color: #F0F0F0}
