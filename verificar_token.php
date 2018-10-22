@@ -49,7 +49,7 @@ if (isset($_POST['token'])) {
 function enviarCorreo($correo)
 {
     $token = func::createToken(6);
-    // El mensaje
+    /*// El mensaje
     $mensaje = "El token de ingreso es el siguiente: \r\n$token";
 
     // Si cualquier línea es más larga de 70 caracteres, se debería usar wordwrap()
@@ -69,8 +69,7 @@ function enviarCorreo($correo)
       $message = "El mensaje fue enviado exitosamente<br  /> nos comunicaremos contigo lo antes posible para aclarar dudas y acordar entragas ";
     }
 
-    //echo $message;
-
+    //echo $message;*/
     return $token;
 }
  if (isset($_POST['correo'])) {

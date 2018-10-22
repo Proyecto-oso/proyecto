@@ -2,11 +2,27 @@ table, td, th {
     border: 1px solid black;
     text-align: left;
 }
-
 table {
-    border-collapse: collapse;
-    width: 100%;
-}
+    display: block;
+    overflow-x: auto;
+  }
+  .static-h {
+    background-color: #4CAF50;
+    color: white;
+    position: absolute;
+    width: 100px;
+    height: 130px;
+  }
+  .static {
+    position: absolute;
+    background-color: white;
+    width: 100px;
+    height: 130px;
+  }
+  
+  .first-col {
+    padding-left: 120.5px!important;
+  }
 
 .in{
     width:50px;
@@ -39,4 +55,8 @@ tr:nth-child(even){background-color: #F0F0F0}
     margin: 4px 2px;
     cursor: pointer;
     font-weight: bold;
+}
+#myChart{
+        width: 500px;
+        height: 500px;
 }
