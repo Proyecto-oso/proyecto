@@ -290,7 +290,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '"  >';
 echo '<div class="group_container">';
 echo '<input type="hidden" name="diario" value="" />';
-echo '<h4 class="titulo_informe" >Diario de campo del taller sobre toma de decisiones</h4>';
+echo '<h4 class="titulo_informe" >Diario de campo del taller sobre resolución de problemas</h4>';
 echo '<textarea rows="6" cols="150" name="inf_s6_diario" class="informe_grupo"  >' . $row["inf_s6_diario"] . ' </textarea></br>';
 echo '<input class="button" type="submit" value="Enviar informe del grupo"/>';
 echo '</div>';
