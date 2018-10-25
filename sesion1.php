@@ -300,8 +300,8 @@ th {
     ?>
     </tbody>
     </table>
-    
-    
+
+
 </div>
 <input class="button" type="submit" value="Enviar" form ="form1"/>
 <br>
