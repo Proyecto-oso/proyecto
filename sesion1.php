@@ -75,7 +75,6 @@ th {
 }
 </style>
 <body>
-<div class="tb-container">
 <body>
     <?php
     $query = ' SELECT * FROM estudiantes WHERE grupo_id = ? ';
@@ -302,7 +301,6 @@ th {
     </table>
     
     
-</div>
 <input class="button" type="submit" value="Enviar" form ="form1"/>
 <br>
     <?php
