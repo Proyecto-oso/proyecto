@@ -75,118 +75,23 @@ th {
 }
 </style>
 <body>
+<div class="tb-container">
 <body>
     <?php
     $query = ' SELECT * FROM estudiantes WHERE grupo_id = ? ';
     $stmt = $dbh->prepare($query);
     $stmt->execute([$_SESSION['grupo_id']]);
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $est = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $est = [];
-    foreach ($rows as $row) {
-        $id = $row['id'];
-        $query = ' SELECT * FROM sesion_1 WHERE id_estudiante = ? ';
-        $stmt = $dbh->prepare($query);
-        $stmt->execute([$id]);
-        $s = $stmt->fetch(PDO::FETCH_ASSOC);
-        $est["est$id"] = $s;
-    }
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        foreach ($rows as $row) {
-            $id = $row['id'];
-            if (isset($_POST['id_ses' . $id])) {
-                $query = 'UPDATE `sesion_1` SET';
-                for ($i = 1; $i <= 15; $i++) {
-                    $query .= '`aptitud_verbal_' . $i . '`="' . $_POST[$id . '_aptitud_verbal_' . $i] . '",';
-                    $est["est$id"]["aptitud_verbal_$i"] = $_POST[$id . '_aptitud_verbal_' . $i];
-                }
-                $query .= '`total_aptitud_verbal`="' . $_POST[$id . '_total_aptitud_verbal'] . '",';
-                $est["est$id"]["total_aptitud_verbal"] = $_POST[$id . '_total_aptitud_verbal'];
-                for ($i = 1; $i <= 15; $i++) {
-                    $query .= '`aptitud_matematica_' . $i . '`="' . $_POST[$id . '_aptitud_matematica_' . $i] . '",';
-                    $est["est$id"]["aptitud_matematica_$i"] = $_POST[$id . '_aptitud_matematica_' . $i];
-                }
-                $query .= '`total_aptitud_matematica`="' . $_POST[$id . '_total_aptitud_matematica'] . '",';
-                $est["est$id"]["total_aptitud_matematica"] = $_POST[$id . '_total_aptitud_matematica'];
-                $est["est$id"]["informe_via"] = $_POST[$id . '_informe_via'];
-                $est["est$id"]["observaciones"] = $_POST[$id . '_observaciones'];
-                $query .= '`informe_via` = "' . $_POST[$id . '_informe_via'] . '",';
-                $query .= '`observaciones` = "' . $_POST[$id . '_observaciones'] . '" WHERE id_estudiante=' . $id . ' ';
-            //We start our transaction.
-                $dbh->beginTransaction();
-
-                try {
-                    $stmt = $dbh->prepare($query);
-                    $stmt->execute();
-                    $dbh->commit();
-                } catch (Exception $e) {
-                    $dbh->rollBack();
-                    if (strpos($e->getMessage(), 'Incorrect integer value')) {
-                        echo '<script language="javascript">';
-                        echo 'alert("ERROR: el total debe ser un número")';
-                        echo '</script>';
-                    }
-                    if (strpos($e->getMessage(), ' Data too long for column')) {
-                        echo '<script language="javascript">';
-                        echo 'alert("ERROR: debe ser unicamente un caracter")';
-                        echo '</script>';
-                    }
-                }
-            } else {
-                $query = 'INSERT INTO `sesion_1`(`id_estudiante`,`aptitud_verbal_1`, `aptitud_verbal_2`, `aptitud_verbal_3`, `aptitud_verbal_4`, `aptitud_verbal_5`, `aptitud_verbal_6`, `aptitud_verbal_7`, `aptitud_verbal_8`, `aptitud_verbal_9`, `aptitud_verbal_10`, `aptitud_verbal_11`, `aptitud_verbal_12`, `aptitud_verbal_13`, `aptitud_verbal_14`, `aptitud_verbal_15`, `aptitud_matematica_1`, `aptitud_matematica_2`, `aptitud_matematica_3`, `aptitud_matematica_4`, `aptitud_matematica_5`, `aptitud_matematica_6`, `aptitud_matematica_7`, `aptitud_matematica_8`, `aptitud_matematica_9`, `aptitud_matematica_10`, `aptitud_matematica_11`, `aptitud_matematica_12`, `aptitud_matematica_13`, `aptitud_matematica_14`, `aptitud_matematica_15`, `total_aptitud_matematica`, `total_aptitud_verbal`, `informe_via`, `observaciones`) VALUES (';
-                $query .= $row["id"] . ',';
-                for ($i = 1; $i <= 15; $i++) {
-                    $query .= '"' . $_POST[$id . '_aptitud_verbal_' . $i] . '",';
-                    $est["est$id"]["aptitud_verbal_$i"] = $_POST[$id . '_aptitud_verbal_' . $i];
-                }
-                for ($i = 1; $i <= 15; $i++) {
-                    $query .= '"' . $_POST[$id . '_aptitud_matematica_' . $i] . '",';
-                    $est["est$id"]["aptitud_matematica_$i"] = $_POST[$id . '_aptitud_matematica_' . $i];
-                }
-                $query .= '"' . $_POST[$id . '_total_aptitud_matematica'] . '",';
-                $est["est$id"]["total_aptitud_matematica"] = $_POST[$id . '_total_aptitud_matematica'];
-                $query .= '"' . $_POST[$id . '_total_aptitud_verbal'] . '",';
-                $est["est$id"]["total_aptitud_verbal"] = $_POST[$id . '_total_aptitud_verbal'];
-                $query .= '"' . $_POST[$id . '_informe_via'] . '",';
-                $est["est$id"]["informe_via"] = $_POST[$id . '_informe_via'];
-                $query .= '"' . $_POST[$id . '_observaciones'] . '") ';
-                $est["est$id"]["observaciones"] = $_POST[$id . '_observaciones'];
-                $est["est$id"]['id_estudiante'] = $id;
-            //We start our transaction.
-                $dbh->beginTransaction();
-
-                try {
-                    $stmt = $dbh->prepare($query);
-                    $stmt->execute();
-                    $dbh->commit();
-
-                } catch (Exception $e) {
-                    $dbh->rollBack();
-                    if (strpos($e->getMessage(), 'Incorrect integer value')) {
-                        echo '<script language="javascript">';
-                        echo 'alert("ERROR: el total debe ser un número")';
-                        echo '</script>';
-                    }
-                    if (strpos($e->getMessage(), ' Data too long for column')) {
-                        echo '<script language="javascript">';
-                        echo 'alert("ERROR: debe ser unicamente un caracter")';
-                        echo '</script>';
-                    }
-                }
-            }
-        }
-        echo '<script language="javascript">';
-        echo 'alert("Guardado correctamente")';
-        echo '</script>';
-
     } ?>
-    <div class="tb-container">
      <form id="form1" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"></form>
 <table class="table" >
 <thead >
     <tr class="titles">
-    <th >Nombre</th>
-    <th >AV 1</th>
-    <th>AV 2</th>
+    <th>Nombre</th>
+    <th>Edad</th>
+    <th>Sexo</th>
     <th>AV 3</th>
     <th>AV 4</th>
     <th>AV 5</th>
@@ -220,7 +125,6 @@ th {
     <th>Informe Valores, Intereses y Aptitudes</th>
     <th>Observaciones</th>
     <th>Archivo</th>
-    <th>Informe</th>
     <!--<th>GUARDAR</th>-->
     </tr>
     </thead>
@@ -296,23 +200,17 @@ th {
                           <input class="upload" type="submit" value="Upload Image" name="submit">
                       </form>
                     </td>';
-        echo '<td>
-                <form method="post" action="informe_s1.php">
-                    <input type="hidden" name="id_estudiante" value="' . $row['id'] . '" />
-                    <input type="hidden" name="id_grupo" value="' . $row['grupo_id'] . '" />
-                    <input class="button" type="submit" value="Generar"/>
-                </form>
-              </td>';
         echo '</tr>';
     }
     ?>
     </tbody>
     </table>
-
+    
+    
 </div>
 <input class="button" type="submit" value="Enviar" form ="form1"/>
 <br>
     <?php
 
-include_once("footer.php");
-?>
+    include_once("footer.php");
+    ?>
