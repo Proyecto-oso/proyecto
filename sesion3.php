@@ -104,10 +104,10 @@ th {
           // code...
             if (isset($_POST[$id . '_pregunta_' . $i])) {
               $query .= '`pregunta_' . $i . '`= ' . $_POST[$id . '_pregunta_' . $i] . ',';
-              $est[$id]['pregunta_'.$i] = $_POST[$id . '_pregunta_' . $i];
+              $est[$id]['pregunta_' . $i] = $_POST[$id . '_pregunta_' . $i];
             } else {
               $query .= '`pregunta_' . $i . '`= -1,';
-              $est[$id]['pregunta_'.$i] = -1;
+              $est[$id]['pregunta_' . $i] = -1;
             }
           }
 
@@ -157,10 +157,10 @@ th {
           // code...
             if (isset($_POST[$id . '_pregunta_' . $i])) {
               $query .= $_POST[$id . '_pregunta_' . $i] . ',';
-              $est[$id]['pregunta_'.$i] = $_POST[$id . '_pregunta_' . $i];
+              $est[$id]['pregunta_' . $i] = $_POST[$id . '_pregunta_' . $i];
             } else {
               $query .= "-1 ,";
-              $est[$id]['pregunta_'.$i] = -1;
+              $est[$id]['pregunta_' . $i] = -1;
             }
           }
 
@@ -175,11 +175,13 @@ th {
           $query .= $_POST[$id . '_ejercicios'] . ',';
           $est[$id]['ejercicios'] = $_POST[$id . '_ejercicios'];
           $query .= $_POST[$id . '_tallerista'] . ',';
-          $est[$id]['talleristas'] = $_POST[$id . '_tallerista'];
+          $est[$id]['tallerista'] = $_POST[$id . '_tallerista'];
           $query .= $_POST[$id . '_utilidad'] . ',';
           $est[$id]['utilidad'] = $_POST[$id . '_utilidad'];
           $query .= '"' . $_POST[$id . '_observaciones'] . '")';
           $est[$id]['observaciones'] = $_POST[$id . '_observaciones'];
+
+          $est[$id]['id_estudiante']=$id;
 
           $dbh->beginTransaction();
 
