@@ -474,18 +474,17 @@ th {
         echo '<td>';
         $path = 'uploads/sesion3/' . $row['id'];
         if (glob($path . '*')) {
-          $arr = glob($path . '*');
-          echo '<a href="' . $arr[0] . '">Ver archivo</a>';
-
+            $arr = glob($path . '*');
+            echo '<a href="' . $arr[0] . '">Ver archivo</a>';
         }
         echo '
                       <form action="upload.php" method="post" enctype="multipart/form-data">
                           Select image to upload:
-                          <input type="hidden" name= "' . $id . '_Sesion3" value="Sesion3" />
-                          <input type="hidden" name= "' . $id . '_redirect" value="sesion3" />
-                          <input type="hidden" name= "' . $id . '_image_id" value="' . $row['id'] . '" />
-                          <input class="fileToUpload" type="file" name= "' . $id . '_fileToUpload" id="fileToUpload">
-                          <input class="upload" type="submit" value="Upload Image" name= "submit">
+                          <input type="hidden" name="Sesion3" value="Sesion3" />
+                          <input type="hidden" name="redirect" value="sesion3" />
+                          <input type="hidden" name="image_id" value="' . $row['id'] . '" />
+                          <input class="fileToUpload" type="file" name="fileToUpload" id="fileToUpload">
+                          <input class="upload" type="submit" value="Upload Image" name="submit">
                       </form>
                     </td>';
         echo '</tr>';
