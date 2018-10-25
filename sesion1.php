@@ -179,6 +179,7 @@ th {
         echo '</script>';
 
     } ?>
+    <div class="tb-container">
      <form id="form1" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"></form>
 <table class="table" >
 <thead >
@@ -299,7 +300,7 @@ th {
     ?>
     </tbody>
     </table>
-    
+    </div>
     
 <input class="button" type="submit" value="Enviar" form ="form1"/>
 <br>
