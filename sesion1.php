@@ -281,8 +281,8 @@ th {
         }
         echo '<td>';
         $path = 'uploads/sesion1/' . $row['id'];
-        if (glob($path . '*')) {
-            $arr = glob($path . '*');
+        if (glob($path . '.*')) {
+            $arr = glob($path . '.*');
             echo '<a href="' . $arr[0] . '">Ver archivo</a>';
 
         }

@@ -352,11 +352,11 @@ th {
 
         echo '<td>';
         $path='uploads/sesion4/'.$row['id'];
-        if(glob($path.'*')){
-          $arr = glob($path . '*');
+        if (glob($path . '.*')) {
+          $arr = glob($path . '.*');
           echo '<a href="' . $arr[0] . '">Ver archivo</a>';
 
-        }
+      }
         echo '
                       <form action="upload.php" method="post" enctype="multipart/form-data">
                           Select image to upload:

@@ -220,8 +220,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         echo '<td>';
         $path = 'uploads/sesion5/' . $row['id'];
-        if (glob($path . '*')) {
-            $arr = glob($path . '*');
+        if (glob($path . '.*')) {
+            $arr = glob($path . '.*');
             echo '<a href="' . $arr[0] . '">Ver archivo</a>';
 
         }

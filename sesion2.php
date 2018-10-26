@@ -838,10 +838,11 @@ th {
 
 
         $path = 'uploads/sesion2/' . $row['id'];
-        if (glob($path . '*')) {
-          $arr = glob($path . '*');
+        if (glob($path . '.*')) {
+          $arr = glob($path . '.*');
           echo '<a href="' . $arr[0] . '">Ver archivo</a>';
-        }
+
+      }
         echo '
                       <form action="upload.php" method="post" enctype="multipart/form-data">
                           Select image to upload:
