@@ -177,6 +177,7 @@ th {
         echo '<script language="javascript">';
         echo 'alert("Guardado correctamente")';
         echo '</script>';
+        echo '<script language="javascript">window.location="sesion1.php"</script>';
 
     } ?>
     <div class="tb-container">
@@ -220,7 +221,7 @@ th {
     <th>Informe Valores, Intereses y Aptitudes</th>
     <th>Observaciones</th>
     <th>Archivo</th>
-    <th>Informe</th>
+    <!--<th>Informe</th>-->
     <!--<th>GUARDAR</th>-->
     </tr>
     </thead>
@@ -238,11 +239,11 @@ th {
             for ($i = 1; $i < 15; $i++) {
                 echo '<td><input class="in" type="text" name="' . $id . '_aptitud_verbal_' . ($i + 1) . '" value="" form="form1"/></td>';
             }
-            echo '<td><input class="in" type="text" name="' . $id . '_total_aptitud_verbal" value="0" form="form1"/></td>';
+            echo '<td><input class="in" type="number" name="' . $id . '_total_aptitud_verbal" value="0" form="form1"/></td>';
             for ($i = 0; $i < 15; $i++) {
                 echo '<td><input class="in" type="text" name="' . $id . '_aptitud_matematica_' . ($i + 1) . '" value="" form="form1"/></td>';
             }
-            echo '<td><input class="in" type="text" name="' . $id . '_total_aptitud_matematica" value="0" form="form1"/></td>';
+            echo '<td><input class="in" type="number" name="' . $id . '_total_aptitud_matematica" value="0" form="form1"/></td>';
             //echo '<td><input class="inf" type="text" name="informe_via" value="" /></td>';
             //if ($_SESSION['usuario_tipo'] != 'co-tallerista') {
             echo '<td><textarea rows="4" cols="40" name="' . $id . '_informe_via" form="form1"> </textarea></td>';
@@ -260,14 +261,14 @@ th {
             for ($i = 2; $i <= 15; $i++) {
                 echo '<td><input class="in" type="text" name="' . $id . '_aptitud_verbal_' . $i . '" value="' . $s["aptitud_verbal_$i"] . '" form="form1"/></td>';
             }
-            echo '<td><input class="in" type="text" name="' . $id . '_total_aptitud_verbal" value="' . $s["total_aptitud_verbal"] . '"form="form1" /></td>';
+            echo '<td><input class="in" type="number" name="' . $id . '_total_aptitud_verbal" value="' . $s["total_aptitud_verbal"] . '"form="form1" /></td>';
             for ($i = 1; $i <= 15; $i++) {
                 echo '<td><input class="in" type="text" name="' . $id . '_aptitud_matematica_' . $i . '" value="' . $s["aptitud_matematica_$i"] . '" form="form1"/></td>';
             }
             echo '<input type="hidden" name="name" value="' . $row['nombre'] . '" form="form1"/>';
             echo '<input type="hidden" name="id" value="' . $row['id'] . '" form="form1"/>';
             echo '<input type="hidden" name="id_ses' . $s['id_estudiante'] . '" value="' . $s['id_estudiante'] . '" form="form1"/>';
-            echo '<td><input class="in" type="text" name="' . $id . '_total_aptitud_matematica" value="' . $s["total_aptitud_matematica"] . '" form="form1"/></td>';
+            echo '<td><input class="in" type="number" name="' . $id . '_total_aptitud_matematica" value="' . $s["total_aptitud_matematica"] . '" form="form1"/></td>';
             //if ($_SESSION['usuario_tipo'] != 'co-tallerista') {
             echo '<td><textarea rows="4" cols="40" name="' . $id . '_informe_via" form="form1">' . $s["informe_via"] . ' </textarea></td>';
             echo '<td><textarea rows="4" cols="40" name="' . $id . '_observaciones" form="form1">' . $s["observaciones"] . ' </textarea></td>';
@@ -296,13 +297,13 @@ th {
                           <input class="upload" type="submit" value="Upload Image" name="submit">
                       </form>
                     </td>';
-        echo '<td>
+       /* echo '<td>
                 <form method="post" action="informe_s1.php">
                     <input type="hidden" name="id_estudiante" value="' . $row['id'] . '" />
                     <input type="hidden" name="id_grupo" value="' . $row['grupo_id'] . '" />
                     <input class="button" type="submit" value="Generar"/>
                 </form>
-              </td>';
+              </td>';*/
         echo '</tr>';
     }
     ?>

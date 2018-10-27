@@ -239,36 +239,21 @@ th {
             $stmt->execute();
             $dbh->commit();
             #echo $query;
-            echo '<script language="javascript">';
-            echo 'alert("Guardado correctamente")';
-            echo '</script>';
-            echo '<script language="javascript">window.location="sesion2.php"</script>';
+            
 
           } catch (Exception $e) {
             $dbh->rollBack();
-            echo '<script language="javascript">';
-            echo 'alert("'.$e.'")';
-            echo 'console.log("'.$e.'")';
-            echo '</script>';
-            //echo '<script language="javascript">window.location="sesion2.php"</script>';
             if (strpos($e->getMessage(), 'Incorrect integer value')) {
-              echo '<script language="javascript">';
-              echo 'alert("ERROR: el total debe ser un número")';
-              echo '</script>';
-              echo '<script language="javascript">window.location="sesion2.php"</script>';
-            }/*else{
-                      echo '<script language="javascript">';
-                      echo 'alert("'.$e->getMessage().'")';
-                      echo '</script>';
-                      echo '<script language="javascript">window.location="sesion2.php"</script>';
-                  }*/
-            if (strpos($e->getMessage(), ' Data too long for column')) {
-              echo '<script language="javascript">';
-              echo 'alert("ERROR: debe ser unicamente un caracter")';
-              echo '</script>';
-              echo '<script language="javascript">window.location="sesion2.php"</script>';
+                echo '<script language="javascript">';
+                echo 'alert("ERROR: el total debe ser un número")';
+                echo '</script>';
             }
-          }
+            if (strpos($e->getMessage(), ' Data too long for column')) {
+                echo '<script language="javascript">';
+                echo 'alert("ERROR: debe ser unicamente un caracter")';
+                echo '</script>';
+            }
+        }
         }else {
           $query = 'INSERT INTO `sesion_2`(`id_estudiante`, `factor_tncf_1`, `factor_tncf_2`, `factor_tncf_3`, `factor_tncf_4`, `factor_tncf_5`, `factor_tncf_6`, `factor_tncf_7`, `factor_tncf_8`, `factor_paf_1`, `factor_paf_2`, `factor_paf_3`, `factor_paf_4`, `factor_icppf_1`, `factor_icppf_2`, `factor_icppf_3`, `factor_icppf_4`, `factor_icppf_5`, `factor_tivf_1`, `factor_tivf_2`, `factor_tivf_3`, `factor_tivf_4`, `total_factor_tncf`, `total_factor_paf`, `total_factor_icppf`, `total_factor_tivf`, `eet_economico_1`, `eet_economico_2`, `eet_laboral_1`, `eet_laboral_2`, `eet_laboral_3`, `eet_familiar_1`, `eet_familiar_2`, `eet_familiar_3`, `eet_vida_1`, `eet_vida_2`, `eet_academico_1`, `eet_academico_2`, `eet_academico_3`, `total_eet_economico`, `total_eet_laboral`, `total_eet_familiar`, `total_eet_vida`, `total_eet_academico`, `observaciones`) VALUES (';
           $query .= $id . ',';
@@ -422,38 +407,26 @@ th {
             $stmt = $dbh->prepare($query);
             $stmt->execute();
             $dbh->commit();
-            echo '<script language="javascript">';
-            echo 'alert("Guardado correctamente")';
-            echo '</script>';
-            echo '<script language="javascript">window.location="sesion2.php"</script>';
-
           } catch (Exception $e) {
             $dbh->rollBack();
-            echo '<script language="javascript">';
-            echo 'alert("Erro al guardar intente nuevamente")';
-            echo '</script>';
-            //echo '<script language="javascript">window.location="sesion2.php"</script>';
             if (strpos($e->getMessage(), 'Incorrect integer value')) {
-              echo '<script language="javascript">';
-              echo 'alert("ERROR: el total debe ser un número")';
-              echo '</script>';
-              echo '<script language="javascript">window.location="sesion2.php"</script>';
-            }/*else{
-                      echo '<script language="javascript">';
-                      echo 'alert("'.$e->getMessage().'")';
-                      echo '</script>';
-                      echo '<script language="javascript">window.location="sesion2.php"</script>';
-                  }*/
-            if (strpos($e->getMessage(), ' Data too long for column')) {
-              echo '<script language="javascript">';
-              echo 'alert("ERROR: debe ser unicamente un caracter")';
-              echo '</script>';
-              echo '<script language="javascript">window.location="sesion2.php"</script>';
+                echo '<script language="javascript">';
+                echo 'alert("ERROR: el total debe ser un número")';
+                echo '</script>';
             }
-          }
+            if (strpos($e->getMessage(), ' Data too long for column')) {
+                echo '<script language="javascript">';
+                echo 'alert("ERROR: debe ser unicamente un caracter")';
+                echo '</script>';
+            }
+        }
         }
 
       }
+      echo '<script language="javascript">';
+            echo 'alert("Guardado correctamente")';
+            echo '</script>';
+            echo '<script language="javascript">window.location="sesion2.php"</script>';
 
 
     }
@@ -534,8 +507,8 @@ th {
         //si no esta creado se crean los espacios
       if (!isset($s['id_estudiante'])) {
 
-            //echo '<td><input class="inf" type="text" name="informe_pn" value="" /></td>';
-            //echo '<td><input class="inf" type="text" name="informe_mrb" value="" /></td>';
+            //echo '<td><input class="inf" type="number" name="informe_pn" value="" /></td>';
+            //echo '<td><input class="inf" type="number" name="informe_mrb" value="" /></td>';
 
             //echo '<td><textarea rows="4" cols="40" name="informe_pn" form="form_'.$s['id_estudiante'].'"></textarea></td>';
             //echo '<td><textarea rows="4" cols="40" name="informe_mrb" form="form_'.$s['id_estudiante'].'"></textarea></td>';
@@ -546,7 +519,7 @@ th {
         $factor_tncf = [null, null, null, null, null, null, null, null];
 
         for ($i = 0; $i < 8; $i++) {
-                  //echo '<td><input class="in" type="text" name="factor_tncf_' . ($i + 1) . '" value="" /></td>';
+                  //echo '<td><input class="in" type="number" name="factor_tncf_' . ($i + 1) . '" value="" /></td>';
           ?>
 
             <td>
@@ -559,7 +532,7 @@ th {
 
           $factor_paf = [null, null, null, null];
           for ($i = 0; $i < 4; $i++) {
-            //echo '<td><input class="in" type="text" name="factor_paf_' . ($i + 1) . '" value="" /></td>';
+            //echo '<td><input class="in" type="number" name="factor_paf_' . ($i + 1) . '" value="" /></td>';
             ?>
             <td>
               <?php echo '<input type="radio" class="radioBttn" name= "'.$id . "factor_paf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_paf[$i]) && $factor_paf[$i] == "1") echo "checked"; ?> value="1" form="form1">Si</br>
@@ -572,7 +545,7 @@ th {
 
           $factor_icppf = [null, null, null, null, null];
           for ($i = 0; $i < 5; $i++) {
-            //echo '<td><input class="in" type="text" name="factor_icppf_' . ($i + 1) . '" value="" /></td>';
+            //echo '<td><input class="in" type="number" name="factor_icppf_' . ($i + 1) . '" value="" /></td>';
 
             ?>
             <td>
@@ -584,7 +557,7 @@ th {
           }
           $factor_tivf = [null, null, null, null];
           for ($i = 0; $i < 4; $i++) {
-            //echo '<td><input class="in" type="text" name="factor_tivf_' . ($i + 1) . '" value="" /></td>';
+            //echo '<td><input class="in" type="number" name="factor_tivf_' . ($i + 1) . '" value="" /></td>';
             ?>
             <td>
               <?php echo '<input type="radio" class="radioBttn" name= "'.$id . "factor_tivf_" . ($i + 1) . '"'; ?>  <?php if (isset($factor_tivf[$i]) && $factor_tivf[$i] == "1") echo "checked"; ?> value="1" form="form1">Si</br>
@@ -601,7 +574,7 @@ th {
 
           $eet_economico = [null, null];
           for ($i = 0; $i < 2; $i++) {
-            //echo '<td><input class="in" type="text" name="eet_econnomico_' . ($i + 1) . '" value="" /></td>';
+            //echo '<td><input class="in" type="number" name="eet_econnomico_' . ($i + 1) . '" value="" /></td>';
 
             ?>
             <td>
@@ -614,7 +587,7 @@ th {
 
           $eet_laboral = [null, null, null];
           for ($i = 0; $i < 3; $i++) {
-            //echo '<td><input class="in" type="text" name="eet_laboral_' . ($i + 1) . '" value="" /></td>';
+            //echo '<td><input class="in" type="number" name="eet_laboral_' . ($i + 1) . '" value="" /></td>';
             ?>
             <td>
               <?php echo '<input type="radio" class="radioBttn" name= "'.$id . "eet_laboral_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_laboral[$i]) && $eet_laboral[$i] == "1") echo "checked"; ?> value="1" form="form1">Si</br>
@@ -626,7 +599,7 @@ th {
 
           $eet_familiar = [null, null, null];
           for ($i = 0; $i < 3; $i++) {
-            //echo '<td><input class="in" type="text" name="eet_familiar_' . ($i + 1) . '" value="" /></td>';
+            //echo '<td><input class="in" type="number" name="eet_familiar_' . ($i + 1) . '" value="" /></td>';
             ?>
             <td>
               <?php echo '<input type="radio" class="radioBttn" name= "'.$id . "eet_familiar_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_familiar[$i]) && $eet_familiar[$i] == "1") echo "checked"; ?> value="1" form="form1">Si</br>
@@ -638,10 +611,10 @@ th {
 
           $eet_vida = [null, null];
           for ($i = 0; $i < 2; $i++) {
-            //echo '<td><input class="in" type="text" name="eet_vida_' . ($i + 1) . '" value="" /></td>';
+            //echo '<td><input class="in" type="number" name="eet_vida_' . ($i + 1) . '" value="" /></td>';
             ?>
             <td>
-              <?php echo '<input type="text" form="form1" name= "'.$id . "eet_vida_" . ($i + 1) . '"' . 'value="0">' ?>
+              <?php echo '<input type="number" form="form1" name= "'.$id . "eet_vida_" . ($i + 1) . '"' . 'value="0">' ?>
             </td>
             <?php
 
@@ -649,7 +622,7 @@ th {
 
           $eet_academico = [null, null, null];
           for ($i = 0; $i < 3; $i++) {
-            //echo '<td><input class="in" type="text" name="eet_academico_' . ($i + 1) . '" value="" /></td>';
+            //echo '<td><input class="in" type="number" name="eet_academico_' . ($i + 1) . '" value="" /></td>';
             ?>
             <td>
               <?php echo '<input type="radio" class="radioBttn" name= "'.$id . "eet_academico_" . ($i + 1) . '"'; ?>  <?php if (isset($eet_academico[$i]) && $eet_academico[$i] == "1") echo "checked"; ?> value="1" form="form1">Si</br>
@@ -659,11 +632,11 @@ th {
 
           }
 
-          echo '<td><input class="in" type="text" form="form1" name="'.$id .'total_eet_economico" value="0" /></td>';
-          echo '<td><input class="in" type="text" form="form1" name="'.$id .'total_eet_laboral" value="0" /></td>';
-          echo '<td><input class="in" type="text" form="form1" name="'.$id .'total_eet_familiar" value="0" /></td>';
-          echo '<td><input class="in" type="text" form="form1" name="'.$id .'total_eet_vida" value="0" /></td>';
-          echo '<td><input class="in" type="text" form="form1" name="'.$id .'total_eet_academico" value="0" /></td>';
+          echo '<td><input class="in" type="number" form="form1" name="'.$id .'total_eet_economico" value="0" /></td>';
+          echo '<td><input class="in" type="number" form="form1" name="'.$id .'total_eet_laboral" value="0" /></td>';
+          echo '<td><input class="in" type="number" form="form1" name="'.$id .'total_eet_familiar" value="0" /></td>';
+          echo '<td><input class="in" type="number" form="form1" name="'.$id .'total_eet_vida" value="0" /></td>';
+          echo '<td><input class="in" type="number" form="form1" name="'.$id .'total_eet_academico" value="0" /></td>';
           echo '<td><textarea rows="4" cols="40"  form="form1" name="'.$id .'observaciones" > </textarea></td>';
 
 
@@ -682,14 +655,14 @@ th {
 
           #echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '"  id="form_' . $s['id_estudiante'] . '" >';
 
-        //echo '<td><input class="inf" type="text" name="informe_pn" value="'.$s["informe_pn"].'" /></td>';
-        //echo '<td><input class="inf" type="text" name="informe_mrb" value="'.$s["informe_mrb"].'" /></td>';
+        //echo '<td><input class="inf" type="number" name="informe_pn" value="'.$s["informe_pn"].'" /></td>';
+        //echo '<td><input class="inf" type="number" name="informe_mrb" value="'.$s["informe_mrb"].'" /></td>';
 
 
           $factor_tncf = [null, null, null, null, null, null, null, null];
 
           for ($i = 0; $i < 8; $i++) {
-            //echo '<td><input class="in" type="text" name="factor_tncf_' . ($i + 1) . '" value="" /></td>';
+            //echo '<td><input class="in" type="number" name="factor_tncf_' . ($i + 1) . '" value="" /></td>';
             $I = $i + 1;
             $factor_tncf[$i] = $s["factor_tncf_$I"];
             ?>
@@ -703,7 +676,7 @@ th {
 
           $factor_paf = [null, null, null, null];
           for ($i = 0; $i < 4; $i++) {
-            //echo '<td><input class="in" type="text" name="factor_paf_' . ($i + 1) . '" value="" /></td>';
+            //echo '<td><input class="in" type="number" name="factor_paf_' . ($i + 1) . '" value="" /></td>';
             $I = $i + 1;
             $factor_paf[$i] = $s["factor_paf_$I"];
 
@@ -718,7 +691,7 @@ th {
           }
           $factor_icppf = [null, null, null, null, null];
           for ($i = 0; $i < 5; $i++) {
-            //echo '<td><input class="in" type="text" name="factor_icppf_' . ($i + 1) . '" value="" /></td>';
+            //echo '<td><input class="in" type="number" name="factor_icppf_' . ($i + 1) . '" value="" /></td>';
             $I = $i + 1;
             $factor_icppf[$i] = $s["factor_icppf_$I"];
             ?>
@@ -731,7 +704,7 @@ th {
           }
           $factor_tivf = [null, null, null, null];
           for ($i = 0; $i < 4; $i++) {
-            //echo '<td><input class="in" type="text" name="factor_tivf_' . ($i + 1) . '" value="" /></td>';
+            //echo '<td><input class="in" type="number" name="factor_tivf_' . ($i + 1) . '" value="" /></td>';
             $I = $i + 1;
             $factor_tivf[$i] = $s["factor_tivf_$I"];
 
@@ -751,7 +724,7 @@ th {
 
           $eet_economico = [null, null];
           for ($i = 0; $i < 2; $i++) {
-            //echo '<td><input class="in" type="text" name="eet_econnomico_' . ($i + 1) . '" value="" /></td>';
+            //echo '<td><input class="in" type="number" name="eet_econnomico_' . ($i + 1) . '" value="" /></td>';
             $I = $i + 1;
             $eet_economico[$i] = $s["eet_economico_$I"];
             ?>
@@ -765,7 +738,7 @@ th {
 
           $eet_laboral = [null, null, null];
           for ($i = 0; $i < 3; $i++) {
-            //echo '<td><input class="in" type="text" name="eet_laboral_' . ($i + 1) . '" value="" /></td>';
+            //echo '<td><input class="in" type="number" name="eet_laboral_' . ($i + 1) . '" value="" /></td>';
             $I = $i + 1;
             $eet_laboral[$i] = $s["eet_laboral_$I"];
             ?>
@@ -779,7 +752,7 @@ th {
 
           $eet_familiar = [null, null, null];
           for ($i = 0; $i < 3; $i++) {
-            //echo '<td><input class="in" type="text" name="eet_familiar_' . ($i + 1) . '" value="" /></td>';
+            //echo '<td><input class="in" type="number" name="eet_familiar_' . ($i + 1) . '" value="" /></td>';
             $I = $i + 1;
             $eet_familiar[$i] = $s["eet_familiar_$I"];
             ?>
@@ -793,11 +766,11 @@ th {
 
 
           for ($i = 0; $i < 2; $i++) {
-            //echo '<td><input class="in" type="text" name="eet_vida_' . ($i + 1) . '" value="" /></td>';
+            //echo '<td><input class="in" type="number" name="eet_vida_' . ($i + 1) . '" value="" /></td>';
             $I = $i + 1;
             ?>
             <td>
-              <?php echo '<input type="text" form="form1" name= "'.$id . "eet_vida_" . ($i + 1) . '"' . 'value="' . $s["eet_vida_$I"] . '" form="form1">' ?>
+              <?php echo '<input type="number" form="form1" name= "'.$id . "eet_vida_" . ($i + 1) . '"' . 'value="' . $s["eet_vida_$I"] . '" form="form1">' ?>
             </td>
             <?php
 
@@ -805,7 +778,7 @@ th {
 
           $eet_academico = [null, null, null];
           for ($i = 0; $i < 3; $i++) {
-            //echo '<td><input class="in" type="text" name="eet_academico_' . ($i + 1) . '" value="" /></td>';
+            //echo '<td><input class="in" type="number" name="eet_academico_' . ($i + 1) . '" value="" /></td>';
             $I = $i + 1;
             $eet_academico[$i] = $s["eet_academico_$I"];
             ?>
@@ -817,11 +790,11 @@ th {
 
           }
 
-          echo '<td><input class="in" type="text" name="'.$id .'total_eet_economico" form="form1"  value="' . $s["total_eet_economico"] . '" /></td>';
-          echo '<td><input class="in" type="text" name="'.$id .'total_eet_laboral"   form="form1"  value="' . $s["total_eet_laboral"] . '" /></td>';
-          echo '<td><input class="in" type="text" name="'.$id .'total_eet_familiar"  form="form1"  value="' . $s["total_eet_familiar"] . '" /></td>';
-          echo '<td><input class="in" type="text" name="'.$id .'total_eet_vida"      form="form1"  value="' . $s["total_eet_vida"] . '" /></td>';
-          echo '<td><input class="in" type="text" name="'.$id .'total_eet_academico" form="form1"  value="' . $s["total_eet_academico"] . '" /></td>';
+          echo '<td><input class="in" type="number" name="'.$id .'total_eet_economico" form="form1"  value="' . $s["total_eet_economico"] . '" /></td>';
+          echo '<td><input class="in" type="number" name="'.$id .'total_eet_laboral"   form="form1"  value="' . $s["total_eet_laboral"] . '" /></td>';
+          echo '<td><input class="in" type="number" name="'.$id .'total_eet_familiar"  form="form1"  value="' . $s["total_eet_familiar"] . '" /></td>';
+          echo '<td><input class="in" type="number" name="'.$id .'total_eet_vida"      form="form1"  value="' . $s["total_eet_vida"] . '" /></td>';
+          echo '<td><input class="in" type="number" name="'.$id .'total_eet_academico" form="form1"  value="' . $s["total_eet_academico"] . '" /></td>';
           echo '<td><textarea rows="4" cols="40"  name="'.$id .'observaciones" form="form1">' . $s["observaciones"] . ' </textarea></td>';
 
 

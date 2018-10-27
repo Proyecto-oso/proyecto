@@ -135,6 +135,10 @@ th {
             $stmt = $dbh->prepare($query);
             $stmt->execute();
             $dbh->commit();
+            echo '<script language="javascript">';
+            echo 'alert("Guardado correctamente")';
+            echo '</script>';
+            echo '<script language="javascript">window.location="sesion3.php"</script>';
           //echo '<script language="javascript">window.location="sesion3.php"</script>';
 
           } catch (Exception $e) {
@@ -181,7 +185,7 @@ th {
           $query .= '"' . $_POST[$id . '_observaciones'] . '")';
           $est[$id]['observaciones'] = $_POST[$id . '_observaciones'];
 
-          $est[$id]['id_estudiante']=$id;
+          $est[$id]['id_estudiante'] = $id;
 
           $dbh->beginTransaction();
 
@@ -189,6 +193,10 @@ th {
             $stmt = $dbh->prepare($query);
             $stmt->execute();
             $dbh->commit();
+            echo '<script language="javascript">';
+            echo 'alert("Guardado correctamente")';
+            echo '</script>';
+            echo '<script language="javascript">window.location="sesion3.php"</script>';
 
           //echo '<script language="javascript">window.location="sesion3.php"</script>';
 
@@ -202,9 +210,7 @@ th {
           }
         }
       }
-      echo '<script language="javascript">';
-      echo 'alert("Guardado correctamente")';
-      echo '</script>';
+
 
 
     } ?>
@@ -478,7 +484,7 @@ th {
           $arr = glob($path . '.*');
           echo '<a href="' . $arr[0] . '">Ver archivo</a>';
 
-      }
+        }
         echo '
                       <form action="upload.php" method="post" enctype="multipart/form-data">
                           Select image to upload:
@@ -496,6 +502,7 @@ th {
     </table>
     </div>
   <input class="button" type="submit" value="Enviar" form ="form1"/>
+  <br>
 
 
 </body>

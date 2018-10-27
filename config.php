@@ -9,6 +9,7 @@ $password = 'OsoUnal2018#';
 $dbh = null;
 try {
   $dbh = new PDO("mysql:host=$host_name; dbname=$database;", $user_name, $password);
+  $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
   echo "Error!: " . $e->getMessage() . "<br/>";
   die();
