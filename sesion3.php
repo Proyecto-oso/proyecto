@@ -116,6 +116,9 @@ th {
           $query .= '`menos_predominante` = "' . $_POST[$id . '_menos_predominante'] . '",';
           $est[$id]['menos_predominante'] = $_POST[$id . '_menos_predominante'];
 
+          $query .= '`est_predominante` = "' . $_POST[$id . '_est_predominante'] . '",';
+          $est[$id]['est_predominante'] = $_POST[$id . '_est_predominante'];
+
           $query .= '`temas_trabajados` =' . $_POST[$id . '_temas_trabajados'] . ',';
           $est[$id]['temas_trabajados'] = $_POST[$id . '_temas_trabajados'];
           $query .= '`ejercicios` =' . $_POST[$id . '_ejercicios'] . ',';
@@ -135,10 +138,7 @@ th {
             $stmt = $dbh->prepare($query);
             $stmt->execute();
             $dbh->commit();
-            echo '<script language="javascript">';
-            echo 'alert("Guardado correctamente")';
-            echo '</script>';
-            echo '<script language="javascript">window.location="sesion3.php"</script>';
+            
           //echo '<script language="javascript">window.location="sesion3.php"</script>';
 
           } catch (Exception $e) {
@@ -151,7 +151,7 @@ th {
           }
 
         } else {
-          $query = 'INSERT INTO `sesion_3`(`id_estudiante`, `e_proceso`,`pregunta_1` ,`pregunta_2`, `pregunta_3`, `pregunta_4`, `pregunta_5`, `pregunta_6`, `pregunta_7`, `pregunta_8`, `pregunta_9`, `pregunta_10`, `pregunta_11`, `pregunta_12`, `pregunta_13`, `pregunta_14`, `pregunta_15`, `pregunta_16`, `pregunta_17`, `pregunta_18`, `pregunta_19`, `pregunta_20`, `pregunta_21`, `pregunta_22`, `pregunta_23`, `pregunta_24`, `pregunta_25`, `pregunta_26`, `pregunta_27`, `pregunta_28`, `pregunta_29`, `pregunta_30`, `pregunta_31`, `pregunta_32`, `pregunta_33`, `pregunta_34`, `pregunta_35`, `pregunta_36`, `pregunta_37`, `pregunta_38`, `pregunta_39`, `pregunta_40`, `pregunta_41`, `pregunta_42`, `pregunta_43`, `pregunta_44`,`mas_predominante`,`menos_predominante`, `temas_trabajados`, `ejercicios`, `tallerista`, `utilidad`, `observaciones`) VALUES (';
+          $query = 'INSERT INTO `sesion_3`(`id_estudiante`, `e_proceso`,`pregunta_1` ,`pregunta_2`, `pregunta_3`, `pregunta_4`, `pregunta_5`, `pregunta_6`, `pregunta_7`, `pregunta_8`, `pregunta_9`, `pregunta_10`, `pregunta_11`, `pregunta_12`, `pregunta_13`, `pregunta_14`, `pregunta_15`, `pregunta_16`, `pregunta_17`, `pregunta_18`, `pregunta_19`, `pregunta_20`, `pregunta_21`, `pregunta_22`, `pregunta_23`, `pregunta_24`, `pregunta_25`, `pregunta_26`, `pregunta_27`, `pregunta_28`, `pregunta_29`, `pregunta_30`, `pregunta_31`, `pregunta_32`, `pregunta_33`, `pregunta_34`, `pregunta_35`, `pregunta_36`, `pregunta_37`, `pregunta_38`, `pregunta_39`, `pregunta_40`, `pregunta_41`, `pregunta_42`, `pregunta_43`, `pregunta_44`,`mas_predominante`,`menos_predominante`,`est_predominante`, `temas_trabajados`, `ejercicios`, `tallerista`, `utilidad`, `observaciones`) VALUES (';
 
           $query .= $id . ',';
           $query .= '"' . $_POST[$id . '_e_proceso'] . '"' . ',';
@@ -173,6 +173,9 @@ th {
           $query .= '"' . $_POST[$id . '_menos_predominante'] . '",';
           $est[$id]['menos_predominante'] = $_POST[$id . '_menos_predominante'];
 
+          $query .= '"' . $_POST[$id . '_est_predominante'] . '",';
+          $est[$id]['est_predominante'] = $_POST[$id . '_est_predominante'];
+
 
           $query .= $_POST[$id . '_temas_trabajados'] . ',';
           $est[$id]['temas_trabajados'] = $_POST[$id . '_temas_trabajados'];
@@ -193,10 +196,6 @@ th {
             $stmt = $dbh->prepare($query);
             $stmt->execute();
             $dbh->commit();
-            echo '<script language="javascript">';
-            echo 'alert("Guardado correctamente")';
-            echo '</script>';
-            echo '<script language="javascript">window.location="sesion3.php"</script>';
 
           //echo '<script language="javascript">window.location="sesion3.php"</script>';
 
@@ -210,6 +209,10 @@ th {
           }
         }
       }
+      echo '<script language="javascript">';
+      echo 'alert("Guardado correctamente")';
+      echo '</script>';
+      echo '<script language="javascript">window.location="sesion3.php"</script>';
 
 
 
@@ -281,6 +284,7 @@ th {
 
     <th>interes mas predominante </th>
     <th>interes menos predominante </th>
+    <th>estilo de aprendizaje predominante </th>
     <th>Aspecto de los temas trabajados </th>
     <th>Aspecto de los ejercicios  </th>
     <th>Aspecto de la dirección del tallerista </th>
@@ -353,6 +357,8 @@ th {
 
           echo '<td><textarea rows="4" cols="40" name= "' . $id . '_mas_predominante" form="form1"></textarea></td>';
           echo '<td><textarea rows="4" cols="40" name= "' . $id . '_menos_predominante" form="form1"></textarea></td>';
+
+          echo '<td><textarea rows="4" cols="40" name= "' . $id . '_est_predominante" form="form1"></textarea></td>';
 
           echo '<td><input type="number" name= "' . $id . '_temas_trabajados" value="0" form="form1" /></td>';
           echo '<td><input type="number" name= "' . $id . '_ejercicios" value="0" form="form1" /></td>';
@@ -462,6 +468,8 @@ th {
 
           echo '<td><textarea rows="4" cols="40" name= "' . $id . '_mas_predominante" form="form1"> ' . $s['mas_predominante'] . '</textarea></td>';
           echo '<td><textarea rows="4" cols="40" name= "' . $id . '_menos_predominante" form="form1">' . $s['menos_predominante'] . '</textarea></td>';
+
+          echo '<td><textarea rows="4" cols="40" name= "' . $id . '_est_predominante" form="form1">' . $s['est_predominante'] . '</textarea></td>';
 
           echo '<td><input type="number" name= "' . $id . '_temas_trabajados" value="' . $s['temas_trabajados'] . '" form="form1"/></td>';
           echo '<td><input type="number" name= "' . $id . '_ejercicios"       value="' . $s['ejercicios'] . '" form="form1"/></td>';
