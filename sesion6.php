@@ -90,6 +90,9 @@ th {
         }
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (isset($_POST['diario'])) {
+                $originales = array("'", '"');
+                $correctos = array("\'", '\"');
+                $_POST['inf_s6_diario'] = str_replace($originales, $correctos, $_POST['inf_s6_diario']);
                 $query = 'UPDATE `grupo` SET `inf_s6_diario` = "' . $_POST['inf_s6_diario'] . '" WHERE `grupo`.`id` = ' . $_SESSION['grupo_id'] . '; ';
                 $dbh->beginTransaction();
                 $stmt = $dbh->prepare($query);
@@ -98,7 +101,10 @@ th {
                 echo '<script language="javascript">';
                 echo 'alert("Guardado correctamente")';
                 echo '</script>';
+                echo '<script language="javascript">window.location="sesion6.php"</script>';
             } else {
+                $originales = array("'", '"');
+                $correctos = array("\'", '\"');
                 foreach ($rows as $row) {
                     $id = $row['id'];
                     if (isset($_POST['id_ses' . $id])) {
@@ -114,6 +120,8 @@ th {
                         }
                         $query .= '`total`=' . $_POST[$id . '_total'] . ',';
                         $est["est$id"]["total"] = $_POST[$id . '_total'];
+                        
+                        $_POST[$id . '_observaciones'] = str_replace($originales, $correctos, $_POST[$id . '_observaciones']);
                         $query .= '`observaciones` = "' . $_POST[$id . '_observaciones'] . '" WHERE id_estudiante=' . $id . ' ';
                         $est["est$id"]["observaciones"] = $_POST[$id . '_observaciones'];
                         $dbh->beginTransaction();
@@ -144,6 +152,8 @@ th {
                         }
                         $query .= '' . $_POST[$id . '_total'] . ',';
                         $est["est$id"]["total"] = $_POST[$id . '_total'];
+                        
+                        $_POST[$id . '_observaciones'] = str_replace($originales, $correctos, $_POST[$id . '_observaciones']);
                         $query .= '"' . $_POST[$id . '_observaciones'] . '") ';
                         $est["est$id"]["observaciones"] = $_POST[$id . '_observaciones'];
                         $est["est$id"]['id_estudiante'] = $id;
@@ -168,12 +178,14 @@ th {
                 echo '<script language="javascript">';
                 echo 'alert("Guardado correctamente")';
                 echo '</script>';
+                echo '<script language="javascript">window.location="sesion6.php"</script>';
             }
 
         } ?>
      <form id="form1" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"></form>
-<table class="table" >
-<thead >
+     <div class="tb-container">
+    <table class="table" style="float: left;" >
+    <thead>
     <tr class="titles">
     <th >Nombre</th>
     <th >Item 1</th>
@@ -205,22 +217,22 @@ th {
             $items = [null, null, null, null, null, null, null, null, null, null];
 
             for ($i = 1; $i <= 10; $i++) {
-                  //echo '<td><input class="in" type="text" name="items_' . ($i + 1) . '" value="" /></td>';
+                  //echo '<td><input class="in" type="number" name="items_' . ($i + 1) . '" value="" /></td>';
                 ?>
 
             <td class="radio-cont">
                 
-              <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i-1]) && $items[$i-1] == "1") echo "checked"; ?> value="1">Incorrecto</br>
-              <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i-1]) && $items[$i-1] == "2") echo "checked"; ?> value="2">Apenas cierto</br>
-              <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i-1]) && $items[$i-1] == "3") echo "checked"; ?> value="3">Mas bien cierto</br>
-              <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i-1]) && $items[$i-1] == "4") echo "checked"; ?> value="4">Cierto
+              <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i - 1]) && $items[$i - 1] == "1") echo "checked"; ?> value="1">Incorrecto</br>
+              <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i - 1]) && $items[$i - 1] == "2") echo "checked"; ?> value="2">Apenas cierto</br>
+              <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i - 1]) && $items[$i - 1] == "3") echo "checked"; ?> value="3">Mas bien cierto</br>
+              <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i - 1]) && $items[$i - 1] == "4") echo "checked"; ?> value="4">Cierto
             </td>
             <?php
 
         }
 
-        echo '<td><input class="in" type="text" name="' . $id . '_total" value="0" form="form1"/></td>';
-        echo '<td><textarea rows="4" cols="40" name="' . $id . '_observaciones" form="form1"> </textarea></td>';
+        echo '<td><input class="in" type="number" name="' . $id . '_total" value="0" form="form1"/></td>';
+        echo '<td><textarea rows="8" cols="40" name="' . $id . '_observaciones" form="form1"> </textarea></td>';
         echo '<input type="hidden" name="name" value="' . $row['nombre'] . '" form="form1"/>';
         echo '<input type="hidden" name="id" value="' . $row['id'] . '" form="form1"/>';
            // echo '<td><input class="button" type="submit" value="Enviar"/></td>';
@@ -228,19 +240,19 @@ th {
     } else {
             //echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '" id="form_' . $s['id_estudiante'] . '" >';
         $items = [null, null, null, null, null, null, null, null, null, null];
-        
+
 
         for ($i = 1; $i <= 10; $i++) {
             $items[$i - 1] = $s["item_$i"];
-                  //echo '<td><input class="in" type="text" name="items_' . ($i + 1) . '" value="" /></td>';
+                  //echo '<td><input class="in" type="number" name="items_' . ($i + 1) . '" value="" /></td>';
             ?>
 
             <td class="radio-cont">
                 
-                <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i-1]) && $items[$i-1] == "1") echo "checked"; ?> value="1">Incorrecto</br>
-                <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i-1]) && $items[$i-1] == "2") echo "checked"; ?> value="2">Apenas cierto</br>
-                <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i-1]) && $items[$i-1] == "3") echo "checked"; ?> value="3">Mas bien cierto</br>
-                <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i-1]) && $items[$i-1] == "4") echo "checked"; ?> value="4">Cierto
+                <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i - 1]) && $items[$i - 1] == "1") echo "checked"; ?> value="1">Incorrecto</br>
+                <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i - 1]) && $items[$i - 1] == "2") echo "checked"; ?> value="2">Apenas cierto</br>
+                <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i - 1]) && $items[$i - 1] == "3") echo "checked"; ?> value="3">Mas bien cierto</br>
+                <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i - 1]) && $items[$i - 1] == "4") echo "checked"; ?> value="4">Cierto
               </td>
             <?php
 
@@ -248,8 +260,8 @@ th {
 
 
 
-        echo '<td><input class="in" type="text" name="' . $id . '_total" value="' . $s["total"] . '" form="form1"/></td>';
-        echo '<td><textarea rows="4" cols="40" name="' . $id . '_observaciones" form="form1">' . $s["observaciones"] . ' </textarea></td>';
+        echo '<td><input class="in" type="number" name="' . $id . '_total" value="' . $s["total"] . '" form="form1"/></td>';
+        echo '<td><textarea rows="8" cols="40" name="' . $id . '_observaciones" form="form1">' . $s["observaciones"] . ' </textarea></td>';
         echo '<input type="hidden" name="name" value="' . $row['nombre'] . '" form="form1"/>';
         echo '<input type="hidden" name="id" value="' . $row['id'] . '" form="form1"/>';
         echo '<input type="hidden" name="id_ses' . $s['id_estudiante'] . '" value="' . $s['id_estudiante'] . '" form="form1"/>';
@@ -278,10 +290,10 @@ th {
 }
 ?>
     </tbody>
-    </table> 
-</div>
-<input class="button" type="submit" value="Enviar" form ="form1"/>
-<br>
+    </table>
+  </div>
+  <input class="button" type="submit" value="Enviar" form ="form1"/>
+  <br>
 <?php
 $query = ' SELECT * FROM `grupo` WHERE id = ' . $_SESSION['grupo_id'] . ' ';
 $stmt = $dbh->prepare($query);
@@ -291,7 +303,7 @@ echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '
 echo '<div class="group_container">';
 echo '<input type="hidden" name="diario" value="" />';
 echo '<h4 class="titulo_informe" >Diario de campo del taller sobre resolución de problemas</h4>';
-echo '<textarea rows="6" cols="150" name="inf_s6_diario" class="informe_grupo"  >' . $row["inf_s6_diario"] . ' </textarea></br>';
+echo '<textarea rows="8" cols="150" name="inf_s6_diario" class="informe_grupo"  >' . $row["inf_s6_diario"] . ' </textarea></br>';
 echo '<input class="button" type="submit" value="Enviar informe del grupo"/>';
 echo '</div>';
 echo '</form>';

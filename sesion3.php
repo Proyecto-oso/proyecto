@@ -97,6 +97,9 @@ th {
         $id = $row['id'];
         if (isset($_POST[$id . '_id_ses'])) {
           $query = 'UPDATE `sesion_3` SET';
+          $originales = array("'", '"');
+          $correctos = array("\'", '\"');
+          $_POST[$id . '_e_proceso'] = str_replace($originales, $correctos, $_POST[$id . '_e_proceso']);
           $query .= '`e_proceso` = "' . $_POST[$id . '_e_proceso'] . '",';
           $est[$id]['e_proceso'] = $_POST[$id . '_e_proceso'];
 
@@ -110,12 +113,16 @@ th {
               $est[$id]['pregunta_' . $i] = -1;
             }
           }
-
+          
+          $_POST[$id . '_mas_predominante'] = str_replace($originales, $correctos, $_POST[$id . '_mas_predominante']);
           $query .= '`mas_predominante`   = "' . $_POST[$id . '_mas_predominante'] . '",';
           $est[$id]['mas_predominante'] = $_POST[$id . '_mas_predominante'];
+          
+          $_POST[$id . '_menos_predominante'] = str_replace($originales, $correctos, $_POST[$id . '_menos_predominante']);
           $query .= '`menos_predominante` = "' . $_POST[$id . '_menos_predominante'] . '",';
           $est[$id]['menos_predominante'] = $_POST[$id . '_menos_predominante'];
-
+          
+          $_POST[$id . '_est_predominante'] = str_replace($originales, $correctos, $_POST[$id . '_est_predominante']);
           $query .= '`est_predominante` = "' . $_POST[$id . '_est_predominante'] . '",';
           $est[$id]['est_predominante'] = $_POST[$id . '_est_predominante'];
 
@@ -127,6 +134,8 @@ th {
           $est[$id]['tallerista'] = $_POST[$id . '_tallerista'];
           $query .= '`utilidad` =' . $_POST[$id . '_utilidad'] . ',';
           $est[$id]['utilidad'] = $_POST[$id . '_utilidad'];
+          
+          $_POST[$id . '_observaciones'] = str_replace($originales, $correctos, $_POST[$id . '_observaciones']);
           $query .= '`observaciones` ="' . $_POST[$id . '_observaciones'] . '"';
           $est[$id]['observaciones'] = $_POST[$id . '_observaciones'];
 
@@ -153,6 +162,10 @@ th {
         } else {
           $query = 'INSERT INTO `sesion_3`(`id_estudiante`, `e_proceso`,`pregunta_1` ,`pregunta_2`, `pregunta_3`, `pregunta_4`, `pregunta_5`, `pregunta_6`, `pregunta_7`, `pregunta_8`, `pregunta_9`, `pregunta_10`, `pregunta_11`, `pregunta_12`, `pregunta_13`, `pregunta_14`, `pregunta_15`, `pregunta_16`, `pregunta_17`, `pregunta_18`, `pregunta_19`, `pregunta_20`, `pregunta_21`, `pregunta_22`, `pregunta_23`, `pregunta_24`, `pregunta_25`, `pregunta_26`, `pregunta_27`, `pregunta_28`, `pregunta_29`, `pregunta_30`, `pregunta_31`, `pregunta_32`, `pregunta_33`, `pregunta_34`, `pregunta_35`, `pregunta_36`, `pregunta_37`, `pregunta_38`, `pregunta_39`, `pregunta_40`, `pregunta_41`, `pregunta_42`, `pregunta_43`, `pregunta_44`,`mas_predominante`,`menos_predominante`,`est_predominante`, `temas_trabajados`, `ejercicios`, `tallerista`, `utilidad`, `observaciones`) VALUES (';
 
+          $originales = array("'", '"');
+          $correctos = array("\'", '\"');
+          $_POST[$id . '_e_proceso'] = str_replace($originales, $correctos, $_POST[$id . '_e_proceso']);
+          
           $query .= $id . ',';
           $query .= '"' . $_POST[$id . '_e_proceso'] . '"' . ',';
           $est[$id]['e_proceso'] = $_POST[$id . '_e_proceso'];
@@ -168,11 +181,15 @@ th {
             }
           }
 
+          $_POST[$id . '_mas_predominante'] = str_replace($originales, $correctos, $_POST[$id . '_mas_predominante']);
           $query .= '"' . $_POST[$id . '_mas_predominante'] . '",';
           $est[$id]['mas_predominante'] = $_POST[$id . '_mas_predominante'];
+          
+          $_POST[$id . '_menos_predominante'] = str_replace($originales, $correctos, $_POST[$id . '_menos_predominante']);
           $query .= '"' . $_POST[$id . '_menos_predominante'] . '",';
           $est[$id]['menos_predominante'] = $_POST[$id . '_menos_predominante'];
 
+          $_POST[$id . '_est_predominante'] = str_replace($originales, $correctos, $_POST[$id . '_est_predominante']);
           $query .= '"' . $_POST[$id . '_est_predominante'] . '",';
           $est[$id]['est_predominante'] = $_POST[$id . '_est_predominante'];
 
@@ -185,6 +202,8 @@ th {
           $est[$id]['tallerista'] = $_POST[$id . '_tallerista'];
           $query .= $_POST[$id . '_utilidad'] . ',';
           $est[$id]['utilidad'] = $_POST[$id . '_utilidad'];
+
+          $_POST[$id . '_observaciones'] = str_replace($originales, $correctos, $_POST[$id . '_observaciones']);
           $query .= '"' . $_POST[$id . '_observaciones'] . '")';
           $est[$id]['observaciones'] = $_POST[$id . '_observaciones'];
 

@@ -89,6 +89,7 @@ $total_matematica_grupo = $suma_m_grupo / count($grupo);
 <img src="uploads/informe header.png" >
 </div>
 <br>
+<div class="titulo"><h2>EN DESARROLO</h2></div>
 <div class="titulo"><h2>INFORME DE ORIENTACIÓN SOCIO OCUPACIONAL - SESIÓN 1</h2></div>
 <div class="info">
 <h3 style="text-align:center">Datos del participante</h3>

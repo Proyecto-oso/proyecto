@@ -109,25 +109,29 @@ th {
                 $est["est$id"]["total_aptitud_matematica"] = $_POST[$id . '_total_aptitud_matematica'];
                 $est["est$id"]["informe_via"] = $_POST[$id . '_informe_via'];
                 $est["est$id"]["observaciones"] = $_POST[$id . '_observaciones'];
+
+                $originales = array("'", '"');
+                $correctos = array("\'", '\"');
+                $_POST[$id . '_informe_via'] = str_replace($originales, $correctos, $_POST[$id . '_informe_via']);
+                $_POST[$id . '_observaciones'] = str_replace($originales, $correctos, $_POST[$id . '_observaciones']);
+
                 $query .= '`informe_via` = "' . $_POST[$id . '_informe_via'] . '",';
                 $query .= '`observaciones` = "' . $_POST[$id . '_observaciones'] . '" WHERE id_estudiante=' . $id . ' ';
             //We start our transaction.
                 $dbh->beginTransaction();
-
                 try {
                     $stmt = $dbh->prepare($query);
                     $stmt->execute();
                     $dbh->commit();
                 } catch (Exception $e) {
                     $dbh->rollBack();
-                    if (strpos($e->getMessage(), 'Incorrect integer value')) {
-                        echo '<script language="javascript">';
-                        echo 'alert("ERROR: el total debe ser un número")';
-                        echo '</script>';
-                    }
                     if (strpos($e->getMessage(), ' Data too long for column')) {
                         echo '<script language="javascript">';
                         echo 'alert("ERROR: debe ser unicamente un caracter")';
+                        echo '</script>';
+                    } else {
+                        echo '<script language="javascript">';
+                        echo 'alert("Erro al guardar intente nuevamente")';
                         echo '</script>';
                     }
                 }
@@ -146,6 +150,10 @@ th {
                 $est["est$id"]["total_aptitud_matematica"] = $_POST[$id . '_total_aptitud_matematica'];
                 $query .= '"' . $_POST[$id . '_total_aptitud_verbal'] . '",';
                 $est["est$id"]["total_aptitud_verbal"] = $_POST[$id . '_total_aptitud_verbal'];
+                $originales = array("'", '"');
+                $correctos = array("\'", '\"');
+                $_POST[$id . '_informe_via'] = str_replace($originales, $correctos, $_POST[$id . '_informe_via']);
+                $_POST[$id . '_observaciones'] = str_replace($originales, $correctos, $_POST[$id . '_observaciones']);
                 $query .= '"' . $_POST[$id . '_informe_via'] . '",';
                 $est["est$id"]["informe_via"] = $_POST[$id . '_informe_via'];
                 $query .= '"' . $_POST[$id . '_observaciones'] . '") ';
@@ -161,14 +169,13 @@ th {
 
                 } catch (Exception $e) {
                     $dbh->rollBack();
-                    if (strpos($e->getMessage(), 'Incorrect integer value')) {
-                        echo '<script language="javascript">';
-                        echo 'alert("ERROR: el total debe ser un número")';
-                        echo '</script>';
-                    }
                     if (strpos($e->getMessage(), ' Data too long for column')) {
                         echo '<script language="javascript">';
                         echo 'alert("ERROR: debe ser unicamente un caracter")';
+                        echo '</script>';
+                    } else {
+                        echo '<script language="javascript">';
+                        echo 'alert("Erro al guardar intente nuevamente")';
                         echo '</script>';
                     }
                 }
@@ -221,7 +228,7 @@ th {
     <th>Informe Valores, Intereses y Aptitudes</th>
     <th>Observaciones</th>
     <th>Archivo</th>
-    <!--<th>Informe</th>-->
+    <th>Informe</th>
     <!--<th>GUARDAR</th>-->
     </tr>
     </thead>
@@ -297,13 +304,13 @@ th {
                           <input class="upload" type="submit" value="Upload Image" name="submit">
                       </form>
                     </td>';
-       /* echo '<td>
+        echo '<td>
                 <form method="post" action="informe_s1.php">
                     <input type="hidden" name="id_estudiante" value="' . $row['id'] . '" />
                     <input type="hidden" name="id_grupo" value="' . $row['grupo_id'] . '" />
                     <input class="button" type="submit" value="Generar"/>
                 </form>
-              </td>';*/
+              </td>';
         echo '</tr>';
     }
     ?>
@@ -315,5 +322,5 @@ th {
 <br>
     <?php
 
-include_once("footer.php");
-?>
+    include_once("footer.php");
+    ?>

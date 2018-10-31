@@ -82,6 +82,11 @@ th {
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (isset($_POST['informe_grupo'])) {
+
+      $originales = array("'", '"');
+      $correctos = array("\'", '\"');
+      $_POST['informe_mrb'] = str_replace($originales, $correctos, $_POST['informe_mrb']);
+
       $query = 'UPDATE `grupo` SET `informe_mrb` = "' . $_POST['informe_mrb'] . '" WHERE `grupo`.`id` = ' . $_SESSION['grupo_id'] . '; ';
       $dbh->beginTransaction();
       $stmt = $dbh->prepare($query);
@@ -92,6 +97,11 @@ th {
       echo '</script>';
       echo '<script language="javascript">window.location="sesion2.php"</script>';
     } elseif (isset($_POST['informe_grupo2'])) {
+
+      $originales = array("'", '"');
+      $correctos = array("\'", '\"');
+      $_POST['informe_pn'] = str_replace($originales, $correctos, $_POST['informe_pn']);
+
       $query = 'UPDATE `grupo` SET `informe_pn` = "' . $_POST['informe_pn'] . '" WHERE `grupo`.`id` = ' . $_SESSION['grupo_id'] . '; ';
       $dbh->beginTransaction();
       $stmt = $dbh->prepare($query);
@@ -226,6 +236,9 @@ th {
           $query .= '`total_eet_familiar' . '`=' . $_POST[$id . "total_eet_familiar"] . ',';
           $query .= '`total_eet_vida' . '`=' . $_POST[$id . "total_eet_vida"] . ',';
           $query .= '`total_eet_academico' . '`=' . $_POST[$id . "total_eet_academico"] . ',';
+          $originales = array("'", '"');
+          $correctos = array("\'", '\"');
+          $_POST[$id . "observaciones"] = str_replace($originales, $correctos, $_POST[$id . "observaciones"]);
           $query .= '`observaciones' . '`="' . $_POST[$id . "observaciones"] . '"';
           $query .= ' WHERE id_estudiante=' . $_POST['id_ses' . $id] . ' ';
 
@@ -243,19 +256,9 @@ th {
 
           } catch (Exception $e) {
             echo '<script language="javascript">';
-            echo 'alert("ERROR: '.$e.'")';
+            echo 'alert("Erro al guardar intente nuevamente")';
             echo '</script>';
             $dbh->rollBack();
-            if (strpos($e->getMessage(), 'Incorrect integer value')) {
-              echo '<script language="javascript">';
-              echo 'alert("ERROR: el total debe ser un número")';
-              echo '</script>';
-            }
-            if (strpos($e->getMessage(), ' Data too long for column')) {
-              echo '<script language="javascript">';
-              echo 'alert("ERROR: debe ser unicamente un caracter")';
-              echo '</script>';
-            }
           }
         } else {
           $query = 'INSERT INTO `sesion_2`(`id_estudiante`, `factor_tncf_1`, `factor_tncf_2`, `factor_tncf_3`, `factor_tncf_4`, `factor_tncf_5`, `factor_tncf_6`, `factor_tncf_7`, `factor_tncf_8`, `factor_paf_1`, `factor_paf_2`, `factor_paf_3`, `factor_paf_4`, `factor_icppf_1`, `factor_icppf_2`, `factor_icppf_3`, `factor_icppf_4`, `factor_icppf_5`, `factor_tivf_1`, `factor_tivf_2`, `factor_tivf_3`, `factor_tivf_4`, `total_factor_tncf`, `total_factor_paf`, `total_factor_icppf`, `total_factor_tivf`, `eet_economico_1`, `eet_economico_2`, `eet_laboral_1`, `eet_laboral_2`, `eet_laboral_3`, `eet_familiar_1`, `eet_familiar_2`, `eet_familiar_3`, `eet_vida_1`, `eet_vida_2`, `eet_academico_1`, `eet_academico_2`, `eet_academico_3`, `total_eet_economico`, `total_eet_laboral`, `total_eet_familiar`, `total_eet_vida`, `total_eet_academico`, `observaciones`) VALUES (';
@@ -394,7 +397,11 @@ th {
             $query .= '0' . ',';
           }
 
-          if (isset($_POST["observaciones"])) {
+          if (isset($_POST[$id . "observaciones"])) {
+            $originales = array("'", '"');
+            $correctos = array("\'", '\"');
+            $_POST[$id . "observaciones"] = str_replace($originales, $correctos, $_POST[$id . "observaciones"]);
+
             $query .= '"' . $_POST[$id . "observaciones"] . '")';
           } else {
             $query .= '""' . ')';
@@ -413,18 +420,8 @@ th {
           } catch (Exception $e) {
             $dbh->rollBack();
             echo '<script language="javascript">';
-            echo 'alert("ERROR: '.$e.'")';
+            echo 'alert("Erro al guardar intente nuevamente")';
             echo '</script>';
-            if (strpos($e->getMessage(), 'Incorrect integer value')) {
-              echo '<script language="javascript">';
-              echo 'alert("ERROR: el total debe ser un número")';
-              echo '</script>';
-            }
-            if (strpos($e->getMessage(), ' Data too long for column')) {
-              echo '<script language="javascript">';
-              echo 'alert("ERROR: debe ser unicamente un caracter")';
-              echo '</script>';
-            }
           }
         }
 

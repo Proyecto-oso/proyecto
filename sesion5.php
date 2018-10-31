@@ -8,20 +8,22 @@ if (!func::checkLoginState($dbh)) {
     echo '<script language="javascript">window.location="login.php"</script>';
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="'.$id.'_viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="'.$id.'_theme-color" content="#000000">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="styles/sesion2.css">
     <title>Proyecto Psicologia</title>
-</head>
-<style>
+    <style>
 /* Use overflow:scroll on your container to enable scrolling: */
 
 .tb-container {
@@ -91,6 +93,9 @@ foreach ($rows as $row) {
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['dicc'])) {
+        $originales = array("'", '"');
+        $correctos = array("\'", '\"');
+        $_POST['inf_s5_dicc'] = str_replace($originales, $correctos, $_POST['inf_s5_dicc']);
         $query = 'UPDATE `grupo` SET `inf_s5_dicc` = "' . $_POST['inf_s5_dicc'] . '" WHERE `grupo`.`id` = ' . $_SESSION['grupo_id'] . '; ';
         $dbh->beginTransaction();
         $stmt = $dbh->prepare($query);
@@ -99,7 +104,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo '<script language="javascript">';
         echo 'alert("Guardado correctamente")';
         echo '</script>';
+        echo '<script language="javascript">window.location="sesion5.php"</script>';
     } elseif (isset($_POST['diario'])) {
+        $originales = array("'", '"');
+        $correctos = array("\'", '\"');
+        $_POST['inf_s5_diario'] = str_replace($originales, $correctos, $_POST['inf_s5_diario']);
         $query = 'UPDATE `grupo` SET `inf_s5_diario` = "' . $_POST['inf_s5_diario'] . '" WHERE `grupo`.`id` = ' . $_SESSION['grupo_id'] . '; ';
         $dbh->beginTransaction();
         $stmt = $dbh->prepare($query);
@@ -108,15 +117,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo '<script language="javascript">';
         echo 'alert("Guardado correctamente")';
         echo '</script>';
+        echo '<script language="javascript">window.location="sesion5.php"</script>';
     } else {
         foreach ($rows as $row) {
+            $originales = array("'", '"');
+            $correctos = array("\'", '\"');
+
             $id = $row['id'];
             if (isset($_POST['id_ses' . $id])) {
                 $query = 'UPDATE `sesion_5` SET';
                 $query .= '`total`=' . $_POST[$id . '_total'] . ',';
                 $est["est$id"]["total"] = $_POST[$id . '_total'];
+
+                $_POST[$id . '_estilo'] = str_replace($originales, $correctos, $_POST[$id . '_estilo']);
                 $query .= '`estilo`="' . $_POST[$id . '_estilo'] . '",';
                 $est["est$id"]["estilo"] = $_POST[$id . '_estilo'];
+
+                $_POST[$id . '_observaciones'] = str_replace($originales, $correctos, $_POST[$id . '_observaciones']);
                 $query .= '`observaciones` = "' . $_POST[$id . '_observaciones'] . '" WHERE id_estudiante=' . $id . ' ';
                 $est["est$id"]["observaciones"] = $_POST[$id . '_observaciones'];
                 $dbh->beginTransaction();
@@ -125,20 +142,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $stmt->execute();
                     $dbh->commit();
                 } catch (Exception $e) {
+                    echo $query;
                     $dbh->rollBack();
-                    if (strpos($e->getMessage(), 'Incorrect integer value')) {
-                        echo '<script language="javascript">';
-                        echo 'alert("ERROR: el total debe ser un número")';
-                        echo '</script>';
-                    }
+                    echo '<script language="javascript">';
+                    echo 'alert("Erro al guardar intente nuevamente")';
+                    echo '</script>';
                 }
             } else {
                 $query = 'INSERT INTO `sesion_5`(`id_estudiante`,`total`, `estilo`, `observaciones`) VALUES (';
                 $query .= $row["id"] . ',';
                 $query .= '' . $_POST[$id . '_total'] . ',';
                 $est["est$id"]["total"] = $_POST[$id . '_total'];
+
+                $_POST[$id . '_estilo'] = str_replace($originales, $correctos, $_POST[$id . '_estilo']);
                 $query .= '"' . $_POST[$id . '_estilo'] . '", ';
                 $est["est$id"]["estilo"] = $_POST[$id . '_estilo'];
+
+                $_POST[$id . '_observaciones'] = str_replace($originales, $correctos, $_POST[$id . '_observaciones']);
                 $query .= '"' . $_POST[$id . '_observaciones'] . '") ';
                 $est["est$id"]["observaciones"] = $_POST[$id . '_observaciones'];
                 $est["est$id"]['id_estudiante'] = $id;
@@ -151,24 +171,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $dbh->commit();
 
                 } catch (Exception $e) {
+                    echo $query;
                     $dbh->rollBack();
-                    if (strpos($e->getMessage(), 'Incorrect integer value')) {
-                        echo '<script language="javascript">';
-                        echo 'alert("ERROR: el total debe ser un número")';
-                        echo '</script>';
-                    }
+                    echo '<script language="javascript">';
+                    echo 'alert("Erro al guardar intente nuevamente")';
+                    echo '</script>';
                 }
             }
         }
         echo '<script language="javascript">';
         echo 'alert("Guardado correctamente")';
         echo '</script>';
+        echo '<script language="javascript">window.location="sesion5.php"</script>';
     }
 
 } ?>
      <form id="form1" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"></form>
-<table class="table" >
-<thead >
+     <div class="tb-container">
+    <table class="table" style="float: left;" >
+    <thead>
     <tr class="titles">
     <th >Nombre</th>
     <th >Puntaje total</th>
@@ -188,11 +209,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (!isset($s['id_estudiante'])) {
             //echo ' <form method = "post" action = "' . htmlspecialchars($_SERVER["PHP_SELF"]) . '" id="form_' . $s['id_estudiante'] . '" >';
-            echo '<td><input class="in" type="text" name="' . $id . '_total" value="0" form="form1"/></td>';
-            //echo '<td><input class="inf" type="text" name="informe_via" value="" /></td>';
+            echo '<td><input class="in" type="number" name="' . $id . '_total" value="0" form="form1"/></td>';
+            //echo '<td><input class="inf" type="number" name="informe_via" value="" /></td>';
             //if ($_SESSION['usuario_tipo'] != 'co-tallerista') {
-            echo '<td><textarea rows="4" cols="40" name="' . $id . '_estilo" form="form1"> </textarea></td>';
-            echo '<td><textarea rows="4" cols="40" name="' . $id . '_observaciones" form="form1"> </textarea></td>';
+            echo '<td><textarea rows="4" cols="60" name="' . $id . '_estilo" form="form1"> </textarea></td>';
+            echo '<td><textarea rows="4" cols="60" name="' . $id . '_observaciones" form="form1"> </textarea></td>';
             //} else {
               //  echo '<input type="hidden" name="' . $id . '_informe_via" value="" />';
             //}
@@ -207,13 +228,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo '<input type="hidden" name="id" value="' . $row['id'] . '" form="form1"/>';
             echo '<input type="hidden" name="id_ses' . $s['id_estudiante'] . '" value="' . $s['id_estudiante'] . '" form="form1"/>';
             //if ($_SESSION['usuario_tipo'] != 'co-tallerista') {
-            echo '<td><input class="in" type="text" name="' . $id . '_total" value="' . $s["total"] . '" form="form1"/></td>';
-            echo '<td><textarea rows="4" cols="40" name="' . $id . '_estilo" form="form1">' . $s["estilo"] . ' </textarea></td>';
-            echo '<td><textarea rows="4" cols="40" name="' . $id . '_observaciones" form="form1">' . $s["observaciones"] . ' </textarea></td>';
+            echo '<td><input class="in" type="number" name="' . $id . '_total" value="' . $s["total"] . '" form="form1"/></td>';
+            echo '<td><textarea rows="4" cols="60" name="' . $id . '_estilo" form="form1">' . $s["estilo"] . ' </textarea></td>';
+            echo '<td><textarea rows="4" cols="60" name="' . $id . '_observaciones" form="form1">' . $s["observaciones"] . ' </textarea></td>';
             /*} else {
                 echo '<input type="hidden" name="' . $id . '_informe_via" value="' . $s["informe_via"] . '" />';
             }*/
-            //echo '<td><input class="inf" type="text" name="informe_via" value="' . $s["informe_via"] . '" /></td>';
+            //echo '<td><input class="inf" type="number" name="informe_via" value="' . $s["informe_via"] . '" /></td>';
             //echo '<td><input class="button" type="submit" value="Enviar"/></td>';
             //echo '</form>';
 
@@ -239,9 +260,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     ?>
     </tbody>
-    </table> 
-</div>
-<input class="button" type="submit" value="Enviar" form ="form1"/>
+    </table>
+  </div>
+  <input class="button" type="submit" value="Enviar" form ="form1"/>
+  <br>
 <br>
 <?php
 $query = ' SELECT * FROM `grupo` WHERE id = ' . $_SESSION['grupo_id'] . ' ';
