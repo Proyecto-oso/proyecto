@@ -198,7 +198,7 @@ th {
     <th >Item 8</th>
     <th >Item 9</th>
     <th >Item 10</th>
-    <th >Puntaje total</th>
+    <th >Autoeficacia total</th>
     <th>Observaciones</th>
     <th>Archivo</th>
     <!--<th>GUARDAR</th>-->

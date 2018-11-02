@@ -112,7 +112,7 @@ th {
         echo '</script>';
         echo '<script language="javascript">window.location="sesion4.php"</script>';
       } else {
-        $arr = ["id_estudiante", "item_1", "item_2", "item_3", "item_4", "item_5", "item_6", "item_7", "item_8", "item_9", "item_10", "item_11", "item_12", "zona_riesgo", "zona_segura", "zona_ayuda", "per_ayudan", "mec_violencia", "per_violencia", "vio_vividas", "zon_violencia", "cantidad_cigarrillos", "frecuencia_cigarrillos", "lugar_cigarrillos", "cantidad_alcohol", "frecuencia_alcohol", "lugar_alcohol", "cantidad_psicoactivas", "frecuencia_psicoactivas", "lugar_psicoactivas", "n_parejas", "met_embarazo", "n_embarazo", "n_abortos", "pre_relacion_f", "ets", "calle", "observaciones"];
+        $arr = ["id_estudiante", "item_1", "item_2", "item_3", "item_4", "item_5", "item_6", "item_7", "item_8", "item_9", "item_10", "item_11", "item_12","amigos","familia","otro","total", "zona_riesgo", "zona_segura", "zona_ayuda", "per_ayudan", "mec_violencia", "per_violencia", "vio_vividas", "zon_violencia", "cantidad_cigarrillos", "frecuencia_cigarrillos", "lugar_cigarrillos", "cantidad_alcohol", "frecuencia_alcohol", "lugar_alcohol", "cantidad_psicoactivas", "frecuencia_psicoactivas", "lugar_psicoactivas", "n_parejas", "met_embarazo", "n_embarazo", "n_abortos", "pre_relacion_f", "ets", "calle", "observaciones"];
         $originales = array("'", '"');
         $correctos = array("\'", '\"');
         foreach ($rows as $row) {
@@ -121,19 +121,19 @@ th {
           if (isset($_POST[$id . '_id_ses'])) {
             $query = 'UPDATE `sesion_4` SET';
 
-            for ($i = 1; $i < 13; $i++) {
+            for ($i = 1; $i < 17; $i++) {
               $query .= '`' . $arr[$i] . '` = ' . $_POST[$id . '_' . $arr[$i]] . ',';
               $est[$id][$i] = $_POST[$id . '_' . $arr[$i]];
             }
-            for ($i = 13; $i < 37; $i++) {
+            for ($i = 17; $i < 41; $i++) {
               $_POST[$id . '_' . $arr[$i]] = str_replace($originales, $correctos, $_POST[$id . '_' . $arr[$i]]);
               $query .= '`' . $arr[$i] . '` = "' . $_POST[$id . '_' . $arr[$i]] . '",';
               $est[$id][$i] = $_POST[$id . '_' . $arr[$i]];
             }
 
-            $_POST[$id . '_' . $arr[37]] = str_replace($originales, $correctos, $_POST[$id . '_' . $arr[37]]);
-            $query .= '`' . $arr[37] . '` = "' . $_POST[$id . '_' . $arr[37]] . '"';
-            $est[$id][37] = $_POST[$id . '_' . $arr[37]];
+            $_POST[$id . '_' . $arr[41]] = str_replace($originales, $correctos, $_POST[$id . '_' . $arr[41]]);
+            $query .= '`' . $arr[41] . '` = "' . $_POST[$id . '_' . $arr[41]] . '"';
+            $est[$id][41] = $_POST[$id . '_' . $arr[41]];
 
             $query .= ' WHERE id_estudiante=' . $id . ' ';
             $dbh->beginTransaction();
@@ -153,26 +153,27 @@ th {
 
 
           } else {
-            $query = 'INSERT INTO `sesion_4`(`id_estudiante`, `item_1`, `item_2`, `item_3`, `item_4`, `item_5`, `item_6`, `item_7`, `item_8`, `item_9`, `item_10`, `item_11`, `item_12`, `zona_riesgo`, `zona_segura`, `zona_ayuda`, `per_ayudan`, `mec_violencia`, `per_violencia`, `vio_vividas`, `zon_violencia`, `cantidad_cigarrillos`, `frecuencia_cigarrillos`, `lugar_cigarrillos`, `cantidad_alcohol`, `frecuencia_alcohol`, `lugar_alcohol`, `cantidad_psicoactivas`, `frecuencia_psicoactivas`, `lugar_psicoactivas`, `n_parejas`, `met_embarazo`, `n_embarazo`, `n_abortos`, `pre_relacion_f`, `ets`, `calle`, `observaciones`) VALUES(';
+            $query = 'INSERT INTO `sesion_4`(`id_estudiante`, `item_1`, `item_2`, `item_3`, `item_4`, `item_5`, `item_6`, `item_7`, `item_8`, `item_9`, `item_10`, `item_11`, `item_12`,`amigos`,`familia`,`otro`,`total`, `zona_riesgo`, `zona_segura`, `zona_ayuda`, `per_ayudan`, `mec_violencia`, `per_violencia`, `vio_vividas`, `zon_violencia`, `cantidad_cigarrillos`, `frecuencia_cigarrillos`, `lugar_cigarrillos`, `cantidad_alcohol`, `frecuencia_alcohol`, `lugar_alcohol`, `cantidad_psicoactivas`, `frecuencia_psicoactivas`, `lugar_psicoactivas`, `n_parejas`, `met_embarazo`, `n_embarazo`, `n_abortos`, `pre_relacion_f`, `ets`, `calle`, `observaciones`) VALUES(';
 
 
-            for ($i = 0; $i < 13; $i++) {
+            for ($i = 0; $i < 17; $i++) {
               $query .= $_POST[$id . '_' . $arr[$i]] . ',';
               $est[$id][$i] = $_POST[$id . '_' . $arr[$i]];
             }
 
-            for ($i = 13; $i < 37; $i++) {
+            for ($i = 17; $i < 41; $i++) {
               $_POST[$id . '_' . $arr[$i]] = str_replace($originales, $correctos, $_POST[$id . '_' . $arr[$i]]);
               $query .= '"' . $_POST[$id . '_' . $arr[$i]] . '",';
               $est[$id][$i] = $_POST[$id . '_' . $arr[$i]];
             }
-            $_POST[$id . '_' . $arr[37]] = str_replace($originales, $correctos, $_POST[$id . '_' . $arr[37]]);
-            $query .= '"' . $_POST[$id . '_' . $arr[37]] . '")';
-            $est[$id][37] = $_POST[$id . '_' . $arr[37]];
+            $_POST[$id . '_' . $arr[41]] = str_replace($originales, $correctos, $_POST[$id . '_' . $arr[41]]);
+            $query .= '"' . $_POST[$id . '_' . $arr[41]] . '")';
+            $est[$id][41] = $_POST[$id . '_' . $arr[41]];
 
             $est[$id]['id_estudiante'] = $id;
 
             $dbh->beginTransaction();
+            //echo $query;
             try {
               $stmt = $dbh->prepare($query);
               $stmt->execute();
@@ -269,10 +270,15 @@ th {
           echo '<td><input type="number" name="' . $id . '_item_' . ($i + 1) . '" value="0" form="form1"/></td>';
         }
 
+        echo '<td><input type="number" name="' . $id . '_amigos" value="0" form="form1"/></td>';
+        echo '<td><input type="number" name="' . $id . '_familia" value="0" form="form1"/></td>';
+        echo '<td><input type="number" name="' . $id . '_otro" value="0" form="form1"/></td>';
+        echo '<td><input type="number" name="' . $id . '_total" value="0" form="form1"/></td>';
+
+        /*echo '<td> 0 </td>';
         echo '<td> 0 </td>';
         echo '<td> 0 </td>';
-        echo '<td> 0 </td>';
-        echo '<td> 0 </td>';
+        echo '<td> 0 </td>';*/
 
         echo '<td><textarea rows="4" cols="40" name="' . $id . '_zona_riesgo" form="form1"></textarea></td>';
         echo '<td><textarea rows="4" cols="40" name="' . $id . '_zona_segura" form="form1"></textarea></td>';
@@ -329,10 +335,15 @@ th {
           }
           echo '<td><input type="number" name="' . $id . '_item_' . $i . '" value="' . $s["item_" . $i] . '" form="form1"/></td>';
         }
-        echo '<td>' . ($amigos / 4) . '</td>';
+        /*echo '<td>' . ($amigos / 4) . '</td>';
         echo '<td>' . ($familia / 4) . '</td>';
         echo '<td>' . ($otros / 4) . '</td>';
-        echo '<td>' . ($total / 12) . '</td>';
+        echo '<td>' . ($total / 12) . '</td>';*/
+
+        echo '<td><input type="number" name="' . $id . '_amigos" value="' . $s["amigos"] . '" form="form1"/></td>';
+        echo '<td><input type="number" name="' . $id . '_familia" value="' . $s["familia"] . '" form="form1"/></td>';
+        echo '<td><input type="number" name="' . $id . '_otro" value="' . $s["otro"] . '" form="form1"/></td>';
+        echo '<td><input type="number" name="' . $id . '_total" value="' . $s["total"] . '" form="form1"/></td>';
 
         echo '<td><textarea rows="4" cols="40" name="' . $id . '_zona_riesgo"              form="form1">' . $s["zona_riesgo"] . '</textarea></td>';
         echo '<td><textarea rows="4" cols="40" name="' . $id . '_zona_segura"              form="form1">' . $s["zona_segura"] . '</textarea></td>';
