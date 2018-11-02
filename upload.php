@@ -71,7 +71,7 @@ if (isset($_POST["submit"])) {
 
   // Allow certain file formats
     if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-        && $imageFileType != "gif" && $imageFileType != "pdf") { 
+        && $imageFileType != "gif" && $imageFileType != "pdf") {  
         echo "Solo se permiten archivos de formato JPG, JPEG, PNG & PDF .</br>";
         $uploadOk = 0;
     }
