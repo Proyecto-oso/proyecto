@@ -456,34 +456,34 @@ th {
     <th> <div class ="container2"> factor planeacion activa del futuro 2 </div> </th>
     <th> <div class ="container2"> factor planeacion activa del futuro 3 </div> </th>
     <th> <div class ="container2"> factor planeacion activa del futuro 4 </div> </th>
-    <th> <div class ="container2"> factor influencia de la conducta pasada y presente en el futuro 1 </div> </th>
-    <th> <div class ="container2"> factor influencia de la conducta pasada y presente en el futuro 2 </div> </th>
-    <th> <div class ="container2"> factor influencia de la conducta pasada y presente en el futuro 3 </div> </th>
-    <th> <div class ="container2"> factor influencia de la conducta pasada y presente en el futuro 4 </div> </th>
-    <th> <div class ="container2"> factor influencia de la conducta pasada y presente en el futuro 5 </div> </th>
+    <th> <div style="width: 200px"> factor influencia de la conducta pasada y presente en el futuro 1 </div> </th>
+    <th> <div style="width: 200px"> factor influencia de la conducta pasada y presente en el futuro 2 </div> </th>
+    <th> <div style="width: 200px"> factor influencia de la conducta pasada y presente en el futuro 3 </div> </th>
+    <th> <div style="width: 200px"> factor influencia de la conducta pasada y presente en el futuro 4 </div> </th>
+    <th> <div style="width: 200px"> factor influencia de la conducta pasada y presente en el futuro 5 </div> </th>
     <th> <div class ="container2"> factor tendencia a imaginarse la vida en el futuro 1 </div> </th>
     <th> <div class ="container2"> factor tendencia a imaginarse la vida en el futuro 2 </div> </th>
     <th> <div class ="container2"> factor tendencia a imaginarse la vida en el futuro 3 </div> </th>
     <th> <div class ="container2"> factor tendencia a imaginarse la vida en el futuro 4 </div> </th>
 
-    <th> <div class ="container2"> total factor tendencia a no centrarse en el futuro  </div> </th>
+    <th> <div style="width: 200px"> total factor tendencia a no centrarse en el futuro  </div> </th>
     <th> <div class ="container2"> total factor planeacion activa del futuro  </div> </th>
-    <th> <div class ="container2"> total factor influencia de la conducta pasada y presente en el futuro </div> </th>
-    <th> <div class ="container2"> total factor tendencia a imaginarse la vida en el futuro  </div> </th>
+    <th> <div style="width: 200px"> total factor influencia de la conducta pasada y presente en el futuro </div> </th>
+    <th> <div style="width: 200px"> total factor tendencia a imaginarse la vida en el futuro  </div> </th>
 
     <th> <div class ="container2"> extension temporal economico comprar casa </div> </th>
     <th> <div class ="container2"> extension temporal economico comprar carro </div> </th>
     <th> <div class ="container2"> extension temporal laboral conseguir empleo estable </div> </th>
-    <th> <div class ="container2"> extension temporal laboral terminar una carrera profesional </div> </th>
+    <th> <div style="width: 200px"> extension temporal laboral terminar una carrera profesional </div> </th>
     <th> <div class ="container2"> extension temporal laboral crear negocio propio </div> </th>
     <th> <div class ="container2"> extension temporal familiar casarme o irme con mi pareja </div> </th>
-    <th> <div class ="container2"> extension temporal familiar irme de mi casa o dejar de vivir con mis padres </div> </th>
+    <th> <div style="width: 220px"> extension temporal familiar irme de mi casa o dejar de vivir con mis padres </div> </th>
     <th> <div class ="container2"> extension temporal familiar tener mi primer hijo </div> </th>
-    <th> <div class ="container2"> ¿Cuantos años quisieras vivir? diferencia entre la edad acutal y la edad proyectada </div> </th>
-    <th> <div class ="container2"> ¿Cuantos años crees qeu vas a vivir? diferencia entre la edad acutal y la edad proyectada </div> </th>
-    <th> <div class ="container2"> extension temporal academico terminar mis estudios de bachillerato </div> </th>
+    <th> <div style="width: 250px"> ¿Cuantos años quisieras vivir? diferencia entre la edad acutal y la edad proyectada </div> </th>
+    <th> <div style="width: 250px"> ¿Cuantos años crees que vas a vivir? diferencia entre la edad acutal y la edad proyectada </div> </th>
+    <th> <div style="width: 200px"> extension temporal academico terminar mis estudios de bachillerato </div> </th>
     <th> <div class ="container2"> extension temporal academico irme al ejercito o la policia </div> </th>
-    <th> <div class ="container2"> extension temporal academico ingresar a estudiar una carrera profesional </div> </th>
+    <th> <div style="width: 250px"> extension temporal academico ingresar a estudiar una carrera profesional </div> </th>
     <th>total escala de extension economico </th>
     <th>total escala de extension laboral </th>
     <th>total escala de extension familiar </th>
