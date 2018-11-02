@@ -465,28 +465,30 @@ th {
     <th> <div class ="container2"> factor tendencia a imaginarse la vida en el futuro 2 </div> </th>
     <th> <div class ="container2"> factor tendencia a imaginarse la vida en el futuro 3 </div> </th>
     <th> <div class ="container2"> factor tendencia a imaginarse la vida en el futuro 4 </div> </th>
-    <th>total factor tncf </th>
-    <th>total factor paf </th>
-    <th>total factor icppf</th>
-    <th>total factor tivf</th>
-    <th> <div class ="container2"> escala extension temporal economico 1 </div> </th>
-    <th> <div class ="container2"> escala extension temporal economico 2 </div> </th>
-    <th> <div class ="container2"> escala extension temporal laboral 1 </div> </th>
-    <th> <div class ="container2"> escala extension temporal laboral 2 </div> </th>
-    <th> <div class ="container2"> escala extension temporal laboral 3 </div> </th>
-    <th> <div class ="container2"> escala extension temporal familiar 1 </div> </th>
-    <th> <div class ="container2"> escala extension temporal familiar 2 </div> </th>
-    <th> <div class ="container2"> escala extension temporal familiar 3 </div> </th>
-    <th> <div class ="container2"> escala extension temporal vida 1 </div> </th>
-    <th> <div class ="container2"> escala extension temporal vida 2 </div> </th>
-    <th> <div class ="container2"> escala extension temporal academico 1 </div> </th>
-    <th> <div class ="container2"> escala extension temporal academico 2 </div> </th>
-    <th> <div class ="container2"> escala extension temporal academico 3 </div> </th>
-    <th>total eet economico </th>
-    <th>total eet laboral </th>
-    <th>total eet familiar </th>
-    <th>total eet vida </th>
-    <th>total eet academico </th>
+
+    <th> <div class ="container2"> total factor tendencia a no centrarse en el futuro  </div> </th>
+    <th> <div class ="container2"> total factor planeacion activa del futuro  </div> </th>
+    <th> <div class ="container2"> total factor influencia de la conducta pasada y presente en el futuro </div> </th>
+    <th> <div class ="container2"> total factor tendencia a imaginarse la vida en el futuro  </div> </th>
+
+    <th> <div class ="container2"> extension temporal economico comprar casa </div> </th>
+    <th> <div class ="container2"> extension temporal economico comprar carro </div> </th>
+    <th> <div class ="container2"> extension temporal laboral conseguir empleo estable </div> </th>
+    <th> <div class ="container2"> extension temporal laboral terminar una carrera profesional </div> </th>
+    <th> <div class ="container2"> extension temporal laboral crear negocio propio </div> </th>
+    <th> <div class ="container2"> extension temporal familiar casarme o irme con mi pareja </div> </th>
+    <th> <div class ="container2"> extension temporal familiar irme de mi casa o dejar de vivir con mis padres </div> </th>
+    <th> <div class ="container2"> extension temporal familiar tener mi primer hijo </div> </th>
+    <th> <div class ="container2"> ¿Cuantos años quisieras vivir? diferencia entre la edad acutal y la edad proyectada </div> </th>
+    <th> <div class ="container2"> ¿Cuantos años crees qeu vas a vivir? diferencia entre la edad acutal y la edad proyectada </div> </th>
+    <th> <div class ="container2"> extension temporal academico terminar mis estudios de bachillerato </div> </th>
+    <th> <div class ="container2"> extension temporal academico irme al ejercito o la policia </div> </th>
+    <th> <div class ="container2"> extension temporal academico ingresar a estudiar una carrera profesional </div> </th>
+    <th>total escala de extension economico </th>
+    <th>total escala de extension laboral </th>
+    <th>total escala de extension familiar </th>
+    <th>total escala de extension vida </th>
+    <th>total escala de extension academico </th>
     <th>Observaciones </th>
     <th>Subir linea de vida</th>
 
