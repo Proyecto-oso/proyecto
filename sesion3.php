@@ -113,15 +113,15 @@ th {
               $est[$id]['pregunta_' . $i] = -1;
             }
           }
-          
+
           $_POST[$id . '_mas_predominante'] = str_replace($originales, $correctos, $_POST[$id . '_mas_predominante']);
           $query .= '`mas_predominante`   = "' . $_POST[$id . '_mas_predominante'] . '",';
           $est[$id]['mas_predominante'] = $_POST[$id . '_mas_predominante'];
-          
+
           $_POST[$id . '_menos_predominante'] = str_replace($originales, $correctos, $_POST[$id . '_menos_predominante']);
           $query .= '`menos_predominante` = "' . $_POST[$id . '_menos_predominante'] . '",';
           $est[$id]['menos_predominante'] = $_POST[$id . '_menos_predominante'];
-          
+
           $_POST[$id . '_est_predominante'] = str_replace($originales, $correctos, $_POST[$id . '_est_predominante']);
           $query .= '`est_predominante` = "' . $_POST[$id . '_est_predominante'] . '",';
           $est[$id]['est_predominante'] = $_POST[$id . '_est_predominante'];
@@ -134,10 +134,40 @@ th {
           $est[$id]['tallerista'] = $_POST[$id . '_tallerista'];
           $query .= '`utilidad` =' . $_POST[$id . '_utilidad'] . ',';
           $est[$id]['utilidad'] = $_POST[$id . '_utilidad'];
-          
+
           $_POST[$id . '_observaciones'] = str_replace($originales, $correctos, $_POST[$id . '_observaciones']);
-          $query .= '`observaciones` ="' . $_POST[$id . '_observaciones'] . '"';
+          $query .= '`observaciones` ="' . $_POST[$id . '_observaciones'] . '",';
           $est[$id]['observaciones'] = $_POST[$id . '_observaciones'];
+
+          #####################
+          $query .= '`t_activo` =' .     $_POST[$id . '_t_activo'] . ',';
+          $est[$id]['t_activo'] = $_POST[$id . '_t_activo'];
+          $query .= '`t_reflexivo` =' .  $_POST[$id . '_t_reflexivo'] . ',';
+          $est[$id]['t_reflexivo'] = $_POST[$id . '_t_reflexivo'];
+          $query .= '`d_act_ref` =' .    $_POST[$id . '_d_act_ref'] . ',';
+          $est[$id]['d_act_ref'] = $_POST[$id . '_d_act_ref'];
+          $query .= '`t_sensible` =' .   $_POST[$id . '_t_sensible'] . ',';
+          $est[$id]['t_sensible'] = $_POST[$id . '_t_sensible'];
+          $query .= '`t_intuitivo`= ' .  $_POST[$id . '_t_intuitivo'] . ',';
+          $est[$id]['t_intuitivo'] = $_POST[$id . '_t_intuitivo'];
+          $query .= '`d_sen_int` =' .    $_POST[$id . '_d_sen_int'] . ',';
+          $est[$id]['d_sen_int'] = $_POST[$id . '_d_sen_int'];
+          $query .= '`t_visual` =' .     $_POST[$id . '_t_visual'] . ',';
+          $est[$id]['t_visual'] = $_POST[$id . '_t_visual'];
+          $query .= '`t_verbal` =' .     $_POST[$id . '_t_verbal'] . ',';
+          $est[$id]['t_verbal'] = $_POST[$id . '_t_verbal'];
+          $query .= '`d_vis_ver` =' .    $_POST[$id . '_d_vis_ver'] . ',';
+          $est[$id]['d_vis_ver'] = $_POST[$id . '_d_vis_ver'];
+          $query .= '`t_secuencial` =' . $_POST[$id . '_t_secuencial'] . ',';
+          $est[$id]['t_secuencial'] = $_POST[$id . '_t_secuencial'];
+          $query .= '`t_global` =' .     $_POST[$id . '_t_global'] . ',';
+          $est[$id]['t_global'] = $_POST[$id . '_t_global'];
+          $query .= '`d_sec_glo` =' .    $_POST[$id . '_d_sec_glo'];
+          $est[$id]['d_sec_glo'] = $_POST[$id . '_d_sec_glo'];
+
+
+          #####################
+
 
           $query .= ' WHERE id_estudiante=' . $_POST[$id . '_id_ses'] . ' ';
 
@@ -147,7 +177,7 @@ th {
             $stmt = $dbh->prepare($query);
             $stmt->execute();
             $dbh->commit();
-            
+
           //echo '<script language="javascript">window.location="sesion3.php"</script>';
 
           } catch (Exception $e) {
@@ -160,12 +190,12 @@ th {
           }
 
         } else {
-          $query = 'INSERT INTO `sesion_3`(`id_estudiante`, `e_proceso`,`pregunta_1` ,`pregunta_2`, `pregunta_3`, `pregunta_4`, `pregunta_5`, `pregunta_6`, `pregunta_7`, `pregunta_8`, `pregunta_9`, `pregunta_10`, `pregunta_11`, `pregunta_12`, `pregunta_13`, `pregunta_14`, `pregunta_15`, `pregunta_16`, `pregunta_17`, `pregunta_18`, `pregunta_19`, `pregunta_20`, `pregunta_21`, `pregunta_22`, `pregunta_23`, `pregunta_24`, `pregunta_25`, `pregunta_26`, `pregunta_27`, `pregunta_28`, `pregunta_29`, `pregunta_30`, `pregunta_31`, `pregunta_32`, `pregunta_33`, `pregunta_34`, `pregunta_35`, `pregunta_36`, `pregunta_37`, `pregunta_38`, `pregunta_39`, `pregunta_40`, `pregunta_41`, `pregunta_42`, `pregunta_43`, `pregunta_44`,`mas_predominante`,`menos_predominante`,`est_predominante`, `temas_trabajados`, `ejercicios`, `tallerista`, `utilidad`, `observaciones`) VALUES (';
+          $query = 'INSERT INTO `sesion_3`(`id_estudiante`, `e_proceso`,`pregunta_1` ,`pregunta_2`, `pregunta_3`, `pregunta_4`, `pregunta_5`, `pregunta_6`, `pregunta_7`, `pregunta_8`, `pregunta_9`, `pregunta_10`, `pregunta_11`, `pregunta_12`, `pregunta_13`, `pregunta_14`, `pregunta_15`, `pregunta_16`, `pregunta_17`, `pregunta_18`, `pregunta_19`, `pregunta_20`, `pregunta_21`, `pregunta_22`, `pregunta_23`, `pregunta_24`, `pregunta_25`, `pregunta_26`, `pregunta_27`, `pregunta_28`, `pregunta_29`, `pregunta_30`, `pregunta_31`, `pregunta_32`, `pregunta_33`, `pregunta_34`, `pregunta_35`, `pregunta_36`, `pregunta_37`, `pregunta_38`, `pregunta_39`, `pregunta_40`, `pregunta_41`, `pregunta_42`, `pregunta_43`, `pregunta_44`,`mas_predominante`,`menos_predominante`,`est_predominante`, `temas_trabajados`, `ejercicios`, `tallerista`, `utilidad`, `observaciones`, `t_activo`, `t_reflexivo`, `d_act_ref`, `t_sensible`, `t_intuitivo`, `d_sen_int`, `t_visual`, `t_verbal`, `d_vis_ver`, `t_secuencial`, `t_global`, `d_sec_glo`) VALUES (';
 
           $originales = array("'", '"');
           $correctos = array("\'", '\"');
           $_POST[$id . '_e_proceso'] = str_replace($originales, $correctos, $_POST[$id . '_e_proceso']);
-          
+
           $query .= $id . ',';
           $query .= '"' . $_POST[$id . '_e_proceso'] . '"' . ',';
           $est[$id]['e_proceso'] = $_POST[$id . '_e_proceso'];
@@ -184,7 +214,7 @@ th {
           $_POST[$id . '_mas_predominante'] = str_replace($originales, $correctos, $_POST[$id . '_mas_predominante']);
           $query .= '"' . $_POST[$id . '_mas_predominante'] . '",';
           $est[$id]['mas_predominante'] = $_POST[$id . '_mas_predominante'];
-          
+
           $_POST[$id . '_menos_predominante'] = str_replace($originales, $correctos, $_POST[$id . '_menos_predominante']);
           $query .= '"' . $_POST[$id . '_menos_predominante'] . '",';
           $est[$id]['menos_predominante'] = $_POST[$id . '_menos_predominante'];
@@ -204,10 +234,42 @@ th {
           $est[$id]['utilidad'] = $_POST[$id . '_utilidad'];
 
           $_POST[$id . '_observaciones'] = str_replace($originales, $correctos, $_POST[$id . '_observaciones']);
-          $query .= '"' . $_POST[$id . '_observaciones'] . '")';
+          $query .= '"' . $_POST[$id . '_observaciones'] . '",';
           $est[$id]['observaciones'] = $_POST[$id . '_observaciones'];
+          ##################################
+
+          $query .=  $_POST[$id . '_t_activo'] . ',';
+          $est[$id]['t_activo'] = $_POST[$id . '_t_activo'];
+          $query .=  $_POST[$id . '_t_reflexivo'] . ',';
+          $est[$id]['t_reflexivo'] = $_POST[$id . '_t_reflexivo'];
+          $query .=  $_POST[$id . '_d_act_ref'] . ',';
+          $est[$id]['d_act_ref'] = $_POST[$id . '_d_act_ref'];
+          $query .=  $_POST[$id . '_t_sensible'] . ',';
+          $est[$id]['t_sensible'] = $_POST[$id . '_t_sensible'];
+          $query .=  $_POST[$id . '_t_intuitivo'] . ',';
+          $est[$id]['t_intuitivo'] = $_POST[$id . '_t_intuitivo'];
+          $query .=  $_POST[$id . '_d_sen_int'] . ',';
+          $est[$id]['d_sen_int'] = $_POST[$id . '_d_sen_int'];
+          $query .=  $_POST[$id . '_t_visual'] . ',';
+          $est[$id]['t_visual'] = $_POST[$id . '_t_visual'];
+          $query .=  $_POST[$id . '_t_verbal'] . ',';
+          $est[$id]['t_verbal'] = $_POST[$id . '_t_verbal'];
+          $query .=  $_POST[$id . '_d_vis_ver'] . ',';
+          $est[$id]['d_vis_ver'] = $_POST[$id . '_d_vis_ver'];
+          $query .=  $_POST[$id . '_t_secuencial'] . ',';
+          $est[$id]['t_secuencial'] = $_POST[$id . '_t_secuencial'];
+          $query .=  $_POST[$id . '_t_global'] . ',';
+          $est[$id]['t_global'] = $_POST[$id . '_t_global'];
+          $query .=  $_POST[$id . '_d_sec_glo'] . ')';
+          $est[$id]['d_sec_glo'] = $_POST[$id . '_d_sec_glo'];
+
+
+          ##################################
+
 
           $est[$id]['id_estudiante'] = $id;
+
+
 
           $dbh->beginTransaction();
 
@@ -360,18 +422,21 @@ th {
             <?php
 
           }
-          echo '<td><div style="text-align: center;">0</div> </td>';
-          echo '<td><div style="text-align: center;">0</div> </td>';
-          echo '<td><div style="text-align: center;">0</div> </td>';
-          echo '<td><div style="text-align: center;">0</div> </td>';
-          echo '<td><div style="text-align: center;">0</div> </td>';
-          echo '<td><div style="text-align: center;">0</div> </td>';
-          echo '<td><div style="text-align: center;">0</div> </td>';
-          echo '<td><div style="text-align: center;">0</div> </td>';
-          echo '<td><div style="text-align: center;">0</div> </td>';
-          echo '<td><div style="text-align: center;">0</div> </td>';
-          echo '<td><div style="text-align: center;">0</div> </td>';
-          echo '<td><div style="text-align: center;">0</div> </td>';
+
+
+          echo '<td><input type="number" name= "' . $id . '_t_activo" value="0" form="form1" /></td>';
+          echo '<td><input type="number" name= "' . $id . '_t_reflexivo" value="0" form="form1" /></td>';
+          echo '<td><input type="number" name= "' . $id . '_d_act_ref" value="0" form="form1" /></td>';
+          echo '<td><input type="number" name= "' . $id . '_t_sensible" value="0" form="form1" /></td>';
+          echo '<td><input type="number" name= "' . $id . '_t_intuitivo" value="0" form="form1" /></td>';
+          echo '<td><input type="number" name= "' . $id . '_d_sen_int" value="0" form="form1" /></td>';
+          echo '<td><input type="number" name= "' . $id . '_t_visual" value="0" form="form1" /></td>';
+          echo '<td><input type="number" name= "' . $id . '_t_verbal" value="0" form="form1" /></td>';
+          echo '<td><input type="number" name= "' . $id . '_d_vis_ver" value="0" form="form1" /></td>';
+          echo '<td><input type="number" name= "' . $id . '_t_secuencial" value="0" form="form1" /></td>';
+          echo '<td><input type="number" name= "' . $id . '_t_global" value="0" form="form1" /></td>';
+          echo '<td><input type="number" name= "' . $id . '_d_sec_glo" value="0" form="form1" /></td>';
+
 
 
           echo '<td><textarea rows="4" cols="40" name= "' . $id . '_mas_predominante" form="form1"></textarea></td>';
@@ -467,22 +532,20 @@ th {
 
           }
 
-          echo '<td><div style="text-align: center;">' . $activo . '</div> </td>';
-          echo '<td><div style="text-align: center;">' . $reflexivo . '</div> </td>';
-          $diferencia = $activo - $reflexivo;
-          echo '<td><div style="text-align: center;">' . $diferencia . '</div> </td>';
-          echo '<td><div style="text-align: center;">' . $sensible . '</div> </td>';
-          echo '<td><div style="text-align: center;">' . $intuitivo . '</div> </td>';
-          $diferencia = $sensible - $intuitivo;
-          echo '<td><div style="text-align: center;">' . $diferencia . '</div> </td>';
-          echo '<td><div style="text-align: center;">' . $visual . '</div> </td>';
-          echo '<td><div style="text-align: center;">' . $verbal . '</div> </td>';
-          $diferencia = $visual - $verbal;
-          echo '<td><div style="text-align: center;">' . $diferencia . '</div> </td>';
-          echo '<td><div style="text-align: center;">' . $secuencial . '</div> </td>';
-          echo '<td><div style="text-align: center;">' . $global . '</div> </td>';
-          $diferencia = $secuencial - $global;
-          echo '<td><div style="text-align: center;">' . $diferencia . '</div> </td>';
+          echo '<td><input type="number" name= "' . $id . '_t_activo"      value="'.$s["t_activo"].'" form="form1" /></td>';
+          echo '<td><input type="number" name= "' . $id . '_t_reflexivo"   value="'.$s["t_reflexivo"].'" form="form1" /></td>';
+          echo '<td><input type="number" name= "' . $id . '_d_act_ref"     value="'.$s["d_act_ref"].'" form="form1" /></td>';
+          echo '<td><input type="number" name= "' . $id . '_t_sensible"    value="'.$s["t_sensible"].'" form="form1" /></td>';
+          echo '<td><input type="number" name= "' . $id . '_t_intuitivo"   value="'.$s["t_intuitivo"].'" form="form1" /></td>';
+          echo '<td><input type="number" name= "' . $id . '_d_sen_int"     value="'.$s["d_sen_int"].'" form="form1" /></td>';
+          echo '<td><input type="number" name= "' . $id . '_t_visual"      value="'.$s["t_visual"].'" form="form1" /></td>';
+          echo '<td><input type="number" name= "' . $id . '_t_verbal"      value="'.$s["t_verbal"].'" form="form1" /></td>';
+          echo '<td><input type="number" name= "' . $id . '_d_vis_ver"     value="'.$s["d_vis_ver"].'" form="form1" /></td>';
+          echo '<td><input type="number" name= "' . $id . '_t_secuencial"  value="'.$s["t_secuencial"].'" form="form1" /></td>';
+          echo '<td><input type="number" name= "' . $id . '_t_global"      value="'.$s["t_global"].'" form="form1" /></td>';
+          echo '<td><input type="number" name= "' . $id . '_d_sec_glo"     value="'.$s["d_sec_glo"].'" form="form1" /></td>';
+
+
 
 
           echo '<td><textarea rows="4" cols="40" name= "' . $id . '_mas_predominante" form="form1"> ' . $s['mas_predominante'] . '</textarea></td>';
