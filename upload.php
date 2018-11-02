@@ -7,6 +7,10 @@
   .btn{
     margin: 10px;
   }
+  .link{
+    font-size: 50px;
+    color: red;
+  }
 </style>
 <?php
 
@@ -57,7 +61,11 @@ if (isset($_POST["submit"])) {
 
     // Check file size se revisa si es mayor a 500KB
     if ($_FILES["fileToUpload"]["size"] > 5000000) {
-        echo "Sorry, your file is too large.";
+        ?>
+        <h1>El archivo es demasiado grande, el tamaño maximo es de 5 mb, te recomendamos comprimir el archvio mediante la siguiente pagina:</h1>
+        <a class="link" href="https://www.ilovepdf.com/es/comprimir_pdf" >https://www.ilovepdf.com/es/comprimir_pdf</a>
+        <?php
+        echo "</br>";
         $uploadOk = 0;
     }
 
