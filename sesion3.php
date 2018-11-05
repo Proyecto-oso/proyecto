@@ -140,29 +140,29 @@ th {
           $est[$id]['observaciones'] = $_POST[$id . '_observaciones'];
 
           #####################
-          $query .= '`t_activo` =' .     $_POST[$id . '_t_activo'] . ',';
+          $query .= '`t_activo` =' . $_POST[$id . '_t_activo'] . ',';
           $est[$id]['t_activo'] = $_POST[$id . '_t_activo'];
-          $query .= '`t_reflexivo` =' .  $_POST[$id . '_t_reflexivo'] . ',';
+          $query .= '`t_reflexivo` =' . $_POST[$id . '_t_reflexivo'] . ',';
           $est[$id]['t_reflexivo'] = $_POST[$id . '_t_reflexivo'];
-          $query .= '`d_act_ref` =' .    $_POST[$id . '_d_act_ref'] . ',';
+          $query .= '`d_act_ref` =' . $_POST[$id . '_d_act_ref'] . ',';
           $est[$id]['d_act_ref'] = $_POST[$id . '_d_act_ref'];
-          $query .= '`t_sensible` =' .   $_POST[$id . '_t_sensible'] . ',';
+          $query .= '`t_sensible` =' . $_POST[$id . '_t_sensible'] . ',';
           $est[$id]['t_sensible'] = $_POST[$id . '_t_sensible'];
-          $query .= '`t_intuitivo`= ' .  $_POST[$id . '_t_intuitivo'] . ',';
+          $query .= '`t_intuitivo`= ' . $_POST[$id . '_t_intuitivo'] . ',';
           $est[$id]['t_intuitivo'] = $_POST[$id . '_t_intuitivo'];
-          $query .= '`d_sen_int` =' .    $_POST[$id . '_d_sen_int'] . ',';
+          $query .= '`d_sen_int` =' . $_POST[$id . '_d_sen_int'] . ',';
           $est[$id]['d_sen_int'] = $_POST[$id . '_d_sen_int'];
-          $query .= '`t_visual` =' .     $_POST[$id . '_t_visual'] . ',';
+          $query .= '`t_visual` =' . $_POST[$id . '_t_visual'] . ',';
           $est[$id]['t_visual'] = $_POST[$id . '_t_visual'];
-          $query .= '`t_verbal` =' .     $_POST[$id . '_t_verbal'] . ',';
+          $query .= '`t_verbal` =' . $_POST[$id . '_t_verbal'] . ',';
           $est[$id]['t_verbal'] = $_POST[$id . '_t_verbal'];
-          $query .= '`d_vis_ver` =' .    $_POST[$id . '_d_vis_ver'] . ',';
+          $query .= '`d_vis_ver` =' . $_POST[$id . '_d_vis_ver'] . ',';
           $est[$id]['d_vis_ver'] = $_POST[$id . '_d_vis_ver'];
           $query .= '`t_secuencial` =' . $_POST[$id . '_t_secuencial'] . ',';
           $est[$id]['t_secuencial'] = $_POST[$id . '_t_secuencial'];
-          $query .= '`t_global` =' .     $_POST[$id . '_t_global'] . ',';
+          $query .= '`t_global` =' . $_POST[$id . '_t_global'] . ',';
           $est[$id]['t_global'] = $_POST[$id . '_t_global'];
-          $query .= '`d_sec_glo` =' .    $_POST[$id . '_d_sec_glo'];
+          $query .= '`d_sec_glo` =' . $_POST[$id . '_d_sec_glo'];
           $est[$id]['d_sec_glo'] = $_POST[$id . '_d_sec_glo'];
 
 
@@ -238,29 +238,29 @@ th {
           $est[$id]['observaciones'] = $_POST[$id . '_observaciones'];
           ##################################
 
-          $query .=  $_POST[$id . '_t_activo'] . ',';
+          $query .= $_POST[$id . '_t_activo'] . ',';
           $est[$id]['t_activo'] = $_POST[$id . '_t_activo'];
-          $query .=  $_POST[$id . '_t_reflexivo'] . ',';
+          $query .= $_POST[$id . '_t_reflexivo'] . ',';
           $est[$id]['t_reflexivo'] = $_POST[$id . '_t_reflexivo'];
-          $query .=  $_POST[$id . '_d_act_ref'] . ',';
+          $query .= $_POST[$id . '_d_act_ref'] . ',';
           $est[$id]['d_act_ref'] = $_POST[$id . '_d_act_ref'];
-          $query .=  $_POST[$id . '_t_sensible'] . ',';
+          $query .= $_POST[$id . '_t_sensible'] . ',';
           $est[$id]['t_sensible'] = $_POST[$id . '_t_sensible'];
-          $query .=  $_POST[$id . '_t_intuitivo'] . ',';
+          $query .= $_POST[$id . '_t_intuitivo'] . ',';
           $est[$id]['t_intuitivo'] = $_POST[$id . '_t_intuitivo'];
-          $query .=  $_POST[$id . '_d_sen_int'] . ',';
+          $query .= $_POST[$id . '_d_sen_int'] . ',';
           $est[$id]['d_sen_int'] = $_POST[$id . '_d_sen_int'];
-          $query .=  $_POST[$id . '_t_visual'] . ',';
+          $query .= $_POST[$id . '_t_visual'] . ',';
           $est[$id]['t_visual'] = $_POST[$id . '_t_visual'];
-          $query .=  $_POST[$id . '_t_verbal'] . ',';
+          $query .= $_POST[$id . '_t_verbal'] . ',';
           $est[$id]['t_verbal'] = $_POST[$id . '_t_verbal'];
-          $query .=  $_POST[$id . '_d_vis_ver'] . ',';
+          $query .= $_POST[$id . '_d_vis_ver'] . ',';
           $est[$id]['d_vis_ver'] = $_POST[$id . '_d_vis_ver'];
-          $query .=  $_POST[$id . '_t_secuencial'] . ',';
+          $query .= $_POST[$id . '_t_secuencial'] . ',';
           $est[$id]['t_secuencial'] = $_POST[$id . '_t_secuencial'];
-          $query .=  $_POST[$id . '_t_global'] . ',';
+          $query .= $_POST[$id . '_t_global'] . ',';
           $est[$id]['t_global'] = $_POST[$id . '_t_global'];
-          $query .=  $_POST[$id . '_d_sec_glo'] . ')';
+          $query .= $_POST[$id . '_d_sec_glo'] . ')';
           $est[$id]['d_sec_glo'] = $_POST[$id . '_d_sec_glo'];
 
 
@@ -531,21 +531,66 @@ th {
             <?php
 
           }
-
-          echo '<td><input type="number" name= "' . $id . '_t_activo"      value="'.$s["t_activo"].'" form="form1" /></td>';
-          echo '<td><input type="number" name= "' . $id . '_t_reflexivo"   value="'.$s["t_reflexivo"].'" form="form1" /></td>';
-          echo '<td><input type="number" name= "' . $id . '_d_act_ref"     value="'.$s["d_act_ref"].'" form="form1" /></td>';
-          echo '<td><input type="number" name= "' . $id . '_t_sensible"    value="'.$s["t_sensible"].'" form="form1" /></td>';
-          echo '<td><input type="number" name= "' . $id . '_t_intuitivo"   value="'.$s["t_intuitivo"].'" form="form1" /></td>';
-          echo '<td><input type="number" name= "' . $id . '_d_sen_int"     value="'.$s["d_sen_int"].'" form="form1" /></td>';
-          echo '<td><input type="number" name= "' . $id . '_t_visual"      value="'.$s["t_visual"].'" form="form1" /></td>';
-          echo '<td><input type="number" name= "' . $id . '_t_verbal"      value="'.$s["t_verbal"].'" form="form1" /></td>';
-          echo '<td><input type="number" name= "' . $id . '_d_vis_ver"     value="'.$s["d_vis_ver"].'" form="form1" /></td>';
-          echo '<td><input type="number" name= "' . $id . '_t_secuencial"  value="'.$s["t_secuencial"].'" form="form1" /></td>';
-          echo '<td><input type="number" name= "' . $id . '_t_global"      value="'.$s["t_global"].'" form="form1" /></td>';
-          echo '<td><input type="number" name= "' . $id . '_d_sec_glo"     value="'.$s["d_sec_glo"].'" form="form1" /></td>';
-
-
+          if ($s["t_activo"] != 0) {
+            echo '<td><input type="number" name= "' . $id . '_t_activo"      value="' . $s["t_activo"] . '" form="form1" /></td>';
+          } else {
+            echo '<td><input type="number" name= "' . $id . '_t_activo"      value="' . $activo . '" form="form1" /></td>';
+          }
+          if ($s["t_reflexivo"] != 0) {
+            echo '<td><input type="number" name= "' . $id . '_t_reflexivo"   value="' . $s["t_reflexivo"] . '" form="form1" /></td>';
+          } else {
+            echo '<td><input type="number" name= "' . $id . '_t_reflexivo"   value="' . $reflexivo . '" form="form1" /></td>';
+          }
+          if ($s["d_act_ref"] != 0) {
+            echo '<td><input type="number" name= "' . $id . '_d_act_ref"     value="' . $s["d_act_ref"] . '" form="form1" /></td>';
+          } else {
+            echo '<td><input type="number" name= "' . $id . '_d_act_ref"     value="' . abs($activo-$reflexivo) . '" form="form1" /></td>';
+          }
+          if ($s["t_sensible"] != 0) {
+            echo '<td><input type="number" name= "' . $id . '_t_sensible"    value="' . $s["t_sensible"] . '" form="form1" /></td>';
+          } else {
+            echo '<td><input type="number" name= "' . $id . '_t_sensible"    value="' . $sensible . '" form="form1" /></td>';
+          }
+          if ($s["t_intuitivo"] != 0) {
+            echo '<td><input type="number" name= "' . $id . '_t_intuitivo"   value="' . $s["t_intuitivo"] . '" form="form1" /></td>';
+          } else {
+            echo '<td><input type="number" name= "' . $id . '_t_intuitivo"   value="' . $intuitivo . '" form="form1" /></td>';
+          }
+          if ($s["d_sen_int"] != 0) {
+            echo '<td><input type="number" name= "' . $id . '_d_sen_int"     value="' . $s["d_sen_int"] . '" form="form1" /></td>';
+          } else {
+            echo '<td><input type="number" name= "' . $id . '_d_sen_int"     value="' . abs($sensible-$intuitivo) . '" form="form1" /></td>';
+          }
+          if ($s["t_visual"] != 0) {
+            echo '<td><input type="number" name= "' . $id . '_t_visual"      value="' . $s["t_visual"] . '" form="form1" /></td>';
+          } else {
+            echo '<td><input type="number" name= "' . $id . '_t_visual"      value="' . $visual . '" form="form1" /></td>';
+          }
+          if ($s["t_verbal"] != 0) {
+            echo '<td><input type="number" name= "' . $id . '_t_verbal"      value="' . $s["t_verbal"] . '" form="form1" /></td>';
+          } else {
+            echo '<td><input type="number" name= "' . $id . '_t_verbal"      value="' . $verbal . '" form="form1" /></td>';
+          }
+          if ($s["d_vis_ver"] != 0) {
+            echo '<td><input type="number" name= "' . $id . '_d_vis_ver"     value="' . $s["d_vis_ver"] . '" form="form1" /></td>';
+          } else {
+            echo '<td><input type="number" name= "' . $id . '_d_vis_ver"     value="' . abs($visual-$verbal) . '" form="form1" /></td>';
+          }
+          if ($s["t_secuencial"]!= 0) {
+            echo '<td><input type="number" name= "' . $id . '_t_secuencial"  value="' . $s["t_secuencial"] . '" form="form1" /></td>';
+          } else {
+            echo '<td><input type="number" name= "' . $id . '_t_secuencial"  value="' . $secuencial . '" form="form1" /></td>';
+          }
+          if ($s["t_global"] != 0) {
+            echo '<td><input type="number" name= "' . $id . '_t_global"      value="' . $s["t_global"] . '" form="form1" /></td>';
+          } else {
+            echo '<td><input type="number" name= "' . $id . '_t_global"      value="' . $global . '" form="form1" /></td>';
+          }
+          if ($s["d_sec_glo"] != 0) {
+            echo '<td><input type="number" name= "' . $id . '_d_sec_glo"     value="' . $s["d_sec_glo"] . '" form="form1" /></td>';
+          } else {
+            echo '<td><input type="number" name= "' . $id . '_d_sec_glo"     value="' . abs($global-$secuencial) . '" form="form1" /></td>';
+          }     
 
 
           echo '<td><textarea rows="4" cols="40" name= "' . $id . '_mas_predominante" form="form1"> ' . $s['mas_predominante'] . '</textarea></td>';

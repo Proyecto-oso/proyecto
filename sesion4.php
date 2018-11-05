@@ -339,11 +339,33 @@ th {
         echo '<td>' . ($familia / 4) . '</td>';
         echo '<td>' . ($otros / 4) . '</td>';
         echo '<td>' . ($total / 12) . '</td>';*/
+        if($s["amigos"]!=0){
+          echo '<td><input type="number" name="' . $id . '_amigos" value="' . $s["amigos"] . '" form="form1"/></td>';
+        }else{
+          echo '<td><input type="number" name="' . $id . '_amigos" value="' . $amigos . '" form="form1"/></td>';
+        }
 
-        echo '<td><input type="number" name="' . $id . '_amigos" value="' . $s["amigos"] . '" form="form1"/></td>';
-        echo '<td><input type="number" name="' . $id . '_familia" value="' . $s["familia"] . '" form="form1"/></td>';
-        echo '<td><input type="number" name="' . $id . '_otro" value="' . $s["otro"] . '" form="form1"/></td>';
-        echo '<td><input type="number" name="' . $id . '_total" value="' . $s["total"] . '" form="form1"/></td>';
+        if($s["familia"]!=0){
+          echo '<td><input type="number" name="' . $id . '_familia" value="' . $s["familia"] . '" form="form1"/></td>';
+        }else{
+          echo '<td><input type="number" name="' . $id . '_familia" value="' . $familia . '" form="form1"/></td>';
+        }
+
+        if($s["otro"]!=0){
+          echo '<td><input type="number" name="' . $id . '_otro" value="' . $s["otro"] . '" form="form1"/></td>';
+        }else{
+          echo '<td><input type="number" name="' . $id . '_otro" value="' . $otros . '" form="form1"/></td>';
+        }
+
+        if($s["total"]!=0){
+          echo '<td><input type="number" name="' . $id . '_total" value="' . $s["total"] . '" form="form1"/></td>';
+        }else{
+          echo '<td><input type="number" name="' . $id . '_total" value="' . $total . '" form="form1"/></td>';
+        }
+        
+        
+       
+        
 
         echo '<td><textarea rows="4" cols="40" name="' . $id . '_zona_riesgo"              form="form1">' . $s["zona_riesgo"] . '</textarea></td>';
         echo '<td><textarea rows="4" cols="40" name="' . $id . '_zona_segura"              form="form1">' . $s["zona_segura"] . '</textarea></td>';
