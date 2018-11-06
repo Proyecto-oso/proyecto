@@ -266,6 +266,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo '<a href="sesion4.php"><h5>SESIÓN 4</h5></a>';
         echo '<a href="sesion5.php"><h5>SESIÓN 5</h5></a>';
         echo '<a href="sesion6.php"><h5>SESIÓN 6</h5></a>';
+        echo '<a href="sesion7.php"><h5>SESIÓN 7</h5></a>';
+        echo '<a href="sesion8.php"><h5>SESIÓN 8</h5></a>';
     } else {
         echo '<h3>Instituciones:</h3>';
         showGrupos($dbh);
