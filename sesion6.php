@@ -18,7 +18,7 @@ if (!func::checkLoginState($dbh)) {
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="styles/sesion6.css">
+    <link rel="stylesheet" type="text/css" href="styles/sesion2.css">
     <title>Proyecto Psicologia</title>
 </head>
 <style>
@@ -73,6 +73,9 @@ td,
 th {
   padding: 0.5em;
 }
+.radio-cont{
+    width: 120px;
+}
 </style>
 <body><?php
         $query = ' SELECT * FROM estudiantes WHERE grupo_id = ? ';
@@ -120,7 +123,7 @@ th {
                         }
                         $query .= '`total`=' . $_POST[$id . '_total'] . ',';
                         $est["est$id"]["total"] = $_POST[$id . '_total'];
-                        
+
                         $_POST[$id . '_observaciones'] = str_replace($originales, $correctos, $_POST[$id . '_observaciones']);
                         $query .= '`observaciones` = "' . $_POST[$id . '_observaciones'] . '" WHERE id_estudiante=' . $id . ' ';
                         $est["est$id"]["observaciones"] = $_POST[$id . '_observaciones'];
@@ -132,6 +135,9 @@ th {
                             $dbh->commit();
                         } catch (Exception $e) {
                             $dbh->rollBack();
+                            echo '<script language="javascript">';
+                            echo 'alert("Erro al guardar intente nuevamente")';
+                            echo '</script>';
                             if (strpos($e->getMessage(), 'Incorrect integer value')) {
                                 echo '<script language="javascript">';
                                 echo 'alert("ERROR: el total debe ser un número")';
@@ -152,7 +158,7 @@ th {
                         }
                         $query .= '' . $_POST[$id . '_total'] . ',';
                         $est["est$id"]["total"] = $_POST[$id . '_total'];
-                        
+
                         $_POST[$id . '_observaciones'] = str_replace($originales, $correctos, $_POST[$id . '_observaciones']);
                         $query .= '"' . $_POST[$id . '_observaciones'] . '") ';
                         $est["est$id"]["observaciones"] = $_POST[$id . '_observaciones'];
@@ -167,6 +173,9 @@ th {
 
                         } catch (Exception $e) {
                             $dbh->rollBack();
+                            echo '<script language="javascript">';
+                            echo 'alert("Erro al guardar intente nuevamente")';
+                            echo '</script>';
                             if (strpos($e->getMessage(), 'Incorrect integer value')) {
                                 echo '<script language="javascript">';
                                 echo 'alert("ERROR: el total debe ser un número")';
@@ -221,11 +230,12 @@ th {
                 ?>
 
             <td class="radio-cont">
-                
+                <div class="radio-cont">
               <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i - 1]) && $items[$i - 1] == "1") echo "checked"; ?> value="1">Incorrecto</br>
               <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i - 1]) && $items[$i - 1] == "2") echo "checked"; ?> value="2">Apenas cierto</br>
               <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i - 1]) && $items[$i - 1] == "3") echo "checked"; ?> value="3">Mas bien cierto</br>
               <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i - 1]) && $items[$i - 1] == "4") echo "checked"; ?> value="4">Cierto
+              </div>
             </td>
             <?php
 
@@ -248,12 +258,13 @@ th {
             ?>
 
             <td class="radio-cont">
-                
-                <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i - 1]) && $items[$i - 1] == "1") echo "checked"; ?> value="1">Incorrecto</br>
-                <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i - 1]) && $items[$i - 1] == "2") echo "checked"; ?> value="2">Apenas cierto</br>
-                <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i - 1]) && $items[$i - 1] == "3") echo "checked"; ?> value="3">Mas bien cierto</br>
-                <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i - 1]) && $items[$i - 1] == "4") echo "checked"; ?> value="4">Cierto
-              </td>
+                <div class="radio-cont">
+              <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i - 1]) && $items[$i - 1] == "1") echo "checked"; ?> value="1">Incorrecto</br>
+              <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i - 1]) && $items[$i - 1] == "2") echo "checked"; ?> value="2">Apenas cierto</br>
+              <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i - 1]) && $items[$i - 1] == "3") echo "checked"; ?> value="3">Mas bien cierto</br>
+              <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i - 1]) && $items[$i - 1] == "4") echo "checked"; ?> value="4">Cierto
+              </div>
+            </td>
             <?php
 
         }
