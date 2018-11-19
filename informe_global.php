@@ -17,10 +17,6 @@ if (!func::checkLoginState($dbh)) {
     <title>Proyecto Psicologia</title>
 </head>
 <?php 
-$suma_v_todos = 0;
-$suma_m_todos = 0;
-$suma_v_grupo = 0;
-$suma_m_grupo = 0;
 $count_grupo = 0;
 $count_todos = 0;
 $query = ' SELECT id,nombre FROM grupo';
@@ -37,6 +33,10 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <br>
                 <div class="titulo"><h2>INFORME DE ORIENTACIÓN SOCIO OCUPACIONAL - SESIÓN 1</h2></div>
                 <?php 
+                $suma_v_todos = 0;
+                $suma_m_todos = 0;
+                $suma_v_grupo = 0;
+                $suma_m_grupo = 0;
                 foreach ($groups as $g) {
 
                     $query = ' SELECT grupo.id, estudiantes.id, sesion_1.total_aptitud_matematica, sesion_1.total_aptitud_verbal FROM grupo INNER JOIN estudiantes Inner join sesion_1 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_1.id_estudiante where grupo.id=?';
