@@ -203,7 +203,7 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             $query = ' SELECT * FROM `grupo` WHERE id = ' . $g['id'] . ' ';
             $stmt = $dbh->prepare($query);
-            $stmt->execute([$_SESSION['grupo_id']]);
+            $stmt->execute([$g['id']]);
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($rows as $row) {
               echo '<b>INFORME SOBRE EVENTOS POSITIVOS Y NEGATIVOS DEL GRUPO: </b>'.$row["informe_pn"].'<br>'  ;
@@ -425,7 +425,7 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             $query = ' SELECT * FROM `grupo` WHERE id = ' . $g['id'] . ' ';
             $stmt = $dbh->prepare($query);
-            $stmt->execute([$_SESSION['grupo_id']]);
+            $stmt->execute([$g['id']]);
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($rows as $row) {
               echo '<b>INFORME SOBRE LOS RECURSOS IDENTIFICADOS POR TODOS LOS PARTICIPANTES: </b>'.$row["inf_s3"].'<br><br><br>'  ;
