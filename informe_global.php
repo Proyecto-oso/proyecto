@@ -124,7 +124,7 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
         */
         $aux = 0;
         foreach ($groups as $g) {
-          if ($aux == 4) {
+          if ($aux == 1) {
               echo '</div><div class="page">';
               $aux = 0;
           }
@@ -201,6 +201,14 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $suma_total_eet_vida_grupo      = 0;
             $suma_total_eet_academico_grupo = 0;
 
+            $query = ' SELECT * FROM `grupo` WHERE id = ' . $g['id'] . ' ';
+            $stmt = $dbh->prepare($query);
+            $stmt->execute([$_SESSION['grupo_id']]);
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($rows as $row) {
+              echo '<b>INFORME SOBRE EVENTOS POSITIVOS Y NEGATIVOS DEL GRUPO: </b>'.$row["informe_pn"].'<br>'  ;
+              echo '<b>INFORME METAS, RECURSOS Y BARRERAS DEL GRUPO: </b>'.$row["informe_mrb"].'<br><br><br>' ;
+            }
           }
 
           $total_factor_tncf_estudiantes   = $suma_total_factor_tncf_todos/$count_todos;
@@ -218,14 +226,7 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
         echo 'promedio total escala de extension economico: '.number_format($total_eet_economico_estudiantes,3).'<br>promedio total escala de extension laboral: '.number_format($total_eet_laboral_estudiantes,3).'<br>promedio total escala de extension familiar: '.number_format($total_eet_familiar_estudiantes,3).'<br>promedio total escala de extension vida: '.number_format($total_eet_vida_grupo,3).'<br>';
         echo 'promedio total escala de extension academico: '.number_format($total_eet_academico_estudiantes,3).'<br><br><br>';
 
-        $query = ' SELECT * FROM `grupo` WHERE id = ' . $_SESSION['grupo_id'] . ' ';
-        $stmt = $dbh->prepare($query);
-        $stmt->execute([$_SESSION['grupo_id']]);
-        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        foreach ($rows as $row) {
-          echo '<b>INFORME SOBRE EVENTOS POSITIVOS Y NEGATIVOS DEL GRUPO: </b>'.$row["informe_pn"].'<br>'  ;
-          echo '<b>INFORME METAS, RECURSOS Y BARRERAS DEL GRUPO: </b>'.$row["informe_mrb"].'<br>' ;
-        }
+
 
         $total_factor_tncf_estudiantes    = 0;
         $total_factor_paf_estudiantes     = 0;
@@ -374,7 +375,7 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $suma_total_grupo    = 0;
         $aux = 0;
         foreach ($groups as $g) {
-          if ($aux == 6) {
+          if ($aux == 3) {
               echo '</div><div class="page">';
               $aux = 0;
           }
@@ -421,6 +422,14 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $suma_familia_grupo = 0;
             $suma_otro_grupo = 0;
             $suma_total_grupo = 0;
+
+            $query = ' SELECT * FROM `grupo` WHERE id = ' . $g['id'] . ' ';
+            $stmt = $dbh->prepare($query);
+            $stmt->execute([$_SESSION['grupo_id']]);
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($rows as $row) {
+              echo '<b>INFORME SOBRE LOS RECURSOS IDENTIFICADOS POR TODOS LOS PARTICIPANTES: </b>'.$row["inf_s3"].'<br><br><br>'  ;
+            }
 
         }
 
