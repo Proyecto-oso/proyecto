@@ -126,6 +126,8 @@ foreach ($dbh->query($sql) as $row) {
 <hr>*/
 ?>
 
+<h2><a href="informe_global.php">RESULTADOS</a></h2>
+
 <h3 class="titles">Psicologos</h3>
 
 <table>
