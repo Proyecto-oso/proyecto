@@ -127,6 +127,10 @@ foreach ($dbh->query($sql) as $row) {
 ?>
 
 <h2><a href="informe_global.php">RESULTADOS</a></h2>
+<form action="export_excel.php" method="post">
+ <button type="submit" id="export_data" name='export_data'
+value="Export to excel" class="btn btn-info">Exportar a Excel</button>
+ </form>
 
 <h3 class="titles">Psicologos</h3>
 
