@@ -425,6 +425,8 @@ foreach ($groups as $g) {
     } else {
         $aux['TOTAL'] = 'NO diligenciado';
     }
+    $aux['DICCIONARIO DE PROBLEMAS IDENTIFICADOS']=$g['inf_s5_dicc'];
+    $aux['DIARIO DE CAMPO TOMA DE DECISIONES']=$g['inf_s5_diario'];
     array_push($sesion_5, $aux);
     $count_grupo = 0;
     $total_grupo = 0;
@@ -432,6 +434,8 @@ foreach ($groups as $g) {
 
 $aux['INSTITUCION'] = 'Todos los participantes';
 $aux['TOTAL'] = number_format($total_todos / $count_todos, 3);
+$aux['DICCIONARIO DE PROBLEMAS IDENTIFICADOS']='';
+$aux['DIARIO DE CAMPO TOMA DE DECISIONES']='';
 array_push($sesion_5, $aux);
 
 $total_todos = 0;
@@ -463,13 +467,14 @@ foreach ($groups as $g) {
     } else {
         $aux['TOTAL'] = 'NO diligenciado';
     }
+    $aux['DIARIO DE CAMPO RESOLUCION PROBLEMAS']=$g['inf_s6_diario'];
     array_push($sesion_6, $aux);
     $count_grupo = 0;
     $total_grupo = 0;
 }
-
 $aux['INSTITUCION'] = 'Todos los participantes';
 $aux['TOTAL'] = number_format($total_todos / $count_todos, 3);
+$aux['DIARIO DE CAMPO RESOLUCION PROBLEMAS']='';
 array_push($sesion_6, $aux);
 
 $aux = [];
@@ -685,30 +690,5 @@ if (isset($_POST["export_data"])) {
     exit;
 }
 ?>
-<!DOCTYPE html>
-<html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="styles/test.css">
-    <link rel="stylesheet" type="text/css" href="styles/test.css" media="print">
-    <title>Proyecto Psicologia</title>
-</head>
-
-<body>
-
-<div class="container">
- <h2>Exportar datos a Excel con PHP y MySQL</h2>
-
- <div class="well-sm col-sm-12">
- <div class="btn-group pull-right">
- <form action=" <?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
- <button type="submit" id="export_data" name='export_data'
-value="Export to excel" class="btn btn-info">Exportar a Excel</button>
- </form>
- </div>
- </div>
- <?php
-
-?>
-</body>
 
 
