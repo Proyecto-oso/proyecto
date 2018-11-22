@@ -109,9 +109,9 @@ if (isset($_POST["submit"])) {
     enter image id:
     <input type="text" name="image_id" id="image_id">
     <br/>
-    Select image to upload:
+    Selecciona el archivo:
     <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
+    <input type="submit" value="Subir archivo" name="submit">
   </form>
   ';
 

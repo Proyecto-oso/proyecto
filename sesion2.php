@@ -823,12 +823,12 @@ th {
         }
         echo '
                       <form action="upload.php" method="post" enctype="multipart/form-data">
-                          Select image to upload:
+                          Selecciona el archivo:
                           <input type="hidden" name="Sesion2" value="Sesion2" />
                           <input type="hidden" name="redirect" value="sesion2" />
                           <input type="hidden" name="image_id" value="' . $row['id'] . '" />
                           <input class="fileToUpload" type="file" name="fileToUpload" id="fileToUpload">
-                          <input class="upload" type="submit" value="Upload Image" name="submit">
+                          <input class="upload" type="submit" value="Subir archivo" name="submit">
                       </form>
                     </td>';
         echo '</tr>';
