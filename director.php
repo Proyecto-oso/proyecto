@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once("config.php");
 if (!isset($_SESSION)) {
   session_start();
@@ -127,6 +127,7 @@ foreach ($dbh->query($sql) as $row) {
 ?>
 
 <h2><a href="informe_global.php">RESULTADOS</a></h2>
+<h2><a href="students_report.php">BALANCE ESTUDIANTES</a></h2>
 <form action="export_excel.php" method="post">
  <button type="submit" id="export_data" name='export_data'
 value="Export to excel" class="btn btn-info">Exportar a Excel</button>
