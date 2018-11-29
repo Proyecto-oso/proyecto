@@ -28,7 +28,9 @@ if (isset($_POST["submit"])) {
   if (isset($_POST["Sesion6"])) {
     $target_dir = "uploads/sesion6/";
   }
-
+  if (isset($_POST["Sesion7"])) {
+    $target_dir = "uploads/sesion7/";
+  }
   if (isset($_POST["Sesion8"])) {
     $target_dir = "uploads/sesion8/";
   }

@@ -305,5 +305,42 @@ echo '<textarea rows="6" cols="150" name="inf_s8" class="informe_grupo"  >' . $r
 echo '<input class="button" type="submit" value="Enviar informe del grupo"/>';
 echo '</div>';
 echo '</form>';
+echo '
+        <div style="margin-left: 30px;">
+        <h2>Lista asistencia</h2>';
+    $path = 'uploads/sesion8/lista';
+    if (glob($path . '.*')) {
+        $arr = glob($path . '.*');
+        echo '<h3><a href="' . $arr[0] . '">Ver Lista</a></h3>';
+
+    }
+    echo '<form action="upload.php" method="post" enctype="multipart/form-data">
+            Selecciona el archivo:
+            <input type="hidden" name="Sesion8" value="Sesion8" />
+            <input type="hidden" name="redirect" value="sesion8" />
+            <input type="hidden" name="image_id" value="lista" />
+            <input class="fileToUpload" type="file" name="fileToUpload" id="fileToUpload">
+            <input class="upload" type="submit" value="Subir archivo" name="submit">
+        </form>
+        </div>';
+
+    echo '
+        <div style="margin-left: 30px;">
+        <h2>Acta Sesión</h2>';
+    $path = 'uploads/sesion8/acta';
+    if (glob($path . '.*')) {
+        $arr = glob($path . '.*');
+        echo '<h3><a href="' . $arr[0] . '">Ver Acta</a></h3>';
+
+    }
+    echo '<form action="upload.php" method="post" enctype="multipart/form-data">
+            Selecciona el archivo:
+            <input type="hidden" name="Sesion8" value="Sesion8" />
+            <input type="hidden" name="redirect" value="sesion8" />
+            <input type="hidden" name="image_id" value="acta" />
+            <input class="fileToUpload" type="file" name="fileToUpload" id="fileToUpload">
+            <input class="upload" type="submit" value="Subir archivo" name="submit">
+        </form>
+        </div>';
 include_once("footer.php");
 ?>

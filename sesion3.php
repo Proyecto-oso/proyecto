@@ -544,7 +544,7 @@ th {
           if ($s["d_act_ref"] != 0) {
             echo '<td><input type="number" name= "' . $id . '_d_act_ref"     value="' . $s["d_act_ref"] . '" form="form1" /></td>';
           } else {
-            echo '<td><input type="number" name= "' . $id . '_d_act_ref"     value="' . abs($activo-$reflexivo) . '" form="form1" /></td>';
+            echo '<td><input type="number" name= "' . $id . '_d_act_ref"     value="' . abs($activo - $reflexivo) . '" form="form1" /></td>';
           }
           if ($s["t_sensible"] != 0) {
             echo '<td><input type="number" name= "' . $id . '_t_sensible"    value="' . $s["t_sensible"] . '" form="form1" /></td>';
@@ -559,7 +559,7 @@ th {
           if ($s["d_sen_int"] != 0) {
             echo '<td><input type="number" name= "' . $id . '_d_sen_int"     value="' . $s["d_sen_int"] . '" form="form1" /></td>';
           } else {
-            echo '<td><input type="number" name= "' . $id . '_d_sen_int"     value="' . abs($sensible-$intuitivo) . '" form="form1" /></td>';
+            echo '<td><input type="number" name= "' . $id . '_d_sen_int"     value="' . abs($sensible - $intuitivo) . '" form="form1" /></td>';
           }
           if ($s["t_visual"] != 0) {
             echo '<td><input type="number" name= "' . $id . '_t_visual"      value="' . $s["t_visual"] . '" form="form1" /></td>';
@@ -574,9 +574,9 @@ th {
           if ($s["d_vis_ver"] != 0) {
             echo '<td><input type="number" name= "' . $id . '_d_vis_ver"     value="' . $s["d_vis_ver"] . '" form="form1" /></td>';
           } else {
-            echo '<td><input type="number" name= "' . $id . '_d_vis_ver"     value="' . abs($visual-$verbal) . '" form="form1" /></td>';
+            echo '<td><input type="number" name= "' . $id . '_d_vis_ver"     value="' . abs($visual - $verbal) . '" form="form1" /></td>';
           }
-          if ($s["t_secuencial"]!= 0) {
+          if ($s["t_secuencial"] != 0) {
             echo '<td><input type="number" name= "' . $id . '_t_secuencial"  value="' . $s["t_secuencial"] . '" form="form1" /></td>';
           } else {
             echo '<td><input type="number" name= "' . $id . '_t_secuencial"  value="' . $secuencial . '" form="form1" /></td>';
@@ -589,8 +589,8 @@ th {
           if ($s["d_sec_glo"] != 0) {
             echo '<td><input type="number" name= "' . $id . '_d_sec_glo"     value="' . $s["d_sec_glo"] . '" form="form1" /></td>';
           } else {
-            echo '<td><input type="number" name= "' . $id . '_d_sec_glo"     value="' . abs($global-$secuencial) . '" form="form1" /></td>';
-          }     
+            echo '<td><input type="number" name= "' . $id . '_d_sec_glo"     value="' . abs($global - $secuencial) . '" form="form1" /></td>';
+          }
 
 
           echo '<td><textarea rows="4" cols="40" name= "' . $id . '_mas_predominante" form="form1"> ' . $s['mas_predominante'] . '</textarea></td>';
@@ -644,5 +644,42 @@ th {
 
 
 <?php
+echo '
+<div style="margin-left: 30px;">
+<h2>Lista asistencia</h2>';
+$path = 'uploads/sesion3/lista';
+if (glob($path . '.*')) {
+  $arr = glob($path . '.*');
+  echo '<h3><a href="' . $arr[0] . '">Ver Lista</a></h3>';
+
+}
+echo '<form action="upload.php" method="post" enctype="multipart/form-data">
+    Selecciona el archivo:
+    <input type="hidden" name="Sesion3" value="Sesion3" />
+    <input type="hidden" name="redirect" value="sesion3" />
+    <input type="hidden" name="image_id" value="lista" />
+    <input class="fileToUpload" type="file" name="fileToUpload" id="fileToUpload">
+    <input class="upload" type="submit" value="Subir archivo" name="submit">
+</form>
+</div>';
+
+echo '
+<div style="margin-left: 30px;">
+<h2>Acta Sesión</h2>';
+$path = 'uploads/sesion3/acta';
+if (glob($path . '.*')) {
+  $arr = glob($path . '.*');
+  echo '<h3><a href="' . $arr[0] . '">Ver Acta</a></h3>';
+
+}
+echo '<form action="upload.php" method="post" enctype="multipart/form-data">
+    Selecciona el archivo:
+    <input type="hidden" name="Sesion3" value="Sesion3" />
+    <input type="hidden" name="redirect" value="sesion3" />
+    <input type="hidden" name="image_id" value="acta" />
+    <input class="fileToUpload" type="file" name="fileToUpload" id="fileToUpload">
+    <input class="upload" type="submit" value="Subir archivo" name="submit">
+</form>
+</div>';
 include_once("footer.php");
 ?>
