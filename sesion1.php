@@ -228,7 +228,6 @@ th {
     <th>Informe Valores, Intereses y Aptitudes</th>
     <th>Observaciones</th>
     <th>Archivo</th>
-    <th>Informe</th>
     <!--<th>GUARDAR</th>-->
     </tr>
     </thead>
@@ -304,13 +303,13 @@ th {
                           <input class="upload" type="submit" value="Subir archivo" name="submit">
                       </form>
                     </td>';
-        echo '<td>
+        /*echo '<td>
                 <form method="post" action="informe_s1.php">
                     <input type="hidden" name="id_estudiante" value="' . $row['id'] . '" />
                     <input type="hidden" name="id_grupo" value="' . $row['grupo_id'] . '" />
                     <input class="button" type="submit" value="Generar"/>
                 </form>
-              </td>';
+              </td>';*/
         echo '</tr>';
     }
     ?>
