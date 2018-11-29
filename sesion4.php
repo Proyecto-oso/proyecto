@@ -458,7 +458,7 @@ th {
 echo '
 <div style="margin-left: 30px;">
 <h2>Lista asistencia</h2>';
-$path = 'uploads/sesion4/lista';
+$path = 'uploads/sesion4/lista'.$_SESSION['grupo_id'].'';
 if (glob($path . '.*')) {
 $arr = glob($path . '.*');
 echo '<h3><a href="' . $arr[0] . '">Ver Lista</a></h3>';
@@ -468,7 +468,7 @@ echo '<form action="upload.php" method="post" enctype="multipart/form-data">
     Selecciona el archivo:
     <input type="hidden" name="Sesion4" value="Sesion4" />
     <input type="hidden" name="redirect" value="sesion4" />
-    <input type="hidden" name="image_id" value="lista" />
+    <input type="hidden" name="image_id" value="lista'.$_SESSION['grupo_id'].'" />
     <input class="fileToUpload" type="file" name="fileToUpload" id="fileToUpload">
     <input class="upload" type="submit" value="Subir archivo" name="submit">
 </form>
@@ -477,7 +477,7 @@ echo '<form action="upload.php" method="post" enctype="multipart/form-data">
 echo '
 <div style="margin-left: 30px;">
 <h2>Acta Sesión</h2>';
-$path = 'uploads/sesion4/acta';
+$path = 'uploads/sesion4/acta'.$_SESSION['grupo_id'].'';
 if (glob($path . '.*')) {
 $arr = glob($path . '.*');
 echo '<h3><a href="' . $arr[0] . '">Ver Acta</a></h3>';
@@ -487,7 +487,7 @@ echo '<form action="upload.php" method="post" enctype="multipart/form-data">
     Selecciona el archivo:
     <input type="hidden" name="Sesion4" value="Sesion4" />
     <input type="hidden" name="redirect" value="sesion4" />
-    <input type="hidden" name="image_id" value="acta" />
+    <input type="hidden" name="image_id" value="acta'.$_SESSION['grupo_id'].'" />
     <input class="fileToUpload" type="file" name="fileToUpload" id="fileToUpload">
     <input class="upload" type="submit" value="Subir archivo" name="submit">
 </form>

@@ -879,7 +879,7 @@ th {
     echo '
         <div style="margin-left: 30px;">
         <h2>Lista asistencia</h2>';
-    $path = 'uploads/sesion2/lista';
+    $path = 'uploads/sesion2/lista'.$_SESSION['grupo_id'].'';
     if (glob($path . '.*')) {
       $arr = glob($path . '.*');
       echo '<h3><a href="' . $arr[0] . '">Ver Lista</a></h3>';
@@ -889,7 +889,7 @@ th {
             Selecciona el archivo:
             <input type="hidden" name="Sesion2" value="Sesion2" />
             <input type="hidden" name="redirect" value="sesion2" />
-            <input type="hidden" name="image_id" value="lista" />
+            <input type="hidden" name="image_id" value="lista'.$_SESSION['grupo_id'].'" />
             <input class="fileToUpload" type="file" name="fileToUpload" id="fileToUpload">
             <input class="upload" type="submit" value="Subir archivo" name="submit">
         </form>
@@ -898,7 +898,7 @@ th {
     echo '
         <div style="margin-left: 30px;">
         <h2>Acta Sesión</h2>';
-    $path = 'uploads/sesion2/acta';
+    $path = 'uploads/sesion2/acta'.$_SESSION['grupo_id'].'';
     if (glob($path . '.*')) {
       $arr = glob($path . '.*');
       echo '<h3><a href="' . $arr[0] . '">Ver Acta</a></h3>';
@@ -908,7 +908,7 @@ th {
             Selecciona el archivo:
             <input type="hidden" name="Sesion2" value="Sesion2" />
             <input type="hidden" name="redirect" value="sesion2" />
-            <input type="hidden" name="image_id" value="acta" />
+            <input type="hidden" name="image_id" value="acta'.$_SESSION['grupo_id'].'" />
             <input class="fileToUpload" type="file" name="fileToUpload" id="fileToUpload">
             <input class="upload" type="submit" value="Subir archivo" name="submit">
         </form>
