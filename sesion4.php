@@ -120,7 +120,7 @@ th {
 
           if (isset($_POST[$id . '_id_ses'])) {
             $query = 'UPDATE `sesion_4` SET';
-
+            $query .= '`asistencia`= ' . $_POST[$id . "_asistencia"] . ',';
             for ($i = 1; $i < 17; $i++) {
               $query .= '`' . $arr[$i] . '` = ' . $_POST[$id . '_' . $arr[$i]] . ',';
               $est[$id][$i] = $_POST[$id . '_' . $arr[$i]];
@@ -153,7 +153,8 @@ th {
 
 
           } else {
-            $query = 'INSERT INTO `sesion_4`(`id_estudiante`, `item_1`, `item_2`, `item_3`, `item_4`, `item_5`, `item_6`, `item_7`, `item_8`, `item_9`, `item_10`, `item_11`, `item_12`,`amigos`,`familia`,`otro`,`total`, `zona_riesgo`, `zona_segura`, `zona_ayuda`, `per_ayudan`, `mec_violencia`, `per_violencia`, `vio_vividas`, `zon_violencia`, `cantidad_cigarrillos`, `frecuencia_cigarrillos`, `lugar_cigarrillos`, `cantidad_alcohol`, `frecuencia_alcohol`, `lugar_alcohol`, `cantidad_psicoactivas`, `frecuencia_psicoactivas`, `lugar_psicoactivas`, `n_parejas`, `met_embarazo`, `n_embarazo`, `n_abortos`, `pre_relacion_f`, `ets`, `calle`, `observaciones`) VALUES(';
+            $query = 'INSERT INTO `sesion_4`(`id_estudiante`, `item_1`, `item_2`, `item_3`, `item_4`, `item_5`, `item_6`, `item_7`, `item_8`, `item_9`, `item_10`, `item_11`, `item_12`,`amigos`,`familia`,`otro`,`total`, `zona_riesgo`, `zona_segura`, `zona_ayuda`, `per_ayudan`, `mec_violencia`, `per_violencia`, `vio_vividas`, `zon_violencia`, `cantidad_cigarrillos`, `frecuencia_cigarrillos`, `lugar_cigarrillos`, `cantidad_alcohol`, `frecuencia_alcohol`, `lugar_alcohol`, `cantidad_psicoactivas`, `frecuencia_psicoactivas`, `lugar_psicoactivas`, `n_parejas`, `met_embarazo`, `n_embarazo`, `n_abortos`, `pre_relacion_f`, `ets`, `calle`,`asistencia`, `observaciones`) VALUES(';
+
 
 
             for ($i = 0; $i < 17; $i++) {
@@ -167,6 +168,7 @@ th {
               $est[$id][$i] = $_POST[$id . '_' . $arr[$i]];
             }
             $_POST[$id . '_' . $arr[41]] = str_replace($originales, $correctos, $_POST[$id . '_' . $arr[41]]);
+            $query .=  $_POST[$id . "_asistencia"] . ',';
             $query .= '"' . $_POST[$id . '_' . $arr[41]] . '")';
             $est[$id][41] = $_POST[$id . '_' . $arr[41]];
 
@@ -203,6 +205,7 @@ th {
     <thead>
     <tr class="titles">
     <th>Nombre</th>
+    <th > <div style="width: 170px">Asistencia </div></th>
     <th>item 1 </th>
     <th>item 2 </th>
     <th>item 3 </th>
@@ -264,6 +267,14 @@ th {
       if (!isset($s['id_estudiante'])) {
 
         //echo ' <form method = "post" action = "' . htmlspecialchars($_SERVER["PHP_SELF"]) . '" id="form_' . $id . '" >';
+        $asistencia = 0;
+        ?>
+        <td>
+          <input <?php echo ' type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 1) echo "checked"; ?> value="1" form="form1">Si</br>
+          <input <?php echo ' type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 2) echo "checked"; ?> value="2" form="form1">Si, pero no completo</br>
+          <input <?php echo ' type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 0) echo "checked"; ?> value="0" form="form1">No
+        </td>
+        <?php
 
         for ($i = 0; $i < 12; $i++) {
             // code...
@@ -316,6 +327,14 @@ th {
       } else {
 
        // echo '<form method = "post" action = "' . htmlspecialchars($_SERVER["PHP_SELF"]) . '" id="form_' . $id . '" >';
+         $asistencia = $s["asistencia"];
+         ?>
+         <td>
+           <?php echo '<input type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 1) echo "checked"; ?> value="1" form="form1">Si</br>
+           <input <?php echo ' type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 2) echo "checked"; ?> value="2" form="form1">Si, pero no completo</br>
+           <?php echo '<input type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 0) echo "checked"; ?> value="0" form="form1">No
+         </td>
+         <?php
 
         $total = 0;
         $amigos = 0;

@@ -103,6 +103,8 @@ th {
           $query .= '`e_proceso` = "' . $_POST[$id . '_e_proceso'] . '",';
           $est[$id]['e_proceso'] = $_POST[$id . '_e_proceso'];
 
+          $query .= '`asistencia`= ' . $_POST[$id . "_asistencia"] . ',';
+
           for ($i = 1; $i <= 44; $i++) {
           // code...
             if (isset($_POST[$id . '_pregunta_' . $i])) {
@@ -190,13 +192,14 @@ th {
           }
 
         } else {
-          $query = 'INSERT INTO `sesion_3`(`id_estudiante`, `e_proceso`,`pregunta_1` ,`pregunta_2`, `pregunta_3`, `pregunta_4`, `pregunta_5`, `pregunta_6`, `pregunta_7`, `pregunta_8`, `pregunta_9`, `pregunta_10`, `pregunta_11`, `pregunta_12`, `pregunta_13`, `pregunta_14`, `pregunta_15`, `pregunta_16`, `pregunta_17`, `pregunta_18`, `pregunta_19`, `pregunta_20`, `pregunta_21`, `pregunta_22`, `pregunta_23`, `pregunta_24`, `pregunta_25`, `pregunta_26`, `pregunta_27`, `pregunta_28`, `pregunta_29`, `pregunta_30`, `pregunta_31`, `pregunta_32`, `pregunta_33`, `pregunta_34`, `pregunta_35`, `pregunta_36`, `pregunta_37`, `pregunta_38`, `pregunta_39`, `pregunta_40`, `pregunta_41`, `pregunta_42`, `pregunta_43`, `pregunta_44`,`mas_predominante`,`menos_predominante`,`est_predominante`, `temas_trabajados`, `ejercicios`, `tallerista`, `utilidad`, `observaciones`, `t_activo`, `t_reflexivo`, `d_act_ref`, `t_sensible`, `t_intuitivo`, `d_sen_int`, `t_visual`, `t_verbal`, `d_vis_ver`, `t_secuencial`, `t_global`, `d_sec_glo`) VALUES (';
+          $query = 'INSERT INTO `sesion_3`(`id_estudiante`,`asistencia`, `e_proceso`,`pregunta_1` ,`pregunta_2`, `pregunta_3`, `pregunta_4`, `pregunta_5`, `pregunta_6`, `pregunta_7`, `pregunta_8`, `pregunta_9`, `pregunta_10`, `pregunta_11`, `pregunta_12`, `pregunta_13`, `pregunta_14`, `pregunta_15`, `pregunta_16`, `pregunta_17`, `pregunta_18`, `pregunta_19`, `pregunta_20`, `pregunta_21`, `pregunta_22`, `pregunta_23`, `pregunta_24`, `pregunta_25`, `pregunta_26`, `pregunta_27`, `pregunta_28`, `pregunta_29`, `pregunta_30`, `pregunta_31`, `pregunta_32`, `pregunta_33`, `pregunta_34`, `pregunta_35`, `pregunta_36`, `pregunta_37`, `pregunta_38`, `pregunta_39`, `pregunta_40`, `pregunta_41`, `pregunta_42`, `pregunta_43`, `pregunta_44`,`mas_predominante`,`menos_predominante`,`est_predominante`, `temas_trabajados`, `ejercicios`, `tallerista`, `utilidad`, `observaciones`, `t_activo`, `t_reflexivo`, `d_act_ref`, `t_sensible`, `t_intuitivo`, `d_sen_int`, `t_visual`, `t_verbal`, `d_vis_ver`, `t_secuencial`, `t_global`, `d_sec_glo`) VALUES (';
 
           $originales = array("'", '"');
           $correctos = array("\'", '\"');
           $_POST[$id . '_e_proceso'] = str_replace($originales, $correctos, $_POST[$id . '_e_proceso']);
 
           $query .= $id . ',';
+          $query .=  $_POST[$id . "_asistencia"] . ',';
           $query .= '"' . $_POST[$id . '_e_proceso'] . '"' . ',';
           $est[$id]['e_proceso'] = $_POST[$id . '_e_proceso'];
 
@@ -304,6 +307,7 @@ th {
     <thead>
     <tr class="titles">
     <th>Nombre</th>
+    <th > <div style="width: 170px">Asistencia </div></th>
     <th>Evaluacion del proceso</th>
     <th>pregunta 1 </th>
     <th>pregunta 2 </th>
@@ -390,6 +394,14 @@ th {
       if (!isset($s['id_estudiante'])) {
           //SI ES 1 ES A
           //SI ES 0 ES B
+          $asistencia = 0;
+          ?>
+          <td>
+            <input <?php echo ' type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 1) echo "checked"; ?> value="1" form="form1">Si</br>
+            <input <?php echo ' type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 2) echo "checked"; ?> value="2" form="form1">Si, pero no completo</br>
+            <input <?php echo ' type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 0) echo "checked"; ?> value="0" form="form1">No
+          </td>
+          <?php
 
         echo '<td><textarea rows="4" cols="40" name="' . $id . '_e_proceso" form="form1"></textarea></td>';
           //echo ' <form method = "post" action = "' . htmlspecialchars($_SERVER['PHP_SELF']) . '" id="form_' . $id . '" >';
@@ -457,6 +469,15 @@ th {
 
 
         } else {
+
+          $asistencia = $s["asistencia"];
+          ?>
+          <td>
+            <?php echo '<input type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 1) echo "checked"; ?> value="1" form="form1">Si</br>
+            <input <?php echo ' type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 2) echo "checked"; ?> value="2" form="form1">Si, pero no completo</br>
+            <?php echo '<input type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 0) echo "checked"; ?> value="0" form="form1">No
+          </td>
+          <?php
 
           //echo '<form method = "post" action = "' . htmlspecialchars($_SERVER['PHP_SELF']) . '" id="form_' . $id . '" >';
           echo '<td><textarea rows="4" cols="40" name= "' . $id . '_e_proceso" form="form1">' . $s['e_proceso'] . '</textarea></td>';

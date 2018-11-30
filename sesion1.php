@@ -95,6 +95,8 @@ th {
             $id = $row['id'];
             if (isset($_POST['id_ses' . $id])) {
                 $query = 'UPDATE `sesion_1` SET';
+                $query .= '`asistencia`= ' . $_POST[$id . "_asistencia"] . ',';
+
                 for ($i = 1; $i <= 15; $i++) {
                     $query .= '`aptitud_verbal_' . $i . '`="' . $_POST[$id . '_aptitud_verbal_' . $i] . '",';
                     $est["est$id"]["aptitud_verbal_$i"] = $_POST[$id . '_aptitud_verbal_' . $i];
@@ -136,8 +138,10 @@ th {
                     }
                 }
             } else {
-                $query = 'INSERT INTO `sesion_1`(`id_estudiante`,`aptitud_verbal_1`, `aptitud_verbal_2`, `aptitud_verbal_3`, `aptitud_verbal_4`, `aptitud_verbal_5`, `aptitud_verbal_6`, `aptitud_verbal_7`, `aptitud_verbal_8`, `aptitud_verbal_9`, `aptitud_verbal_10`, `aptitud_verbal_11`, `aptitud_verbal_12`, `aptitud_verbal_13`, `aptitud_verbal_14`, `aptitud_verbal_15`, `aptitud_matematica_1`, `aptitud_matematica_2`, `aptitud_matematica_3`, `aptitud_matematica_4`, `aptitud_matematica_5`, `aptitud_matematica_6`, `aptitud_matematica_7`, `aptitud_matematica_8`, `aptitud_matematica_9`, `aptitud_matematica_10`, `aptitud_matematica_11`, `aptitud_matematica_12`, `aptitud_matematica_13`, `aptitud_matematica_14`, `aptitud_matematica_15`, `total_aptitud_matematica`, `total_aptitud_verbal`, `informe_via`, `observaciones`) VALUES (';
+                $query = 'INSERT INTO `sesion_1`(`id_estudiante`,`asistencia`,`aptitud_verbal_1`, `aptitud_verbal_2`, `aptitud_verbal_3`, `aptitud_verbal_4`, `aptitud_verbal_5`, `aptitud_verbal_6`, `aptitud_verbal_7`, `aptitud_verbal_8`, `aptitud_verbal_9`, `aptitud_verbal_10`, `aptitud_verbal_11`, `aptitud_verbal_12`, `aptitud_verbal_13`, `aptitud_verbal_14`, `aptitud_verbal_15`, `aptitud_matematica_1`, `aptitud_matematica_2`, `aptitud_matematica_3`, `aptitud_matematica_4`, `aptitud_matematica_5`, `aptitud_matematica_6`, `aptitud_matematica_7`, `aptitud_matematica_8`, `aptitud_matematica_9`, `aptitud_matematica_10`, `aptitud_matematica_11`, `aptitud_matematica_12`, `aptitud_matematica_13`, `aptitud_matematica_14`, `aptitud_matematica_15`, `total_aptitud_matematica`, `total_aptitud_verbal`, `informe_via`, `observaciones`) VALUES (';
                 $query .= $row["id"] . ',';
+                $query .=  $_POST[$id . "_asistencia"] . ',';
+
                 for ($i = 1; $i <= 15; $i++) {
                     $query .= '"' . $_POST[$id . '_aptitud_verbal_' . $i] . '",';
                     $est["est$id"]["aptitud_verbal_$i"] = $_POST[$id . '_aptitud_verbal_' . $i];
@@ -193,6 +197,7 @@ th {
 <thead >
     <tr class="titles">
     <th >Nombre</th>
+    <th > <div style="width: 145px">Asistencia </div></th>
     <th >AV 1</th>
     <th>AV 2</th>
     <th>AV 3</th>
@@ -240,11 +245,25 @@ th {
         <th>' . $row['nombre'] . '</th>';
 
         if (!isset($s['id_estudiante'])) {
+
             //echo ' <form method = "post" action = "' . htmlspecialchars($_SERVER["PHP_SELF"]) . '" id="form_' . $s['id_estudiante'] . '" >';
+
+            $asistencia = 0;
+            ?>
+            <td>
+              <input <?php echo ' type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 1) echo "checked"; ?> value="1" form="form1">Si</br>
+              <input <?php echo ' type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 2) echo "checked"; ?> value="2" form="form1">Si, pero no completo</br>
+              <input <?php echo ' type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 0) echo "checked"; ?> value="0" form="form1">No
+            </td>
+            <?php
+
             echo '<td><input class="in" type="text" name="' . $id . '_aptitud_verbal_' . (1) . '" value="" form="form1"/></td>';
+
+
             for ($i = 1; $i < 15; $i++) {
                 echo '<td><input class="in" type="text" name="' . $id . '_aptitud_verbal_' . ($i + 1) . '" value="" form="form1"/></td>';
             }
+
             echo '<td><input class="in" type="number" name="' . $id . '_total_aptitud_verbal" value="0" form="form1"/></td>';
             for ($i = 0; $i < 15; $i++) {
                 echo '<td><input class="in" type="text" name="' . $id . '_aptitud_matematica_' . ($i + 1) . '" value="" form="form1"/></td>';
@@ -262,6 +281,16 @@ th {
            // echo '<td><input class="button" type="submit" value="Enviar"/></td>';
            // echo '</form>';
         } else {
+
+            $asistencia = $s["asistencia"];
+            ?>
+            <td>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 1) echo "checked"; ?> value="1" form="form1">Si</br>
+              <input <?php echo ' type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 2) echo "checked"; ?> value="2" form="form1">Si, pero no completo</br>
+              <?php echo '<input type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 0) echo "checked"; ?> value="0" form="form1">No
+            </td>
+            <?php
+
             //echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '" id="form_' . $s['id_estudiante'] . '" >';
             echo '<td><input class="in" type="text" name="' . $id . '_aptitud_verbal_' . 1 . '" value="' . $s["aptitud_verbal_1"] . '" form="form1"/></td>';
             for ($i = 2; $i <= 15; $i++) {

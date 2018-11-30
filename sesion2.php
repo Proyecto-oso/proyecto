@@ -123,6 +123,7 @@ th {
 
               //$query .= '`informe_pn' . '`="' . $_POST["informe_pn"] . '",';
               //$query .= '`informe_mrb' . '`="' . $_POST["informe_mrb"] . '",';
+          $query .= '`asistencia`= ' . $_POST[$id . "_asistencia"] . ',';
 
           for ($i = 0; $i < 8; $i++) {
             $I = $i + 1;
@@ -261,11 +262,9 @@ th {
             $dbh->rollBack();
           }
         } else {
-          $query = 'INSERT INTO `sesion_2`(`id_estudiante`, `factor_tncf_1`, `factor_tncf_2`, `factor_tncf_3`, `factor_tncf_4`, `factor_tncf_5`, `factor_tncf_6`, `factor_tncf_7`, `factor_tncf_8`, `factor_paf_1`, `factor_paf_2`, `factor_paf_3`, `factor_paf_4`, `factor_icppf_1`, `factor_icppf_2`, `factor_icppf_3`, `factor_icppf_4`, `factor_icppf_5`, `factor_tivf_1`, `factor_tivf_2`, `factor_tivf_3`, `factor_tivf_4`, `total_factor_tncf`, `total_factor_paf`, `total_factor_icppf`, `total_factor_tivf`, `eet_economico_1`, `eet_economico_2`, `eet_laboral_1`, `eet_laboral_2`, `eet_laboral_3`, `eet_familiar_1`, `eet_familiar_2`, `eet_familiar_3`, `eet_vida_1`, `eet_vida_2`, `eet_academico_1`, `eet_academico_2`, `eet_academico_3`, `total_eet_economico`, `total_eet_laboral`, `total_eet_familiar`, `total_eet_vida`, `total_eet_academico`, `observaciones`) VALUES (';
+          $query = 'INSERT INTO `sesion_2`(`id_estudiante`,`asistencia`, `factor_tncf_1`, `factor_tncf_2`, `factor_tncf_3`, `factor_tncf_4`, `factor_tncf_5`, `factor_tncf_6`, `factor_tncf_7`, `factor_tncf_8`, `factor_paf_1`, `factor_paf_2`, `factor_paf_3`, `factor_paf_4`, `factor_icppf_1`, `factor_icppf_2`, `factor_icppf_3`, `factor_icppf_4`, `factor_icppf_5`, `factor_tivf_1`, `factor_tivf_2`, `factor_tivf_3`, `factor_tivf_4`, `total_factor_tncf`, `total_factor_paf`, `total_factor_icppf`, `total_factor_tivf`, `eet_economico_1`, `eet_economico_2`, `eet_laboral_1`, `eet_laboral_2`, `eet_laboral_3`, `eet_familiar_1`, `eet_familiar_2`, `eet_familiar_3`, `eet_vida_1`, `eet_vida_2`, `eet_academico_1`, `eet_academico_2`, `eet_academico_3`, `total_eet_economico`, `total_eet_laboral`, `total_eet_familiar`, `total_eet_vida`, `total_eet_academico`, `observaciones`) VALUES (';
           $query .= $id . ',';
-
-              //$query .= '"' . $_POST["informe_pn"] . '",';
-              //$query .= '"' . $_POST["informe_mrb"] . '",';
+          $query .=  $_POST[$id . "_asistencia"] . ',';
 
           for ($i = 0; $i < 8; $i++) {
             $I = $i + 1;
@@ -444,6 +443,7 @@ th {
     <thead>
     <tr class="titles">
     <th>Nombre</th>
+    <th > <div style="width: 170px">Asistencia </div></th>
     <th> <div class ="container2"> factor tendencia a no centrarse en el futuro 1 </div> </th>
     <th> <div class ="container2"> factor tendencia a no centrarse en el futuro 2 </div> </th>
     <th> <div class ="container2"> factor tendencia a no centrarse en el futuro 3 </div> </th>
@@ -511,6 +511,15 @@ th {
 
         //si no esta creado se crean los espacios
       if (!isset($s['id_estudiante'])) {
+
+        $asistencia = 0;
+        ?>
+        <td>
+          <input <?php echo ' type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 1) echo "checked"; ?> value="1" form="form1">Si</br>
+          <input <?php echo ' type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 2) echo "checked"; ?> value="2" form="form1">Si, pero no completo</br>
+          <input <?php echo ' type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 0) echo "checked"; ?> value="0" form="form1">No
+        </td>
+        <?php
 
             //echo '<td><input class="inf" type="number" name="informe_pn" value="" /></td>';
             //echo '<td><input class="inf" type="number" name="informe_mrb" value="" /></td>';
@@ -662,6 +671,15 @@ th {
 
         //echo '<td><input class="inf" type="number" name="informe_pn" value="'.$s["informe_pn"].'" /></td>';
         //echo '<td><input class="inf" type="number" name="informe_mrb" value="'.$s["informe_mrb"].'" /></td>';
+
+          $asistencia =  $s["asistencia"];
+          ?>
+          <td>
+            <input <?php echo ' type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 1) echo "checked"; ?> value="1" form="form1">Si</br>
+            <input <?php echo ' type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 2) echo "checked"; ?> value="2" form="form1">Si, pero no completo</br>
+            <input <?php echo ' type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 0) echo "checked"; ?> value="0" form="form1">No
+          </td>
+          <?php
 
 
           $factor_tncf = [null, null, null, null, null, null, null, null];

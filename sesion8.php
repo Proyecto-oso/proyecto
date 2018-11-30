@@ -109,10 +109,11 @@ th {
                     $id = $row['id'];
                     if (isset($_POST['id_ses' . $id])) {
                         $query = 'UPDATE `sesion_8` SET';
+                        $query .= '`asistencia`= ' . $_POST[$id . "_asistencia"] . ',';
 
                         $query .= '`temas_trabajados`=' . $_POST[$id . '_temas_trabajados'] . ',';
                         $est["est$id"]["temas_trabajados"] = $_POST[$id . '_temas_trabajados'];
-                        
+
                         $query .= '`ejercicios`=' . $_POST[$id . '_ejercicios'] . ',';
                         $est["est$id"]["ejercicios"] = $_POST[$id . '_ejercicios'];
 
@@ -129,7 +130,7 @@ th {
                         $_POST[$id . '_evaluacion2'] = str_replace($originales, $correctos, $_POST[$id . '_evaluacion2']);
                         $query .= '`evaluacion2` = "' . $_POST[$id . '_evaluacion2'] . '", ';
                         $est["est$id"]["evaluacion2"] = $_POST[$id . '_evaluacion2'];
-                        
+
                         $_POST[$id . '_observaciones'] = str_replace($originales, $correctos, $_POST[$id . '_observaciones']);
                         $query .= '`observaciones` = "' . $_POST[$id . '_observaciones'] . '" WHERE id_estudiante=' . $id . ' ';
                         $est["est$id"]["observaciones"] = $_POST[$id . '_observaciones'];
@@ -151,15 +152,16 @@ th {
                             }
                         }
                     } else {
-                        $query = 'INSERT INTO `sesion_8`(`id_estudiante`, `temas_trabajados`, `ejercicios`, `tallerista`, `utilidad`, `evaluacion1`, `evaluacion2`, `observaciones`) VALUES (';
+                        $query = 'INSERT INTO `sesion_8`(`id_estudiante`,`asistencia`, `temas_trabajados`, `ejercicios`, `tallerista`, `utilidad`, `evaluacion1`, `evaluacion2`, `observaciones`) VALUES (';
                         $query .= $row["id"] . ',';
+                        $query .=  $_POST[$id . "_asistencia"] . ',';
 
                         $query .= '' . $_POST[$id . '_temas_trabajados'] . ',';
                         $est["est$id"]["temas_trabajados"] = $_POST[$id . '_temas_trabajados'];
 
                         $query .= '' . $_POST[$id . '_ejercicios'] . ',';
                         $est["est$id"]["ejercicios"] = $_POST[$id . '_ejercicios'];
-                        
+
                         $query .= '' . $_POST[$id . '_tallerista'] . ',';
                         $est["est$id"]["tallerista"] = $_POST[$id . '_tallerista'];
 
@@ -213,6 +215,7 @@ th {
     <thead>
     <tr class="titles">
     <th >Nombre</th>
+    <th > <div style="width: 145px">Asistencia </div></th>
     <th >Los temas trabajados</th>
     <th >Los ejercicios</th>
     <th >La direccion del tallerista</th>
@@ -232,13 +235,23 @@ th {
         echo ' <tr>
         <th>' . $row['nombre'] . '</th>';
 
+
+
         if (!isset($s['id_estudiante'])) {
+          $asistencia = 0;
+          ?>
+          <td>
+            <input <?php echo ' type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 1) echo "checked"; ?> value="1" form="form1">Si</br>
+            <input <?php echo ' type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 2) echo "checked"; ?> value="2" form="form1">Si, pero no completo</br>
+            <input <?php echo ' type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 0) echo "checked"; ?> value="0" form="form1">No
+          </td>
+          <?php
             //echo ' <form method = "post" action = "' . htmlspecialchars($_SERVER["PHP_SELF"]) . '" id="form_' . $s['id_estudiante'] . '" >';
             $items = [null, null, null, null, null, null, null, null, null, null];
 
         echo '<td><input class="in" type="number" name="' . $id . '_temas_trabajados" value="0" form="form1"/></td>';
         echo '<td><input class="in" type="number" name="' . $id . '_ejercicios" value="0" form="form1"/></td>';
-        echo '<td><input class="in" type="number" name="' . $id . '_tallerista" value="0" form="form1"/></td>';        
+        echo '<td><input class="in" type="number" name="' . $id . '_tallerista" value="0" form="form1"/></td>';
         echo '<td><input class="in" type="number" name="' . $id . '_utilidad" value="0" form="form1"/></td>';
 
         echo '<td><textarea rows="6" cols="40" name="' . $id . '_evaluacion1" form="form1"> </textarea></td>';
@@ -249,6 +262,15 @@ th {
            // echo '<td><input class="button" type="submit" value="Enviar"/></td>';
            // echo '</form>';
     } else {
+
+        $asistencia = $s["asistencia"];
+        ?>
+        <td>
+          <?php echo '<input type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 1) echo "checked"; ?> value="1" form="form1">Si</br>
+          <input <?php echo ' type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 2) echo "checked"; ?> value="2" form="form1">Si, pero no completo</br>
+          <?php echo '<input type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 0) echo "checked"; ?> value="0" form="form1">No
+        </td>
+        <?php
             //echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '" id="form_' . $s['id_estudiante'] . '" >';
         $items = [null, null, null, null, null, null, null, null, null, null];
 
@@ -256,7 +278,7 @@ th {
         echo '<td><input class="in" type="number" name="' . $id . '_ejercicios" value="' . $s["ejercicios"] . '" form="form1"/></td>';
         echo '<td><input class="in" type="number" name="' . $id . '_tallerista" value="' . $s["tallerista"] . '" form="form1"/></td>';
         echo '<td><input class="in" type="number" name="' . $id . '_utilidad" value="' . $s["utilidad"] . '" form="form1"/></td>';
-        
+
         echo '<td><textarea rows="6" cols="40" name="' . $id . '_evaluacion1" form="form1">' . $s["evaluacion1"] . ' </textarea></td>';
         echo '<td><textarea rows="6" cols="40" name="' . $id . '_evaluacion2" form="form1">' . $s["evaluacion2"] . ' </textarea></td>';
         echo '<td><textarea rows="6" cols="40" name="' . $id . '_observaciones" form="form1">' . $s["observaciones"] . ' </textarea></td>';

@@ -129,7 +129,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $id = $row['id'];
             if (isset($_POST['id_ses' . $id])) {
                 $query = 'UPDATE `sesion_5` SET';
-
+                $query .= '`asistencia`= ' . $_POST[$id . "_asistencia"] . ',';
                 for ($i = 1; $i <= 10; $i++) {
                     if (isset($_POST[$id . '_item_' . $i])) {
                         $query .= '`item_' . $i . '`="' . $_POST[$id . '_item_' . $i] . '",';
@@ -164,8 +164,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     echo '</script>';
                 }
             } else {
-                $query = 'INSERT INTO `sesion_5`(`id_estudiante`,`item_1`, `item_2`, `item_3`, `item_4`, `item_5`, `item_6`, `item_7`, `item_8`, `item_9`, `item_10`,`total`, `estilo`, `observaciones`) VALUES (';
+                $query = 'INSERT INTO `sesion_5`(`id_estudiante`,`asistencia`,`item_1`, `item_2`, `item_3`, `item_4`, `item_5`, `item_6`, `item_7`, `item_8`, `item_9`, `item_10`,`total`, `estilo`, `observaciones`) VALUES (';
                 $query .= $row["id"] . ',';
+                $query .=  $_POST[$id . "_asistencia"] . ',';
 
                 for ($i = 1; $i <= 10; $i++) {
                     if (isset($_POST[$id . '_item_' . $i])) {
@@ -218,6 +219,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <thead>
     <tr class="titles">
     <th >Nombre</th>
+    <th > <div style="width: 170px">Asistencia </div></th>
     <th >Item 1</th>
     <th >Item 2</th>
     <th >Item 3</th>
@@ -245,6 +247,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (!isset($s['id_estudiante'])) {
             //echo ' <form method = "post" action = "' . htmlspecialchars($_SERVER["PHP_SELF"]) . '" id="form_' . $s['id_estudiante'] . '" >';
+            $asistencia = 0;
+            ?>
+            <td>
+              <input <?php echo ' type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 1) echo "checked"; ?> value="1" form="form1">Si</br>
+              <input <?php echo ' type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 2) echo "checked"; ?> value="2" form="form1">Si, pero no completo</br>
+              <input <?php echo ' type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 0) echo "checked"; ?> value="0" form="form1">No
+            </td>
+            <?php
 
             $items = [null, null, null, null, null, null, null, null, null, null];
 
@@ -254,11 +264,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <td class="radio-cont">
                   <div class="radio-cont">
-                  
+
                 <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i - 1]) && $items[$i - 1] == "1") echo "checked"; ?> value="1">Casi Nunca</br>
                 <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i - 1]) && $items[$i - 1] == "2") echo "checked"; ?> value="2">Algunas veces</br>
                 <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i - 1]) && $items[$i - 1] == "3") echo "checked"; ?> value="3">Casi Siempre</br>
-                </div>  
+                </div>
             </td>
             <?php
 
@@ -279,6 +289,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
             //echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '" id="form_' . $s['id_estudiante'] . '" >';
 
+        $asistencia = $s["asistencia"];
+        ?>
+        <td>
+          <?php echo '<input type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 1) echo "checked"; ?> value="1" form="form1">Si</br>
+          <input <?php echo ' type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 2) echo "checked"; ?> value="2" form="form1">Si, pero no completo</br>
+          <?php echo '<input type="radio" class="radioBttn" name= "' . $id . "_asistencia".'"' ; ?>  <?php if ($asistencia == 0) echo "checked"; ?> value="0" form="form1">No
+        </td>
+        <?php
+
+
         echo '<input type="hidden" name="name" value="' . $row['nombre'] . '" form="form1"/>';
         echo '<input type="hidden" name="id" value="' . $row['id'] . '" form="form1"/>';
         echo '<input type="hidden" name="id_ses' . $s['id_estudiante'] . '" value="' . $s['id_estudiante'] . '" form="form1"/>';
@@ -288,14 +308,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $items[$i - 1] = $s["item_$i"];
                     //echo '<td><input class="in" type="number" name="items_' . ($i + 1) . '" value="" /></td>';
             ?>
-  
+
               <td class="radio-cont">
                   <div class="radio-cont">
-                  
+
                 <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i - 1]) && $items[$i - 1] == "1") echo "checked"; ?> value="1">Casi Nunca</br>
                 <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i - 1]) && $items[$i - 1] == "2") echo "checked"; ?> value="2">Algunas veces</br>
                 <?php echo '<input type="radio" form="form1" class="radioBttn" name= "' . $id . '_item_' . $i . '"'; ?>  <?php if (isset($items[$i - 1]) && $items[$i - 1] == "3") echo "checked"; ?> value="3">Casi Siempre</br>
-                </div>  
+                </div>
             </td>
               <?php
 
