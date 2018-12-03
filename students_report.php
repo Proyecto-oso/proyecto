@@ -17,11 +17,16 @@ if (!func::checkLoginState($dbh)) {
     <title>Proyecto Psicologia</title>
 </head>
 <?php
+
+$DEBUG = false;
+
+
 $count_grupo = 0;
 $count_todos = 0;
 $count_todos_estudiantes = 0;
 $count_estudiantes = 0;
 $count_uncompleted = 0;
+$count_empty = 0;
 $query = ' SELECT * FROM grupo';
 $stmt = $dbh->prepare($query);
 $stmt->execute();
@@ -60,19 +65,22 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
                       elseif ($row['total_aptitud_verbal'] != 0 || $row['total_aptitud_matematica'] != 0 || str_replace(" ", "", $row['informe_via']) !="" || str_replace(" ", "", $row['observaciones']) !="") {
                         // code...
                         $count_uncompleted++;
+                      }else {
+                        $count_empty++;
                       }
                         $count_estudiantes++;
                     }
                     //echo $count_grupo.','.$suma_v_grupo.'<br>';
                     echo '<b> ' . $g['nombre'] . '</b><br>';
                     if ($count_grupo != 0 ||  $count_uncompleted != 0) {
-                        echo 'total estduiantes en el grupo: ' . $count_estudiantes . '<br> porcentaje de estudiantes con informacion completa: ' . number_format(100*$count_grupo/$count_estudiantes, 3).'% <br> porcentaje de estudiantes con informacion incompleta: ' . number_format(100*$count_uncompleted/$count_estudiantes, 3) . '%<br><br><br>';
+                        echo 'total estduiantes en el grupo: ' . $count_estudiantes . '<br> porcentaje de estudiantes con informacion completa: ' . number_format(100*$count_grupo/$count_estudiantes, 3).'% <br> porcentaje de estudiantes con informacion incompleta: ' . number_format(100*$count_uncompleted/$count_estudiantes, 3) . '%<br>porcentaje de estudiantes sin diligenciar: '.number_format(100*$count_empty/$count_estudiantes, 3) .'% <br><br><br>';
                     } else {
                         echo 'no ha sido diligenciado aun  <br><br><br>';
                     }
                     $count_grupo = 0;
                     $count_estudiantes = 0;
                     $count_uncompleted = 0;
+                    $count_empty = 0;
                 }
 
                 ?>
@@ -120,6 +128,8 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
               elseif ($row['total_factor_tncf'] !=0 || $row['total_factor_paf']!=0 || $row['total_factor_icppf']!=0 || $row['total_factor_tivf']!=0 || $row['total_eet_economico']!=0 || $row['total_eet_laboral']!=0 || $row['total_eet_familiar']!=0 && $row['total_eet_vida']!=0 || $row['total_eet_academico']!=0 || str_replace(" ", "", $row['observaciones']) !="") {
                 // code...
                 $count_uncompleted++;
+              }else {
+                $count_empty++;
               }
 
               $count_estudiantes++;
@@ -127,13 +137,14 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
             //echo $count_grupo.','.$suma_v_grupo.'<br>';
             echo '<b> ' . $g['nombre'] . '</b><br>';
             if ($count_grupo != 0 || $count_uncompleted !=0) {
-                echo 'total estduiantes en el grupo: ' . $count_estudiantes . '<br> porcentaje de estudiantes con informacion completa: ' . number_format(100*$count_grupo/$count_estudiantes, 3).'% <br> porcentaje de estudiantes con informacion incompleta: ' . number_format(100*$count_uncompleted/$count_estudiantes, 3) . '%<br><br><br>';
+                echo 'total estduiantes en el grupo: ' . $count_estudiantes . '<br> porcentaje de estudiantes con informacion completa: ' . number_format(100*$count_grupo/$count_estudiantes, 3).'% <br> porcentaje de estudiantes con informacion incompleta: ' . number_format(100*$count_uncompleted/$count_estudiantes, 3) . '%<br>porcentaje de estudiantes sin diligenciar: '.number_format(100*$count_empty/$count_estudiantes, 3) .'% <br><br><br>';
             } else {
                 echo 'no ha sido diligenciado aun o no hay estudiantes completamente diligenciados <br><br><br>';
             }
             $count_grupo = 0;
             $count_estudiantes = 0;
             $count_uncompleted = 0;
+            $count_empty = 0;
           }
         ?>
     </div>
@@ -167,19 +178,22 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
               }elseif ($row['t_activo'] != 0 || $row['t_reflexivo'] != 0 || $row['t_sensible'] != 0 || $row['t_intuitivo'] != 0 || $row['t_visual'] != 0 || $row['t_verbal'] !=0 || $row['t_secuencial'] != 0  || str_replace(" ", "", $row['mas_predominante']) !="" || str_replace(" ", "", $row['menos_predominante']) !="" || str_replace(" ", "", $row['est_predominante']) !="" || str_replace(" ", "", $row['observaciones']) !="" ) {
                 // code...
                 $count_uncompleted++;
+              }else {
+                $count_empty++;
               }
               $count_estudiantes++;
             }
             //echo $count_grupo.','.$suma_v_grupo.'<br>';
             echo '<b> ' . $g['nombre'] . '</b><br>';
             if ($count_grupo != 0 || $count_uncompleted !=0) {
-                echo 'total estduiantes en el grupo: ' . $count_estudiantes . '<br> porcentaje de estudiantes con informacion completa: ' . number_format(100*$count_grupo/$count_estudiantes, 3).'% <br> porcentaje de estudiantes con informacion incompleta: ' . number_format(100*$count_uncompleted/$count_estudiantes, 3) . '%<br><br><br>';
+                echo 'total estduiantes en el grupo: ' . $count_estudiantes . '<br> porcentaje de estudiantes con informacion completa: ' . number_format(100*$count_grupo/$count_estudiantes, 3).'% <br> porcentaje de estudiantes con informacion incompleta: ' . number_format(100*$count_uncompleted/$count_estudiantes, 3) . '%<br>porcentaje de estudiantes sin diligenciar: '.number_format(100*$count_empty/$count_estudiantes, 3) .'% <br><br><br>';
             } else {
                 echo 'no ha sido diligenciado aun o no hay estudiantes completamente diligenciados <br><br><br>';
             }
             $count_grupo = 0;
             $count_estudiantes = 0;
             $count_uncompleted= 0;
+            $count_empty = 0;
         }
 
         ?>
@@ -217,19 +231,22 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
               }elseif ($row['amigos']!=0 || $row['familia'] != 0 || $row['otro'] != 0 || $row['total'] != 0 || str_replace(" ", "", $row['zona_riesgo']) != "" || str_replace(" ", "", $row['zona_segura']) != "" || str_replace(" ", "", $row['zona_ayuda']) != "" || str_replace(" ", "", $row['per_ayudan']) != "" || str_replace(" ", "", $row['mec_violencia']) != "" || str_replace(" ", "", $row['per_violencia']) != "" || str_replace(" ", "", $row['vio_vividas']) != "" || str_replace(" ", "", $row['zon_violencia']) != "" || str_replace(" ", "", $row['cantidad_cigarrillos']) != "" || str_replace(" ", "", $row['frecuencia_cigarrillos']) != "" || str_replace(" ", "", $row['lugar_cigarrillos']) != "" || str_replace(" ", "", $row['cantidad_alcohol']) != "" || str_replace(" ", "", $row['frecuencia_alcohol']) != "" || str_replace(" ", "", $row['lugar_alcohol']) != "" || str_replace(" ", "", $row['cantidad_psicoactivas']) != "" || str_replace(" ", "", $row['frecuencia_psicoactivas']) != "" || str_replace(" ", "", $row['lugar_psicoactivas']) != "" || str_replace(" ", "", $row['n_parejas']) != "" || str_replace(" ", "", $row['met_embarazo']) != "" || str_replace(" ", "", $row['n_embarazo']) != "" || str_replace(" ", "", $row['n_abortos']) != "" || str_replace(" ", "", $row['pre_relacion_f']) != "" || str_replace(" ", "", $row['ets']) != "" || str_replace(" ", "", $row['calle']) != "" || str_replace(" ", "", $row['observaciones']) != "") {
                 // code...
                 $count_uncompleted++;
+              }else {
+                $count_empty++;
               }
               $count_estudiantes++;
             }
             //echo $count_grupo.','.$suma_v_grupo.'<br>';
             echo '<b> ' . $g['nombre'] . '</b><br>';
             if ($count_grupo != 0 || $count_uncompleted !=0) {
-                echo 'total estduiantes en el grupo: ' . $count_estudiantes . '<br> porcentaje de estudiantes con informacion completa: ' . number_format(100*$count_grupo/$count_estudiantes, 3).'% <br> porcentaje de estudiantes con informacion incompleta: ' . number_format(100*$count_uncompleted/$count_estudiantes, 3) . '%<br><br><br>';
+                echo 'total estduiantes en el grupo: ' . $count_estudiantes . '<br> porcentaje de estudiantes con informacion completa: ' . number_format(100*$count_grupo/$count_estudiantes, 3).'% <br> porcentaje de estudiantes con informacion incompleta: ' . number_format(100*$count_uncompleted/$count_estudiantes, 3) . '%<br>porcentaje de estudiantes sin diligenciar: '.number_format(100*$count_empty/$count_estudiantes, 3) .'% <br><br><br>';
             } else {
                 echo 'no ha sido diligenciado aun o no hay estudiantes completamente diligenciados <br><br><br>';
             }
             $count_grupo = 0;
             $count_estudiantes = 0;
             $count_uncompleted = 0;
+            $count_empty = 0;
         }
       ?>
     </div>
@@ -258,19 +275,22 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
                       }elseif ($row['total']!=0 || str_replace(" ", "", $row['estilo']) !=""   || str_replace(" ", "", $row['observaciones']) !="") {
                         // code...
                         $count_uncompleted++;
+                      }else {
+                        $count_empty++;
                       }
                       $count_estudiantes++;
                     }
                     //echo $count_grupo.','.$suma_v_grupo.'<br>';
                     echo '<b> ' . $g['nombre'] . '</b><br>';
                     if ($count_grupo != 0 || $count_uncompleted !=0) {
-                        echo 'total estduiantes en el grupo: ' . $count_estudiantes . '<br> porcentaje de estudiantes con informacion completa: ' . number_format(100*$count_grupo/$count_estudiantes, 3).'% <br> porcentaje de estudiantes con informacion incompleta: ' . number_format(100*$count_uncompleted/$count_estudiantes, 3) . '%<br><br><br>';
+                        echo 'total estduiantes en el grupo: ' . $count_estudiantes . '<br> porcentaje de estudiantes con informacion completa: ' . number_format(100*$count_grupo/$count_estudiantes, 3).'% <br> porcentaje de estudiantes con informacion incompleta: ' . number_format(100*$count_uncompleted/$count_estudiantes, 3) . '%<br>porcentaje de estudiantes sin diligenciar: '.number_format(100*$count_empty/$count_estudiantes, 3) .'% <br><br><br>';
                     } else {
                         echo 'no ha sido diligenciado aun o no hay estudiantes completamente diligenciados <br><br><br>';
                     }
                     $count_grupo = 0;
                     $count_estudiantes = 0;
                     $count_uncompleted = 0;
+                    $count_empty = 0;
                 }
                 ?>
             </div>
@@ -301,6 +321,8 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
                       }elseif ($row['total'] != 0 || str_replace(" ", "", $row['observaciones']) !="") {
                         // code...
                         $count_uncompleted++;
+                      }else {
+                        $count_empty++;
                       }
                       $count_estudiantes++;
 
@@ -308,13 +330,14 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     //echo $count_grupo.','.$suma_v_grupo.'<br>';
                     echo '<b> ' . $g['nombre'] . '</b><br>';
                     if ($count_grupo != 0 || $count_uncompleted !=0) {
-                        echo 'total estduiantes en el grupo: ' . $count_estudiantes . '<br> porcentaje de estudiantes con informacion completa: ' . number_format(100*$count_grupo/$count_estudiantes, 3).'% <br> porcentaje de estudiantes con informacion incompleta: ' . number_format(100*$count_uncompleted/$count_estudiantes, 3) . '%<br><br><br>';
+                        echo 'total estduiantes en el grupo: ' . $count_estudiantes . '<br> porcentaje de estudiantes con informacion completa: ' . number_format(100*$count_grupo/$count_estudiantes, 3).'% <br> porcentaje de estudiantes con informacion incompleta: ' . number_format(100*$count_uncompleted/$count_estudiantes, 3) . '%<br>porcentaje de estudiantes sin diligenciar: '.number_format(100*$count_empty/$count_estudiantes, 3) .'% <br><br><br>';
                     } else {
                         echo 'no ha sido diligenciado aun o no hay estudiantes completamente diligenciados <br><br><br>';
                     }
                     $count_grupo = 0;
                     $count_estudiantes = 0;
                     $count_uncompleted = 0;
+                    $count_empty = 0;
                 }
 
             ?>
@@ -372,6 +395,8 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
               }elseif ($row['temas_trabajados'] != 0 || $row['ejercicios'] != 0 || $row['tallerista']!= 0 || $row['utilidad'] != 0 || str_replace(" ", "", $row['evaluacion1']) !="" || str_replace(" ", "", $row['evaluacion2'])  || str_replace(" ", "", $row['observaciones']) !="") {
                 // code...
                 $count_uncompleted;
+              }else {
+                $count_empty++;
               }
               $count_estudiantes++;
 
@@ -379,13 +404,14 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
             //echo $count_grupo.','.$suma_v_grupo.'<br>';
             echo '<b> ' . $g['nombre'] . '</b><br>';
             if ($count_grupo != 0 || $count_uncompleted !=0) {
-                echo 'total estduiantes en el grupo: ' . $count_estudiantes . '<br> porcentaje de estudiantes con informacion completa: ' . number_format(100*$count_grupo/$count_estudiantes, 3).'% <br> porcentaje de estudiantes con informacion incompleta: ' . number_format(100*$count_uncompleted/$count_estudiantes, 3) . '%<br><br><br>';
+                echo 'total estduiantes en el grupo: ' . $count_estudiantes . '<br> porcentaje de estudiantes con informacion completa: ' . number_format(100*$count_grupo/$count_estudiantes, 3).'% <br> porcentaje de estudiantes con informacion incompleta: ' . number_format(100*$count_uncompleted/$count_estudiantes, 3) . '%<br>porcentaje de estudiantes sin diligenciar: '.number_format(100*$count_empty/$count_estudiantes, 3) .'% <br><br><br>';
             } else {
                 echo 'no ha sido diligenciado aun o no hay estudiantes completamente diligenciados <br><br><br>';
             }
             $count_grupo = 0;
             $count_estudiantes = 0;
             $count_uncompleted = 0;
+            $count_empty = 0;
         }
 
       ?>

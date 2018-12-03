@@ -77,9 +77,9 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     if ($count_grupo != 0) {
                         $total_verbal_grupo = $suma_v_grupo / $count_grupo_v;
                         $total_matematica_grupo = $suma_m_grupo / $count_grupo_m;
-                        echo 'total verbal: ' . number_format($total_verbal_grupo, 3) . '<br> total matematico: ' . number_format($total_matematica_grupo, 3) . '<br>';
+                        echo 'total verbal: ' . number_format($total_verbal_grupo, 3) . '<br> total matematico: ' . number_format($total_matematica_grupo, 3) . '<br><br><br>';
                     } else {
-                        echo 'no ha sido diligenciado aun <br>';
+                        echo 'no ha sido diligenciado aun <br><br><br>';
                     }
                     $count_grupo = 0;
                     $count_grupo_v = 0;
@@ -91,7 +91,7 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 $total_matematica_estudiantes = $suma_m_todos / $count_todos_m;
 
                 echo '<b>Todos los participantes</b><br>';
-                echo $total_verbal_estudiantes . '<br>' . $total_matematica_estudiantes;
+                echo $total_verbal_estudiantes . '<br>' . $total_matematica_estudiantes.'<br><br><br>';
 
                 $total_verbal_estudiantes = 0;
                 $total_matematica_estudiantes = 0;
@@ -145,7 +145,7 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $count_eet_vida_grupo = 0;
         $count_eet_academico_grupo = 0;
 
-        
+
 
 
         /*
@@ -458,9 +458,9 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 echo 'total visual: ' . $total_visual_grupo . '<br>';
                 echo 'total verbal: ' . $total_verbal_grupo . '<br>';
                 echo 'total secuencial: ' . $total_secuencial_grupo . '<br>';
-                echo 'total global: ' . $total_global_grupo . '<br>';
+                echo 'total global: ' . $total_global_grupo . '<br><br><br>';
             } else {
-                echo 'no ha sido diligenciado aun <br>';
+                echo 'no ha sido diligenciado aun <br><br><br>';
             }
             $count_grupo = 0;
             $count_activo_grupo = 0;
@@ -496,7 +496,7 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
         echo 'total visual: ' . $total_visual_todos . '<br>';
         echo 'total verbal: ' . $total_verbal_todos . '<br>';
         echo 'total secuencial: ' . $total_secuencial_todos . '<br>';
-        echo 'total global: ' . $total_global_todos . '<br>';
+        echo 'total global: ' . $total_global_todos . '<br><br><br>';
         ?>
     </div>
     <div class="page">
@@ -664,9 +664,9 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     echo '<b> ' . $g['nombre'] . '</b><br>';
                     if ($count_grupo != 0) {
                         $total_grupo = $total_grupo / $count_grupo;
-                        echo 'total: ' . number_format($total_grupo, 3) . '<br>';
+                        echo 'total: ' . number_format($total_grupo, 3) . '<br><br><br>';
                     } else {
-                        echo 'no ha sido diligenciado aun <br>';
+                        echo 'no ha sido diligenciado aun <br><br><br>';
                     }
                     $count_grupo = 0;
                     $total_grupo = 0;
@@ -674,7 +674,7 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 $total_todos = $total_todos / $count_todos;
 
                 echo '<b>Todos los participantes</b><br>';
-                echo $total_todos;
+                echo $total_todos.'<br><br><br>';
                 ?>
             </div>
             <div class="page">
@@ -712,9 +712,9 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     echo '<b> ' . $g['nombre'] . '</b><br>';
                     if ($count_grupo != 0) {
                         $total_grupo = $total_grupo / $count_grupo;
-                        echo 'total: ' . number_format($total_grupo, 3) . '<br>';
+                        echo 'total: ' . number_format($total_grupo, 3) . '<br><br><br>';
                     } else {
-                        echo 'no ha sido diligenciado aun <br>';
+                        echo 'no ha sido diligenciado aun <br><br><br>';
                     }
                     $count_grupo = 0;
                     $total_grupo = 0;
@@ -722,7 +722,7 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 $total_todos = $total_todos / $count_todos;
 
                 echo '<b>Todos los participantes</b><br>';
-                echo $total_todos;
+                echo $total_todos.'<br><br><br>';
                 ?>
             </div>
             <div class="page">
@@ -740,7 +740,7 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     $aux++;
                     echo '<b> ' . $g['nombre'] . '</b><br>';
                     echo ' informe metas, recursos y barreras: <br>';
-                    echo $g['inf_s7'] . '<br>';
+                    echo $g['inf_s7'] . '<br><br><br>';
                 }
                 ?>
             </div>
@@ -824,13 +824,13 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 echo 'total temas trabajados: ' . $total_temas_grupo . '<br>';
                 echo 'total ejercicios: ' . $total_ejercicios_grupo . '<br>';
                 echo 'total direccion del tallerista: ' . $total_tallerista_grupo . '<br>';
-                echo 'total utilidad diario vivir: ' . $total_utilidad_grupo . '<br><br>';
+                echo 'total utilidad diario vivir: ' . $total_utilidad_grupo . '<br><br><br>';
 
             } else {
-                echo 'no ha sido diligenciado aun <br>';
+                echo 'no ha sido diligenciado aun <br><br><br>';
             }
             echo ' Diario de campo del taller sobre Asertividad: <br>';
-            echo $g['inf_s8'] . '<br>';
+            echo $g['inf_s8'] . '<br><br><br>';
             $count_grupo = 0;
             $count_temas_grupo = 0;
             $count_ejercicios_grupo = 0;
@@ -849,7 +849,7 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
         echo 'total temas trabajados: ' . $total_temas_todos . '<br>';
         echo 'total ejercicios: ' . $total_ejercicios_todos . '<br>';
         echo 'total direccion del tallerista: ' . $total_tallerista_todos . '<br>';
-        echo 'total utilidad diario vivir: ' . $total_utilidad_todos . '<br>';
+        echo 'total utilidad diario vivir: ' . $total_utilidad_todos . '<br><br><br>';
         ?>
     </div>
 </div>
