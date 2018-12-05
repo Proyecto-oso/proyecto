@@ -158,8 +158,8 @@ echo '<form action="upload.php" method="post" enctype="multipart/form-data">
     Selecciona el archivo:
     <input type="hidden" name="Sesion7" value="Sesion7" />
     <input type="hidden" name="redirect" value="sesion7" />
-    <input type="hidden" name="image_id" value="acta" />
     <input type="hidden" name="image_id" value="acta'.$_SESSION['grupo_id'].'" />
+    <input class="fileToUpload" type="file" name="fileToUpload" id="fileToUpload">
     <input class="upload" type="submit" value="Subir archivo" name="submit">
 </form>
 </div>';
