@@ -43,7 +43,7 @@ if (!func::checkLoginState($dbh)) {
         }
 
 
-        $query = 'SELECT grupo.id, estudiantes.id, estudiantes.nombre, sesion_2.total_factor_tncf , sesion_2.total_factor_paf, sesion_2.total_factor_icppf, sesion_2.total_factor_tivf, sesion_2.total_eet_economico, sesion_2.total_eet_laboral, sesion_2.total_eet_familiar, sesion_2.total_eet_vida, sesion_2.total_eet_academico FROM grupo INNER JOIN estudiantes Inner join sesion_2 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_2.id_estudiante where grupo.id=? ';
+        $query = 'SELECT grupo.id, estudiantes.id, estudiantes.nombre, sesion_2.asistencia ,sesion_2.total_factor_tncf , sesion_2.total_factor_paf, sesion_2.total_factor_icppf, sesion_2.total_factor_tivf, sesion_2.total_eet_economico, sesion_2.total_eet_laboral, sesion_2.total_eet_familiar, sesion_2.total_eet_vida, sesion_2.total_eet_academico FROM grupo INNER JOIN estudiantes Inner join sesion_2 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_2.id_estudiante where grupo.id=? ';
         //echo $query;
         $stmt = $dbh->prepare($query);
         $stmt->execute([$g['id']]);
@@ -67,6 +67,9 @@ if (!func::checkLoginState($dbh)) {
         //echo '<b> Institucion: ' . $g['nombre'] . '</b><br>';
         
         foreach ($rows as $row) {
+            if($row['asistencia'] != 1){
+                continue;
+              }
 
             $output.="<tr>
                 <th>". $row['nombre'] ."</th>

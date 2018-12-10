@@ -41,7 +41,7 @@ if (!func::checkLoginState($dbh)) {
         }
 
 
-        $query = ' SELECT grupo.id, estudiantes.id, estudiantes.nombre, sesion_3.t_activo, sesion_3.t_reflexivo, sesion_3.t_sensible, sesion_3.t_intuitivo, sesion_3.t_visual, sesion_3.t_verbal, sesion_3.t_secuencial, sesion_3.t_global FROM grupo INNER JOIN estudiantes Inner join sesion_3 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_3.id_estudiante where grupo.id=?';
+        $query = ' SELECT grupo.id, estudiantes.id, estudiantes.nombre, sesion_3.asistencia ,sesion_3.t_activo, sesion_3.t_reflexivo, sesion_3.t_sensible, sesion_3.t_intuitivo, sesion_3.t_visual, sesion_3.t_verbal, sesion_3.t_secuencial, sesion_3.t_global FROM grupo INNER JOIN estudiantes Inner join sesion_3 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_3.id_estudiante where grupo.id=?';
         //echo $query;
         $stmt = $dbh->prepare($query);
         $stmt->execute([$g['id']]);
@@ -65,6 +65,9 @@ if (!func::checkLoginState($dbh)) {
         
         
         foreach ($rows as $row) {
+            if($row['asistencia'] != 1){
+                continue;
+              }
 
             $output.="<tr>
                 <th>". $row['nombre'] ."</th>
@@ -93,8 +96,8 @@ if (!func::checkLoginState($dbh)) {
 
     
     
-    header("Content-Type: application/xls");
-    header("Content-Disposition: attachment; filename=sesion3.xls");
+    //header("Content-Type: application/xls");
+    //header("Content-Disposition: attachment; filename=sesion3.xls");
     
 
     echo $output;

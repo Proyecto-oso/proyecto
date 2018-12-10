@@ -43,7 +43,7 @@ if (!func::checkLoginState($dbh)) {
         }
 
 
-        $query = ' SELECT grupo.id, estudiantes.id, estudiantes.nombre, sesion_8.temas_trabajados, sesion_8.ejercicios, sesion_8.tallerista, sesion_8.utilidad FROM grupo INNER JOIN estudiantes Inner join sesion_8 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_8.id_estudiante where grupo.id=?';
+        $query = ' SELECT grupo.id, estudiantes.id, estudiantes.nombre, sesion_8.asistencia ,sesion_8.temas_trabajados, sesion_8.ejercicios, sesion_8.tallerista, sesion_8.utilidad FROM grupo INNER JOIN estudiantes Inner join sesion_8 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_8.id_estudiante where grupo.id=?';
         //echo $query;
         $stmt = $dbh->prepare($query);
         $stmt->execute([$g['id']]);
@@ -62,6 +62,9 @@ if (!func::checkLoginState($dbh)) {
         //echo '<b> Institucion: ' . $g['nombre'] . '</b><br>';
         
         foreach ($rows as $row) {
+            if($row['asistencia'] != 1){
+                continue;
+              }
 
             $output.="<tr>
                     <th>". $row['nombre'] ."</th>
