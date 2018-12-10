@@ -9,8 +9,6 @@ if (!func::checkLoginState($dbh)) {
 }   
 ?>
 
-
-
 <style>
     table {
     font-family: arial, sans-serif;
@@ -53,18 +51,31 @@ if (!func::checkLoginState($dbh)) {
                     </tr>";
         $output.="<tr>
                 <th>Nombre</th>
-                <th>Total aptitud verbal </th>
-                <th>Total aptitud matematica </th>
+                <th>Total activo </th>
+                <th>Total reflexivo </th>
+                <th>Total sensible </th>
+                <th>Total intuitivo </th>
+                <th>Total visual </th>
+                <th>Total verbal </th>
+                <th>Total secuencial </th>
+                <th>Total global </th>
                 </tr>";
 
         //echo '<b> Institucion: ' . $g['nombre'] . '</b><br>';
+        
         
         foreach ($rows as $row) {
 
             $output.="<tr>
                 <th>". $row['nombre'] ."</th>
-                <th>". $row['total_aptitud_verbal'] ." </th>
-                <th>". $row['total_aptitud_matematica'] ." </th>
+                <th>". $row['t_activo'] ."</th>
+                <th>". $row['t_reflexivo'] ."</th>
+                <th>". $row['t_sensible'] ."</th>
+                <th>". $row['t_intuitivo'] ."</th>
+                <th>". $row['t_visual'] ."</th>
+                <th>". $row['t_verbal'] ."</th>
+                <th>". $row['t_secuencial'] ."</th>
+                <th>". $row['t_global'] ."</th>
                 </tr>";
 
             //echo  $row["nombre"],$row['total_aptitud_verbal'],$row['total_aptitud_matematica'];
@@ -82,8 +93,8 @@ if (!func::checkLoginState($dbh)) {
 
     
     
-    //header("Content-Type: application/xls");
-    //header("Content-Disposition: attachment; filename=sesion3.xls");
+    header("Content-Type: application/xls");
+    header("Content-Disposition: attachment; filename=sesion3.xls");
     
 
     echo $output;

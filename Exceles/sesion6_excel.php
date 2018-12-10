@@ -53,8 +53,7 @@ if (!func::checkLoginState($dbh)) {
                     </tr>";
         $output.="<tr>
                 <th>Nombre</th>
-                <th>Total aptitud verbal </th>
-                <th>Total aptitud matematica </th>
+                <th>Autoeficacia total</th>
                 </tr>";
 
         //echo '<b> Institucion: ' . $g['nombre'] . '</b><br>';
@@ -63,8 +62,7 @@ if (!func::checkLoginState($dbh)) {
 
             $output.="<tr>
                 <th>". $row['nombre'] ."</th>
-                <th>". $row['total_aptitud_verbal'] ." </th>
-                <th>". $row['total_aptitud_matematica'] ." </th>
+                <th>". $row['total'] ." </th>
                 </tr>";
 
             //echo  $row["nombre"],$row['total_aptitud_verbal'],$row['total_aptitud_matematica'];

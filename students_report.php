@@ -51,12 +51,17 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
                       continue;
                     }
                     $aux++;
-                    $query = ' SELECT grupo.id, estudiantes.id, sesion_1.total_aptitud_matematica, sesion_1.total_aptitud_verbal,sesion_1.informe_via, sesion_1.observaciones FROM grupo INNER JOIN estudiantes Inner join sesion_1 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_1.id_estudiante where grupo.id=?';
+                    $query = ' SELECT grupo.id, estudiantes.id, sesion_1.asistencia ,sesion_1.total_aptitud_matematica, sesion_1.total_aptitud_verbal,sesion_1.informe_via, sesion_1.observaciones FROM grupo INNER JOIN estudiantes Inner join sesion_1 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_1.id_estudiante where grupo.id=?';
                     //echo $query;
                     $stmt = $dbh->prepare($query);
                     $stmt->execute([$g['id']]);
                     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     foreach ($rows as $row) {
+
+                      if($row['asistencia'] != 1){
+                        continue;
+                      }
+
                       //esta completo
                       if ($row['total_aptitud_verbal'] != 0 && $row['total_aptitud_matematica'] != 0 && str_replace(" ", "", $row['informe_via']) != "" && str_replace(" ", "", $row['observaciones']) !="" ) {
                         // code...
@@ -114,12 +119,15 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
             continue;
           }
 
-            $query = 'SELECT grupo.id, estudiantes.id, sesion_2.total_factor_tncf , sesion_2.total_factor_paf, sesion_2.total_factor_icppf, sesion_2.total_factor_tivf, sesion_2.total_eet_economico, sesion_2.total_eet_laboral, sesion_2.total_eet_familiar, sesion_2.total_eet_vida, sesion_2.total_eet_academico,sesion_2.observaciones FROM grupo INNER JOIN estudiantes Inner join sesion_2 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_2.id_estudiante where grupo.id=? ';
+            $query = 'SELECT grupo.id, estudiantes.id, sesion_2.asistencia,sesion_2.total_factor_tncf , sesion_2.total_factor_paf, sesion_2.total_factor_icppf, sesion_2.total_factor_tivf, sesion_2.total_eet_economico, sesion_2.total_eet_laboral, sesion_2.total_eet_familiar, sesion_2.total_eet_vida, sesion_2.total_eet_academico,sesion_2.observaciones FROM grupo INNER JOIN estudiantes Inner join sesion_2 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_2.id_estudiante where grupo.id=? ';
             //echo $query;
             $stmt = $dbh->prepare($query);
             $stmt->execute([$g['id']]);
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($rows as $row) {
+              if($row['asistencia'] != 1){
+                continue;
+              }
 
               //suma todos
               if ($row['total_factor_tncf'] !=0 && $row['total_factor_paf']!=0 && $row['total_factor_icppf']!=0 && $row['total_factor_tivf']!=0 && $row['total_eet_economico']!=0 && $row['total_eet_laboral']!=0 && $row['total_eet_familiar']!=0 && $row['total_eet_vida']!=0 && $row['total_eet_academico']!=0 && str_replace(" ", "", $row['observaciones']) !="" ) {
@@ -165,12 +173,15 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
               continue;
             }
             $aux++;
-            $query = ' SELECT grupo.id, estudiantes.id, sesion_3.t_activo, sesion_3.t_reflexivo, sesion_3.t_sensible, sesion_3.t_intuitivo, sesion_3.t_visual, sesion_3.t_verbal, sesion_3.t_secuencial, sesion_3.t_global, sesion_3.mas_predominante, sesion_3.menos_predominante,sesion_3.est_predominante,sesion_3.observaciones  FROM grupo INNER JOIN estudiantes Inner join sesion_3 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_3.id_estudiante where grupo.id=?';
+            $query = ' SELECT grupo.id, estudiantes.id,sesion_3.asistencia, sesion_3.t_activo, sesion_3.t_reflexivo, sesion_3.t_sensible, sesion_3.t_intuitivo, sesion_3.t_visual, sesion_3.t_verbal, sesion_3.t_secuencial, sesion_3.t_global, sesion_3.mas_predominante, sesion_3.menos_predominante,sesion_3.est_predominante,sesion_3.observaciones  FROM grupo INNER JOIN estudiantes Inner join sesion_3 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_3.id_estudiante where grupo.id=?';
             //echo $query;
             $stmt = $dbh->prepare($query);
             $stmt->execute([$g['id']]);
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($rows as $row) {
+              if($row['asistencia'] != 1){
+                continue;
+              }
 
               if ($row['t_activo'] != 0 && $row['t_reflexivo'] != 0 && $row['t_sensible'] != 0 && $row['t_intuitivo'] != 0 && $row['t_visual'] != 0 && $row['t_verbal'] !=0 && $row['t_secuencial'] != 0  && str_replace(" ", "", $row['mas_predominante']) !="" && str_replace(" ", "", $row['menos_predominante']) !="" && str_replace(" ", "", $row['est_predominante']) !="" && str_replace(" ", "", $row['observaciones']) !="" ) {
                 // code...
@@ -219,12 +230,15 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
           if ($g['nombre'] == "grupo de pruebas") {
             continue;
           }
-            $query = ' SELECT grupo.id, estudiantes.id, sesion_4.amigos, sesion_4.familia, sesion_4.otro, sesion_4.total, sesion_4.zona_riesgo, sesion_4.zona_segura, sesion_4.zona_ayuda, sesion_4.per_ayudan, sesion_4.mec_violencia, sesion_4.per_violencia, sesion_4.vio_vividas, sesion_4.zon_violencia, sesion_4.cantidad_cigarrillos, sesion_4.frecuencia_cigarrillos, sesion_4.lugar_cigarrillos, sesion_4.cantidad_alcohol, sesion_4.frecuencia_alcohol, sesion_4.lugar_alcohol, sesion_4.cantidad_psicoactivas, sesion_4.frecuencia_psicoactivas, sesion_4.lugar_psicoactivas, sesion_4.n_parejas, sesion_4.met_embarazo, sesion_4.n_embarazo, sesion_4.n_abortos, sesion_4.pre_relacion_f, sesion_4.ets, sesion_4.calle, sesion_4.observaciones FROM grupo INNER JOIN estudiantes Inner join sesion_4 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_4.id_estudiante where grupo.id=?';
+            $query = ' SELECT grupo.id, estudiantes.id,sesion_4.asistencia, sesion_4.amigos, sesion_4.familia, sesion_4.otro, sesion_4.total, sesion_4.zona_riesgo, sesion_4.zona_segura, sesion_4.zona_ayuda, sesion_4.per_ayudan, sesion_4.mec_violencia, sesion_4.per_violencia, sesion_4.vio_vividas, sesion_4.zon_violencia, sesion_4.cantidad_cigarrillos, sesion_4.frecuencia_cigarrillos, sesion_4.lugar_cigarrillos, sesion_4.cantidad_alcohol, sesion_4.frecuencia_alcohol, sesion_4.lugar_alcohol, sesion_4.cantidad_psicoactivas, sesion_4.frecuencia_psicoactivas, sesion_4.lugar_psicoactivas, sesion_4.n_parejas, sesion_4.met_embarazo, sesion_4.n_embarazo, sesion_4.n_abortos, sesion_4.pre_relacion_f, sesion_4.ets, sesion_4.calle, sesion_4.observaciones FROM grupo INNER JOIN estudiantes Inner join sesion_4 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_4.id_estudiante where grupo.id=?';
             //echo $query;
             $stmt = $dbh->prepare($query);
             $stmt->execute([$g['id']]);
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($rows as $row) {
+              if($row['asistencia'] != 1){
+                continue;
+              }
 
               if ($row['amigos']!=0 && $row['familia'] != 0 && $row['otro'] != 0 && $row['total'] != 0 &&  str_replace(" ", "", $row['zona_riesgo']) != "" && str_replace(" ", "", $row['zona_segura']) != "" && str_replace(" ", "", $row['zona_ayuda']) != "" && str_replace(" ", "", $row['per_ayudan']) != "" && str_replace(" ", "", $row['mec_violencia']) != "" && str_replace(" ", "", $row['per_violencia']) != "" && str_replace(" ", "", $row['vio_vividas']) != "" && str_replace(" ", "", $row['zon_violencia']) != "" && str_replace(" ", "", $row['cantidad_cigarrillos']) != "" && str_replace(" ", "", $row['frecuencia_cigarrillos']) != "" && str_replace(" ", "", $row['lugar_cigarrillos']) != "" && str_replace(" ", "", $row['cantidad_alcohol']) != "" && str_replace(" ", "", $row['frecuencia_alcohol']) != "" && str_replace(" ", "", $row['lugar_alcohol']) != "" && str_replace(" ", "", $row['cantidad_psicoactivas']) != "" && str_replace(" ", "", $row['frecuencia_psicoactivas']) != "" && str_replace(" ", "", $row['lugar_psicoactivas']) != "" && str_replace(" ", "", $row['n_parejas']) != "" && str_replace(" ", "", $row['met_embarazo']) != "" && str_replace(" ", "", $row['n_embarazo']) != "" && str_replace(" ", "", $row['n_abortos']) != "" && str_replace(" ", "", $row['pre_relacion_f']) != "" && str_replace(" ", "", $row['ets']) != "" && str_replace(" ", "", $row['calle']) != "" && str_replace(" ", "", $row['observaciones']) != "" ) {
                 $count_grupo++;
@@ -263,12 +277,16 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
                       continue;
                     }
                     $aux++;
-                    $query = ' SELECT grupo.id, estudiantes.id, sesion_5.total, sesion_5.estilo, sesion_5.observaciones FROM grupo INNER JOIN estudiantes Inner join sesion_5 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_5.id_estudiante where grupo.id=? ';
+                    $query = ' SELECT grupo.id, estudiantes.id, sesion_5.asistencia,sesion_5.total, sesion_5.estilo, sesion_5.observaciones FROM grupo INNER JOIN estudiantes Inner join sesion_5 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_5.id_estudiante where grupo.id=? ';
                     //echo $query;
                     $stmt = $dbh->prepare($query);
                     $stmt->execute([$g['id']]);
                     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     foreach ($rows as $row) {
+                      if($row['asistencia'] != 1){
+                        continue;
+                      }
+
                       if ( $row['total']!=0 && str_replace(" ", "", $row['estilo']) !=""   && str_replace(" ", "", $row['observaciones']) !=""  ) {
                         // code...
                         $count_grupo++;
@@ -309,12 +327,17 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
                       continue;
                     }
                     $aux++;
-                    $query = ' SELECT grupo.id, estudiantes.id, sesion_6.total,sesion_6.observaciones FROM grupo INNER JOIN estudiantes Inner join sesion_6 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_6.id_estudiante where grupo.id=? ';
+                    $query = ' SELECT grupo.id, estudiantes.id, sesion_6.asistencia,sesion_6.total,sesion_6.observaciones FROM grupo INNER JOIN estudiantes Inner join sesion_6 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_6.id_estudiante where grupo.id=? ';
                     //echo $query;
                     $stmt = $dbh->prepare($query);
                     $stmt->execute([$g['id']]);
                     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     foreach ($rows as $row) {
+                      
+                      if($row['asistencia'] != 1){
+                        continue;
+                      }
+
                       if ($row['total'] != 0 && str_replace(" ", "", $row['observaciones']) !="" ) {
                         // code...
                         $count_grupo++;
@@ -375,6 +398,11 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         $aux = 0;
         foreach ($groups as $g) {
+
+            if($row['asistencia'] != 1){
+              continue;
+            }
+            
             if ($aux == 12) {
                 echo '</div><div class="page">';
                 $aux = 0;
@@ -383,7 +411,7 @@ $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
               continue;
             }
             $aux++;
-            $query = ' SELECT grupo.id, estudiantes.id, sesion_8.temas_trabajados, sesion_8.ejercicios, sesion_8.tallerista, sesion_8.utilidad, sesion_8.evaluacion1, sesion_8.evaluacion2, sesion_8.observaciones  FROM grupo INNER JOIN estudiantes Inner join sesion_8 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_8.id_estudiante where grupo.id=?';
+            $query = ' SELECT grupo.id, estudiantes.id,sesion_8.asistencia, sesion_8.temas_trabajados, sesion_8.ejercicios, sesion_8.tallerista, sesion_8.utilidad, sesion_8.evaluacion1, sesion_8.evaluacion2, sesion_8.observaciones  FROM grupo INNER JOIN estudiantes Inner join sesion_8 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_8.id_estudiante where grupo.id=?';
             //echo $query;
             $stmt = $dbh->prepare($query);
             $stmt->execute([$g['id']]);

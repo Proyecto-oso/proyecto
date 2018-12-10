@@ -52,9 +52,11 @@ if (!func::checkLoginState($dbh)) {
                     <th>". $g['nombre'] ."</th>
                     </tr>";
         $output.="<tr>
-                <th>Nombre</th>
-                <th>Total aptitud verbal </th>
-                <th>Total aptitud matematica </th>
+                    <th>Nombre</th>
+                    <th >Los temas trabajados</th>
+                    <th >Los ejercicios</th>
+                    <th >La direccion del tallerista</th>
+                    <th >La utilidad para tu diario vivir</th>
                 </tr>";
 
         //echo '<b> Institucion: ' . $g['nombre'] . '</b><br>';
@@ -62,13 +64,16 @@ if (!func::checkLoginState($dbh)) {
         foreach ($rows as $row) {
 
             $output.="<tr>
-                <th>". $row['nombre'] ."</th>
-                <th>". $row['total_aptitud_verbal'] ." </th>
-                <th>". $row['total_aptitud_matematica'] ." </th>
+                    <th>". $row['nombre'] ."</th>
+                    <th>". $row['temas_trabajados'] ."</th>
+                    <th>". $row['ejercicios'] ."</th>
+                    <th>". $row['tallerista'] ."</th>
+                    <th>". $row['utilidad'] ."</th>
                 </tr>";
 
             //echo  $row["nombre"],$row['total_aptitud_verbal'],$row['total_aptitud_matematica'];
             //echo "<br/>";          
+            
         }
 
         $output .= "<tr>
