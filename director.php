@@ -45,8 +45,8 @@ tr:nth-child(even) {
 
 .titles {
   margin-top: 50px;
-
 }
+
 
 input{
   float: right;
@@ -128,10 +128,51 @@ foreach ($dbh->query($sql) as $row) {
 
 <h2><a href="informe_global.php">RESULTADOS</a></h2>
 <h2><a href="students_report.php">BALANCE ESTUDIANTES</a></h2>
+
+<br/>
+<div >
+
+  <form action="Exceles/sesion1_excel.php" method="post">
+    <input type="submit" name="sesion1_excel" value="exportar sesion 1 a excel" class="btn btn-info" style="float:left;margin-left:10px;margin-top:10px"/>
+  </form>
+
+  <form action="Exceles/sesion2_excel.php" method="post">
+    <input type="submit" name="sesion2_excel" value="exportar sesion 2 a excel" class="btn btn-info" style="float:left;margin-left:10px;margin-top:10px"/>
+  </form>
+
+  <form action="Exceles/sesion3_excel.php" method="post">
+    <input type="submit" name="sesion3_excel" value="exportar sesion 3 a excel" class="btn btn-info" style="float:left;margin-left:10px;margin-top:10px"/>
+  </form>
+
+  <form action="Exceles/sesion4_excel.php" method="post">
+    <input type="submit" name="sesion4_excel" value="exportar sesion 4 a excel" class="btn btn-info" style="float:left;margin-left:10px;margin-top:10px"/>
+  </form>
+
+  <form action="Exceles/sesion5_excel.php" method="post">
+    <input type="submit" name="sesion5_excel" value="exportar sesion 5 a excel" class="btn btn-info" style="float:left;margin-left:10px;margin-top:10px"/>
+  </form>
+
+  <form action="Exceles/sesion6_excel.php" method="post">
+    <input type="submit" name="sesion6_excel" value="exportar sesion 6 a excel" class="btn btn-info" style="float:left;margin-left:10px;margin-top:10px"/>
+  </form>
+
+  <form action="Exceles/sesion7_excel.php" method="post">
+    <input type="submit" name="sesion7_excel" value="exportar sesion 7 a excel" class="btn btn-info" style="float:left;margin-left:10px;margin-top:10px"/>
+  </form>
+
+  <form action="Exceles/sesion8_excel.php" method="post">
+    <input type="submit" name="sesion8_excel" value="exportar sesion 8 a excel" class="btn btn-info" style="float:left;margin-left:10px;margin-top:10px"/>
+  </form>
+
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+
 <form action="export_excel.php" method="post">
- <button type="submit" id="export_data" name='export_data'
-value="Export to excel" class="btn btn-info">Exportar a Excel</button>
- </form>
+   <button type="submit" id="export_data" name='export_data' value="Export to excel" class="btn btn-info" style="margin-left:10px;margin-top:20px">Exportar a Excel</button>
+</form>
 
 <h3 class="titles">Psicologos</h3>
 
