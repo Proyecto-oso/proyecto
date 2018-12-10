@@ -6,7 +6,7 @@ if (!isset($_SESSION)) {
 include_once("../functions.php");
 if (!func::checkLoginState($dbh)) {
     echo '<script language="javascript">window.location="login.php"</script>';
-}   
+}
 ?>
 
 
@@ -29,66 +29,107 @@ if (!func::checkLoginState($dbh)) {
 
 
 <?php 
-    $query = ' SELECT * FROM grupo';
-    $stmt = $dbh->prepare($query);
-    $stmt->execute();
-    $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-    $output = "<table>";
+$query = ' SELECT * FROM grupo';
+$stmt = $dbh->prepare($query);
+$stmt->execute();
+$groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    foreach ($groups as $g){
+$output = "<table>";
 
-        if ($g['nombre'] == "grupo de pruebas") {
-            continue;
-        }
+foreach ($groups as $g) {
+
+    if ($g['nombre'] == "grupo de pruebas") {
+        continue;
+    }
 
 
-        $query = ' SELECT grupo.id, estudiantes.id, estudiantes.nombre, sesion_1.asistencia ,sesion_1.total_aptitud_matematica, sesion_1.total_aptitud_verbal FROM grupo INNER JOIN estudiantes Inner join sesion_1 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_1.id_estudiante where grupo.id=?';
+    $query = ' SELECT * FROM grupo INNER JOIN estudiantes Inner join sesion_1 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_1.id_estudiante where grupo.id=?';
         //echo $query;
-        $stmt = $dbh->prepare($query);
-        $stmt->execute([$g['id']]);
-        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $output .= "<tr>
-                    <th>". $g['nombre'] ."</th>
+    $stmt = $dbh->prepare($query);
+    $stmt->execute([$g['id']]);
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $output .= "<tr>
+                    <th>" . $g['nombre'] . "</th>
                     </tr>";
-        $output.="<tr>
+    $output .= "<tr>
                 <th>Nombre</th>
-                <th>Total aptitud verbal </th>
-                <th>Total aptitud matematica </th>
+                <th >AV 1</th>
+    <th>AV 2</th>
+    <th>AV 3</th>
+    <th>AV 4</th>
+    <th>AV 5</th>
+    <th>AV 6</th>
+    <th>AV 7</th>
+    <th>AV 8</th>
+    <th>AV 9</th>
+    <th>AV 10</th>
+    <th>AV 11</th>
+    <th>AV 12</th>
+    <th>AV 13</th>
+    <th>AV 14</th>
+    <th>AV 15</th>
+    <th>TOTAL AV</th>
+    <th>AM 1</th>
+    <th>AM 2</th>
+    <th>AM 3</th>
+    <th>AM 4</th>
+    <th>AM 5</th>
+    <th>AM 6</th>
+    <th>AM 7</th>
+    <th>AM 8</th>
+    <th>AM 9</th>
+    <th>AM 10</th>
+    <th>AM 11</th>
+    <th>AM 12</th>
+    <th>AM 13</th>
+    <th>AM 14</th>
+    <th>AM 15</th>
+    <th>TOTAL AM</th>
+    <th>Informe Valores, Intereses y Aptitudes</th>
+    <th>Observaciones</th>
                 </tr>";
 
         //echo '<b> Institucion: ' . $g['nombre'] . '</b><br>';
-        
-        foreach ($rows as $row) {
-            if($row['asistencia'] != 1){
-                continue;
-              }
 
-            $output.="<tr>
-                <th>". $row['nombre'] ."</th>
-                <th>". $row['total_aptitud_verbal'] ." </th>
-                <th>". $row['total_aptitud_matematica'] ." </th>
+    foreach ($rows as $row) {
+        if ($row['asistencia'] != 1) {
+            continue;
+        }
+
+        $output .= "<tr>
+                <th>" . $row['nombre'] . "</th>
+                <td>" . $row["aptitud_verbal_1"] . "</td>";
+        for ($i = 2; $i <= 15; $i++) {
+            $output .= "<td>" . $row["aptitud_verbal_$i"] . "</td>";
+        }
+        $output .= "<td>" . $row["total_aptitud_verbal"] . "</td>";
+        for ($i = 1; $i <= 15; $i++) {
+            $output .= "<td>" . $row["aptitud_matematica_$i"] . "</td>";
+        }
+        $output .= "<td>" . $row["total_aptitud_matematica"] . "</td>
+                <td> " . $row["informe_via"] . "</td>
+                <td>" . $row["observaciones"] . " </td>
                 </tr>";
 
             //echo  $row["nombre"],$row['total_aptitud_verbal'],$row['total_aptitud_matematica'];
             //echo "<br/>";          
-        }
+    }
 
-        $output .= "<tr>
+    $output .= "<tr>
                     <th></th>
                     </tr>
                     <tr>
                     <th></th>
                     </tr>
                     ";
-    }
+}
 
     
     
-    //header("Content-Type: application/xls");
-    //header("Content-Disposition: attachment; filename=sesion1.xls");
-    
+    header("Content-Type: application/xls");
+    header("Content-Disposition: attachment; filename=sesion1.xls");
 
-    echo $output;
-    
+
+echo $output;
+
 ?>
