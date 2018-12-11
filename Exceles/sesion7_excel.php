@@ -52,24 +52,11 @@ if (!func::checkLoginState($dbh)) {
                     <th>". $g['nombre'] ."</th>
                     </tr>";
         $output.="<tr>
-                <th>Nombre</th>
-                <th>Total aptitud verbal </th>
-                <th>Total aptitud matematica </th>
+                <th>Informe grupal </th>
+                <th>".$g['inf_s7']." </th>
                 </tr>";
 
-        //echo '<b> Institucion: ' . $g['nombre'] . '</b><br>';
         
-        foreach ($rows as $row) {
-
-            $output.="<tr>
-                <th>". $row['nombre'] ."</th>
-                <th>". $row['total_aptitud_verbal'] ." </th>
-                <th>". $row['total_aptitud_matematica'] ." </th>
-                </tr>";
-
-            //echo  $row["nombre"],$row['total_aptitud_verbal'],$row['total_aptitud_matematica'];
-            //echo "<br/>";          
-        }
 
         $output .= "<tr>
                     <th></th>
@@ -81,11 +68,11 @@ if (!func::checkLoginState($dbh)) {
     }
 
     
+    header("Content-Type: application/xls");
+    header("Content-Disposition: attachment; filename=sesion7.xls");
     
-    //header("Content-Type: application/xls");
-    //header("Content-Disposition: attachment; filename=sesion7.xls");
+    $output = mb_convert_encoding($output, "ISO-8859-1", "UTF-8");
     
-
     echo $output;
     
 ?>

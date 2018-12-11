@@ -96,9 +96,11 @@ if (!func::checkLoginState($dbh)) {
 
     
     
-    //header("Content-Type: application/xls");
-    //header("Content-Disposition: attachment; filename=sesion8.xls");
-    
+    header("Content-Type: application/xls");
+    header("Content-Disposition: attachment; filename=sesion8.xls");
+
+    $output = mb_convert_encoding($output, "ISO-8859-1", "UTF-8");
+
     echo $output;
     
 ?>
