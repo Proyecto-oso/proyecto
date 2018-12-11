@@ -1,4 +1,9 @@
 <?php
+
+header("Content-Type: application/xls");
+header("Content-Disposition: attachment; filename=sesion5.xls");
+
+
 include_once("../config.php");
 if (!isset($_SESSION)) {
     session_start();
@@ -107,8 +112,6 @@ if (!func::checkLoginState($dbh)) {
 
     
     
-    header("Content-Type: application/xls");
-    header("Content-Disposition: attachment; filename=sesion5.xls");
 
     $output = mb_convert_encoding($output, "ISO-8859-1", "UTF-8");
 
