@@ -43,7 +43,7 @@ if (!func::checkLoginState($dbh)) {
         }
 
 
-        $query = ' SELECT grupo.id, estudiantes.id, estudiantes.nombre, sesion_5.asistencia ,sesion_5.total FROM grupo INNER JOIN estudiantes Inner join sesion_5 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_5.id_estudiante where grupo.id=? ';
+        $query = ' SELECT * FROM grupo INNER JOIN estudiantes Inner join sesion_5 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_5.id_estudiante where grupo.id=? ';
         //echo $query;
         $stmt = $dbh->prepare($query);
         $stmt->execute([$g['id']]);
@@ -53,7 +53,20 @@ if (!func::checkLoginState($dbh)) {
                     </tr>";
         $output.="<tr>
                 <th>Nombre</th>
-                <th>Puntaje total </th>
+                <th>item_1 </th>
+                <th>item_2 </th>
+                <th>item_3 </th>
+                <th>item_4 </th>
+                <th>item_5 </th>
+                <th>item_6 </th>
+                <th>item_7 </th>
+                <th>item_8 </th>
+                <th>item_9 </th>
+                <th>item_10</th>
+                <th>total</th>
+                <th>estilo</th>
+                <th>observaciones</th>
+               
                 </tr>";
 
         //echo '<b> Institucion: ' . $g['nombre'] . '</b><br>';
@@ -65,7 +78,20 @@ if (!func::checkLoginState($dbh)) {
 
             $output.="<tr>
                     <th>". $row['nombre'] ."</th>
-                    <th>". $row['total'] ." </th>
+                    <th>". $row['item_1'] ."</th>
+                    <th>". $row['item_2'] ."</th>
+                    <th>". $row['item_3'] ."</th>
+                    <th>". $row['item_4'] ."</th>
+                    <th>". $row['item_5'] ."</th>
+                    <th>". $row['item_6'] ."</th>
+                    <th>". $row['item_7'] ."</th>
+                    <th>". $row['item_8'] ."</th>
+                    <th>". $row['item_9'] ."</th>
+                    <th>". $row['item_10'] ."</th>
+                    <th>". $row['total'] ."</th>
+                    <th>". $row['estilo'] ."</th>
+                    <th>". $row['observaciones'] ."</th>
+                    
                 </tr>";
     
         }
@@ -83,7 +109,6 @@ if (!func::checkLoginState($dbh)) {
     
     //header("Content-Type: application/xls");
     //header("Content-Disposition: attachment; filename=sesion5.xls");
-    
 
     echo $output;
     
