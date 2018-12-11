@@ -43,7 +43,7 @@ if (!func::checkLoginState($dbh)) {
         }
 
 
-        $query = ' SELECT grupo.id, estudiantes.id, estudiantes.nombre, sesion_6.asistencia , sesion_6.total FROM grupo INNER JOIN estudiantes Inner join sesion_6 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_6.id_estudiante where grupo.id=? ';
+        $query = ' SELECT * FROM grupo INNER JOIN estudiantes Inner join sesion_6 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_6.id_estudiante where grupo.id=? ';
         //echo $query;
         $stmt = $dbh->prepare($query);
         $stmt->execute([$g['id']]);
@@ -53,7 +53,18 @@ if (!func::checkLoginState($dbh)) {
                     </tr>";
         $output.="<tr>
                 <th>Nombre</th>
-                <th>Autoeficacia total</th>
+                <th>item_1</th>
+                <th>item_2</th>
+                <th>item_3</th>
+                <th>item_4</th>
+                <th>item_5</th>
+                <th>item_6</th>
+                <th>item_7</th>
+                <th>item_8</th>
+                <th>item_9</th>
+                <th>item_10</th>
+                <th>total</th>
+                <th>observaciones</th>
                 </tr>";
 
         //echo '<b> Institucion: ' . $g['nombre'] . '</b><br>';
@@ -65,7 +76,18 @@ if (!func::checkLoginState($dbh)) {
 
             $output.="<tr>
                 <th>". $row['nombre'] ."</th>
-                <th>". $row['total'] ." </th>
+                <th>". $row['item_1'] ."</th>
+                <th>". $row['item_2'] ."</th>
+                <th>". $row['item_3'] ."</th>
+                <th>". $row['item_4'] ."</th>
+                <th>". $row['item_5'] ."</th>
+                <th>". $row['item_6'] ."</th>
+                <th>". $row['item_7'] ."</th>
+                <th>". $row['item_8'] ."</th>
+                <th>". $row['item_9'] ."</th>
+                <th>". $row['item_10'] ."</th>
+                <th>". $row['total'] ."</th>
+                <th>". $row['observaciones'] ."</th>
                 </tr>";
 
             //echo  $row["nombre"],$row['total_aptitud_verbal'],$row['total_aptitud_matematica'];
@@ -83,9 +105,10 @@ if (!func::checkLoginState($dbh)) {
 
     
     
-    //header("Content-Type: application/xls");
-    //header("Content-Disposition: attachment; filename=sesion6.xls");
+    header("Content-Type: application/xls");
+    header("Content-Disposition: attachment; filename=sesion6.xls");
     
+    $output = mb_convert_encoding($output, "ISO-8859-1", "UTF-8");
 
     echo $output;
     
