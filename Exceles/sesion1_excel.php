@@ -7,6 +7,8 @@ include_once("../functions.php");
 if (!func::checkLoginState($dbh)) {
     echo '<script language="javascript">window.location="login.php"</script>';
 }
+header("Content-Type: application/xls");
+header("Content-Disposition: attachment; filename=sesion1.xls");
 ?>
 
 
@@ -124,10 +126,10 @@ foreach ($groups as $g) {
                     ";
 }
 
-    
-    
-    header("Content-Type: application/xls");
-    header("Content-Disposition: attachment; filename=sesion1.xls");
+
+
+
+$output = mb_convert_encoding($output, "ISO-8859-1", "UTF-8");
 
 
 echo $output;

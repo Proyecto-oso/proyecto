@@ -6,7 +6,9 @@ if (!isset($_SESSION)) {
 include_once("../functions.php");
 if (!func::checkLoginState($dbh)) {
     echo '<script language="javascript">window.location="login.php"</script>';
-}   
+}
+header("Content-Type: application/xls");
+header("Content-Disposition: attachment; filename=sesion3.xls");
 ?>
 
 <style>
@@ -27,79 +29,151 @@ if (!func::checkLoginState($dbh)) {
 
 
 <?php 
-    $query = ' SELECT * FROM grupo';
-    $stmt = $dbh->prepare($query);
-    $stmt->execute();
-    $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-    $output = "<table>";
+$query = ' SELECT * FROM grupo';
+$rowtmt = $dbh->prepare($query);
+$rowtmt->execute();
+$groups = $rowtmt->fetchAll(PDO::FETCH_ASSOC);
 
-    foreach ($groups as $g){
+$output = "<table>";
 
-        if ($g['nombre'] == "grupo de pruebas") {
-            continue;
-        }
+foreach ($groups as $g) {
+
+    if ($g['nombre'] == "grupo de pruebas") {
+        continue;
+    }
 
 
-        $query = ' SELECT grupo.id, estudiantes.id, estudiantes.nombre, sesion_3.asistencia ,sesion_3.t_activo, sesion_3.t_reflexivo, sesion_3.t_sensible, sesion_3.t_intuitivo, sesion_3.t_visual, sesion_3.t_verbal, sesion_3.t_secuencial, sesion_3.t_global FROM grupo INNER JOIN estudiantes Inner join sesion_3 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_3.id_estudiante where grupo.id=?';
+    $query = ' SELECT * FROM grupo INNER JOIN estudiantes Inner join sesion_3 on grupo.id=estudiantes.grupo_id and estudiantes.id=sesion_3.id_estudiante where grupo.id=?';
         //echo $query;
-        $stmt = $dbh->prepare($query);
-        $stmt->execute([$g['id']]);
-        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $output .= "<tr>
-                    <th>". $g['nombre'] ."</th>
+    $rowtmt = $dbh->prepare($query);
+    $rowtmt->execute([$g['id']]);
+    $rows = $rowtmt->fetchAll(PDO::FETCH_ASSOC);
+    $output .= "<tr>
+                    <th>" . $g['nombre'] . "</th>
                     </tr>";
-        $output.="<tr>
+    $output .= "<tr>
                 <th>Nombre</th>
-                <th>Total activo </th>
-                <th>Total reflexivo </th>
-                <th>Total sensible </th>
-                <th>Total intuitivo </th>
-                <th>Total visual </th>
-                <th>Total verbal </th>
-                <th>Total secuencial </th>
-                <th>Total global </th>
+    <th>pregunta 1 </th>
+    <th>pregunta 2 </th>
+    <th>pregunta 3 </th>
+    <th>pregunta 4 </th>
+    <th>pregunta 5 </th>
+    <th>pregunta 6 </th>
+    <th>pregunta 7 </th>
+    <th>pregunta 8 </th>
+    <th>pregunta 9 </th>
+    <th>pregunta 10 </th>
+    <th>pregunta 11 </th>
+    <th>pregunta 12 </th>
+    <th>pregunta 13 </th>
+    <th>pregunta 14 </th>
+    <th>pregunta 15 </th>
+    <th>pregunta 16 </th>
+    <th>pregunta 17 </th>
+    <th>pregunta 18 </th>
+    <th>pregunta 19 </th>
+    <th>pregunta 20 </th>
+    <th>pregunta 21 </th>
+    <th>pregunta 22 </th>
+    <th>pregunta 23 </th>
+    <th>pregunta 24 </th>
+    <th>pregunta 25 </th>
+    <th>pregunta 26 </th>
+    <th>pregunta 27 </th>
+    <th>pregunta 28 </th>
+    <th>pregunta 29 </th>
+    <th>pregunta 30 </th>
+    <th>pregunta 31 </th>
+    <th>pregunta 32 </th>
+    <th>pregunta 33 </th>
+    <th>pregunta 34 </th>
+    <th>pregunta 35 </th>
+    <th>pregunta 36 </th>
+    <th>pregunta 37 </th>
+    <th>pregunta 38 </th>
+    <th>pregunta 39 </th>
+    <th>pregunta 40 </th>
+    <th>pregunta 41 </th>
+    <th>pregunta 42 </th>
+    <th>pregunta 43 </th>
+    <th>pregunta 44 </th>
+    <th>Total activo </th>
+    <th>Total reflexivo </th>
+    <th>Diferencia </th>
+    <th>Total sensible </th>
+    <th>Total intuitivo </th>
+    <th>Diferencia </th>
+    <th>Total visual </th>
+    <th>Total verbal </th>
+    <th>Diferencia </th>
+    <th>Total secuencial </th>
+    <th>Total global </th>
+    <th>Diferencia </th>
+
+
+    <th>interes mas predominante </th>
+    <th>interes menos predominante </th>
+    <th>estilo de aprendizaje predominante </th>
+    <th>Aspecto de los temas trabajados </th>
+    <th>Aspecto de los ejercicios  </th>
+    <th>Aspecto de la dirección del tallerista </th>
+    <th>Aspecto de la utilidad para tu diario vivir </th>
+    <th>Observaciones </th>
                 </tr>";
 
         //echo '<b> Institucion: ' . $g['nombre'] . '</b><br>';
-        
-        
-        foreach ($rows as $row) {
-            if($row['asistencia'] != 1){
-                continue;
-              }
 
-            $output.="<tr>
-                <th>". $row['nombre'] ."</th>
-                <th>". $row['t_activo'] ."</th>
-                <th>". $row['t_reflexivo'] ."</th>
-                <th>". $row['t_sensible'] ."</th>
-                <th>". $row['t_intuitivo'] ."</th>
-                <th>". $row['t_visual'] ."</th>
-                <th>". $row['t_verbal'] ."</th>
-                <th>". $row['t_secuencial'] ."</th>
-                <th>". $row['t_global'] ."</th>
-                </tr>";
 
-            //echo  $row["nombre"],$row['total_aptitud_verbal'],$row['total_aptitud_matematica'];
-            //echo "<br/>";          
+    foreach ($rows as $row) {
+        if ($row['asistencia'] != 1) {
+            continue;
         }
 
         $output .= "<tr>
+                <th>" . $row['nombre'] . "</th>";
+
+        for ($i = 1; $i <= 44; $i++) {
+            $output .= "<td>" . $row['pregunta_' . $i] . "</td>";
+        }
+        $output .= "<td>" . $row["t_activo"] . "</td>
+            <td>" . $row["t_reflexivo"] . "</td>
+            <td>" . $row["d_act_ref"] . "</td>
+            <td>" . $row["t_sensible"] . "</td>
+            <td>" . $row["t_intuitivo"] . "</td>
+            <td>" . $row["d_sen_int"] . "</td>
+            <td>" . $row["t_visual"] . "</td>
+            <td>" . $row["t_verbal"] . "</td>
+            <td>" . $row["d_vis_ver"] . "</td>
+            <td>" . $row["t_secuencial"] . "</td>
+            <td>" . $row["t_global"] . "</td>
+            <td>" . $row["d_sec_glo"] . "</td>
+            <td>" . $row['mas_predominante'] . "</td>
+            <td>" . $row['menos_predominante'] . "</td>
+            <td>" . $row['est_predominante'] . "</td>
+            <td> " . $row['temas_trabajados'] . " </td>
+            <td> " . $row['ejercicios'] . "</td>
+            <td>" . $row['tallerista'] . "</td>
+            <td> " . $row['utilidad'] . "</td> 
+            <td>" . $row['observaciones'] . "</td>
+        </tr> ";
+
+            //echo    $row [ " nombre "],  $row ['total_aptitud_verbal'],  $row ['total_aptitud_matematica'];
+            //echo  " < br / > ";          
+    }
+
+    $output .= "<tr>
                     <th></th>
                     </tr>
                     <tr>
                     <th></th>
                     </tr>
                     ";
-    }
+}
 
-    
-    
-    //header("Content-Type: application/xls");
-    //header("Content-Disposition: attachment; filename=sesion3.xls");
-    
 
-    echo $output;
-    
+
+$output = mb_convert_encoding($output, "ISO-8859-1", "UTF-8");
+
+echo $output;
+
 ?>
