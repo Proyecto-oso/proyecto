@@ -54,6 +54,7 @@ foreach ($groups as $g) {
                     <th>" . $g['nombre'] . "</th>
                     </tr>";
     $output .= "<tr>
+    <th>Institución</th>
                 <th>Nombre</th>
                 <th>  factor tendencia a no centrarse en el futuro 1 </div> </th>
     <th>  factor tendencia a no centrarse en el futuro 2 </div> </th>
@@ -111,6 +112,7 @@ foreach ($groups as $g) {
         }
 
         $output .= "<tr>
+        <th>" . $g['nombre'] . "</th>
                 <th>" . $row['nombre'] . "</th>";
         for ($i = 1; $i <= 8; $i++) {
             $output .= "<td>" . $row["factor_tncf_$i"] . "</td>";

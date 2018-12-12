@@ -54,6 +54,7 @@ foreach ($groups as $g) {
                     <th>" . $g['nombre'] . "</th>
                     </tr>";
     $output .= "<tr>
+    <th>Institución</th>
         <th>Nombre </th>
         <th>item 1 </th>
         <th>item 2 </th>
@@ -107,6 +108,7 @@ foreach ($groups as $g) {
         }
 
         $output .= "<tr>
+        <th>" . $g['nombre'] . "</th>
                         <th>" . $row['nombre'] . "</th>";
 
         for ($i = 1; $i <= 12; $i++) {

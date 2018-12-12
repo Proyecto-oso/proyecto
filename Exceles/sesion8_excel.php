@@ -57,6 +57,7 @@ if (!func::checkLoginState($dbh)) {
                     <th>". $g['nombre'] ."</th>
                     </tr>";
         $output.="<tr>
+        <th>Institución</th>
                     <th>Nombre</th>
                     <th>temas_trabajados</th> 
                     <th>ejercicios</th>
@@ -75,6 +76,7 @@ if (!func::checkLoginState($dbh)) {
               }
 
             $output.="<tr>
+            <th>" . $g['nombre'] . "</th>
                     <th>". $row['nombre'] ."</th>
                     <th>". $row['temas_trabajados'] ."</th> 
                     <th>". $row['ejercicios'] ."</th>
