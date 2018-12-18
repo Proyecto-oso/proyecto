@@ -74,11 +74,19 @@ if (!func::checkLoginState($dbh)) {
                 </tr>";
 
         //echo '<b> Institucion: ' . $g['nombre'] . '</b><br>';
+
+        $tmp_id = [];
         
         foreach ($rows as $row) {
             if($row['asistencia'] != 1){
                 continue;
-              }
+            }
+            if(in_array($row['id'], $tmp_id)){
+                continue;
+            }else{
+    
+                array_push($tmp_id,$row["id"]);
+            }
 
             $output.="<tr>
             <th>" . $g['nombre'] . "</th>

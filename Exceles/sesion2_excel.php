@@ -25,7 +25,10 @@ header("Content-Disposition: attachment; filename=sesion2.xls");
     text-align: left;
     padding: 8px;
     }
-
+    .colegio{
+        background-color: green;
+        font-size: 20px
+    }
 }
 </style>
 
@@ -51,7 +54,7 @@ foreach ($groups as $g) {
     $rowtmt->execute([$g['id']]);
     $rows = $rowtmt->fetchAll(PDO::FETCH_ASSOC);
     $output .= "<tr>
-                    <th>" . $g['nombre'] . "</th>
+                    <th class=\"colegio\" >" . $g['nombre'] . "</th>
                     </tr>";
     $output .= "<tr>
     <th>Institución</th>
@@ -104,16 +107,27 @@ foreach ($groups as $g) {
     <th>Observaciones </th>
                 </tr>";
 
-        //echo '<b> Institucion: ' . $g['nombre'] . '</b><br>';
+    //echo '<b> Institucion: ' . $g['nombre'] . '</b><br>';
+    
+    $tmp_id = [];
+
 
     foreach ($rows as $row) {
         if ($row['asistencia'] != 1) {
             continue;
         }
 
+        if(in_array($row['id'], $tmp_id)){
+            continue;
+        }else{
+
+            array_push($tmp_id,$row["id"]);
+        }
+
         $output .= "<tr>
         <th>" . $g['nombre'] . "</th>
-                <th>" . $row['nombre'] . "</th>";
+        <th>" . $row['nombre'] . "</th>";
+
         for ($i = 1; $i <= 8; $i++) {
             $output .= "<td>" . $row["factor_tncf_$i"] . "</td>";
         }
