@@ -29,6 +29,11 @@ if (!func::checkLoginState($dbh)) {
     padding: 8px;
     }
 
+    .colegio{
+        background-color: #61AC59;
+        font-size: 20px
+    }
+
 }
 </style>
 
@@ -54,7 +59,7 @@ if (!func::checkLoginState($dbh)) {
         $stmt->execute([$g['id']]);
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $output .= "<tr>
-                    <th>". $g['nombre'] ."</th>
+                    <th class=\"colegio\" >" . $g['nombre'] . "</th>    
                     </tr>";
         $output.="<tr>
         <th>Institución</th>

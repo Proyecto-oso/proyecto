@@ -25,6 +25,10 @@ header("Content-Disposition: attachment; filename=sesion4.xls");
     text-align: left;
     padding: 8px;
     }
+    .colegio{
+        background-color: #61AC59;
+        font-size: 20px
+    }
 
 }
 </style>
@@ -51,7 +55,7 @@ foreach ($groups as $g) {
     $rowtmt->execute([$g['id']]);
     $rows = $rowtmt->fetchAll(PDO::FETCH_ASSOC);
     $output .= "<tr>
-                    <th>" . $g['nombre'] . "</th>
+                <th class=\"colegio\" >" . $g['nombre'] . "</th>
                     </tr>";
     $output .= "<tr>
     <th>Institución</th>

@@ -26,7 +26,7 @@ header("Content-Disposition: attachment; filename=sesion2.xls");
     padding: 8px;
     }
     .colegio{
-        background-color: green;
+        background-color: #61AC59;
         font-size: 20px
     }
 }
@@ -142,7 +142,7 @@ foreach ($groups as $g) {
             $output .= "<td>" . $row["factor_tivf_$i"] . "</td>";
         }
 
-        $output .= "<td>" . $row["total_factor_tncf"] . " /></td>
+        $output .= "<td>" . $row["total_factor_tncf"] . " </td>
                   <td> " . $row["total_factor_paf"] . "</td>
                   <td> " . $row["total_factor_icppf"] . "</td>
                   <td> " . $row["total_factor_tivf"] . "</td>";
